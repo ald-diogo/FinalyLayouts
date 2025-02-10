@@ -1,0 +1,81 @@
+﻿@page "/cadastro_turma"
+@using MudBlazor
+
+<MudContainer>
+    <MudPaper Class="mud-container" Elevation="4">
+        <MudTypography Variant="H4" Class="text-center">Cadastro de Turmas e Disciplinas</MudTypography>
+
+        <!-- Formulário de Cadastro -->
+        <MudForm @ref="form">
+            <MudGrid Spacing="2">
+                <!-- Primeira Linha -->
+                <MudItem xs="12" md="3">
+                    <MudSelect Label="Código da Turma" @bind-Value="codigoTurma" Required>
+                        <MudSelectItem Value="1">T001</MudSelectItem>
+                        <MudSelectItem Value="2">T002</MudSelectItem>
+                        <MudSelectItem Value="3">T003</MudSelectItem>
+                    </MudSelect>
+                </MudItem>
+                <MudItem xs="12" md="3">
+                    <MudSelect Label="Nome da Turma" @bind-Value="nomeTurma" Required>
+                        <MudSelectItem Value="A">Turma A</MudSelectItem>
+                        <MudSelectItem Value="B">Turma B</MudSelectItem>
+                    </MudSelect>
+                </MudItem>
+                <MudItem xs="12" md="3">
+                    <MudSelect Label="Ano" @bind-Value="ano" Required>
+                        <MudSelectItem Value="2023">2023/2024</MudSelectItem>
+                        <MudSelectItem Value="2024">2024/2025</MudSelectItem>
+                    </MudSelect>
+                </MudItem>
+                <MudItem xs="12" md="3">
+                    <MudSelect Label="Trimestre" @bind-Value="trimestre" Required>
+                        <MudSelectItem Value="1">1º Trimestre</MudSelectItem>
+                        <MudSelectItem Value="2">2º Trimestre</MudSelectItem>
+                        <MudSelectItem Value="3">3º Trimestre</MudSelectItem>
+                    </MudSelect>
+                </MudItem>
+            </MudGrid>
+
+            <!-- Botões -->
+            <MudGrid Class="text-center" Spacing="2">
+                <MudItem>
+                    <MudButton @onclick="Cadastrar" Color="Color.Success">Cadastrar</MudButton>
+                    <MudButton @onclick="Editar" Color="Color.Primary" Disabled="!podeEditar">Editar</MudButton>
+                    <MudButton @onclick="Eliminar" Color="Color.Error" Disabled="!podeEditar">Eliminar</MudButton>
+                </MudItem>
+            </MudGrid>
+        </MudForm>
+    </MudPaper>
+</MudContainer>
+
+@code {
+    private MudForm form;
+    private string nomeTurma;
+    private int ano;
+    private int trimestre; // Alterado para int
+    private int codigoTurma; // Alterado para int
+    private bool podeEditar = false;
+    public object B { get; set; }
+    public object A { get; set; }
+
+    private void Cadastrar()
+    {
+        // Lógica para cadastro
+        podeEditar = true;
+    }
+
+    private void Editar()
+    {
+        // Lógica para edição
+    }
+
+    private void Eliminar()
+    {
+        // Lógica para exclusão
+        podeEditar = false;
+    }
+}
+
+
+

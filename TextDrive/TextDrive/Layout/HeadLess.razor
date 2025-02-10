@@ -1,0 +1,51 @@
+﻿<div class="top-row ps-3 navbar navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href=""></a>
+        <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+</div>
+
+<MudNavMenu>
+    <MudNavLink Href="/" Match="NavLinkMatch.All">
+        <MudIcon Icon="@Icons.Material.Filled.Home" Color="Color.Error" />Ínicio
+    </MudNavLink>
+    
+    <MudNavLink Href="/" Match="NavLinkMatch.Prefix">
+        <MudIcon Icon="@Icons.Material.Filled.PersonAdd" Color="Color.Error"/>
+        Cadastrar Turma
+    </MudNavLink>
+
+    <MudNavLink Href="/" Match="NavLinkMatch.Prefix">
+        <MudIcon Icon="@Icons.Material.Filled.Edit" Color="Color.Error"/>
+        Lançar Notas
+    </MudNavLink>
+
+    <MudNavLink Href="/" Match="NavLinkMatch.Prefix">
+        <MudIcon Icon="@Icons.Material.Filled.Class" Color="Color.Error"/>
+        Plano Aulas
+    </MudNavLink>
+
+    <MudNavLink Href="/" Match="NavLinkMatch.Prefix">
+        <MudIcon Icon="@Icons.Material.Filled.BarChart" Color="Color.Error" />
+        Estatísticas
+    </MudNavLink>
+
+    <MudNavLink Href="/" Match="NavLinkMatch.Prefix">
+        <MudIcon Icon="@Icons.Material.Filled.Info" Color="Color.Error" />
+        Sobre
+    </MudNavLink>
+</MudNavMenu>
+
+@code {
+    private bool collapseNavMenu = true;
+
+    private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+
+}

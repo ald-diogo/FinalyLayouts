@@ -1,0 +1,90 @@
+﻿@page "/Login"
+@inherits NavigationManager Navigation
+@using MudBlazor
+
+<MudContainer Class="d-flex justify-center align-center vh-100">
+    <MudPaper Class="login-form p-4 rounded" Elevation="5">
+
+        <!-- Título -->
+        <MudText Typo="Typo.h5" Class="text-center text-white mb-4">
+            Bem Vindo Caro(a) Funcionário
+        </MudText>
+
+        <!-- Formulário de Login -->
+        <MudForm Model="loginModel" @ref="form">
+            <!-- Campo de Email -->
+            <MudTextField 
+                @bind-Value="loginModel.Email" 
+                Label="Digite seu email" 
+                Required="true" 
+                Adornment="Adornment.Start">
+                <AdornmentIcon>mdi-email</AdornmentIcon>
+            </MudTextField>
+
+            <!-- Campo de Senha -->
+            <MudTextField 
+                @bind-Value="loginModel.Password" 
+                Label="Digite sua senha" 
+                Required="true" 
+                Adornment="Adornment.Start" 
+                Type="MudTextFieldType.Password">
+                <AdornmentIcon>mdi-lock</AdornmentIcon>
+            </MudTextField>
+
+            <!-- Botão de Login -->
+            <MudButton OnClick="login" Color="Color.Primary" Class="mt-3" FullWidth>
+                <MudIcon Icon="mdi-login" Class="mr-2" /> Entrar
+            </MudButton>
+
+            <!-- Botão para Esqueci a Senha -->
+            <MudLink Href="recuperar-senha" Class="forgot-password">
+                <MudIcon Icon="mdi-key" Class="mr-2" /> Esqueci a senha
+            </MudLink>
+        </MudForm>
+
+        <!-- Barra de Progresso (escondida por padrão) -->
+        <MudProgressLinear 
+            Class="mt-3" 
+            Color="Color.Primary" 
+            Buffer="progress" 
+            BufferValue="progress" 
+            Visible="isLoading" />
+    </MudPaper>
+</MudContainer>
+
+@code {
+    private MudForm form;
+    private LoginModel loginModel = new();
+    private bool isLoading = false;
+    private double progress = 0;
+
+    private async Task login()
+    {
+        if (!form.IsValid)
+        {
+            await MudDialogService.ShowMessageBox("Erro", "Por favor, preencha todos os campos.");
+            return;
+        }
+
+        isLoading = true;
+        progress = 0;
+
+        // Simulação de carregamento da barra de progresso
+        for (int i = 0; i <= 100; i += 25)
+        {
+            await Task.Delay(500);
+            progress = i;
+        }
+
+        // Redirecionamento para o menu
+        Navigation.NavigateTo("/menu");
+    }
+
+    public object MudDialogService { get; set; }
+
+    private class LoginModel
+    {
+        public string Email { get; set; } = string.Empty;
+        public string Password { get; set; } = string.Empty;
+    }
+}

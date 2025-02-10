@@ -1,0 +1,56 @@
+﻿@page "/menu_Professor"
+
+@inject NavigationManager Navigation
+
+<MudThemeProvider />
+
+<MudLayout>
+    <MudAppBar Elevation="1">
+        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Dark" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
+        <MudSpacer />
+        <MudIconButton Icon="@Icons.Material.Filled.MoreVert" Color="Color.Dark" Edge="Edge.End" />
+    </MudAppBar>
+    <MudDrawer @bind-Open="_drawerOpen" Elevation="2">
+        <MudDrawerHeader>
+            <MudText Typo="Typo.h5" Color="Color.Primary" Class="mt-1">Menu</MudText>
+        </MudDrawerHeader>
+        @*NavMenu*@
+        <MudNavMenu>
+            <MudNavLink Href="/" Match="NavLinkMatch.All">
+                <MudIcon Icon="@Icons.Material.Filled.PersonAdd"/>
+                Cadastrar Turma
+            </MudNavLink>
+            
+            <MudNavLink Href="/" Match="NavLinkMatch.Prefix">
+                <MudIcon Icon="@Icons.Material.Filled.Edit"/>
+                Lançar Notas
+            </MudNavLink>
+            
+            <MudNavLink Href="/" Match="NavLinkMatch.Prefix">
+                <MudIcon Icon="@Icons.Material.Filled.Class"/>
+                Plano Aulas
+            </MudNavLink>
+            
+            <MudNavLink Href="/" Match="NavLinkMatch.Prefix">
+                <MudIcon Icon="@Icons.Material.Filled.BarChart" />
+                Estatísticas
+            </MudNavLink>
+            
+            <MudNavLink Href="/" Match="NavLinkMatch.Prefix">
+                <MudIcon Icon="@Icons.Material.Filled.Info" /> 
+                Sobre
+            </MudNavLink>
+        </MudNavMenu>
+    </MudDrawer>
+    <MudMainContent>
+        @*Body*@
+    </MudMainContent>
+</MudLayout>
+@code {
+    bool _drawerOpen = true;
+
+    void DrawerToggle()
+    {
+        _drawerOpen = !_drawerOpen;
+    }
+}

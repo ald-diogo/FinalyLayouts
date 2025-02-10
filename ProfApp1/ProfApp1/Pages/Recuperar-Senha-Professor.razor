@@ -1,0 +1,53 @@
+﻿@page "/recuperar_senha_professor"
+@using MudBlazor
+@inject NavigationManager Nav
+@inject IDialogService MudDialogService
+
+<MudContainer Class="d-flex justify-center align-center vh-100">
+    <!-- Formulário de Recuperação de Senha -->
+    <MudCard Class="recovery-form p-4 rounded">
+
+        <!-- Título -->
+        <MudCardContent>
+            <MudText Typo="Typo.h4" Class="text-white">Recuperação de Senha</MudText>
+        </MudCardContent>
+
+        <!-- Formulário -->
+        <MudForm>
+            <!-- Campo de Email com Ícone -->
+            <MudTextField @bind-Value="Email" Label="Digite seu email" Required="true"
+                          Placeholder="Digite seu email" Class="mb-3" Variant="Variant.Outlined">
+                <Adornment Icon="@Icons.Material.Filled.Email" Adornment="Adornment.Start" />
+            </MudTextField>
+
+            <!-- Botão de Recuperação -->
+            <MudButton OnClick="EnviarRecuperacao" Class="recovery-button" Color="Color.Error" FullWidth="true">
+                <MudIcon Icon="@Icons.Material.Filled.Lock" /> Enviar link de recuperação
+            </MudButton>
+        </MudForm>
+
+        <!-- Link para voltar ao login -->
+        <MudLink Href="/login" Class="back-to-login mt-3">Voltar ao Login</MudLink>
+    </MudCard>
+</MudContainer>
+
+@code {
+    private string Email { get; set; } = "";
+
+    private async Task EnviarRecuperacao()
+    {
+        if (string.IsNullOrWhiteSpace(Email))
+        {
+            await MudDialogService.ShowMessageBox("Erro", "Por favor, insira seu email.");
+            return;
+        }
+
+        await MudDialogService.ShowMessageBox("Sucesso", "Um link de recuperação foi enviado para o seu email.");
+        
+        // Pequeno atraso para evitar conflitos na UI antes da navegação
+        await Task.Delay(100);
+        
+        Nav.NavigateTo("/login_professor");
+    }
+}
+

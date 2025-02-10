@@ -1,0 +1,61 @@
+﻿@page "/menu_professor"
+@inherits LayoutComponentBase
+@inject NavigationManager Nav
+@inject IDialogService MudDialogService
+
+<MudContainer>
+    <MudStack Direction="Column" Spacing="2">
+        <MudButton Variant="Variant.Outlined" Color="Color.Primary" OnClick="@(() => Nav.NavigateTo("/inicio", forceLoad: true))">
+            <MudIcon Icon="mdi-home" />
+            <MudText Class="ml-2">Início</MudText>
+        </MudButton>
+
+        <MudButton Variant="Variant.Outlined" Color="Color.Primary" OnClick="@(() => Nav.NavigateTo("/cadastro_turma", forceLoad: true))">
+            <MudIcon Icon="mdi-account-plus" />
+            <MudText Class="ml-2">Cadastro Turmas</MudText>
+        </MudButton>
+
+        <MudButton Variant="Variant.Outlined" Color="Color.Primary" OnClick="@(() => Nav.NavigateTo("/plano_aula", forceLoad: true))">
+            <MudIcon Icon="mdi-calendar-check" />
+            <MudText Class="ml-2">Planear Aulas</MudText>
+        </MudButton>
+
+        <MudButton Variant="Variant.Outlined" Color="Color.Primary" OnClick="@(() => Nav.NavigateTo("/lancar_notas", forceLoad: true))">
+            <MudIcon Icon="mdi-file-document-edit" />
+            <MudText Class="ml-2">Lançar Notas</MudText>
+        </MudButton>
+
+        <MudButton Variant="Variant.Outlined" Color="Color.Primary" OnClick="@(() => Nav.NavigateTo("/sobre_professor", forceLoad: true))">
+            <MudIcon Icon="mdi-information" />
+            <MudText Class="ml-2">Sobre</MudText>
+        </MudButton>
+
+        <MudButton Variant="Variant.Outlined" Color="Color.Error" OnClick="async () => await TerminarSessao()">
+            <MudIcon Icon="mdi-logout" />
+            <MudText Class="ml-2">Terminar Sessão</MudText>
+        </MudButton>
+    </MudStack>
+</MudContainer>
+
+@code {
+    private async Task TerminarSessao()
+    {
+        bool? result = await MudDialogService.ShowMessageBox(
+            "Confirmação",
+            "Deseja realmente terminar a sessão?",
+            "Sim", "Não"
+        );
+
+        if (result == true)
+        {
+            Nav.NavigateTo("/login_professor", forceLoad: true);
+        }
+    }
+}
+
+
+
+
+
+
+
