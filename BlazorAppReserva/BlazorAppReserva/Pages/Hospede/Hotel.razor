@@ -1,0 +1,63 @@
+﻿@page "/Hotel"
+
+<MudGrid>
+    @foreach (var hotel in hotéis)
+    {
+        <MudItem xs="12" sm="6" md="4">
+            <MudCard>
+                <MudCardMedia Image="@hotel.Imagem" Title="@hotel.Nome" />
+                <MudCardContent>
+                    <MudText Typo="Typo.h6">@hotel.Nome</MudText>
+                    <MudText>@hotel.Descrição</MudText>
+                    <MudText><strong>Preço:</strong> @hotel.Preço</MudText>
+                    <MudButton OnClick="@(() => NavegarDetalhes(hotel))">Ver Detalhes</MudButton>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+    }
+</MudGrid>
+
+@code {
+    // Lista de hotéis (dados fictícios)
+    private List<Hotel> hotéis = new List<Hotel>
+    {
+        new Hotel
+        {
+            Nome = "Hotel Praia Azul",
+            Descrição = "Localizado na praia com vista deslumbrante.",
+            Preço = "R$ 250,00/noite",
+            Imagem = "https://via.placeholder.com/300",
+        },
+        new Hotel
+        {
+            Nome = "Hotel Montanha",
+            Descrição = "Perfeito para quem busca tranquilidade e natureza.",
+            Preço = "R$ 350,00/noite",
+            Imagem = "https://via.placeholder.com/300",
+        },
+        new Hotel
+        {
+            Nome = "Hotel Cidade",
+            Descrição = "Acomodações luxuosas no centro da cidade.",
+            Preço = "R$ 450,00/noite",
+            Imagem = "https://via.placeholder.com/300",
+        }
+    };
+
+    // Método para navegar para os detalhes do hotel
+    private void NavegarDetalhes(Hotel hotel)
+    {
+        // Você pode implementar a navegação para outra página aqui, por exemplo:
+        // NavigationManager.NavigateTo($"/detalhes/{hotel.Nome}");
+        Console.WriteLine($"Navegando para os detalhes do hotel: {hotel.Nome}");
+    }
+
+    // Definição da classe Hotel (ajuste conforme necessário)
+    public class Hotel
+    {
+        public string Nome { get; set; }
+        public string Descrição { get; set; }
+        public string Preço { get; set; }
+        public string Imagem { get; set; }
+    }
+}

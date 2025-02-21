@@ -1,0 +1,51 @@
+﻿@page "/Reservar"
+
+<MudForm>
+    <MudSelect @bind-Value="TipoQuarto" Label="Tipo de Quarto">
+        @foreach (var tipo in tiposDeQuarto)
+        {
+            <MudSelectItem Value="@tipo">@tipo</MudSelectItem>
+        }
+    </MudSelect>
+
+    <MudDatePicker @bind-Date="DataEntrada" Label="Data de Entrada" />
+    <MudDatePicker @bind-Date="DataSaida" Label="Data de Saída" />
+
+    <MudButton OnClick="FinalizarReserva">Finalizar Reserva</MudButton>
+</MudForm>
+
+@code {
+    public object TipoQuarto { get; set; }
+    public DateTime? DataEntrada { get; set; }
+    public DateTime? DataSaida { get; set; }
+
+    // Lista de tipos de quarto
+    private List<string> tiposDeQuarto = new List<string>
+    {
+        "Individual",
+        "Duplo",
+        "Suíte",
+        "Presidencial"
+    };
+
+    // Método para finalizar a reserva
+    private void FinalizarReserva()
+    {
+        if (TipoQuarto == null || !DataEntrada.HasValue || !DataSaida.HasValue)
+        {
+            // Exibe mensagem de erro ou faz alguma validação
+            Console.WriteLine("Todos os campos devem ser preenchidos!");
+            return;
+        }
+
+        if (DataEntrada > DataSaida)
+        {
+            // Validação de data
+            Console.WriteLine("A data de entrada não pode ser posterior à data de saída.");
+            return;
+        }
+
+        // Simula uma reserva bem-sucedida
+        Console.WriteLine($"Reserva concluída: {TipoQuarto} - Entrada: {DataEntrada.Value.ToShortDateString()} - Saída: {DataSaida.Value.ToShortDateString()}");
+    }
+}
