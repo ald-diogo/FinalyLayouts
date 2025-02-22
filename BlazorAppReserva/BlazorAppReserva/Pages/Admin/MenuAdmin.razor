@@ -1,0 +1,75 @@
+﻿<MudNavLink
+    Href="/" 
+    Match="NavLinkMatch.All">
+    <MudIcon Icon="@Icons.Material.Filled.Home" /> Início
+    </MudNavLink>
+
+<MudNavGroup
+    Icon="@Icons.Material.Filled.Dashboard"
+    IconColor="Color.Error"
+    Title="Painel Administrativo"
+    Expanded="true">
+    
+    <MudNavLink 
+        Href="/" 
+        Match="NavLinkMatch.Prefix">
+        <MudIcon 
+            Icon="@Icons.Material.Filled.Book" /> 
+        Gerenciar reservas
+    </MudNavLink>
+    
+    <MudNavLink 
+        Href="/" 
+        Match="NavLinkMatch.Prefix">
+        <MudIcon 
+            Icon="@Icons.Material.Filled.Settings" /> 
+        Configuração de hotel
+        </MudNavLink>
+
+    <MudNavGroup Title="Usuários" Expanded="true">
+        <MudNavLink 
+            Href="/" 
+            Match="NavLinkMatch.Prefix">
+            <MudIcon Icon="@Icons.Material.Filled.Person" />
+            Recepcionista
+            </MudNavLink>
+                        <MudNavLink Href="/" Match="NavLinkMatch.Prefix">
+                            <MudIcon Icon="@Icons.Material.Filled.Person" /> Gerente de Hotel
+                        </MudNavLink>
+                        <MudNavLink Href="/" Match="NavLinkMatch.Prefix">
+                            <MudIcon Icon="@Icons.Material.Filled.Person" /> Provedor de Serviços Externos
+                        </MudNavLink>
+                        <MudNavLink Href="/" Match="NavLinkMatch.Prefix">
+                            <MudIcon Icon="@Icons.Material.Filled.Person" /> Marketer (Equipe de marketing)
+                        </MudNavLink>
+                        <MudNavLink Href="/" Match="NavLinkMatch.Prefix">
+                            <MudIcon Icon="@Icons.Material.Filled.Business" /> Proprietário do Hotel
+                        </MudNavLink>
+                        <MudNavLink Href="/" Match="NavLinkMatch.Prefix">
+                            <MudIcon Icon="@Icons.Material.Filled.PersonOutline" /> Hóspede
+                        </MudNavLink>
+                    </MudNavGroup>
+
+                    <MudNavLink Href="/" Match="NavLinkMatch.Prefix">
+                        <MudIcon Icon="@Icons.Material.Filled.Assessment" /> Relatórios
+                    </MudNavLink>
+                    <MudNavLink Href="/" Match="NavLinkMatch.Prefix">
+                        <MudIcon Icon="@Icons.Material.Filled.LocalOffer" /> Gerenciar promoções e descontos
+                    </MudNavLink>
+                </MudNavGroup>
+
+                <MudNavLink Href="/" Match="NavLinkMatch.Prefix">
+                    <MudIcon Icon="@Icons.Material.Filled.Lock" /> Segurança
+                </MudNavLink>
+
+                <MudNavLink Href="/" Match="NavLinkMatch.Prefix">
+                    <MudIcon Icon="@Icons.Material.Filled.Chat" /> Chat
+                </MudNavLink>
+
+                
+
+<MudMenuAdmin>
+    <MudNavLink Href="/" Match="NavLinkMatch.Prefix">
+        <MudIcon Icon="@Icons.Material.Filled.Info" /> Sobre
+    </MudNavLink>
+</MudMenuAdmin>
