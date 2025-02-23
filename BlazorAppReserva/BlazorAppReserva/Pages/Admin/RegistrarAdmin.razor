@@ -1,0 +1,118 @@
+﻿@page "/Admin/Registrar"
+
+@using MudBlazor
+@inject NavigationManager Navigation
+
+<MudPaper Class="pa-4" Elevation="4">
+    <MudText Typo="Typo.h5" Align="Align.Center" GutterBottom="true">Crie sua Conta</MudText>
+
+    <MudForm @ref="form" OnValidSubmit="HandleValidSubmit">
+        <!-- Nome Completo -->
+        <MudTextField
+            Label="Nome Completo" 
+            @bind-Value="nome" 
+            Required="true" 
+            For="@(() => nome)"
+            Margin="Margin.Normal" />
+
+        <!-- Nacionalidade -->
+        <MudTextField
+            Label="Nacionalidade"
+            @bind-Value="nacionalidade"
+            Required="true"
+            For="@(() => nacionalidade)"
+            Margin="Margin.Normal" />
+
+        <!-- E-mail -->
+        <MudTextField 
+            Label="E-mail" 
+            @bind-Value="email" 
+            Required="true" 
+            For="@(() => email)" 
+            Margin="Margin.Normal" 
+            Type="email" />
+
+        <!-- Senha -->
+        <MudTextField 
+            Label="Senha" 
+            @bind-Value="senha" 
+            Required="true" 
+            For="@(() => senha)"
+            Margin="Margin.Normal"
+            Type="password" />
+
+        <!-- Confirmar Senha -->
+        <MudTextField
+            Label="Confirmar Senha" 
+            @bind-Value="confirmarSenha"
+            Required="true" 
+            For="@(() => confirmarSenha)"
+            Margin="Margin.Normal"
+            Type="password" />
+        
+        <!-- Aceitação dos Termos -->
+        <MudCheckbox
+            bind-Checked="aceiteTermos"
+            Required="true">
+            Eu aceito os 
+            <MudLink Href="/Admin/TermoUso">
+                Termos de Uso
+            </MudLink> e a
+            <MudLink Href="/Admin/Politica">
+                Política de Privacidade
+            </MudLink>
+        </MudCheckbox>
+
+        <!-- Botão de Registro -->
+        <MudButton
+            Href="/Admin/Login"
+            Type="Submit"
+            Variant="Variant.Filled"
+            Color="Color.Primary"
+            FullWidth="true"
+            Disabled="!form.IsValid"
+            StartIcon="Icons.Material.Filled.PersonAdd"
+            IconColor="Color.Dark">
+            <MudIconButton Icon="@Icons.Material.Filled.PersonAdd" Color="Color.Inherit" />
+            Cadastrar
+        </MudButton>
+
+        <!-- Link para Login -->
+        <MudText
+            Align="Align.Center"
+            Typo="Typo.body2"
+            GutterBottom="true">
+            Já tem uma conta? 
+            <MudLink Href="/Admin/Login">
+                Faça login
+            </MudLink>
+        </MudText>
+    </MudForm>
+</MudPaper>
+
+@code {
+    private string nome;
+    private string email;
+    private string senha;
+    private string confirmarSenha;
+    private string nacionalidade;
+    private bool aceiteTermos;
+
+    private MudForm form;
+
+    private async Task HandleValidSubmit()
+    {
+        if (senha != confirmarSenha)
+        {
+            // Mensagem de erro de senha
+            await Task.Delay(100); // Espera para exibir a mensagem
+            return;
+        }
+
+        // Aqui você pode adicionar o código para registrar o usuário (ex: chamar uma API)
+        // Exemplo: 
+        // var resultado = await usuarioService.CriarConta(nome, email, senha, nacionalidade);
+        Navigation.NavigateTo("/Admin/Login"); // Redirecionar após o sucesso
+    }
+}
+

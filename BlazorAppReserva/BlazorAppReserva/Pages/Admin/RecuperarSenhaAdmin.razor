@@ -1,6 +1,74 @@
-﻿@page "/RecuperarSenhaAdmin"
-<h3>RecuperarSenhaAdmin</h3>
+﻿@page "/Admin/RecuperarSenha"
+
+@using MudBlazor
+@inject NavigationManager Navigation
+
+<MudContainer MaxWidth="MaxWidth.Small" Class="mt-6" >
+    <MudPaper Elevation="3" Class="p-4">
+        <MudText Typo="Typo.h5" Align="Align.Center">Recuperação de Senha</MudText>
+        <MudText Align="Align.Center" Class="mt-2">Digite o e-mail ou número de telefone associado à sua conta para receber as instruções de recuperação.</MudText>
+
+        <MudForm @ref="form" Class="mt-4">
+            <MudTextField
+                @bind-Value="emailOuTelefone"
+                Label="E-mail ou Número de Telefone"
+                Variant="Variant.Filled"
+                FullWidth="true"
+                Required="true"
+                HelperText="Por favor, insira um e-mail válido ou número de telefone."
+                Icon="Icons.Material.Filled.Email"
+            />
+
+            <MudButton 
+                OnClick="EnviarInstrucoes" 
+                Variant="Variant.Filled" 
+                Color="Color.Primary" 
+                FullWidth="true" 
+                Class="mt-4">
+                Enviar Instruções
+            </MudButton>
+
+            <MudText Align="Align.Center" Class="mt-3">
+                <MudLink Href="/Admin/Login">Voltar para o login</MudLink>
+            </MudText>
+        </MudForm>
+
+        @if (mostrarMensagem)
+        {
+            <MudAlert Severity="Severity.Info" Class="mt-4" Variant="Variant.Filled">
+                Enviamos um link de recuperação para o seu e-mail ou número de telefone. Verifique sua caixa de entrada.
+            </MudAlert>
+        }
+
+        @if (erroMensagem)
+        {
+            <MudAlert Severity="Severity.Error" Class="mt-4" Variant="Variant.Filled">
+                Não encontramos nenhuma conta associada a este e-mail ou número de telefone.
+            </MudAlert>
+        }
+    </MudPaper>
+</MudContainer>
 
 @code {
-    
+    private string emailOuTelefone;
+    private bool mostrarMensagem = false;
+    private bool erroMensagem = false;
+    private MudForm form;
+
+    private void EnviarInstrucoes()
+    {
+        // Simulando um envio de e-mail ou SMS
+        if (!string.IsNullOrEmpty(emailOuTelefone) && emailOuTelefone.Contains("@"))
+        {
+            // Simula o envio bem-sucedido
+            mostrarMensagem = true;
+            erroMensagem = false;
+        }
+        else
+        {
+            // Simula erro no envio
+            erroMensagem = true;
+            mostrarMensagem = false;
+        }
+    }
 }
