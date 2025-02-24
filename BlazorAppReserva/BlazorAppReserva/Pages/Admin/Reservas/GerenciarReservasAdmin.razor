@@ -1,0 +1,123 @@
+﻿@page "/Admin/GerenciarReservas"
+
+@using MudBlazor
+
+<MudContainer MaxWidth="MaxWidth.Large">
+    <!-- Cabeçalho -->
+    <MudAppBar Position="AppBarPosition.Top">
+        <MudText Typo="Typo.h6">Gerenciar Minhas Reservas</MudText>
+        <MudSpacer />
+        <MudButton
+            Href="/Admin/Reservar"
+            Variant="Variant.Filled"
+            Color="Color.Primary"
+            OnClick="NovaReserva">
+            Nova Reserva
+        </MudButton>
+    </MudAppBar>
+
+    <!-- Saudação -->
+    <MudCard Class="mt-4">
+        <MudCardContent>
+            <MudText Typo="Typo.h6">Bem-vindo, @usuarioNome!</MudText>
+            <MudText>Veja abaixo suas reservas e gerencie-as facilmente.</MudText>
+        </MudCardContent>
+    </MudCard>
+
+    <!-- Link para o Histórico de Reservas -->
+    <MudButton
+        Href="/Admin/Historico"
+        Variant="Variant.Text"
+        Color="Color.Primary"
+        Class="mt-4">
+        Ver Histórico de Reservas
+    </MudButton>
+
+    <!-- Tabela de Reservas -->
+    <MudTable Items="@reservas" Striped="true" Hover="true">
+        <HeaderContent>
+            <MudTh>Hotel</MudTh>
+            <MudTh>Data Entrada</MudTh>
+            <MudTh>Data Saída</MudTh>
+            <MudTh>Tipo de Quarto</MudTh>
+            <MudTh>Status</MudTh>
+            <MudTh>Ações</MudTh>
+        </HeaderContent>
+        
+        <RowTemplate>
+            <MudTd DataLabel="Hotel">@context.NomeHotel</MudTd>
+            <MudTd DataLabel="Data Entrada">@context.DataEntrada.ToString("dd/MM/yyyy")</MudTd>
+            <MudTd DataLabel="Data Saída">@context.DataSaida.ToString("dd/MM/yyyy")</MudTd>
+            <MudTd DataLabel="Tipo de Quarto">@context.TipoQuarto</MudTd>
+            <MudTd DataLabel="Status">@context.Status</MudTd>
+            <MudTd DataLabel="Ações">
+
+                <MudButton
+                    Href="/Admin/Detalhes"
+                    Color="Color.Primary"
+                    Variant="Variant.Text"
+                    OnClick="() => VisualizarDetalhes(context)">
+                    <MudIcon Icon="Favorite" Color="Color.Primary" />
+                    Ver Detalhes
+                </MudButton>
+
+                <MudButton
+                    Color="Color.Error"
+                    Variant="Variant.Text"
+                    OnClick="() => CancelarReserva(context)">
+                    <MudIcon Icon="Delete" Color="Color.Error" />
+                    Cancelar
+                </MudButton>
+
+            </MudTd>
+        </RowTemplate>
+    </MudTable>
+</MudContainer>
+
+@code {
+    private List<Reserva> reservas = new List<Reserva>
+    {
+        new Reserva { NomeHotel = "Hotel Maravilha", DataEntrada = DateTime.Now.AddDays(3), DataSaida = DateTime.Now.AddDays(5), TipoQuarto = "Suíte", Status = "Confirmada" },
+        new Reserva { NomeHotel = "Pousada Tranquila", DataEntrada = DateTime.Now.AddDays(10), DataSaida = DateTime.Now.AddDays(12), TipoQuarto = "Standard", Status = "Pendente" },
+        new Reserva { NomeHotel = "Resort Sol e Mar", DataEntrada = DateTime.Now.AddDays(15), DataSaida = DateTime.Now.AddDays(17), TipoQuarto = "Deluxe", Status = "Confirmada" }
+    };
+
+    private string usuarioNome = "Caro(a) Cliente"; // Usuário fictício para exemplo
+
+    // O Snackbar é injetado aqui
+    [Inject] private ISnackbar snackbar { get; set; }
+
+    // Método para visualizar detalhes da reserva
+    private void VisualizarDetalhes(Reserva reserva)
+    {
+        // Lógica para exibir os detalhes
+        snackbar.Add($"Detalhes da reserva do hotel {reserva.NomeHotel} exibidos!", Severity.Normal);
+    }
+
+    // Método para cancelar uma reserva
+    private void CancelarReserva(Reserva reserva)
+    {
+        // Lógica para cancelar a reserva
+        reservas.Remove(reserva);
+        snackbar.Add($"Reserva do hotel {reserva.NomeHotel} cancelada com sucesso!", Severity.Success);
+    }
+
+    // Método para adicionar uma nova reserva
+    private void NovaReserva()
+    {
+        // Lógica para criar uma nova reserva (exemplo de redirecionamento ou criação)
+        snackbar.Add("Nova reserva criada com sucesso!", Severity.Success);
+    }
+
+    // Classe de dados para as reservas
+    public class Reserva
+    {
+        public string NomeHotel { get; set; }
+        public DateTime DataEntrada { get; set; }
+        public DateTime DataSaida { get; set; }
+        public string TipoQuarto { get; set; }
+        public string Status { get; set; }
+    }
+}
+
+

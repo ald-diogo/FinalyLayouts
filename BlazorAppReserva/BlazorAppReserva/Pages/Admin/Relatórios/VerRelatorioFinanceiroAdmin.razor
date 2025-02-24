@@ -1,0 +1,138 @@
+﻿@page "/Admin/VerRelatorioFinanceiro"
+
+@using MudBlazor
+
+<PageTitle>Relatório Financeiro</PageTitle>
+
+<MudContainer>
+    <MudGrid>
+        <!-- Relatório de Receita -->
+        <MudItem xs="12" md="6">
+            <MudCard>
+                <MudCardContent>
+                    <MudText Typo="Typo.h6">Receitas</MudText>
+                    <MudTable Items="@Receitas" Hover="true">
+                        <HeaderContent>
+                            <MudTh>Descrição</MudTh>
+                            <MudTh>Valor</MudTh>
+                        </HeaderContent>
+                        
+                        <RowTemplate>
+                            <MudTd DataLabel="Descrição">@context.Descricao</MudTd>
+                            <MudTd DataLabel="Valor">@context.Valor.ToString("C2")</MudTd>
+                        </RowTemplate>
+                    </MudTable>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+
+        <!-- Relatório de Despesas -->
+        <MudItem xs="12" md="6">
+            <MudCard>
+                <MudCardContent>
+                    <MudText Typo="Typo.h6">Despesas</MudText>
+                    <MudTable Items="@Despesas" Hover="true">
+                        <HeaderContent>
+                            <MudTh>Descrição</MudTh>
+                            <MudTh>Valor</MudTh>
+                        </HeaderContent>
+                        
+                        <RowTemplate>
+                            <MudTd DataLabel="Descrição">@context.Descricao</MudTd>
+                            <MudTd DataLabel="Valor">@context.Valor.ToString("C2")</MudTd>
+                        </RowTemplate>
+                    </MudTable>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+
+        <MudDivider />
+        <!-- Lucro Bruto -->
+        <MudItem xs="12" md="6">
+            <MudCard>
+                <MudCardContent>
+                    <MudText Typo="Typo.h6">Lucro Bruto</MudText>
+                    <MudText Typo="Typo.h5">@LucroBruto.ToString("C2")</MudText>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+
+        <MudDivider />
+
+        <!-- Lucro Líquido -->
+        <MudItem xs="12" md="6">
+            <MudCard>
+                <MudCardContent>
+                    <MudText Typo="Typo.h6">Lucro Líquido</MudText>
+                    <MudText Typo="Typo.h5">@LucroLiquido.ToString("C2")</MudText>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+
+        <MudDivider />
+        
+        <!-- Indicadores de Performance -->
+        <MudItem xs="12" md="6">
+            <MudCard>
+                <MudCardContent>
+                    <MudText Typo="Typo.h6">Indicadores de Performance</MudText>
+                    <MudText Typo="Typo.body1">Taxa de Ocupação: @TaxaOcupacao %</MudText>
+                    <MudText Typo="Typo.body1">ADR (Preço Médio por Diária): @ADR.ToString("C2")</MudText>
+                    <MudText Typo="Typo.body1">RevPAR: @RevPAR.ToString("C2")</MudText>
+                    <!-- Link adicionado abaixo -->
+                    <MudLink Href="/Admin/VerRelatorioDesempenhoFuncionario" Target="_blank">
+                        Ver mais informações
+                    </MudLink>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+    </MudGrid>
+</MudContainer>
+
+@code {
+    // Exemplos de Dados - esses seriam preenchidos com dados reais no sistema
+    private List<Receita> Receitas = new List<Receita>
+    {
+        new Receita { Descricao = "Hospedagem", Valor = 1200 },
+        new Receita { Descricao = "Restaurante", Valor = 300 },
+        new Receita { Descricao = "Spa", Valor = 150 }
+    };
+
+    private List<Despesa> Despesas = new List<Despesa>
+    {
+        new Despesa { Descricao = "Salários", Valor = 500 },
+        new Despesa { Descricao = "Manutenção", Valor = 200 },
+        new Despesa { Descricao = "Marketing", Valor = 150 }
+    };
+
+    
+
+    // Cálculos
+    private decimal LucroBruto => Receitas.Sum(r => r.Valor) - Despesas.Sum(d => d.Valor);
+    private decimal LucroLiquido => LucroBruto - 100; // Exemplo de impostos e outras deduções
+    private decimal TaxaOcupacao => 80; // Exemplo fixo
+    private decimal ADR => Receitas.Sum(r => r.Valor) / 10; // Exemplo com 10 diárias
+    private decimal RevPAR => ADR * (TaxaOcupacao / 100);
+
+    public class Receita
+    {
+        public string Descricao { get; set; }
+        public decimal Valor { get; set; }
+    }
+
+    public class Despesa
+    {
+        public string Descricao { get; set; }
+        public decimal Valor { get; set; }
+    }
+
+    public class FluxoDeCaixa
+    {
+        public DateTime Data { get; set; }
+        public string Descricao { get; set; }
+        public decimal Valor { get; set; }
+    }
+}
+
+
+

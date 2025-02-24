@@ -1,0 +1,143 @@
+﻿@page "/Admin/Historico"
+
+@using MudBlazor
+@inject NavigationManager Navigation
+
+<MudContainer MaxWidth="MaxWidth.Large">
+    <!-- Título da Página -->
+    <MudText Typo="Typo.h4" Align="Align.Center" Class="my-4">Histórico de Reservas</MudText>
+
+    <!-- Barra de Filtros -->
+    <MudGrid>
+        <MudItem xs="12" sm="4">
+            <MudTextField Label="Data de Início" @bind-Value="startDate" InputType="InputType.Date" FullWidth="true"/>
+        </MudItem>
+        <MudItem xs="12" sm="4">
+            <MudTextField Label="Data de Término" @bind-Value="endDate" InputType="InputType.Date" FullWidth="true"/>
+        </MudItem>
+        <MudItem xs="12" sm="4">
+            <MudSelect T="string" Label="Status" @bind-Value="statusFilter" FullWidth="true">
+                <MudSelectItem Value="1">Todos</MudSelectItem>
+                <MudSelectItem Value="2">Confirmada</MudSelectItem>
+                <MudSelectItem Value="3">Cancelada</MudSelectItem>
+                <MudSelectItem Value="4">Futura</MudSelectItem>
+            </MudSelect>
+        </MudItem>
+    </MudGrid>
+
+    <!-- Tabela de Reservas -->
+    <MudTable Items="@reservations" Striped="true" Hover="true" Dense="true" Bordered="true">
+        <HeaderContent>
+            <MudTh>Hotel</MudTh>
+            <MudTh>Data de Check-in</MudTh>
+            <MudTh>Data de Check-out</MudTh>
+            <MudTh>Tipo de Quarto</MudTh>
+            <MudTh>Status</MudTh>
+            <MudTh>Preço Total</MudTh>
+            <MudTh>Ações</MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd>@context.Hotel</MudTd>
+            <MudTd>@context.CheckInDate.ToString("dd/MM/yyyy")</MudTd>
+            <MudTd>@context.CheckOutDate.ToString("dd/MM/yyyy")</MudTd>
+            <MudTd>@context.RoomType</MudTd>
+            <MudTd>@context.Status</MudTd>
+            <MudTd>@context.TotalPrice.ToString("C")</MudTd>
+            <MudTd>
+                <MudButton Color="Color.Primary" Variant="Variant.Text" OnClick="(() => ViewDetails(context))">
+                    Ver Detalhes
+                </MudButton>
+                @if (context.Status == "Upcoming")
+                {
+                    <MudButton Color="Color.Error" Variant="Variant.Text" OnClick="(() => CancelReservation(context))">
+                        Cancelar
+                    </MudButton>
+                }
+            </MudTd>
+        </RowTemplate>
+    </MudTable>
+
+    <!-- Reservas Futuras -->
+    <MudText Typo="Typo.h5" Class="my-4">Minhas Reservas Futuras</MudText>
+    <MudTable Items="@futureReservations" Striped="true" Hover="true" Dense="true" Bordered="true">
+        <HeaderContent>
+            <MudTh>Hotel</MudTh>
+            <MudTh>Data de Check-in</MudTh>
+            <MudTh>Status</MudTh>
+            <MudTh>Ações</MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd>@context.Hotel</MudTd>
+            <MudTd>@context.CheckInDate.ToString("dd/MM/yyyy")</MudTd>
+            <MudTd>@context.Status</MudTd>
+            <MudTd>
+                <MudButton Color="Color.Primary" Variant="Variant.Text" OnClick="(() => ViewDetails(context))">
+                    Ver Detalhes
+                </MudButton>
+            </MudTd>
+        </RowTemplate>
+    </MudTable>
+</MudContainer>
+
+@code {
+    private DateTime? startDate;
+    private DateTime? endDate;
+    private string statusFilter = "All";
+
+    private List<Reservation> reservations = new List<Reservation>
+    {
+        new Reservation
+        {
+            Hotel = "Hotel A",
+            CheckInDate = DateTime.Now.AddDays(-5),
+            CheckOutDate = DateTime.Now.AddDays(-2),
+            RoomType = "Suíte",
+            Status = "Completed",
+            TotalPrice = 500.00
+        },
+        new Reservation
+        {
+            Hotel = "Hotel B",
+            CheckInDate = DateTime.Now.AddDays(3),
+            CheckOutDate = DateTime.Now.AddDays(7),
+            RoomType = "Padrão",
+            Status = "Upcoming",
+            TotalPrice = 300.00
+        },
+        new Reservation
+        {
+            Hotel = "Hotel C",
+            CheckInDate = DateTime.Now.AddDays(-1),
+            CheckOutDate = DateTime.Now.AddDays(2),
+            RoomType = "Deluxe",
+            Status = "Completed",
+            TotalPrice = 700.00
+        }
+    };
+
+    private List<Reservation> futureReservations => reservations.Where(r => r.Status == "Upcoming").ToList();
+
+    private void ViewDetails(Reservation reservation)
+    {
+        // Navegar para a página de detalhes da reserva
+        Navigation.NavigateTo($"/detalhes-reserva/{reservation.Hotel}");
+    }
+
+    private void CancelReservation(Reservation reservation)
+    {
+        // Cancelar a reserva
+        reservation.Status = "Cancelled";
+        StateHasChanged();
+    }
+
+    public class Reservation
+    {
+        public string Hotel { get; set; }
+        public DateTime CheckInDate { get; set; }
+        public DateTime CheckOutDate { get; set; }
+        public string RoomType { get; set; }
+        public string Status { get; set; }
+        public double TotalPrice { get; set; }
+    }
+}
+

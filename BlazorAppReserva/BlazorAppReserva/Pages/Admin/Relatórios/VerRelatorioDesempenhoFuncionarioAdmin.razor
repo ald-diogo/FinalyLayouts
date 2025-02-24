@@ -1,0 +1,155 @@
+﻿@page "/Admin/VerRelatorioDesempenhoFuncionario"
+
+@using MudBlazor
+
+<PageTitle>Relatório de Performance</PageTitle>
+
+<MudContainer MaxWidth="MaxWidth.Large">
+    <!-- Título da Página -->
+    <MudText Typo="Typo.h4" Align="Align.Center" GutterBottom="true">Relatório de Performance do Hotel</MudText>
+
+    <!-- Relatório Geral -->
+    <MudGrid>
+        <MudItem xs="12" md="4">
+            <MudCard>
+                <MudCardContent>
+                    <MudText Typo="Typo.h6" GutterBottom="true">Número Total de Reservas</MudText>
+                    <MudText Typo="Typo.h4">500</MudText>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+        
+        <MudItem xs="12" md="4">
+            <MudCard>
+                <MudCardContent>
+                    <MudText Typo="Typo.h6" GutterBottom="true">Taxa de Ocupação</MudText>
+                    <MudText Typo="Typo.h4">85%</MudText>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+        
+        <MudItem xs="12" md="4">
+            <MudCard>
+                <MudCardContent>
+                    <MudText Typo="Typo.h6" GutterBottom="true">Receita Bruta</MudText>
+                    <MudText Typo="Typo.h4">R$ 150.000</MudText>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+    </MudGrid>
+
+    <!-- Gráficos de Performance -->
+    <MudGrid>
+        <MudItem xs="12" md="6">
+            <MudCard>
+                <MudCardContent>
+                    <MudText Typo="Typo.h6" GutterBottom="true">Taxa de Ocupação - Evolução</MudText>
+                    <MudChart ChartType="ChartType.Line" Data="occupancyData" Options="occupancyChartOptions" />
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+        
+        <MudItem xs="12" md="6">
+            <MudCard>
+                <MudCardContent>
+                    <MudText Typo="Typo.h6" GutterBottom="true">Receita por Canal de Venda</MudText>
+                    <MudChart ChartType="ChartType.Pie" Data="revenueByChannelData" Options="revenueByChannelChartOptions" />
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+    </MudGrid>
+
+    <!-- Desempenho por Canal de Venda -->
+    <MudCard>
+        <MudCardContent>
+            <MudText Typo="Typo.h6" GutterBottom="true">Desempenho por Canal de Venda</MudText>
+            <MudTable Items="channels">
+                <HeaderContent>
+                    <MudTh>Canal</MudTh>
+                    <MudTh>Reservas</MudTh>
+                    <MudTh>Receita</MudTh>
+                </HeaderContent>
+                
+                <RowTemplate>
+                    <MudTd DataLabel="Canal">@context.Channel</MudTd>
+                    <MudTd DataLabel="Reservas">@context.Reservas</MudTd>
+                    <MudTd DataLabel="Receita">@context.Receita</MudTd>
+                </RowTemplate>
+            </MudTable>
+        </MudCardContent>
+    </MudCard>
+
+    <!-- Tabela de Feedback dos Hóspedes -->
+    <MudCard>
+        <MudCardContent>
+            <MudText Typo="Typo.h6" GutterBottom="true">Feedback dos Hóspedes</MudText>
+            <MudTable Items="feedbacks">
+                <HeaderContent>
+                    <MudTh>Hóspede</MudTh>
+                    <MudTh>Avaliação</MudTh>
+                    <MudTh>Comentário</MudTh>
+                </HeaderContent>
+                
+                <RowTemplate>
+                    <MudTd DataLabel="Hóspede">@context.Nome</MudTd>
+                    <MudTd DataLabel="Avaliação">@context.Avaliacao</MudTd>
+                    <MudTd DataLabel="Comentário">@context.Comentario</MudTd>
+                </RowTemplate>
+            </MudTable>
+        </MudCardContent>
+    </MudCard>
+
+</MudContainer>
+
+@code {
+    // Dados para os gráficos
+    private List<ChartData> occupancyData = new List<ChartData>
+    {
+        new ChartData { Label = "Jan", Value = 75 },
+        new ChartData { Label = "Fev", Value = 85 },
+        new ChartData { Label = "Mar", Value = 90 },
+        new ChartData { Label = "Abr", Value = 80 }
+    };
+
+    private List<ChartData> revenueByChannelData = new List<ChartData>
+    {
+        new ChartData { Label = "Site Próprio", Value = 70000 },
+        new ChartData { Label = "OTAs", Value = 50000 },
+        new ChartData { Label = "Agentes de Viagem", Value = 30000 }
+    };
+
+    private List<ChannelPerformance> channels = new List<ChannelPerformance>
+    {
+        new ChannelPerformance { Channel = "Site Próprio", Reservas = 150, Receita = "R$ 70.000" },
+        new ChannelPerformance { Channel = "Booking", Reservas = 120, Receita = "R$ 50.000" },
+        new ChannelPerformance { Channel = "Expedia", Reservas = 80, Receita = "R$ 30.000" }
+    };
+
+    private List<GuestFeedback> feedbacks = new List<GuestFeedback>
+    {
+        new GuestFeedback { Nome = "João Silva", Avaliacao = 4.5, Comentario = "Excelente estadia!" },
+        new GuestFeedback { Nome = "Maria Oliveira", Avaliacao = 3.8, Comentario = "Bom, mas pode melhorar." }
+    };
+
+    
+
+    public class ChannelPerformance
+    {
+        public string Channel { get; set; }
+        public int Reservas { get; set; }
+        public string Receita { get; set; }
+    }
+
+    public class GuestFeedback
+    {
+        public string Nome { get; set; }
+        public double Avaliacao { get; set; }
+        public string Comentario { get; set; }
+    }
+
+    public class ChartData
+    {
+        public string Label { get; set; }
+        public double Value { get; set; }
+    }
+}

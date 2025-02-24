@@ -1,0 +1,88 @@
+﻿@page "/Admin/Reservar"
+
+@using MudBlazor
+
+<PageTitle>Reservas de Hotel</PageTitle>
+
+<MudContainer MaxWidth="MaxWidth.Medium">
+    <MudPaper Elevation="4" Class="pa-4">
+        <!-- Resumo da Reserva -->
+        <MudText Typo="Typo.h6" Align="Align.Start">Resumo da Reserva</MudText>
+        <MudGrid>
+            <MudItem xs="12" md="6">
+                <MudTextField T="string" Label="Nome Completo" Variant="Variant.Filled" FullWidth="true">
+                    <StartAdornment>
+                        <MudIcon Icon="Icons.Material.Filled.Person" />
+                    </StartAdornment>
+                </MudTextField>
+            </MudItem>
+
+            <MudItem xs="12" md="6" >
+                <MudTextField 
+                    T="string" 
+                    Label="E-mail"
+                    Variant="Variant.Filled"
+                    FullWidth="true">
+                    <StartAdornment>
+                        <MudIcon Icon="Icons.Material.Filled.Email" />
+                    </StartAdornment>
+                </MudTextField>
+            </MudItem>
+
+            <MudItem xs="12" md="6">
+                <!-- Captura a mudança do valor -->
+                <MudTextField
+                    T="string"
+                    Label="Telefone"
+                    Variant="Variant.Filled"
+                    FullWidth="true"
+                    InputAdornment="Icons.Material.Filled.Phone"
+                    @bind-Value="telefone"
+                    OnInput="HandleTelefoneInput"
+                    Error="@telefoneErro"
+                    HelperText="Somente números são permitidos">
+                </MudTextField>
+            </MudItem>
+            
+
+            <MudItem xs="12" md="6">
+                <!-- Método de pagamento com correção -->
+                <MudSelect 
+                    Label="Método de Pagamento" 
+                    Variant="Variant.Filled" 
+                    FullWidth="true"
+                    @bind-Value="metodoPagamento">
+                    <MudSelectItem Value="1">Cartão de Crédito</MudSelectItem>
+                    <MudSelectItem Value="2">PayPal</MudSelectItem>
+                </MudSelect>
+            </MudItem>
+            <MudItem xs="12" md="6">
+                <MudButton
+                    Variant="Variant.Filled"
+                    Color="Color.Success"
+                    FullWidth="true">
+                    Confirmar Reserva
+                </MudButton>
+            </MudItem>
+        </MudGrid>
+    </MudPaper>
+</MudContainer>
+
+@code {
+    private string metodoPagamento { get; set; }
+    
+    private string telefone { get; set; }
+
+    // Função para bloquear a digitação de letras e permitir apenas números
+    private void HandleTelefoneInput(ChangeEventArgs e)
+    {
+        // Filtra a entrada e mantém apenas números
+        telefone = new string(e.Value.ToString().Where(c => Char.IsDigit(c)).ToArray());
+    }
+
+    // Validação para verificar se contém algo que não seja número
+    private bool telefoneErro => !string.IsNullOrEmpty(telefone) && telefone.Any(c => !Char.IsDigit(c));
+}
+
+
+
