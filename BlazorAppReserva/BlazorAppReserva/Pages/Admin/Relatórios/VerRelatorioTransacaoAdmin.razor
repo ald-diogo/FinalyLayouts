@@ -1,6 +1,146 @@
-﻿@page "/Admin/VerRelatorioTransacao"
-<h3>VerRelatorioTransacaoAdmin</h3>
+﻿@page "/Admin/VerRelatorioTransacao" 
+
+@using MudBlazor
+@inject IJSRuntime JsRuntime
+
+<MudContainer MaxWidth="MaxWidth.Medium">
+    <MudGrid>
+        <!-- Filtros -->
+        <MudItem xs="12" sm="4">
+            <MudDatePicker Label="Data Inicial" @bind-Date="dataInicial" />
+        </MudItem>
+        <MudItem xs="12" sm="4">
+            <MudDatePicker Label="Data Final" @bind-Date="dataFinal" />
+        </MudItem>
+        <MudItem xs="12" sm="4">
+            <MudSelect T="string" Label="Tipo de Transação" @bind-Value="tipoTransacao">
+                <MudSelectItem Value="1">Pagamento</MudSelectItem>
+                <MudSelectItem Value="2">Estorno</MudSelectItem>
+                <MudSelectItem Value="3">Cancelamento</MudSelectItem>
+            </MudSelect>
+        </MudItem>
+
+        <!-- Botão de Filtro -->
+        <MudItem xs="12" sm="12" class="d-flex justify-center">
+            <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="FiltrarTransacoes">Filtrar</MudButton>
+        </MudItem>
+    </MudGrid>
+
+    <!-- Relatório de Transações -->
+    <MudTable Items="transacoes" Striped="true" Bordered="true" Hover="true">
+        <HeaderContent>
+            <MudTh>Data</MudTh>
+            <MudTh>Cliente</MudTh>
+            <MudTh>Valor</MudTh>
+            <MudTh>Status</MudTh>
+            <MudTh>Forma de Pagamento</MudTh>
+            <MudTh>Tipo de Transação</MudTh>
+            <MudTh>Ações</MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd>@context.Data</MudTd>
+            <MudTd>@context.Cliente</MudTd>
+            <MudTd>@context.Valor</MudTd>
+            <MudTd>@context.Status</MudTd>
+            <MudTd>@context.FormaPagamento</MudTd>
+            <MudTd>@context.TipoTransacao</MudTd>
+            <MudTd>
+                <MudButton Size="Size.Small" OnClick="@(() => VerDetalhes(context))">Detalhes</MudButton>
+            </MudTd>
+        </RowTemplate>
+    </MudTable>
+
+    <!-- Resumo Financeiro -->
+    <MudGrid>
+        <MudItem xs="12" sm="4">
+            <MudText Typo="Typo.h6">Total de Transações: @totalTransacoes</MudText>
+        </MudItem>
+        <MudItem xs="12" sm="4">
+            <MudText Typo="Typo.h6">Total Estornos: @totalEstornos</MudText>
+        </MudItem>
+        <MudItem xs="12" sm="4">
+            <MudText Typo="Typo.h6">Saldo Final: @saldoFinal</MudText>
+        </MudItem>
+    </MudGrid>
+
+    <!-- Gráficos (se necessário) -->
+    <MudItem xs="12">
+        <!-- Exemplo de gráfico de pizza -->
+        <MudChart T="ChartJs.Bar" Data="chartData" Options="chartOptions"></MudChart>
+    </MudItem>
+
+    <!-- Botão de Exportação -->
+    <MudItem xs="12" sm="12" class="d-flex justify-center">
+        <MudButton Variant="Variant.Filled" Color="Color.Secondary" OnClick="ExportarRelatorio">Exportar</MudButton>
+    </MudItem>
+</MudContainer>
 
 @code {
-    
+    private DateTime? dataInicial;
+    private DateTime? dataFinal;
+    private string tipoTransacao;
+    private List<Transacao> transacoes = new List<Transacao>();
+    private decimal totalTransacoes;
+    private decimal totalEstornos;
+    private decimal saldoFinal;
+
+    private async Task FiltrarTransacoes()
+    {
+        // Aqui, você faria a consulta para filtrar as transações do banco de dados
+        // A seguir, é apenas um exemplo fictício de transações
+        transacoes = new List<Transacao>
+        {
+            new Transacao { Data = DateTime.Now, Cliente = "João", Valor = 200, Status = "Concluído", FormaPagamento = "Cartão de Crédito", TipoTransacao = "Pagamento" },
+            new Transacao { Data = DateTime.Now, Cliente = "Maria", Valor = 150, Status = "Concluído", FormaPagamento = "Boleto", TipoTransacao = "Estorno" }
+        };
+
+        // Atualizar os totais
+        totalTransacoes = transacoes.Where(t => t.TipoTransacao == "Pagamento").Sum(t => t.Valor);
+        totalEstornos = transacoes.Where(t => t.TipoTransacao == "Estorno").Sum(t => t.Valor);
+        saldoFinal = totalTransacoes - totalEstornos;
+    }
+
+    private void VerDetalhes(Transacao transacao)
+    {
+        // Lógica para visualizar detalhes da transação
+    }
+
+    private void ExportarRelatorio()
+    {
+        // Lógica para exportar relatório (ex: para Excel, PDF ou CSV)
+    }
+
+    // Exemplo de estrutura de dados
+    public class Transacao
+    {
+        public DateTime Data { get; set; }
+        public string Cliente { get; set; }
+        public decimal Valor { get; set; }
+        public string Status { get; set; }
+        public string FormaPagamento { get; set; }
+        public string TipoTransacao { get; set; }
+    }
+
+    // Dados do gráfico (exemplo fictício)
+    private object chartData = new
+    {
+        labels = new[] { "Pagamento", "Estorno", "Cancelamento" },
+        datasets = new[] {
+            new {
+                label = "Transações",
+                data = new[] { 200, 50, 30 },
+                backgroundColor = new[] { "#36A2EB", "#FF6384", "#FFCE56" }
+            }
+        }
+    };
+
+    private object chartOptions = new
+    {
+        responsive = true,
+        plugins = new
+        {
+            legend = new { position = "top" }
+        }
+    };
 }
+

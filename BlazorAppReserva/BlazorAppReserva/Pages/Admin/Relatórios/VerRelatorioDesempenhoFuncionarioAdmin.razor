@@ -6,64 +6,245 @@
 
 <MudContainer MaxWidth="MaxWidth.Large">
     <!-- Título da Página -->
-    <MudText Typo="Typo.h4" Align="Align.Center" GutterBottom="true">Relatório de Performance do Hotel</MudText>
+    <MudText
+        Color="Color.Primary"
+        Typo="Typo.h4"
+        Align="Align.Center"
+        GutterBottom="true"
+        Style="color: #2F4F4F; font-size: 32px;">
+        Relatório de Performance do Hotel
+    </MudText>
 
     <!-- Relatório Geral -->
-    <MudGrid>
+    <MudGrid Spacing="2">
         <MudItem xs="12" md="4">
-            <MudCard>
+            <MudCard Class="mud-elevation-5" Style="background-color: #F3F4F6; border-radius: 15px;">
                 <MudCardContent>
-                    <MudText Typo="Typo.h6" GutterBottom="true">Número Total de Reservas</MudText>
-                    <MudText Typo="Typo.h4">500</MudText>
+                    <MudText
+                        Typo="Typo.h6"
+                        GutterBottom="true"
+                        Class="mud-text-center"
+                        Style="color: #3B3A36;">
+                        Número Total de Reservas
+                    </MudText>
+
+                    <MudText
+                        Typo="Typo.h4"
+                        Align="Align.Center"
+                        Style="font-weight: bold; color: #3C9D9B;">
+                        500
+                    </MudText>
+
+                    <MudIcon  Color="Color.Primary" Style="font-size: 48px; text-align: center;" />
+
+                    <!-- Conteúdo promocional -->
+                    <MudDivider Style="margin-top: 20px; margin-bottom: 10px;" />
+                    <MudText
+                        Typo="Typo.body2"
+                        Align="Align.Center"
+                        Style="color: #7D7D7D; font-style: italic;">
+                        Aproveite a nossa promoção exclusiva!
+                        <br />
+                        Reservas feitas agora recebem um desconto de 10%!
+                        Não perca!
+                    </MudText>
+
+                    <MudButton
+                        Href="/Admin/Reservar"
+                        Variant="Variant.Filled"
+                        Color="Color.Secondary"
+                        Style="width: 100%; margin-top: 10px;">
+                        Faça sua reserva agora
+                    </MudButton>
                 </MudCardContent>
             </MudCard>
         </MudItem>
-        
+
+
         <MudItem xs="12" md="4">
-            <MudCard>
+            <MudCard Class="mud-elevation-5" Style="background-color: #F3F4F6; border-radius: 15px;">
                 <MudCardContent>
-                    <MudText Typo="Typo.h6" GutterBottom="true">Taxa de Ocupação</MudText>
-                    <MudText Typo="Typo.h4">85%</MudText>
+                    <MudText
+                        Typo="Typo.h6"
+                        GutterBottom="true"
+                        Class="mud-text-center"
+                        Style="color: #3B3A36;">
+                        Taxa de Ocupação
+                    </MudText>
+
+                    <MudText
+                        Typo="Typo.h4"
+                        Align="Align.Center"
+                        Style="font-weight: bold; color: #FF6347;">
+                        85%
+                    </MudText>
+
+                    <MudIcon Color="Color.Primary" Style="font-size: 48px; text-align: center;" />
+
+                    <!-- Conteúdo promocional -->
+                    <MudDivider Style="margin-top: 20px; margin-bottom: 10px;" />
+                    <MudText
+                        Typo="Typo.body2"
+                        Align="Align.Center"
+                        Style="color: #7D7D7D; font-style: italic;">
+                        Não perca a oportunidade de garantir seu lugar!
+                        <br />
+                        Estamos com uma taxa de ocupação de 85% — vagas limitadas!
+                    </MudText>
+
+                    <MudButton
+                        Href="/Admin/Reservar"
+                        Variant="Variant.Filled"
+                        Color="Color.Secondary"
+                        Style="width: 100%; margin-top: 10px;">
+                        Reserve Agora
+                    </MudButton>
                 </MudCardContent>
             </MudCard>
         </MudItem>
-        
+
+
         <MudItem xs="12" md="4">
-            <MudCard>
+            <MudCard Class="mud-elevation-5" Style="background-color: #F3F4F6; border-radius: 15px;">
                 <MudCardContent>
-                    <MudText Typo="Typo.h6" GutterBottom="true">Receita Bruta</MudText>
-                    <MudText Typo="Typo.h4">R$ 150.000</MudText>
+                    <MudText
+                        Typo="Typo.h6"
+                        GutterBottom="true"
+                        Class="mud-text-center"
+                        Style="color: #3B3A36; font-weight: 600;">
+                        Receita Bruta
+                    </MudText>
+
+                    <MudText
+                        Typo="Typo.h4"
+                        Align="Align.Center"
+                        Style="font-weight: bold; color: #32CD32; transition: color 0.3s ease;">
+                        R$ 150.000
+                    </MudText>
+
+                    <MudIcon Color="Color.Primary" Style="font-size: 48px; text-align: center; transition: transform 0.3s ease;" />
+
+                    <!-- Conteúdo interativo -->
+                    <MudDivider Style="margin-top: 20px; margin-bottom: 10px;" />
+                    <MudText
+                        Typo="Typo.body2"
+                        Align="Align.Center"
+                        Style="color: #7D7D7D; font-style: italic; transition: opacity 0.5s ease-in-out;">
+                    </MudText>
+
+
+                    <MudButton
+                        Variant="Variant.Filled"
+                        Color="Color.Secondary"
+                        Style="width: 100%; margin-top: 15px; background-color: #FF6347; transition: transform 0.3s ease; border-radius: 25px;"
+                        >
+                        Junte-se a nós para aumentar ainda mais!
+                    </MudButton>
+
+                    <!-- Animação interativa -->
+                    <MudText
+                        Typo="Typo.body2"
+                        Align="Align.Center"
+                        Style="color: #3B3A36; margin-top: 10px; cursor: pointer; font-weight: 600; text-decoration: underline;">
+                        <a href="/Admin/Sobre" style="color: #007BFF; text-decoration: none;">
+                            Saiba mais sobre como contribuir.
+                            A sua contribuição é fundamental para esse resultado.
+                            <br />
+                            Se cada pessoa continuar com seu compromisso, podemos alcançar muito mais!
+                            <br />
+                            Quer saber como ajudar? Clique aqui para mais informações!
+                        </a>
+                    </MudText>
                 </MudCardContent>
             </MudCard>
         </MudItem>
     </MudGrid>
 
     <!-- Gráficos de Performance -->
-    <MudGrid>
+    <MudGrid Spacing="3">
         <MudItem xs="12" md="6">
-            <MudCard>
+            <MudCard Class="mud-elevation-10" Style="border-radius: 15px; background-color: #E8F5E9;">
                 <MudCardContent>
-                    <MudText Typo="Typo.h6" GutterBottom="true">Taxa de Ocupação - Evolução</MudText>
-                    <MudChart ChartType="ChartType.Line" Data="occupancyData" Options="occupancyChartOptions" />
+                    <MudText
+                        Typo="Typo.h6"
+                        GutterBottom="true"
+                        Align="Align.Center"
+                        Style="color: #1B5E20; font-weight: bold; font-size: 24px; transition: transform 0.3s ease; cursor: pointer;"
+                        >
+                        Taxa de Ocupação - Evolução
+                    </MudText>
+
+                    <MudText
+                        Typo="Typo.body1"
+                        Align="Align.Center"
+                        Style="color: #1B5E20; margin-top: 10px; font-size: 16px;">
+                        Acompanhe a evolução da taxa de ocupação em tempo real! Verifique como os dados estão mudando, e entenda melhor o desempenho.
+                        <span style="color: #388E3C; font-weight: bold;">Seja informado e tome decisões mais assertivas!</span>
+                    </MudText>
+
+                    <!-- Animação de Barra de Progresso -->
+                    <MudProgressLinear Color="Color.Success" Striped="true" Size="Size.Large" Value="75" Class="my-7" />
+
+                    <!-- Conteúdo publicitário de call-to-action -->
+                    <div style="text-align: center; margin-top: 20px;">
+                        <MudButton
+                            Variant="Variant.Filled"
+                            Color="Color.Primary"
+                            Style="font-size: 18px; padding: 10px 20px; transition: background-color 0.3s ease;"
+                            >
+                            Saiba Mais
+                        </MudButton>
+                    </div>
+
+
+                    <MudChart 
+                        ChartType="ChartType.Line"
+                        Data="occupancyData" 
+                        Options="occupancyChartOptions"
+                        Style="transition: all 1s ease;" />
                 </MudCardContent>
             </MudCard>
         </MudItem>
         
         <MudItem xs="12" md="6">
-            <MudCard>
+            <MudCard Class="mud-elevation-10" Style="border-radius: 15px; background-color: #FFEBEE;">
                 <MudCardContent>
-                    <MudText Typo="Typo.h6" GutterBottom="true">Receita por Canal de Venda</MudText>
-                    <MudChart ChartType="ChartType.Pie" Data="revenueByChannelData" Options="revenueByChannelChartOptions" />
+                    <MudText
+                        Typo="Typo.h6"
+                        GutterBottom="true"
+                        Align="Align.Center"
+                        Style="color: #C2185B; font-family: 'Roboto', sans-serif; font-weight: bold; animation: fadeIn 2s ease-in-out;"
+                        class="highlight-text"
+                    >
+                        <span>Receita por Canal de Venda</span>
+                        <div class="text-tooltip">
+                            <p><strong>Explore mais sobre cada canal!</strong></p>
+                            <p>Descubra as estratégias e as melhores práticas para aumentar suas vendas de forma personalizada.</p>
+                        </div>
+                    </MudText>
+                    
+
+                    <MudChart 
+                        ChartType="ChartType.Pie" 
+                        Data="revenueByChannelData"
+                        Options="revenueByChannelChartOptions" 
+                        Style="transition: all 1s ease;" />
                 </MudCardContent>
             </MudCard>
         </MudItem>
     </MudGrid>
 
     <!-- Desempenho por Canal de Venda -->
-    <MudCard>
+    <MudCard Class="mud-elevation-5" Style="border-radius: 15px; background-color: #FFFAF0;">
         <MudCardContent>
-            <MudText Typo="Typo.h6" GutterBottom="true">Desempenho por Canal de Venda</MudText>
-            <MudTable Items="channels">
+            <MudText
+                Typo="Typo.h6"
+                GutterBottom="true"
+                Style="color: #1A237E;">
+                Desempenho por Canal de Venda
+            </MudText>
+            
+            <MudTable Items="channels" Hover="true">
                 <HeaderContent>
                     <MudTh>Canal</MudTh>
                     <MudTh>Reservas</MudTh>
@@ -80,10 +261,10 @@
     </MudCard>
 
     <!-- Tabela de Feedback dos Hóspedes -->
-    <MudCard>
+    <MudCard Class="mud-elevation-5" Style="border-radius: 15px; background-color: #FFF3E0;">
         <MudCardContent>
-            <MudText Typo="Typo.h6" GutterBottom="true">Feedback dos Hóspedes</MudText>
-            <MudTable Items="feedbacks">
+            <MudText Typo="Typo.h6" GutterBottom="true" Style="color: #D32F2F;">Feedback dos Hóspedes</MudText>
+            <MudTable Items="feedbacks" Hover="true">
                 <HeaderContent>
                     <MudTh>Hóspede</MudTh>
                     <MudTh>Avaliação</MudTh>
@@ -102,7 +283,6 @@
 </MudContainer>
 
 @code {
-    // Dados para os gráficos
     private List<ChartData> occupancyData = new List<ChartData>
     {
         new ChartData { Label = "Jan", Value = 75 },
@@ -131,8 +311,6 @@
         new GuestFeedback { Nome = "Maria Oliveira", Avaliacao = 3.8, Comentario = "Bom, mas pode melhorar." }
     };
 
-    
-
     public class ChannelPerformance
     {
         public string Channel { get; set; }
@@ -152,4 +330,8 @@
         public string Label { get; set; }
         public double Value { get; set; }
     }
+
+   
+
 }
+

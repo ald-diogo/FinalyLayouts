@@ -8,12 +8,14 @@
     <MudGrid>
         <!-- Relatório de Receita -->
         <MudItem xs="12" md="6">
-            <MudCard>
+            <MudCard Elevation="4" Transition="ScaleIn" Class="report-card">
                 <MudCardContent>
                     <MudText Typo="Typo.h6">Receitas</MudText>
                     <MudTable Items="@Receitas" Hover="true">
                         <HeaderContent>
-                            <MudTh>Descrição</MudTh>
+                            <MudTh>
+                                <MudIconButton Icon="@Icons.Material.Filled.Money" Color="Color.Primary"/>
+                            </MudTh>
                             <MudTh>Valor</MudTh>
                         </HeaderContent>
                         
@@ -28,12 +30,13 @@
 
         <!-- Relatório de Despesas -->
         <MudItem xs="12" md="6">
-            <MudCard>
+            <MudCard Elevation="4" Transition="ScaleIn" Class="report-card">
                 <MudCardContent>
                     <MudText Typo="Typo.h6">Despesas</MudText>
+                    
                     <MudTable Items="@Despesas" Hover="true">
                         <HeaderContent>
-                            <MudTh>Descrição</MudTh>
+                            <MudTh><MudIconButton Icon="@Icons.Material.Filled.MoneyOff" Color="Color.Error" /></MudTh>
                             <MudTh>Valor</MudTh>
                         </HeaderContent>
                         
@@ -49,39 +52,49 @@
         <MudDivider />
         <!-- Lucro Bruto -->
         <MudItem xs="12" md="6">
-            <MudCard>
+            <MudCard Elevation="4" Transition="ScaleIn" Class="report-card">
                 <MudCardContent>
                     <MudText Typo="Typo.h6">Lucro Bruto</MudText>
+                    
                     <MudText Typo="Typo.h5">@LucroBruto.ToString("C2")</MudText>
-                </MudCardContent>
-            </MudCard>
-        </MudItem>
-
-        <MudDivider />
-
-        <!-- Lucro Líquido -->
-        <MudItem xs="12" md="6">
-            <MudCard>
-                <MudCardContent>
-                    <MudText Typo="Typo.h6">Lucro Líquido</MudText>
-                    <MudText Typo="Typo.h5">@LucroLiquido.ToString("C2")</MudText>
+                    
+                    <MudIcon Icon="@Icons.Material.Filled.Star" Color="Color.Success" />
                 </MudCardContent>
             </MudCard>
         </MudItem>
 
         <MudDivider />
         
+        <!-- Lucro Líquido -->
+        <MudItem xs="12" md="6">
+            <MudCard Elevation="4" Transition="ScaleIn" Class="report-card">
+                <MudCardContent>
+                    <MudText Typo="Typo.h6">Lucro Líquido</MudText>
+                    
+                    <MudText Typo="Typo.h5">@LucroLiquido.ToString("C2")</MudText>
+                    
+                    <MudIcon Icon="@Icons.Material.Filled.AccountBalanceWallet" Color="Color.Primary" />
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+
+        <MudDivider />
+
         <!-- Indicadores de Performance -->
         <MudItem xs="12" md="6">
-            <MudCard>
+            <MudCard Elevation="4" Transition="ScaleIn" Class="report-card">
                 <MudCardContent>
                     <MudText Typo="Typo.h6">Indicadores de Performance</MudText>
+                    
                     <MudText Typo="Typo.body1">Taxa de Ocupação: @TaxaOcupacao %</MudText>
+                    
                     <MudText Typo="Typo.body1">ADR (Preço Médio por Diária): @ADR.ToString("C2")</MudText>
+                    
                     <MudText Typo="Typo.body1">RevPAR: @RevPAR.ToString("C2")</MudText>
+                    
                     <!-- Link adicionado abaixo -->
                     <MudLink Href="/Admin/VerRelatorioDesempenhoFuncionario" Target="_blank">
-                        Ver mais informações
+                        <MudIcon Icon="@Icons.Material.Filled.Link" Color="Color.Primary" /> Ver mais informações
                     </MudLink>
                 </MudCardContent>
             </MudCard>
@@ -104,8 +117,6 @@
         new Despesa { Descricao = "Manutenção", Valor = 200 },
         new Despesa { Descricao = "Marketing", Valor = 150 }
     };
-
-    
 
     // Cálculos
     private decimal LucroBruto => Receitas.Sum(r => r.Valor) - Despesas.Sum(d => d.Valor);
@@ -133,6 +144,17 @@
         public decimal Valor { get; set; }
     }
 }
+
+<style>
+    .report-card {
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .report-card:hover {
+        transform: scale(1.05);
+    }
+</style>
+
 
 
 
