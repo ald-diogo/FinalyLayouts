@@ -1,6 +1,385 @@
 ﻿@page "/Admin/Sobre"
-<h3>SobreAdmin</h3>
+@using MudBlazor
+@inject NavigationManager Navigation
+
+<MudContainer Class="d-flex justify-center align-center fade-in" Style="min-height: 100vh;">
+    <MudPaper Class="p-5 shadow-lg rounded-xl bg-light" Style="width: 90%; max-width: 1200px;">
+
+        <!-- Título com Animação de Entrada -->
+        <MudGrid>
+            <MudItem T="string" xs="12" sm="6" Class="d-flex justify-center">
+                <MudIconButton Icon="@Icons.Material.Filled.Info" Color="Color.Info" Size="Size.Large" />
+            </MudItem>
+
+            <MudItem T="string" xs="12" sm="6" Class="d-flex align-center">
+                <MudText Typo="Typo.h3" Class="font-weight-bold text-center text-primary animate__animated animate__fadeIn animate__delay-1s">
+                    Transforme a Gestão do Seu Hotel Conosco!
+                </MudText>
+            </MudItem>
+        </MudGrid>
+
+        <MudDivider />
+
+        <!-- Descrição e Funções com Animação -->
+        <MudGrid>
+            <MudItem T="string" xs="12" sm="6" Class="mt-3">
+                <MudText Typo="Typo.h5" Class="font-weight-bold text-success">
+                    Por que escolher nossa plataforma?
+                </MudText>
+
+                <MudText Class="animate__animated animate__fadeIn animate__delay-2s">
+                    Nossa plataforma é projetada para transformar a gestão de hotéis. Facilitando o processo, trazendo inovação e eficiência em cada área.
+                    Imagine um sistema que pensa junto com você, otimiza tarefas e melhora a experiência tanto para hóspedes quanto para os colaboradores.
+                </MudText>
+
+                <MudText Class="animate__animated animate__fadeIn animate__delay-3s">
+                    **Com a nossa tecnologia, seu hotel pode alcançar novos patamares de eficiência.**
+                    Desde a gestão de reservas até a comunicação entre equipes e hóspedes, cada funcionalidade foi pensada para resolver problemas específicos e otimizar o tempo. A automação de processos reduz a sobrecarga administrativa, permitindo que seus colaboradores se concentrem no atendimento ao cliente e na criação de experiências memoráveis.
+                </MudText>
+
+                <MudText Class="animate__animated animate__fadeIn animate__delay-4s">
+                    **A plataforma não só gerencia as operações diárias, mas também melhora a experiência do hóspede de maneira única.**
+                    Com uma interface intuitiva e recursos personalizados, os hóspedes podem fazer reservas, solicitar serviços e até interagir com o hotel em tempo real, tudo por meio de uma plataforma centralizada. Além disso, a comunicação eficiente com a equipe garante respostas rápidas e soluções imediatas, aumentando a satisfação e fidelidade dos clientes.
+                </MudText>
+
+                <MudText Class="animate__animated animate__fadeIn animate__delay-5s">
+                    **A inovação está no coração de nossa plataforma.**
+                    O uso de inteligência artificial (IA) permite que ela aprenda com as interações e ofereça recomendações de melhoria contínua, além de antecipar as necessidades do hotel antes mesmo de serem solicitadas. Por exemplo, o sistema pode sugerir ajustes na programação de recursos baseados em dados de ocupação e comportamento dos hóspedes, garantindo uma operação mais ágil e sem surpresas.
+                </MudText>
+
+                <MudText Class="animate__animated animate__fadeIn animate__delay-6s">
+                    **Segurança é uma prioridade.**
+                    Nossa plataforma integra as melhores práticas de segurança de dados, com protocolos robustos para proteger informações sensíveis de hóspedes e transações financeiras. Além disso, as permissões e acessos são rigorosamente controlados, garantindo que somente pessoas autorizadas tenham acesso a dados críticos. Isso não só protege a integridade da operação do hotel, mas também assegura a confiança de seus hóspedes.
+                </MudText>
+
+                <MudText Class="animate__animated animate__fadeIn animate__delay-7s">
+                    **E mais, a escalabilidade é um dos maiores diferenciais de nossa plataforma.**
+                    Independentemente do porte do seu hotel, nossa solução é flexível e se adapta facilmente ao crescimento do seu negócio. Seja um hotel boutique ou uma grande rede hoteleira, nossa plataforma oferece as ferramentas necessárias para acompanhar cada etapa do crescimento, com soluções que podem ser ajustadas conforme suas necessidades evoluem. A inovação não é estática – ela acompanha a evolução do seu hotel, sempre.
+                </MudText>
+            </MudItem>
+
+            <!-- Lista de Funcionalidades com Ícones Animados -->
+            <MudItem T="string" xs="12" sm="6" Class="mt-3">
+                <MudText Typo="Typo.h5" Class="font-weight-bold text-info">
+                    Funcionalidades que Inspiram
+                </MudText>
+
+                <MudList T="string">
+                    <MudListItem T="string" Class="animate__animated animate__fadeIn animate__delay-3s animate__pulse animate__infinite">
+                        <!-- Ícone Aumentado e Destaque -->
+                        <MudIcon Icon="@Icons.Material.Filled.Book" Color="Color.Primary" Size="Size.Large" />
+
+                        <!-- Texto Principal -->
+                        <MudText Typo="Typo.h5" Class="font-weight-bold text-primary animate__animated animate__fadeIn animate__delay-3s">
+                            Gerenciamento de Reservas
+                        </MudText>
+
+                        <!-- Texto Descritivo -->
+                        <MudText Class="animate__animated animate__fadeIn animate__delay-4s">
+                            Imagina poder gerenciar todas as suas reservas em um único lugar, de forma simples e eficiente.
+                            Nossa plataforma oferece uma interface intuitiva, onde você pode:
+                        </MudText>
+
+                        <!-- Lista de Benefícios -->
+                        <MudList T="string" Class="mt-3">
+                            <MudListItem T="string" Class="animate__animated animate__fadeIn animate__delay-5s">
+                                <MudIcon Icon="@Icons.Material.Filled.Check" Color="Color.Success" Size="Size.Small" />
+                                Acompanhar todas as reservas em tempo real.
+                            </MudListItem>
+
+                            <MudListItem T="string" Class="animate__animated animate__fadeIn animate__delay-6s">
+                                <MudIcon Icon="@Icons.Material.Filled.Check" Color="Color.Success" Size="Size.Small" />
+                                Visualizar facilmente a disponibilidade de quartos e ajustes necessários.
+                            </MudListItem>
+
+                            <MudListItem T="string" Class="animate__animated animate__fadeIn animate__delay-7s">
+                                <MudIcon Icon="@Icons.Material.Filled.Check" Color="Color.Success" Size="Size.Small" />
+                                Gerenciar promoções e descontos diretamente no sistema, otimizando a ocupação.
+                            </MudListItem>
+                        </MudList>
+
+                        <!-- Chamada para Ação -->
+                        <MudText Class="mt-4 text-center text-info font-weight-bold animate__animated animate__fadeIn animate__delay-8s">
+                            Quer transformar a gestão do seu hotel? Comece agora mesmo!
+                        </MudText>
+
+                        <!-- Botão de Ação com Navegação -->
+                        <MudButton
+                            Href=""
+                            Variant="Variant.Filled"
+                            Color="Color.Primary"
+                            OnClick="NavigateHome"
+                            Class="mt-3 animate__animated animate__fadeIn animate__delay-9s transform hover:scale-110 transition-all duration-300">
+                            Experimente Agora
+                        </MudButton>
+                    </MudListItem>
+
+                    <MudListItem T="string" Class="animate__animated animate__fadeIn animate__delay-4s animate__pulse animate__infinite">
+                        <!-- Ícone Aumentado e Destaque -->
+                        <MudIcon Icon="@Icons.Material.Filled.LocalOffer" Color="Color.Primary" Size="Size.Large" />
+
+                        <!-- Texto Principal -->
+                        <MudText Typo="Typo.h5" Class="font-weight-bold text-primary animate__animated animate__fadeIn animate__delay-4s">
+                            Promoções e Descontos Personalizados
+                        </MudText>
+
+                        <!-- Texto Descritivo -->
+                        <MudText Class="animate__animated animate__fadeIn animate__delay-5s">
+                            Imagine poder oferecer promoções exclusivas e descontos personalizados para seus hóspedes com apenas alguns cliques.
+                            Nossa plataforma facilita a criação de ofertas que atraem mais clientes e aumentam a fidelidade.
+                            Aqui está o que você pode fazer:
+                        </MudText>
+
+                        <!-- Lista de Benefícios -->
+                        <MudList T="string" Class="mt-3">
+                            <MudListItem T="string" Class="animate__animated animate__fadeIn animate__delay-6s">
+                                <MudIcon Icon="@Icons.Material.Filled.Check" Color="Color.Success" Size="Size.Small" />
+                                Criação de promoções segmentadas por perfil de cliente.
+                            </MudListItem>
+
+                            <MudListItem T="string" Class="animate__animated animate__fadeIn animate__delay-7s">
+                                <MudIcon Icon="@Icons.Material.Filled.Check" Color="Color.Success" Size="Size.Small" />
+                                Promoções baseadas em datas específicas, como feriados ou eventos locais.
+                            </MudListItem>
+
+                            <MudListItem T="string" Class="animate__animated animate__fadeIn animate__delay-8s">
+                                <MudIcon Icon="@Icons.Material.Filled.Check" Color="Color.Success" Size="Size.Small" />
+                                Descontos exclusivos para hóspedes frequentes, criando um programa de fidelidade.
+                            </MudListItem>
+                        </MudList>
+
+                        <!-- Chamada para Ação -->
+                        <MudText Class="mt-4 text-center text-info font-weight-bold animate__animated animate__fadeIn animate__delay-9s">
+                            Atraia mais clientes e aumente a taxa de ocupação com promoções irresistíveis!
+                        </MudText>
+
+                        <!-- Botão de Ação com Navegação -->
+                        <MudButton
+                            Href=""
+                            Variant="Variant.Filled"
+                            Color="Color.Primary"
+                            OnClick="NavigateHome"
+                            Class="mt-3 animate__animated animate__fadeIn animate__delay-10s transform hover:scale-110 transition-all duration-300">
+                            Comece a Criar Promoções Agora
+                        </MudButton>
+                    </MudListItem>
+
+                    <MudListItem T="string" Class="animate__animated animate__fadeIn animate__delay-5s animate__pulse animate__infinite">
+                        <!-- Ícone Aumentado e Destaque -->
+                        <MudIcon Icon="@Icons.Material.Filled.Assessment" Color="Color.Primary" Size="Size.Large" />
+
+                        <!-- Texto Principal -->
+                        <MudText Typo="Typo.h5" Class="font-weight-bold text-primary animate__animated animate__fadeIn animate__delay-5s">
+                            Relatórios Detalhados e Insights
+                        </MudText>
+
+                        <!-- Texto Descritivo -->
+                        <MudText Class="animate__animated animate__fadeIn animate__delay-6s">
+                            Descubra o poder dos dados e tome decisões estratégicas com confiança!
+                            Nossa plataforma oferece relatórios detalhados e insights poderosos que ajudam você a entender melhor o desempenho do seu hotel e otimizar cada área da operação. Veja como:
+                        </MudText>
+
+                        <!-- Lista de Benefícios -->
+                        <MudList T="string" Class="mt-3">
+                            <MudListItem T="string" Class="animate__animated animate__fadeIn animate__delay-7s">
+                                <MudIcon Icon="@Icons.Material.Filled.Check" Color="Color.Success" Size="Size.Small" />
+                                Relatórios em tempo real sobre taxa de ocupação e receita por período.
+                            </MudListItem>
+
+                            <MudListItem T="string" Class="animate__animated animate__fadeIn animate__delay-8s">
+                                <MudIcon Icon="@Icons.Material.Filled.Check" Color="Color.Success" Size="Size.Small" />
+                                Insights sobre o comportamento dos hóspedes e suas preferências.
+                            </MudListItem>
+
+                            <MudListItem T="string" Class="animate__animated animate__fadeIn animate__delay-9s">
+                                <MudIcon Icon="@Icons.Material.Filled.Check" Color="Color.Success" Size="Size.Small" />
+                                Análises de performance por canais de vendas e promoções.
+                            </MudListItem>
+                        </MudList>
+
+                        <!-- Chamada para Ação -->
+                        <MudText Class="mt-4 text-center text-info font-weight-bold animate__animated animate__fadeIn animate__delay-10s">
+                            Transforme dados em decisões. Otimize sua gestão e veja seu hotel crescer!
+                        </MudText>
+
+                        <!-- Botão de Ação com Navegação -->
+                        <MudButton
+                            Href="/Admin/Relatorio"
+                            Variant="Variant.Filled"
+                            Color="Color.Primary"
+                            OnClick="NavigateHome"
+                            Class="mt-3 animate__animated animate__fadeIn animate__delay-11s transform hover:scale-110 transition-all duration-300">
+                            Explore Relatórios Agora
+                        </MudButton>
+                    </MudListItem>
+
+                    <MudListItem T="string" Class="animate__animated animate__fadeIn animate__delay-6s animate__pulse animate__infinite">
+                        <!-- Ícone de Segurança com Destaque -->
+                        <MudIcon Icon="@Icons.Material.Filled.Lock" Color="Color.Primary" Size="Size.Large" />
+
+                        <!-- Texto Principal -->
+                        <MudText Typo="Typo.h5" Class="font-weight-bold text-primary animate__animated animate__fadeIn animate__delay-6s">
+                            Segurança de Dados de Nível Empresarial
+                        </MudText>
+
+                        <!-- Texto Descritivo -->
+                        <MudText Class="animate__animated animate__fadeIn animate__delay-7s">
+                            Sua plataforma de gestão merece o mais alto nível de segurança. Proteger os dados sensíveis dos seus hóspedes e da sua operação nunca foi tão importante.
+                            Nossa plataforma oferece uma segurança robusta, com mecanismos de proteção de ponta que garantem a tranquilidade que você precisa para focar no crescimento do seu negócio.
+                        </MudText>
+
+                        <!-- Lista de Benefícios -->
+                        <MudList T="string" Class="mt-3">
+                            <MudListItem T="string" Class="animate__animated animate__fadeIn animate__delay-8s">
+                                <MudIcon Icon="@Icons.Material.Filled.Check" Color="Color.Success" Size="Size.Small" />
+                                **Senhas Fortes**: Imponha senhas complexas e políticas rigorosas de segurança para proteger todos os dados críticos da sua operação.
+                            </MudListItem>
+
+                            <MudListItem T="string" Class="animate__animated animate__fadeIn animate__delay-9s">
+                                <MudIcon Icon="@Icons.Material.Filled.Check" Color="Color.Success" Size="Size.Small" />
+                                **Níveis de Acesso Personalizados**: Defina diferentes níveis de acesso para cada colaborador, garantindo que apenas pessoas autorizadas possam acessar informações sensíveis.
+                            </MudListItem>
+
+                            <MudListItem T="string" Class="animate__animated animate__fadeIn animate__delay-10s">
+                                <MudIcon Icon="@Icons.Material.Filled.Check" Color="Color.Success" Size="Size.Small" />
+                                **Autenticação de Dois Fatores**: Adote uma camada adicional de segurança com autenticação de dois fatores para proteger as contas contra acessos não autorizados.
+                            </MudListItem>
+                        </MudList>
+
+                        <!-- Chamada para Ação -->
+                        <MudText Class="mt-4 text-center text-info font-weight-bold animate__animated animate__fadeIn animate__delay-11s">
+                            Proteja o que importa! Segurança de dados é nossa prioridade, e a sua também.
+                        </MudText>
+
+                        <!-- Botão de Ação com Navegação -->
+                        <MudButton
+                            Href="/Admin/Seguranca"
+                            Variant="Variant.Filled"
+                            Color="Color.Primary"
+                            OnClick="NavigateHome"
+                            Class="mt-3 animate__animated animate__fadeIn animate__delay-12s transform hover:scale-110 transition-all duration-300">
+                            Descubra a Segurança Avançada
+                        </MudButton>
+                    </MudListItem>
+                </MudList>
+            </MudItem>
+        </MudGrid>
+
+        <MudNavLink
+            Href="/"
+            Match="NavLinkMatch.Prefix"
+            Icon="@Icons.Material.Filled.Chat"
+            IconColor="Color.Success"
+            Class="animate__animated animate__fadeIn animate__delay-7s"
+            Style="margin-left: 20px; margin-right: 20px;">
+
+            <!-- Título Publicitário -->
+            <MudText Typo="Typo.h5" Class="font-weight-bold text-center text-success mb-2">
+                Chat Instantâneo: A Conexão Que Seu Hotel Precisa!
+            </MudText>
+
+            <!-- Descrição do Benefício -->
+            <MudText Class="text-center text-muted">
+                Com o nosso **chat interativo**, a comunicação nunca foi tão fácil e eficiente.
+                Disponível para hóspedes e equipe, o chat permite respostas instantâneas para solicitações, dúvidas e feedbacks,
+                proporcionando uma experiência personalizada e sem frustrações. Melhore o atendimento, otimize processos e
+                garanta a satisfação total de seus clientes com apenas alguns cliques.
+            </MudText>
+
+            <!-- Introdução à Inteligência Artificial ANTDROID -->
+            <MudText Class="mt-3 text-center text-primary font-weight-bold">
+                Descubra a Inteligência ANTDROID: Sua Plataforma Inteligente e Adaptativa!
+            </MudText>
+
+            <!-- Explicação da Sigla ANTDROID -->
+            <MudText Class="text-center text-muted">
+                Apresentamos o **ANTDROID**, a **inteligência artificial** que leva sua plataforma de gestão hoteleira para o próximo nível.
+                ANTDROID é a solução inteligente que garante que cada interação, decisão e operação seja mais rápida, eficiente e personalizada.
+                Sua arquitetura é baseada nas seguintes capacidades:
+            </MudText>
+
+            <MudList T="string" Class="mt-3">
+                <MudListItem T="string" Class="animate__animated animate__fadeIn animate__delay-8s">
+                    <MudIcon Icon="@Icons.Material.Filled.Check" Color="Color.Success" Size="Size.Small" />
+                    **A (Adaptativa)**: O sistema aprende e se ajusta constantemente às necessidades de seu hotel, garantindo uma experiência sempre otimizada.
+                </MudListItem>
+
+                <MudListItem T="string" Class="animate__animated animate__fadeIn animate__delay-9s">
+                    <MudIcon Icon="@Icons.Material.Filled.Check" Color="Color.Success" Size="Size.Small" />
+                    **N (Neural)**: Algoritmos neurais que processam grandes volumes de dados, identificando padrões para melhorar continuamente o desempenho da sua gestão.
+                </MudListItem>
+
+                <MudListItem T="string" Class="animate__animated animate__fadeIn animate__delay-10s">
+                    <MudIcon Icon="@Icons.Material.Filled.Check" Color="Color.Success" Size="Size.Small" />
+                    **T (Transacional)**: Gerencia transações de forma inteligente e segura, garantindo que as operações sejam rápidas, precisas e sem falhas.
+                </MudListItem>
+
+                <MudListItem T="string" Class="animate__animated animate__fadeIn animate__delay-11s">
+                    <MudIcon Icon="@Icons.Material.Filled.Check" Color="Color.Success" Size="Size.Small" />
+                    **D (Dinâmica)**: A plataforma se adapta a mudanças rápidas, ajustando-se automaticamente a novos desafios e requisitos do mercado.
+                </MudListItem>
+
+                <MudListItem T="string" Class="animate__animated animate__fadeIn animate__delay-12s">
+                    <MudIcon Icon="@Icons.Material.Filled.Check" Color="Color.Success" Size="Size.Small" />
+                    **R (Responsiva)**: A interface e as funcionalidades do sistema são projetadas para responder rapidamente a interações, melhorando a experiência do usuário.
+                </MudListItem>
+
+                <MudListItem T="string" Class="animate__animated animate__fadeIn animate__delay-13s">
+                    <MudIcon Icon="@Icons.Material.Filled.Check" Color="Color.Success" Size="Size.Small" />
+                    **O (Otimização)**: ANTDROID encontra maneiras de otimizar processos, aumentando a eficiência e reduzindo custos operacionais.
+                </MudListItem>
+
+                <MudListItem T="string" Class="animate__animated animate__fadeIn animate__delay-14s">
+                    <MudIcon Icon="@Icons.Material.Filled.Check" Color="Color.Success" Size="Size.Small" />
+                    **I (Inteligente)**: ANTDROID não é apenas uma plataforma de dados; ela utiliza inteligência para tomar decisões rápidas e precisas, garantindo a melhor experiência possível.
+                </MudListItem>
+
+                <MudListItem T="string" Class="animate__animated animate__fadeIn animate__delay-15s">
+                    <MudIcon Icon="@Icons.Material.Filled.Check" Color="Color.Success" Size="Size.Small" />
+                    **D (Orientada por Dados)**: A plataforma utiliza dados para tomar decisões estratégicas, otimizando cada operação e garantindo o crescimento do seu hotel.
+                </MudListItem>
+            </MudList>
+
+            <!-- Chamada para Ação -->
+            <MudText Class="mt-3 text-center text-info font-weight-bold">
+                Torne seu hotel mais inteligente, ágil e eficiente com **ANTDROID**, nossa inteligência artificial que transforma dados em decisões poderosas.
+            </MudText>
+
+        </MudNavLink>
+
+        <MudDivider />
+
+        <!-- Chamada para Ação Emotiva -->
+        <MudText
+            Class="mt-4 text-center text-muted animate__animated animate__fadeIn animate__delay-7s"
+            Style="margin-left: 20px; margin-right: 20px;">
+            Connosco, seu hotel será mais que um lugar para ficar. Ele será uma experiência inesquecível.
+            Imagine um ambiente onde cada hóspede se sente especial, com uma estadia que vai além do esperado,
+            onde a eficiência encontra a hospitalidade e a inovação transforma cada detalhe.
+            Nós não apenas ajudamos a administrar o seu hotel, mas trabalhamos lado a lado com você para criar
+            experiências memoráveis que seus hóspedes vão compartilhar por muito tempo.
+        </MudText>
+
+
+        <!-- Botão de Navegação com Animação -->
+        <MudGrid>
+            <MudItem T="string" xs="12" Class="mt-5">
+                <MudButton
+                    Href="/Admin/Index"
+                    Variant="Variant.Filled"
+                    Color="Color.Primary"
+                    OnClick="NavigateHome"
+                    Class="animate__animated animate__fadeIn animate__delay-8s">
+                    Voltar para Início
+                </MudButton>
+            </MudItem>
+        </MudGrid>
+    </MudPaper>
+</MudContainer>
 
 @code {
-    
+    private void NavigateHome()
+    {
+        Navigation.NavigateTo("/Admin/Index");
+    }
 }

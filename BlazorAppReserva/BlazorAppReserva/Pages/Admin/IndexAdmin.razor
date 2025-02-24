@@ -1,6 +1,129 @@
 ﻿@page "/Admin/Index"
-<h3>IndexAdmin</h3>
+@using MudBlazor
+
+<MudLayout>
+    <MudAppBar Color="Color.Primary" Elevation="4">
+        <MudText Typo="Typo.h6" Color="Color.Inherit">Reserve Já!</MudText>
+        <MudSpacer />
+
+        <MudButton
+            Href=""
+            Color="Color.Inherit"
+            Variant="Variant.Text"
+            @onclick="NavigateToLogin">
+            <MudIconButton Icon="@Icons.Material.Filled.Login" Color="Color.Success" />
+            Login
+        </MudButton>
+
+        <MudButton
+            Href="/Admin/Registrar"
+            Color="Color.Inherit"
+            Variant="Variant.Text"
+            @onclick="NavigateToRegister"
+            EndIcon="Icons.Material.Filled.PersonAdd">
+            <MudIconButton Icon="@Icons.Material.Filled.PersonAdd" Color="Color.Success" />
+            Registrar
+        </MudButton>
+
+    </MudAppBar>
+
+    <MudMainContent>
+        <MudContainer>
+            <MudGrid>
+                <MudItem xs="12" sm="6">
+                    <MudPaper Elevation="4" Square="true" Class="pa-4">
+                        
+                        <MudText Typo="Typo.h4" Align="Align.Center">Bem-vindo ao Reserve Já!</MudText>
+
+                        <MudText Typo="Typo.body1" Align="Align.Center" Class="mt-3">
+                            Reserve seu hotel de forma rápida e fácil, com uma ampla gama de opções para suas férias ou viagem de negócios.
+                        </MudText>
+                    </MudPaper>
+                </MudItem>
+
+                <MudItem xs="12" sm="6">
+                    <MudPaper Elevation="4" Square="true" Class="pa-4">
+                        
+                        <MudText Typo="Typo.h6">Como Funciona</MudText>
+
+                        <MudText Typo="Typo.body2">
+                            1. Escolha o seu destino. <br/>
+                            2. Selecione o hotel ideal. <br/>
+                            3. Reserve o seu quarto e aproveite a estadia!
+                        </MudText>
+
+                        <MudButton
+                            Color="Color.Primary"
+                            Variant="Variant.Filled"
+                            Class="mt-4" FullWidth="true"
+                            @onclick="NavigateToSearch">Comece Agora</MudButton>
+                    </MudPaper>
+                </MudItem>
+            </MudGrid>
+
+            <MudGrid Class="mt-4">
+                <MudItem xs="12" sm="6">
+                    <MudPaper Elevation="4" Square="true" Class="pa-4">
+                        
+                        <MudText Typo="Typo.h6" Align="Align.Center">Ofertas Especiais</MudText>
+
+                        <MudText Typo="Typo.body2" Align="Align.Center" Class="mt-2">
+                            Confira as promoções e descontos exclusivos para reservas de última hora.
+                        </MudText>
+
+                        <MudButton
+                            Color="Color.Secondary"
+                            Variant="Variant.Filled"
+                            Class="mt-4"
+                            FullWidth="true">
+                            Ver Ofertas
+                        </MudButton>
+                    </MudPaper>
+                </MudItem>
+
+                <MudItem xs="12" sm="6">
+                    <MudPaper Elevation="4" Square="true" Class="pa-4">
+                        <MudText Typo="Typo.h6" Align="Align.Center">Sobre nós</MudText>
+                        <MudText Typo="Typo.body2" Align="Align.Center" Class="mt-2">
+                            Somos uma plataforma confiável e segura para realizar reservas em hotéis ao redor do mundo.
+                        </MudText>
+                        
+                        <MudButton
+                            Href="/Admin/Sobre"
+                            Color="Color.Info"
+                            Variant="Variant.Filled"
+                            Class="mt-4"
+                            FullWidth="true"
+                            @onclick="NavigateToAbout">Saiba mais</MudButton>
+                    </MudPaper>
+                </MudItem>
+            </MudGrid>
+        </MudContainer>
+    </MudMainContent>
+
+    <MudFooter Elevation="4" Class="pa-4">
+        <MudText Typo="Typo.body2" Align="Align.Center">© 2025 Reserve Já. Todos os direitos reservados.</MudText>
+    </MudFooter>
+</MudLayout>
 
 @code {
-    
+    private void NavigateToLogin()
+    {
+        // Navegar para a página de login
+    }
+
+    private void NavigateToRegister()
+    {
+        // Navegar para a página de registro
+    }
+
+    private void NavigateToSearch()
+    {
+        // Navegar para a página de pesquisa de hotéis
+    }
+
+    private void NavigateToAbout()
+    {
+        // Navegar para a página "Sobre nós"
+    }
 }

@@ -1,6 +1,121 @@
 ﻿@page "/Admin/Politica"
-<h3>PoliticaAdmin</h3>
+
+@using MudBlazor
+@inject IJSRuntime JS
+@inject NavigationManager NavigationManager
+ 
+
+<PageTitle>Políticas de Segurança - Sistema de Reservas Online</PageTitle>
+
+<MudThemeProvider Theme="@theme">
+    <MudContainer MaxWidth="MaxWidth.Large">
+        <MudGrid>
+            <!-- Título da Página -->
+            <MudItem xs="12">
+                <MudText Typo="Typo.h2" Align="Align.Center" GutterBottom="true" Class="security-title">
+                    Políticas de Segurança para Reservas Online
+                </MudText>
+            </MudItem>
+
+            <!-- Seção de Introdução -->
+            <MudItem xs="12" sm="6">
+                <MudPaper Class="policy-introduction" Elevation="4">
+                    
+                    <MudText Typo="Typo.h5" Align="Align.Center">
+                        Garantimos a sua segurança em todas as etapas da sua reserva, para que você possa aproveitar a sua estadia com tranquilidade.
+                    </MudText>
+                    
+                    <MudText Typo="Typo.body1">
+                        Nossa plataforma adota as melhores práticas de segurança, desde a proteção dos seus dados pessoais até a garantia de que suas transações são realizadas de forma segura e sem riscos.
+                    </MudText>
+                </MudPaper>
+            </MudItem>
+
+            <!-- Políticas de Segurança -->
+            <MudItem xs="12" sm="6">
+                <MudPaper
+                    Class="policy-box"
+                    Elevation="5"
+                    Style="transition: transform 0.3s ease; cursor: pointer;">
+                    
+                    <MudIcon Icon="@Icons.Material.Filled.Lock" Color="Color.Primary" Size="Size.Large"/>
+                    
+                    <MudText Typo="Typo.h6" Align="Align.Center">Proteção de Dados Pessoais</MudText>
+                    
+                    <MudText Typo="Typo.body2" Align="Align.Center">
+                        Seus dados são armazenados com criptografia de ponta a ponta, protegendo a sua privacidade durante todo o processo.
+                    </MudText>
+                </MudPaper>
+            </MudItem>
+
+            <MudItem xs="12" sm="6">
+                <MudPaper
+                    Class="policy-box"
+                    Elevation="5"
+                    Style="transition: transform 0.3s ease; cursor: pointer;">
+                    
+                    <MudIcon Icon="@Icons.Material.Filled.Money" Color="Color.Success" Size="Size.Large"/>
+                    
+                    <MudText Typo="Typo.h6" Align="Align.Center">Pagamentos Seguros</MudText>
+                    
+                    <MudText Typo="Typo.body2" Align="Align.Center">
+                        Utilize métodos de pagamento 100% seguros e verificados, para uma experiência de compra tranquila.
+                    </MudText>
+                </MudPaper>
+            </MudItem>
+
+            <MudItem xs="12" sm="6">
+                <MudPaper 
+                    Class="policy-box"
+                    Elevation="5" 
+                    Style="transition: transform 0.3s ease; cursor: pointer;">
+                    <MudIcon Icon="@Icons.Material.Filled.VpnKey" Color="Color.Info" Size="Size.Large" />
+                    
+                    <MudText Typo="Typo.h6" Align="Align.Center">Autenticação Multifatorial</MudText>
+                    
+                    <MudText Typo="Typo.body2" Align="Align.Center">
+                        Implementamos autenticação multifatorial para garantir que apenas você acesse suas reservas e informações.
+                    </MudText>
+                </MudPaper>
+            </MudItem>
+
+            <MudItem xs="12" sm="6">
+                <MudPaper
+                    Class="policy-box"
+                    Elevation="5"
+                    Style="transition: transform 0.3s ease; cursor: pointer;">
+                    
+                    <MudIcon Icon="@Icons.Material.Filled.Support" Color="Color.Warning" Size="Size.Large"/>
+                    
+                    <MudText Typo="Typo.h6" Align="Align.Center">Suporte 24/7</MudText>
+                    
+                    <MudText Typo="Typo.body2" Align="Align.Center">
+                        Oferecemos suporte contínuo para solucionar qualquer problema, garantindo que você esteja sempre seguro.
+                    </MudText>
+                </MudPaper>
+            </MudItem>
+        </MudGrid>
+    </MudContainer>
+</MudThemeProvider>
 
 @code {
-    
+    private MudTheme theme = new MudTheme()
+    {
+        PaletteLight = new PaletteLight()
+        {
+            Primary = "#1E88E5", // Azul
+            Secondary = "#43A047", // Verde
+            Background = "#F5F5F5", // Cinza claro
+            Surface = "#FFFFFF",
+            TextPrimary = "#212121", // Cor de texto escura
+            TextSecondary = "#757575", // Cor de texto secundária
+            
+        }
+    };
+
+    private void NavigateToPolicy(string policyType)
+    {
+        // Navegar para a página da política específica
+        NavigationManager.NavigateTo($"/politicas/{policyType}");
+    }
 }
