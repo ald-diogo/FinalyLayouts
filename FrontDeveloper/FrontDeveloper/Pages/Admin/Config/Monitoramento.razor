@@ -1,0 +1,101 @@
+﻿@page "/Admin/Monitoramento"
+
+@using MudBlazor
+@inject IJSRuntime JSRuntime
+
+<PageTitle>Monitoramento de Atividades</PageTitle>
+
+<MudContainer>
+    <!-- Cabeçalho da Página -->
+    <MudText Typo="Typo.h4" Align="Align.Center" GutterBottom="true">Monitoramento de Atividades</MudText>
+
+    <!-- Filtros -->
+    <MudPaper Elevation="3" Class="pa-4 mb-4">
+        <MudGrid>
+            <MudItem xs="12" sm="4">
+                <MudDatePicker Label="Data de Início" @bind-Date="startDate" InputAdornment="true" />
+            </MudItem>
+            <MudItem xs="12" sm="4">
+                <MudDatePicker Label="Data de Fim" @bind-Date="endDate" InputAdornment="true" />
+            </MudItem>
+            <MudItem xs="12" sm="4">
+                <MudSelect T="string" Label="Tipo de Ação" @bind-Value="actionType">
+                    <MudSelectItem Value="1">Acesso</MudSelectItem>
+                    <MudSelectItem Value="2">Alteração</MudSelectItem>
+                    <MudSelectItem Value="3">Exclusão</MudSelectItem>
+                </MudSelect>
+            </MudItem>
+        </MudGrid>
+        <MudButton Variant="Variant.Filled" Color="Color.Primary" Class="mt-4" OnClick="BuscarLogs">Buscar</MudButton>
+    </MudPaper>
+
+    <!-- Tabela de Logs -->
+    <MudPaper Elevation="3" Class="pa-4">
+        <MudTable Items="logs" Hover="true">
+            <HeaderContent>
+                <MudTh>Data</MudTh>
+                <MudTh>Usuário</MudTh>
+                <MudTh>Tipo de Ação</MudTh>
+                <MudTh>Detalhes</MudTh>
+                <MudTh>Status</MudTh>
+            </HeaderContent>
+            <RowTemplate>
+                <MudTd DataLabel="Data">@context.Data</MudTd>
+                <MudTd DataLabel="Usuário">@context.Usuario</MudTd>
+                <MudTd DataLabel="Tipo de Ação">@context.TipoAcao</MudTd>
+                <MudTd DataLabel="Detalhes">@context.Detalhes</MudTd>
+                <MudTd DataLabel="Status">@context.Status</MudTd>
+            </RowTemplate>
+        </MudTable>
+    </MudPaper>
+
+    <!-- Paginação -->
+    <MudGrid>
+        <MudItem xs="12">
+            <MudPaginator PageCount="totalPages" PageChanged="OnPageChanged" />
+        </MudItem>
+    </MudGrid>
+</MudContainer>
+
+@code {
+    private DateTime? startDate;
+    private DateTime? endDate;
+    private string actionType;
+    private List<LogActivity> logs = new List<LogActivity>();
+    private int totalPages = 1;
+    private int currentPage = 1;
+
+    // Modelo de Log
+    public class LogActivity
+    {
+        public string Data { get; set; }
+        public string Usuario { get; set; }
+        public string TipoAcao { get; set; }
+        public string Detalhes { get; set; }
+        public string Status { get; set; }
+    }
+
+    // Mock para buscar os logs
+    private void BuscarLogs()
+    {
+        // Simulação de dados
+        logs = new List<LogActivity>
+        {
+            new LogActivity { Data = "2025-02-25 10:30", Usuario = "João Silva", TipoAcao = "Acesso", Detalhes = "Acesso ao sistema", Status = "Sucesso" },
+            new LogActivity { Data = "2025-02-25 11:00", Usuario = "Maria Santos", TipoAcao = "Alteração", Detalhes = "Alteração no perfil", Status = "Sucesso" },
+            new LogActivity { Data = "2025-02-24 16:20", Usuario = "Pedro Almeida", TipoAcao = "Exclusão", Detalhes = "Exclusão de registro", Status = "Falha" }
+        };
+
+        // Defina o total de páginas
+        totalPages = (int)Math.Ceiling(logs.Count / 10.0); // Paginação simples
+
+        StateHasChanged(); // Atualiza a interface
+    }
+
+    // Para controlar a mudança de página
+    private void OnPageChanged(int page)
+    {
+        currentPage = page;
+        // Aqui você pode carregar mais dados conforme a página muda (caso haja uma API ou banco de dados)
+    }
+}
