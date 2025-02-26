@@ -1,0 +1,135 @@
+﻿@page "/Admin/Suporte"
+
+@using MudBlazor
+@inherits LayoutComponentBase
+
+<PageTitle>Suporte Técnico</PageTitle>
+
+<MudContainer MaxWidth="MaxWidth.Large">
+    <MudGrid>
+        <!-- Cabeçalho -->
+        <MudItem xs="12">
+            <MudPaper Class="pa-4" Elevation="4">
+                <MudText Typo="Typo.h4" Align="Align.Center" Class="text-primary">
+                    Suporte Técnico
+                </MudText>
+            </MudPaper>
+        </MudItem>
+
+        <!-- Seção Assistência ao Usuário -->
+        <MudItem xs="12" md="6">
+            <MudPaper Class="pa-4 mb-4" Elevation="4">
+                <MudText Typo="Typo.h5" Align="Align.Start" Class="text-info">
+                    Assistência ao Usuário
+                </MudText>
+
+                <!-- Visualizar Chamados -->
+                <MudTabs>
+                    <MudTab Label="Em Aberto" Icon="@Icons.Material.Filled.Error" IconSize="Size.Large">
+                        <MudList T="bool">
+                            @foreach (var ticket in ticketsEmAberto)
+                            {
+                                <MudListItem T="bool">
+                                    <MudText>@ticket.Titulo</MudText>
+                                    <MudText>@ticket.DataAbertura.ToString("dd/MM/yyyy")</MudText>
+                                </MudListItem>
+                            }
+                        </MudList>
+                    </MudTab>
+
+                    <MudTab Label="Resolvidos" Icon="@Icons.Material.Filled.CheckCircle" IconSize="Size.Large">
+                        <MudList T="bool">
+                            @foreach (var ticket in ticketsResolvidos)
+                            {
+                                <MudListItem T="bool">
+                                    <MudText>@ticket.Titulo</MudText>
+                                    <MudText>@ticket.DataResolucao?.ToString("dd/MM/yyyy") ?? "Não Resolvido"</MudText>
+
+                                </MudListItem>
+                            }
+                        </MudList>
+                    </MudTab>
+                </MudTabs>
+            </MudPaper>
+        </MudItem>
+
+        <!-- Atribuição de Tickets -->
+        <MudItem xs="12" md="6">
+            <MudPaper Class="pa-4 mb-4" Elevation="4">
+                <MudText Typo="Typo.h5" Align="Align.Start" Class="text-info">
+                    Atribuir Tickets a Equipes
+                </MudText>
+
+                <MudSelect T="string" Label="Selecione a Equipe" @bind-Value="equipeSelecionada" Class="mb-4">
+                    <MudSelectItem Value="1">Suporte Técnico</MudSelectItem>
+                    <MudSelectItem Value="2">Desenvolvimento</MudSelectItem>
+                    <MudSelectItem Value="3">Gestão</MudSelectItem>
+                </MudSelect>
+
+                <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="AtribuirTicket">
+                    Atribuir Ticket
+                </MudButton>
+            </MudPaper>
+        </MudItem>
+
+        <!-- Seção de Documentação -->
+        <MudItem xs="12">
+            <MudPaper Class="pa-4 mb-4" Elevation="4">
+                <MudText Typo="Typo.h5" Align="Align.Start" Class="text-info">
+                    Documentação do Sistema
+                </MudText>
+
+                <MudAccordion>
+                    <MudAccordionItem Text="Manual de Administração">
+                        <MudText>Detalhes sobre as configurações do sistema e permissões de administração.</MudText>
+                    </MudAccordionItem>
+                    <MudAccordionItem Text="Tutoriais e Guias de Uso">
+                        <MudText>Guias interativos sobre como usar o sistema e realizar tarefas comuns.</MudText>
+                    </MudAccordionItem>
+                    <MudAccordionItem Text="FAQ e Soluções Comuns">
+                        <MudText>Perguntas frequentes e soluções rápidas para problemas comuns.</MudText>
+                    </MudAccordionItem>
+                </MudAccordion>
+            </MudPaper>
+        </MudItem>
+    </MudGrid>
+
+    <!-- Rodapé -->
+    <MudGrid>
+        <MudItem xs="12">
+            <MudPaper Class="pa-4 mt-4" Elevation="4">
+                <MudText Align="Align.Center" Class="text-muted">
+                    © 2025 Suporte Técnico - Todos os direitos reservados
+                </MudText>
+            </MudPaper>
+        </MudItem>
+    </MudGrid>
+</MudContainer>
+
+@code {
+private List<Ticket> ticketsEmAberto = new List<Ticket>
+{
+    new Ticket { Titulo = "Problema de Login", DataAbertura = DateTime.Now.AddHours(-1) },
+    new Ticket { Titulo = "Erro ao Carregar Página", DataAbertura = DateTime.Now.AddHours(-3) }
+};
+
+private List<Ticket> ticketsResolvidos = new List<Ticket>
+{
+    new Ticket { Titulo = "Acesso Perdido", DataResolucao = DateTime.Now.AddDays(-1) }
+};
+
+private string equipeSelecionada;
+
+private void AtribuirTicket()
+{
+    // Lógica para atribuir ticket à equipe selecionada
+    Console.WriteLine($"Ticket atribuído à equipe {equipeSelecionada}");
+}
+
+public class Ticket
+{
+    public string Titulo { get; set; }
+    public DateTime DataAbertura { get; set; }
+    public DateTime? DataResolucao { get; set; }
+}
+}
