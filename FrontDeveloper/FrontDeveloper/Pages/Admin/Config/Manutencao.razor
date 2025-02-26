@@ -1,0 +1,122 @@
+﻿@page "/Admin/Manutencao"
+
+@using MudBlazor
+@inject IDialogService DialogService
+
+<MudContainer>
+    <!-- Header -->
+    <MudGrid>
+        <MudItem xs="12">
+            <MudText Typo="Typo.h4" Align="Align.Center">Manutenção do Sistema</MudText>
+        </MudItem>
+    </MudGrid>
+
+    <!-- Monitoramento de Integridade -->
+    <MudGrid>
+        <MudItem xs="12" md="6">
+            <MudCard>
+                <MudCardContent>
+                    <MudText Typo="Typo.h6">Verificar Status do Sistema</MudText>
+                    <MudDivider />
+                    <MudGrid>
+                        <MudItem xs="6">
+                            <MudText>Tempo de Uptime:</MudText>
+                        </MudItem>
+                        <MudItem xs="6">
+                            <MudChip T="bool" Icon="@Icons.Material.Filled.CheckCircle" Color="Color.Primary">24h 30m</MudChip>
+                        </MudItem>
+                    </MudGrid>
+                    <MudGrid>
+                        <MudItem xs="6">
+                            <MudText>Recursos do Servidor:</MudText>
+                        </MudItem>
+                        <MudItem xs="6">
+                            <MudProgressBar Value="80" Color="Color.Primary" />
+                        </MudItem>
+                    </MudGrid>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+
+        <MudItem xs="12" md="6">
+            <MudCard>
+                <MudCardContent>
+                    <MudText Typo="Typo.h6">Verificar Consistência do Banco de Dados</MudText>
+                    <MudDivider />
+                    <MudChip T="bool" Icon="@Icons.Material.Filled.Warning" Color="Color.Warning">Erros de Consistência Detectados</MudChip>
+                    <MudText>Última verificação: 10m atrás</MudText>
+                   
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+    </MudGrid>
+
+    <!-- Diagnóstico e Correção de Erros -->
+    <MudGrid>
+        <MudItem xs="12">
+            <MudCard>
+                <MudCardContent>
+                    <MudText Typo="Typo.h6">Diagnóstico e Correção de Erros</MudText>
+                    <MudDivider />
+                    <MudText>Erro comum: Falha de Conexão</MudText>
+                    <MudButton Color="Color.Error" OnClick="() => FixConnectionError()">Corrigir Erro</MudButton>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+    </MudGrid>
+
+    <!-- Atualizações do Sistema -->
+    <MudGrid>
+        <MudItem xs="12" md="6">
+            <MudCard>
+                <MudCardContent>
+                    <MudText Typo="Typo.h6">Verificar Atualizações Disponíveis</MudText>
+                    <MudDivider />
+                    <MudChip T="bool" Icon="@Icons.Material.Filled.Update" Color="Color.Primary">Atualização 1.0.5 disponível</MudChip>
+                    <MudButton Color="Color.Primary" OnClick="() => CheckUpdates()">Verificar Atualizações</MudButton>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+
+        <MudItem xs="12" md="6">
+            <MudCard>
+                <MudCardContent>
+                    <MudText Typo="Typo.h6">Histórico de Atualizações</MudText>
+                    <MudDivider />
+                    <MudText>Última atualização realizada: 3 dias atrás</MudText>
+                    <MudButton Color="Color.Secondary" OnClick="() => ViewUpdateHistory()">Ver Histórico</MudButton>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+    </MudGrid>
+
+    <!-- Footer -->
+    <MudGrid>
+        <MudItem xs="12">
+            <MudText Align="Align.Center" Color="Color.Secondary">© 2025 Desenvolvido pela AJMDS Soluções Tecnológicas</MudText>
+        </MudItem>
+    </MudGrid>
+</MudContainer>
+
+@code {
+  
+
+
+    private void FixConnectionError()
+    {
+        // Lógica para corrigir erro de conexão
+        Console.WriteLine("Tentando corrigir erro de conexão...");
+    }
+
+    private void CheckUpdates()
+    {
+        // Lógica para verificar atualizações
+        Console.WriteLine("Verificando atualizações...");
+    }
+
+    private void ViewUpdateHistory()
+    {
+        // Lógica para exibir histórico de atualizações
+        Console.WriteLine("Exibindo histórico de atualizações...");
+    }
+}
