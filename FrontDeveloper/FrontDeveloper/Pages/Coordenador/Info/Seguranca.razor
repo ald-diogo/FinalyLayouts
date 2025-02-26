@@ -1,0 +1,212 @@
+﻿@page "/Coor/Seguranca"
+
+@using MudBlazor
+
+<PageTitle>Segurança no Sistema de Gestão Academica</PageTitle>
+
+<MudContainer MaxWidth="MaxWidth.Large">
+    <!-- Header de Introdução -->
+    <MudText Typo="Typo.h3" Align="Align.Center" Color="Color.Primary">
+        Segurança de Classe Mundial no Seu Sistema de Gestão Academica
+    </MudText>
+
+    <MudText Typo="Typo.h6" Align="Align.Center" Color="Color.Inherit">
+        Proteja seus dados e os seus funcionários com as melhores práticas em segurança online.
+    </MudText>
+
+    <MudButton Href="/Coor/Sobre" Variant="Variant.Filled" Color="Color.Secondary" Size="Size.Large" FullWidth>
+        Saiba mais
+    </MudButton>
+</MudContainer>
+
+<MudContainer MaxWidth="MaxWidth.Large" Class="security-section">
+    <!-- Níveis de Acesso -->
+    <MudGrid>
+        <MudItem xs="12" sm="6" lg="4">
+            <MudPaper Elevation="4" Class="security-card">
+                <MudIcon Icon="icons-material-lock" Color="Color.Primary" Size="Size.Large"/>
+                <MudText Typo="Typo.h5" Align="Align.Center">
+                    Níveis de Acesso Personalizados
+                </MudText>
+                <MudText Align="Align.Center">
+                    Controle rigoroso de quem tem acesso às informações sensíveis do sistema, garantindo que apenas usuários autorizados possam realizar determinadas ações.
+                </MudText>
+            </MudPaper>
+        </MudItem>
+
+        <MudItem xs="12" sm="6" lg="4">
+            <MudPaper Elevation="4" Class="security-card">
+                <MudIcon Icon="icons-material-security" Color="Color.Secondary" Size="Size.Large"/>
+                <MudText Typo="Typo.h5" Align="Align.Center">
+                    Acesso Diferenciado
+                </MudText>
+                <MudText Align="Align.Center">
+                    Oferecemos diferentes níveis de permissão para estudantes,professores(as), consultores financeiros(as), secretários(as), funcionários(as), e coordenadores, garantindo a confidencialidade dos dados.
+                </MudText>
+            </MudPaper>
+        </MudItem>
+
+        <MudItem xs="12" sm="6" lg="4">
+            <MudPaper Elevation="4" Class="security-card">
+                <MudIcon Icon="icons-material-account-circle" Color="Color.Tertiary" Size="Size.Large"/>
+
+                <MudText Typo="Typo.h5" Align="Align.Center">
+                    Autenticação de Dois Fatores
+                </MudText>
+
+                <MudText Align="Align.Center">
+                    Implementação de autenticação multi-fatorial para garantir que apenas os usuários autenticados possam acessar áreas críticas.
+                </MudText>
+            </MudPaper>
+        </MudItem>
+    </MudGrid>
+</MudContainer>
+
+<MudContainer MaxWidth="MaxWidth.Large" Class="security-section">
+    <!-- Criptografia -->
+    <MudText Typo="Typo.h4" Align="Align.Center" Color="Color.Primary">
+        Criptografia de Ponta a Ponta
+    </MudText>
+
+    <MudText Typo="Typo.body1" Align="Align.Center" Color="Color.Inherit">
+        Todos os dados trocados entre os usuários e o sistema são criptografados, utilizando tecnologia de criptografia de ponta, garantindo que informações sensíveis nunca sejam expostas.
+    </MudText>
+
+    <MudGrid>
+        <MudItem xs="12" sm="4">
+            <MudPaper Elevation="4" Class="security-card">
+                <MudIcon Icon="icons-material-encryption" Color="Color.Primary" Size="Size.Large"/>
+
+                <MudText Typo="Typo.h6" Align="Align.Center">
+                    Proteção SSL/TLS
+                </MudText>
+
+                <MudText Align="Align.Center">
+                    Conexões seguras com criptografia SSL/TLS para proteger os dados durante as transações.
+                </MudText>
+            </MudPaper>
+        </MudItem>
+
+        <MudItem xs="12" sm="4">
+            <MudPaper Elevation="4" Class="security-card">
+                <MudIcon Icon="icons-material-lock" Color="Color.Secondary" Size="Size.Large"/>
+
+                <MudText Typo="Typo.h6" Align="Align.Center">
+                    Criptografia de Dados Sensíveis
+                </MudText>
+
+                <MudText Align="Align.Center">
+                    Criptografia aplicada diretamente a todos os dados sensíveis, como informações de pagamento e dados pessoais dos clientes.
+                </MudText>
+            </MudPaper>
+        </MudItem>
+
+        <MudItem xs="12" sm="4">
+            <MudPaper Elevation="4" Class="security-card">
+                <MudIcon Icon="icons-material-key" Color="Color.Tertiary" Size="Size.Large"/>
+
+                <MudText Typo="Typo.h6" Align="Align.Center">
+                    Senhas Fortes e Armazenamento Seguro
+                </MudText>
+
+                <MudText Align="Align.Center">
+                    Uso de algoritmos avançados para armazenar senhas de maneira segura, minimizando o risco de vazamento de dados.
+                </MudText>
+            </MudPaper>
+        </MudItem>
+    </MudGrid>
+</MudContainer>
+
+<MudContainer MaxWidth="MaxWidth.Large" Class="security-section">
+    <!-- Prevenção de Fraudes -->
+    <MudText Typo="Typo.h4" Align="Align.Center" Color="Color.Primary">
+        Prevenção de Fraudes
+    </MudText>
+
+    <MudText Typo="Typo.body1" Align="Align.Center" Color="Color.Inherit">
+        Nosso sistema detecta automaticamente comportamentos suspeitos e padrões fraudulentos, prevenindo fraudes antes que elas ocorram.
+    </MudText>
+
+    <MudGrid>
+        <MudItem xs="12" sm="6" lg="4">
+            <MudPaper Elevation="4" Class="security-card">
+
+                <MudIcon Icon="icons-material-warning" Color="Color.Secondary" Size="Size.Large"/>
+
+                <MudText Typo="Typo.h6" Align="Align.Center">
+                    Detecção de Padrões Suspeitos
+                </MudText>
+
+                <MudText Align="Align.Center">
+                    Algoritmos inteligentes para identificar atividades incomuns que possam indicar fraudes, como múltiplas reservas com o mesmo cartão.
+                </MudText>
+            </MudPaper>
+        </MudItem>
+
+        <MudItem xs="12" sm="6" lg="4">
+            <MudPaper Elevation="4" Class="security-card">
+
+                <MudIcon Icon="icons-material-check-circle" Color="Color.Primary" Size="Size.Large"/>
+
+                <MudText Typo="Typo.h6" Align="Align.Center">
+                    Autorização de Pagamentos Segura
+                </MudText>
+
+                <MudText Align="Align.Center">
+                    Verificação de pagamentos em tempo real, garantindo que transações fraudulentas sejam imediatamente rejeitadas.
+                </MudText>
+            </MudPaper>
+        </MudItem>
+
+        <MudItem xs="12" sm="6" lg="4">
+            <MudPaper Elevation="4" Class="security-card">
+                <MudIcon Icon="icons-material-verified" Color="Color.Tertiary" Size="Size.Large"/>
+
+                <MudText Typo="Typo.h6" Align="Align.Center">
+                    Verificação de Identidade Avançada
+                </MudText>
+
+                <MudText Align="Align.Center">
+                    Implementação de verificações robustas para confirmar a identidade do usuário antes de finalizar qualquer transação importante.
+                </MudText>
+            </MudPaper>
+        </MudItem>
+    </MudGrid>
+</MudContainer>
+
+<MudContainer MaxWidth="MaxWidth.Large" Class="testimonial-section">
+    <!-- Depoimentos de Usuários -->
+    <MudText Typo="Typo.h4" Align="Align.Center" Color="Color.Primary">
+        O Que Nossos Clientes Dizem
+    </MudText>
+
+    <MudCarousel TData="string">
+        <MudCarouselItem>
+            <MudText Typo="Typo.body1" Align="Align.Center">
+                "O sistema de gestão academica é altamente seguro. Eu me sinto confiante ao realizar transações e sei que meus dados estão protegidos."
+            </MudText>
+        </MudCarouselItem>
+
+        <MudCarouselItem>
+            <MudText Typo="Typo.body1" Align="Align.Center">
+                "A segurança nunca foi uma preocupação para mim, graças à criptografia e aos controles rigorosos de acesso."
+            </MudText>
+        </MudCarouselItem>
+    </MudCarousel>
+</MudContainer>
+
+
+<MudContainer MaxWidth="MaxWidth.Large" Class="cta-section">
+    <!-- Conclusão com Chamada para Ação -->
+    <MudText Typo="Typo.h5" Align="Align.Center" Color="Color.Primary">
+        Pronto para fazer adesão segura e tranquila?
+    </MudText>
+
+    <MudButton Href="/Coor/Index" Variant="Variant.Filled" Color="Color.Success" Size="Size.Large" FullWidth>
+        Faça Sua Adesão Agora
+    </MudButton>
+</MudContainer>
+
+@code {
+    // Qualquer código necessário para interatividade ou animações adicionais pode ser adicionado aqui.
+}

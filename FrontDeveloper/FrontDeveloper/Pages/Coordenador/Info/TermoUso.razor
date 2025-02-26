@@ -1,0 +1,105 @@
+﻿@page "/Coor/TermoUso"
+
+@using MudBlazor
+
+<MudLayout>
+    <MudAppBar Elevation="1" Color="Color.Primary">
+        <MudText Typo="Typo.h6" Class="text-white">Termos de Uso - Sistema de Gestão Acadêmica</MudText>
+    </MudAppBar>
+
+    <MudContainer MaxWidth="MaxWidth.Large" Class="my-4"> <!-- MaxWidth ajustado para 'lg' -->
+        <MudGrid>
+            <MudItem xs="12" sm="12" md="6">
+                <MudPaper Class="pa-4 animated fadeIn" Elevation="4" Style="border-radius: 10px; background: linear-gradient(to right, #6A11CB, #2575FC);" @onmouseover="OnHover" @onmouseout="OnMouseOut">
+                    <MudText Typo="Typo.h5" Color="Color.Inherit" Align="Align.Center" Class="mb-3" Style="font-weight: bold; color: white;">
+                        Bem-vindo ao Sistema de Gestão Acadêmica
+                    </MudText>
+
+                    <MudText Typo="Typo.body1" Color="Color.Inherit" Align="Align.Justify" Class="text-white">
+                        Estes Termos de Uso regem a utilização do nosso sistema de gestão acadêmica. Ao acessar e usar nossa plataforma, você concorda com os termos descritos abaixo.
+                    </MudText>
+
+                    <MudText Typo="Typo.h6" Color="Color.Inherit" Align="Align.Center" Class="mt-5 mb-3" Style="font-weight: bold; color: white;">
+                        <MudIcon Icon="@Icons.Material.Filled.CheckCircle" Color="Color.Inherit" /> 1. Aceitação dos Termos
+                    </MudText>
+                    <MudText Typo="Typo.body2" Color="Color.Inherit" Align="Align.Justify" Class="text-white">
+                        Ao utilizar nosso sistema de gestão acadêmica, você concorda com todos os termos e condições descritos nesta página. Caso não concorde com algum item, recomendamos que não utilize a plataforma.
+                    </MudText>
+
+                    <MudText Typo="Typo.h6" Color="Color.Inherit" Align="Align.Center" Class="mt-5 mb-3" Style="font-weight: bold; color: white;">
+                        <MudIcon Icon="@Icons.Material.Filled.Book" Color="Color.Inherit" /> 2. Cadastro de Disciplinas
+                    </MudText>
+                    <MudText Typo="Typo.body2" Color="Color.Inherit" Align="Align.Justify" Class="text-white">
+                        O cadastro de disciplinas e matérias é feito diretamente na plataforma. As informações fornecidas devem ser precisas e atualizadas para garantir o bom funcionamento do sistema acadêmico.
+                    </MudText>
+
+                    <MudText Typo="Typo.h6" Color="Color.Inherit" Align="Align.Center" Class="mt-5 mb-3" Style="font-weight: bold; color: white;">
+                        <MudIcon Icon="@Icons.Material.Filled.Event" Color="Color.Inherit" /> 3. Matrícula e Inscrição
+                    </MudText>
+                    <MudText Typo="Typo.body2" Color="Color.Inherit" Align="Align.Justify" Class="text-white">
+                        O processo de matrícula é realizado diretamente em nosso sistema, e as inscrições estão sujeitas à disponibilidade nas disciplinas oferecidas.
+                    </MudText>
+
+                    <MudText Typo="Typo.h6" Color="Color.Inherit" Align="Align.Center" Class="mt-5 mb-3" Style="font-weight: bold; color: white;">
+                        <MudIcon Icon="@Icons.Material.Filled.AssignmentTurnedIn" Color="Color.Inherit" /> 4. Responsabilidade
+                    </MudText>
+                    <MudText Typo="Typo.body2" Color="Color.Inherit" Align="Align.Justify" Class="text-white">
+                        Nosso sistema garante a eficiência na gestão acadêmica, mas não nos responsabilizamos por problemas decorrentes de falhas externas ou por ações de terceiros.
+                    </MudText>
+
+                    <MudText Typo="Typo.h6" Color="Color.Inherit" Align="Align.Center" Class="mt-5 mb-3" Style="font-weight: bold; color: white;">
+                        <MudIcon Icon="@Icons.Material.Filled.Lock" Color="Color.Inherit" /> 5. Privacidade e Segurança
+                    </MudText>
+                    <MudText Typo="Typo.body2" Color="Color.Inherit" Align="Align.Justify" Class="text-white">
+                        Respeitamos a privacidade dos usuários. Os dados fornecidos são armazenados com segurança e utilizados apenas para os fins descritos em nossa Política de Privacidade.
+                    </MudText>
+
+                    <MudText Typo="Typo.body2" Color="Color.Inherit" Align="Align.Center" Class="mt-4 text-white">
+                        Ao continuar, você confirma que leu e concorda com todos os termos e condições acima.
+                    </MudText>
+                </MudPaper>
+            </MudItem>
+
+            <MudItem xs="12" sm="12" md="6">
+                <MudPaper Class="pa-4 animated slideInRight" Elevation="4" Style="border-radius: 10px; background: #f5f5f5; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                    <MudIconButton Icon="@Icons.Material.Filled.Info" Color="Color.Primary" Size="Size.Large" Class="mb-3" @onclick="ShowSnackbar"/>
+
+                    <MudText Typo="Typo.h6" Color="Color.Inherit" Align="Align.Center" Class="mb-3" Style="font-weight: bold;">
+                        Fique Atento!
+                    </MudText>
+
+                    <MudText Typo="Typo.body2" Color="Color.Inherit" Align="Align.Justify" Class="mb-4">
+                        Cada instituição de ensino pode ter suas próprias políticas acadêmicas. Consulte sempre as condições específicas de sua instituição ao realizar matrículas ou inscrições.
+                    </MudText>
+
+                    <MudText Typo="Typo.body2" Color="Color.Inherit" Align="Align.Justify">
+                        Ao utilizar nosso sistema, você está ajudando a garantir uma gestão acadêmica eficiente e sem complicações. Estamos aqui para facilitar a sua jornada educacional!
+                    </MudText>
+                </MudPaper>
+            </MudItem>
+        </MudGrid>
+    </MudContainer>
+
+    <MudSnackbarProvider />
+</MudLayout>
+
+@code {
+    // Método de animação simples
+    private void OnHover()
+    {
+        // Animar ou fazer algo quando o mouse passar
+        Console.WriteLine("Item foi hoverizado!");
+    }
+
+    private void OnMouseOut()
+    {
+        // Remover animação ou revertê-la quando o mouse sair
+        Console.WriteLine("Mouse saiu do item.");
+    }
+
+    // Exemplo de feedback ao usuário
+    private void ShowSnackbar()
+    {
+        //MudSnackbar.Add("Você clicou no ícone de informação!", Severity.Info);
+    }
+}

@@ -1,0 +1,113 @@
+﻿@page "/Coor/Login"
+@using MudBlazor
+@inject NavigationManager NavigationManager
+
+<MudContainer MaxWidth="MaxWidth.Large" Class="d-flex justify-center" Style="height: 100vh;">
+    <MudPaper Class="p-6" Elevation="4" MaxWidth="500px" Style="width: 50%; margin: auto;">
+        <MudText
+            Typo="Typo.h4"
+            Align="Align.Center"
+            Class="mb-4">
+            Seja Bem-Vindo(a)! Caro(a) Coordenador(a)
+        </MudText>
+
+        <MudForm @ref="loginForm" Model="loginModel" OnValidSubmit="HandleLogin" >
+            <MudTextField
+                @bind-Value="loginModel.Username"
+                Label="E-mail"
+                For="@(() => loginModel.Username)"
+                Variant="Variant.Filled"
+                FullWidth="true"
+                Required="true"
+                Adornment="Adornment.End"
+                AdornmentIcon="@Icons.Material.Filled.Email" />
+
+
+            <MudSpacer />
+
+            <MudTextField
+                @bind-Value="loginModel.Password"
+                Label="Senha" For="@(() => loginModel.Password)"
+                Variant="Variant.Filled"
+                FullWidth="true"
+                InputType="InputType.Password"
+                Required="true"
+                Adornment="Adornment.End"
+                AdornmentIcon="@Icons.Material.Filled.Visibility"
+                OnAdornmentClick="TogglePasswordVisibility" />
+
+            @if (loginError)
+            {
+                <MudAlert Severity="Severity.Error" Class="mt-2">
+                    E-mail ou senha incorretos. Tente novamente.
+                </MudAlert>
+            }
+
+            <!-- Botão Entrar com cor preta e ícone -->
+            <MudButton
+                Href="/Coor/Menu"
+                Class="mt-4"
+                FullWidth="true"
+                Variant="Variant.Filled"
+                Color="Color.Dark"
+                Type="Submit">
+                <MudIconButton Icon="@Icons.Material.Filled.Login" Color="Color.Inherit" />
+                Entrar
+            </MudButton>
+
+            <!-- Botão Esqueci-me da senha com cor vermelha -->
+            <MudButton
+                Href="/Coor/RecuperarSenha"
+                Class="mt-4"
+                FullWidth="true"
+                Variant="Variant.Filled"
+                Color="Color.Error"
+                Type="Submit">
+                <MudIconButton Icon="@Icons.Material.Filled.LockOpen" Color="Color.Inherit" />
+                Esqueci-me da senha
+            </MudButton>
+
+            <!-- Link Criar uma conta com cor roxa -->
+            <MudText Align="Align.Center">
+                <MudLink Href="/Coor/Registrar" Color="Color.Default">
+                    <MudIconButton Icon="@Icons.Material.Filled.PersonAdd" Color="Color.Inherit" />
+                    Criar uma conta
+                </MudLink>
+            </MudText>
+        </MudForm>
+    </MudPaper>
+</MudContainer>
+
+@code {
+    private LoginModel loginModel = new LoginModel();
+    private MudForm loginForm;
+    private bool loginError = false;
+    private bool passwordVisible = false;
+
+    private async Task HandleLogin()
+    {
+        // Simulação de login (substitua por sua lógica real)
+        if (loginModel.Username == "user@example.com" && loginModel.Password == "password")
+        {
+            loginError = false;
+            // Redirecionar para a página de menu após login bem-sucedido
+            NavigationManager.NavigateTo("/");
+        }
+        else
+        {
+            loginError = true;
+        }
+    }
+
+    private void TogglePasswordVisibility()
+    {
+        passwordVisible = !passwordVisible;
+        var inputType = passwordVisible ? InputType.Text : InputType.Password;
+    }
+
+    public class LoginModel
+    {
+        public string Username { get; set; }
+        public string Password { get; set; }
+    }
+}
