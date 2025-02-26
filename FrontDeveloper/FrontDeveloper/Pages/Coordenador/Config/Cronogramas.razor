@@ -1,6 +1,132 @@
 ﻿@page "/Coor/Cronogramas"
-<h3>Cronogramas</h3>
+
+@using MudBlazor
+@using System.Collections.Generic
+
+@inject NavigationManager Navigation
+
+<MudLayout>
+    <MudAppBar Elevation="1" Color="Color.Primary">
+        <MudText Typo="Typo.h6" Color="Color.Inherit">Gestão de Cronogramas Acadêmicos</MudText>
+    </MudAppBar>
+
+    <MudDrawer Open="true" Width="260px" Elevation="1" Color="Color.Primary">
+        <MudNavMenu>
+            <MudNavLink Icon="@Icons.Material.Filled.Home" Href="/Coor/Index">Home</MudNavLink>
+            <MudNavLink Icon="@Icons.Material.Filled.CalendarToday" Href="/gestao-cronogramas">Cronogramas de Provas</MudNavLink>
+            <MudNavLink Icon="@Icons.Material.Filled.EventNote" Href="/calendario-atividades">Calendário de Atividades</MudNavLink>
+            <MudNavLink Icon="@Icons.Material.Filled.Notifications" Href="/notificacoes">Notificações</MudNavLink>
+        </MudNavMenu>
+    </MudDrawer>
+
+    <MudMainContent>
+        <MudContainer MaxWidth="MaxWidth.Large">
+            <!-- 2.1 Visão Geral do Cronograma -->
+            <MudPaper Class="pa-4">
+                <MudText Typo="Typo.h5" Color="Color.Primary">Visão Geral do Cronograma</MudText>
+                <MudGrid>
+                    <MudItem xs="12" md="6">
+                        <MudCard>
+                            <MudCardContent>
+                                <MudCalendar />
+                                <MudText Typo="Typo.body1" Align="Align.Center">Visualize o cronograma de provas e eventos.</MudText>
+                            </MudCardContent>
+                        </MudCard>
+                    </MudItem>
+
+                    <!-- 2.2 Planejamento e Ajustes de Cronograma -->
+                    <MudItem xs="12" md="6">
+                        <MudCard>
+                            <MudCardContent>
+                                <MudText Typo="Typo.h6" Color="Color.Secondary">Planeje e Ajuste Cronograma</MudText>
+                                <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="OpenDialog">Adicionar/Alterar Prova</MudButton>
+                            </MudCardContent>
+                        </MudCard>
+                    </MudItem>
+                </MudGrid>
+            </MudPaper>
+
+            <!-- 2.3 Monitoramento de Eventos Acadêmicos -->
+            <MudPaper Class="pa-4 mt-4">
+                <MudText Typo="Typo.h5" Color="Color.Primary">Eventos Acadêmicos Importantes</MudText>
+                <MudGrid>
+                    <MudItem xs="12" md="4">
+                        <MudCard>
+                            <MudCardContent>
+                                <MudText Typo="Typo.h6">Seminários</MudText>
+                                <MudList T="string">
+                                    <MudListItem T="string">Seminário de Pesquisa - 03/03</MudListItem>
+                                    <MudListItem T="string">Defesa de TCC - 10/03</MudListItem>
+                                </MudList>
+                            </MudCardContent>
+                        </MudCard>
+                    </MudItem>
+
+                    <MudItem xs="12" md="4">
+                        <MudCard>
+                            <MudCardContent>
+                                <MudText Typo="Typo.h6">Palestras</MudText>
+                                <MudList T="string">
+                                    <MudListItem T="string">Palestra sobre Inovação - 15/03</MudListItem>
+                                    <MudListItem T="string">Palestra de Abertura - 20/03</MudListItem>
+                                </MudList>
+                            </MudCardContent>
+                        </MudCard>
+                    </MudItem>
+
+                    <MudItem xs="12" md="4">
+                        <MudCard>
+                            <MudCardContent>
+                                <MudText Typo="Typo.h6">Reuniões de Coordenação</MudText>
+                                <MudList T="string">
+                                    <MudListItem T="string">Reunião de Planejamento - 28/02</MudListItem>
+                                </MudList>
+                            </MudCardContent>
+                        </MudCard>
+                    </MudItem>
+                </MudGrid>
+            </MudPaper>
+        </MudContainer>
+    </MudMainContent>
+</MudLayout>
+
+<!-- Dialog para Adicionar/Alterar Provas -->
+<MudDialog @bind-IsOpen="dialogOpen">
+    <MudDialogTitle>Adicionar ou Alterar Prova</MudDialogTitle>
+    <MudDialogContent>
+        <MudTextField Label="Nome da Prova" @bind-Value="newExamName" FullWidth />
+        <MudDatePicker Label="Data" @bind-Date="examDate" FullWidth />
+        <MudTimePicker Label="Hora" @bind-Value="examTime" FullWidth />
+    </MudDialogContent>
+    <MudDialogActions>
+        <MudButton OnClick="AddExam" Color="Color.Primary">Adicionar</MudButton>
+        <MudButton OnClick="CloseDialog">Cancelar</MudButton>
+    </MudDialogActions>
+</MudDialog>
 
 @code {
-    
+    private MudTheme theme = new MudTheme
+    {
+        PaletteLight = new PaletteLight()
+        {
+            Primary = "#326496",  
+            Secondary = "#FF6464"
+        }
+    };
+
+    private bool dialogOpen = false;
+    private string newExamName;
+    private DateTime? examDate = DateTime.Now;
+    private TimeSpan examTime = DateTime.Now.TimeOfDay;
+
+    private void OpenDialog() => dialogOpen = true;
+    private void CloseDialog() => dialogOpen = false;
+
+    private void AddExam()
+    {
+        // Adicionar lógica para salvar os dados
+        dialogOpen = false;
+        // Exibir mensagem ou atualizar a lista de eventos
+    }
 }
+

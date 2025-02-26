@@ -1,6 +1,69 @@
 ﻿@page "/Coor/Suporte"
-<h3>Suporte</h3>
+
+@using MudBlazor
+
+<PageTitle>Suporte e Contato</PageTitle>
+
+<MudContainer>
+    <!-- Título da Página -->
+    <MudText Typo="Typo.h4" Align="Align.Center">Suporte e Contato</MudText>
+
+    <MudGrid>
+        <!-- Relatar Problemas ou Dificuldades -->
+        <MudItem xs="12" sm="6" md="4">
+            <MudCard>
+                <MudCardContent>
+                    <MudText Typo="Typo.h6">Relatar Problemas ou Dificuldades</MudText>
+                    <MudIconButton Icon="@Icons.Material.Filled.ReportProblem" Color="Color.Primary" Size="Size.Large" />
+                    <MudText>Informe qualquer problema ou dificuldade que você esteja enfrentando.</MudText>
+                    <MudButton Variant="Variant.Filled" Color="Color.Secondary" Class="mt-2" @onclick="RelatarProblema">Relatar Problema</MudButton>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+
+        <!-- Solicitar Suporte Técnico -->
+        <MudItem xs="12" sm="6" md="4">
+            <MudCard>
+                <MudCardContent>
+                    <MudText Typo="Typo.h6">Solicitar Suporte Técnico</MudText>
+                    <MudIconButton Icon="@Icons.Material.Filled.Build" Color="Color.Primary" Size="Size.Large" />
+                    <MudText>Solicite suporte técnico para questões mais complexas.</MudText>
+                    <MudButton Variant="Variant.Filled" Color="Color.Secondary" Class="mt-2" @onclick="SolicitarSuporte">Solicitar Suporte</MudButton>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+
+        <!-- Contatar Outros Departamentos Acadêmicos -->
+        <MudItem xs="12" sm="6" md="4">
+            <MudCard>
+                <MudCardContent>
+                    <MudText Typo="Typo.h6">Contatar Outros Departamentos Acadêmicos</MudText>
+                    <MudIconButton Icon="@Icons.Material.Filled.Mail" Color="Color.Primary" Size="Size.Large" />
+                    <MudText>Entre em contato com outros departamentos acadêmicos.</MudText>
+                    <MudButton Variant="Variant.Filled" Color="Color.Secondary" Class="mt-2" @onclick="ContatarDepartamentos">Contatar Departamentos</MudButton>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+    </MudGrid>
+</MudContainer>
 
 @code {
-    
+    // Métodos que serão chamados ao clicar nos botões
+    private void RelatarProblema()
+    {
+        // Lógica para relatar um problema (exemplo: abrir um formulário ou enviar um e-mail)
+        Console.WriteLine("Problema relatado.");
+    }
+
+    private void SolicitarSuporte()
+    {
+        // Lógica para solicitar suporte técnico (exemplo: abrir um ticket de suporte)
+        Console.WriteLine("Solicitação de suporte técnico enviada.");
+    }
+
+    private void ContatarDepartamentos()
+    {
+        // Lógica para contatar outros departamentos acadêmicos (exemplo: redirecionar para um formulário de contato)
+        Console.WriteLine("Contato com departamentos acadêmicos.");
+    }
 }

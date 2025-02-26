@@ -1,6 +1,175 @@
 ﻿@page "/Coor/Atribuicao"
-<h3>Atribuicao</h3>
+
+@using MudBlazor
+
+<PageTitle>Atribuição de Professores às Disciplinas</PageTitle>
+
+<MudContainer MaxWidth="MaxWidth.Large">
+    <!-- Cabeçalho da Página -->
+    <MudPaper Elevation="4" Class="mb-4 pa-4">
+        <MudText Typo="Typo.h4" Align="Align.Center" Class="text-primary">
+            Atribuição de Professores às Disciplinas
+        </MudText>
+    </MudPaper>
+
+    <!-- Filtros para visualização de professores disponíveis -->
+    <MudGrid>
+        <MudItem xs="12" sm="6">
+            <MudTextField 
+                T="string" 
+                Label="Filtrar Professores" 
+                Variant="Variant.Outlined" 
+                Icon="@Icons.Material.Filled.Search" 
+                FullWidth />
+        </MudItem>
+        <MudItem xs="12" sm="6">
+            <MudSelect T="string" Label="Filtrar por Área" Variant="Variant.Outlined" Icon="@Icons.Material.Filled.FilterAlt" FullWidth>
+                <MudSelectItem Value="Matemática">Matemática</MudSelectItem>
+                <MudSelectItem Value="Física">Física</MudSelectItem>
+                <MudSelectItem Value="Química">Química</MudSelectItem>
+                <MudSelectItem Value="Biologia">Biologia</MudSelectItem>
+            </MudSelect>
+        </MudItem>
+    </MudGrid>
+
+    <!-- Tabela de Professores Disponíveis -->
+    <MudPaper Elevation="4" Class="mb-4 pa-4">
+        <MudText Typo="Typo.h6" Class="mb-2">Professores Disponíveis</MudText>
+        <MudTable T="string" Elevation="1">
+            <MudTableHead>
+                <MudTableRow>
+                    <MudTableCell>Nome</MudTableCell>
+                    <MudTableCell>Especialidade</MudTableCell>
+                    <MudTableCell>Disponibilidade</MudTableCell>
+                    <MudTableCell>Ação</MudTableCell>
+                </MudTableRow>
+            </MudTableHead>
+            <MudTableBody>
+                @foreach (var professor in professoresDisponiveis)
+                {
+                    <MudTableRow>
+                        <MudTableCell>@professor.Nome</MudTableCell>
+                        <MudTableCell>@professor.Especialidade</MudTableCell>
+                        <MudTableCell>@professor.Disponibilidade</MudTableCell>
+                        <MudTableCell>
+                            <MudIconButton Icon="@Icons.Material.Filled.Add" Color="Color.Primary" OnClick="@(() => AtribuirProfessor(professor))" />
+                        </MudTableCell>
+                    </MudTableRow>
+                }
+            </MudTableBody>
+        </MudTable>
+    </MudPaper>
+
+    <!-- Seção para Atribuição de Professores às Disciplinas -->
+    <MudPaper Elevation="4" Class="mb-4 pa-4">
+        <MudText Typo="Typo.h6" Class="mb-2">Atribuir Professores às Disciplinas</MudText>
+        <MudGrid>
+            @foreach (var disciplina in disciplinas)
+            {
+                <MudItem xs="12" sm="4">
+                    <MudCard Elevation="3" Class="mb-3">
+                        <MudCardContent>
+                            <MudText Typo="Typo.h6" Class="text-center">@disciplina.Nome</MudText>
+                            <MudText Typo="Typo.body2" Class="text-center">@disciplina.Descrição</MudText>
+                            <MudButton FullWidth Color="Color.Primary" OnClick="@(() => AtribuirProfessorPorDisciplina(disciplina))">
+                                Atribuir Professor
+                            </MudButton>
+                        </MudCardContent>
+                    </MudCard>
+                </MudItem>
+            }
+        </MudGrid>
+    </MudPaper>
+
+    <!-- Ajuste de Alocação -->
+    <MudPaper Elevation="4" Class="mb-4 pa-4">
+        <MudText Typo="Typo.h6" Class="mb-2">Ajustar Alocação Conforme Demanda</MudText>
+        <MudGrid>
+            <MudItem xs="12">
+                <MudButton
+                    FullWidth Color="Color.Secondary"
+                    OnClick="AjustarAlocacao">
+                    Ajustar Alocação
+                </MudButton>
+            </MudItem>
+        </MudGrid>
+    </MudPaper>
+
+    <!-- Resumo de Atribuições -->
+    <MudPaper Elevation="4" Class="mb-4 pa-4">
+        <MudText Typo="Typo.h6" Class="mb-2">Resumo das Atribuições</MudText>
+        <MudTable T="string" Elevation="1">
+            <MudTableHead>
+                <MudTableRow>
+                    <MudTableCell>Disciplina</MudTableCell>
+                    <MudTableCell>Professor</MudTableCell>
+                    <MudTableCell>Carga Horária</MudTableCell>
+                </MudTableRow>
+            </MudTableHead>
+            <MudTableBody>
+               
+            </MudTableBody>
+        </MudTable>
+    </MudPaper>
+
+</MudContainer>
 
 @code {
-    
+    // Dados para a tabela de professores
+    private List<Professor> professoresDisponiveis = new List<Professor>
+    {
+        new Professor { Nome = "João Silva", Especialidade = "Matemática", Disponibilidade = "Segunda e Quarta" },
+        new Professor { Nome = "Maria Oliveira", Especialidade = "Física", Disponibilidade = "Terça e Quinta" },
+        new Professor { Nome = "Ana Costa", Especialidade = "Química", Disponibilidade = "Segunda a Sexta" },
+        new Professor { Nome = "Pedro Souza", Especialidade = "Biologia", Disponibilidade = "Quarta e Sexta" },
+    };
+
+    // Dados para as disciplinas
+    private List<Disciplina> disciplinas = new List<Disciplina>
+    {
+        new Disciplina { Nome = "Matemática", Descrição = "Matemática Básica e Avançada" },
+        new Disciplina { Nome = "Física", Descrição = "Fundamentos da Física" },
+        new Disciplina { Nome = "Química", Descrição = "Química Geral" },
+        new Disciplina { Nome = "Biologia", Descrição = "Biologia Celular" },
+    };
+
+   
+
+    public object Matemática { get; set; }
+    public object Física { get; set; }
+    public object Química { get; set; }
+    public object Biologia { get; set; }
+    public object atribuição { get; set; }
+
+    // Métodos de interação com a página
+    private void AtribuirProfessor(Professor professor)
+    {
+        // Lógica para atribuir um professor a uma disciplina
+    }
+
+    private void AtribuirProfessorPorDisciplina(Disciplina disciplina)
+    {
+        // Lógica para atribuir um professor a uma disciplina
+    }
+
+    private void AjustarAlocacao()
+    {
+        // Lógica para ajustar alocação de professores
+    }
+
+    // Classes para modelar os dados
+    public class Professor
+    {
+        public string Nome { get; set; }
+        public string Especialidade { get; set; }
+        public string Disponibilidade { get; set; }
+    }
+
+    public class Disciplina
+    {
+        public string Nome { get; set; }
+        public string Descrição { get; set; }
+    }
+
+   
 }
