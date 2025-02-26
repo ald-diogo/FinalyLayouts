@@ -1,6 +1,118 @@
 ﻿@page "/Admin/Politica"
-<h3>Politica</h3>
+
+@using MudBlazor
+@inject IJSRuntime JS
+@inject NavigationManager NavigationManager
+
+<PageTitle>Políticas de Segurança - Sistema de Gestão Acadêmica</PageTitle>
+
+<MudThemeProvider Theme="@theme">
+    <MudContainer MaxWidth="MaxWidth.Large">
+        <MudGrid>
+            <!-- Título da Página -->
+            <MudItem xs="12">
+                <MudText Typo="Typo.h2" Align="Align.Center" GutterBottom="true" Class="security-title">
+                    Políticas de Segurança para o Sistema de Gestão Acadêmica
+                </MudText>
+            </MudItem>
+
+            <!-- Seção de Introdução -->
+            <MudItem xs="12" sm="6">
+                <MudPaper Class="policy-introduction" Elevation="4">
+                    <MudText Typo="Typo.h5" Align="Align.Center">
+                        Garantimos a segurança dos seus dados acadêmicos em todas as etapas de uso do sistema.
+                    </MudText>
+
+                    <MudText Typo="Typo.body1">
+                        Nosso sistema adota as melhores práticas de segurança para proteger suas informações acadêmicas, desde o acesso a registros de notas até a comunicação entre professores e alunos.
+                    </MudText>
+                </MudPaper>
+            </MudItem>
+
+            <!-- Políticas de Segurança -->
+            <MudItem xs="12" sm="6">
+                <MudPaper
+                    Class="policy-box"
+                    Elevation="5"
+                    Style="transition: transform 0.3s ease; cursor: pointer;">
+
+                    <MudIcon Icon="@Icons.Material.Filled.Lock" Color="Color.Primary" Size="Size.Large"/>
+
+                    <MudText Typo="Typo.h6" Align="Align.Center">Proteção de Dados Pessoais</MudText>
+
+                    <MudText Typo="Typo.body2" Align="Align.Center">
+                        Seus dados acadêmicos são armazenados de forma segura e criptografada, protegendo a sua privacidade durante todo o processo de gestão.
+                    </MudText>
+                </MudPaper>
+            </MudItem>
+
+            <MudItem xs="12" sm="6">
+                <MudPaper
+                    Class="policy-box"
+                    Elevation="5"
+                    Style="transition: transform 0.3s ease; cursor: pointer;">
+
+                    <MudIcon Icon="@Icons.Material.Filled.Assignment" Color="Color.Success" Size="Size.Large"/>
+
+                    <MudText Typo="Typo.h6" Align="Align.Center">Gestão de Notas Segura</MudText>
+
+                    <MudText Typo="Typo.body2" Align="Align.Center">
+                        As notas e avaliações dos alunos são armazenadas de forma segura, garantindo que somente usuários autorizados possam acessá-las.
+                    </MudText>
+                </MudPaper>
+            </MudItem>
+
+            <MudItem xs="12" sm="6">
+                <MudPaper
+                    Class="policy-box"
+                    Elevation="5"
+                    Style="transition: transform 0.3s ease; cursor: pointer;">
+                    <MudIcon Icon="@Icons.Material.Filled.VpnKey" Color="Color.Info" Size="Size.Large" />
+
+                    <MudText Typo="Typo.h6" Align="Align.Center">Autenticação Multifatorial</MudText>
+
+                    <MudText Typo="Typo.body2" Align="Align.Center">
+                        Implementamos autenticação multifatorial para garantir que apenas você tenha acesso às suas informações acadêmicas.
+                    </MudText>
+                </MudPaper>
+            </MudItem>
+
+            <MudItem xs="12" sm="6">
+                <MudPaper
+                    Class="policy-box"
+                    Elevation="5"
+                    Style="transition: transform 0.3s ease; cursor: pointer;">
+
+                    <MudIcon Icon="@Icons.Material.Filled.Support" Color="Color.Warning" Size="Size.Large"/>
+
+                    <MudText Typo="Typo.h6" Align="Align.Center">Suporte Acadêmico 24/7</MudText>
+
+                    <MudText Typo="Typo.body2" Align="Align.Center">
+                        Oferecemos suporte contínuo para garantir que você tenha a melhor experiência no uso do sistema acadêmico, com assistência sempre que necessário.
+                    </MudText>
+                </MudPaper>
+            </MudItem>
+        </MudGrid>
+    </MudContainer>
+</MudThemeProvider>
 
 @code {
-    
+    private MudTheme theme = new MudTheme()
+    {
+        PaletteLight = new PaletteLight()
+        {
+            Primary = "#1E88E5", // Azul
+            Secondary = "#43A047", // Verde
+            Background = "#F5F5F5", // Cinza claro
+            Surface = "#FFFFFF",
+            TextPrimary = "#212121", // Cor de texto escura
+            TextSecondary = "#757575", // Cor de texto secundária
+        }
+    };
+
+    private void NavigateToPolicy(string policyType)
+    {
+        // Navegar para a página da política específica
+        NavigationManager.NavigateTo($"/politicas/{policyType}");
+    }
 }
