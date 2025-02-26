@@ -1,6 +1,145 @@
 ﻿@page "/Coor/Desempenho"
-<h3>Desempenho</h3>
+
+@using MudBlazor
+@inject NavigationManager NavigationManager
+
+<MudLayout>
+    <MudAppBar Color="Color.Primary">
+        <MudText Typo="Typo.h5" Width="100%" Align="Align.Center">Monitoramento do Desempenho Acadêmico</MudText>
+    </MudAppBar>
+
+    <MudDrawer Clipped="true" Open="true" Elevation="4">
+        <MudList T="string">
+            <MudListItem T="string" Icon="@Icons.Material.Filled.Assessment" OnClick="NavigateToRelatorios">Relatórios de Desempenho</MudListItem>
+            <MudListItem T="string" Icon="@Icons.Material.Filled.Warning" OnClick="NavigateToDesempenhoAbaixoMedia">Alunos Abaixo da Média</MudListItem>
+            <MudListItem T="string" Icon="@Icons.Material.Filled.TrendingUp" OnClick="NavigateToTendencias">Tendências Acadêmicas</MudListItem>
+            <MudListItem T="string" Icon="@Icons.Material.Filled.Notifications" OnClick="NavigateToAlertas">Alertas e Intervenções</MudListItem>
+        </MudList>
+    </MudDrawer>
+
+    <MudMainContent>
+        <MudContainer>
+            <MudGrid>
+                <MudItem xs="12" md="6">
+                    <MudPaper Elevation="3" Class="pa-4" Style="transition: transform 0.3s ease; transform: scale(1);">
+                        <MudText Typo="Typo.h6">Visão Geral do Desempenho</MudText>
+                        <MudChart ChartType="ChartType.Line" Data="@performanceData" Options="@chartOptions"></MudChart>
+                    </MudPaper>
+                </MudItem>
+                <MudItem xs="12" md="6">
+                    <MudPaper Elevation="3" Class="pa-4">
+                        <MudText Typo="Typo.h6">Estudantes Abaixo da Média</MudText>
+                        <MudTable Items="@studentsBelowAverage" Elevation="1">
+                            <HeaderContent>
+                                <MudTh>Nome</MudTh>
+                                <MudTh>Nota Atual</MudTh>
+                                <MudTh>Histórico</MudTh>
+                            </HeaderContent>
+                            <RowTemplate>
+                                <MudTd>@context.Name</MudTd>
+                                <MudTd>@context.CurrentGrade</MudTd>
+                                <MudTd>@context.History</MudTd>
+                            </RowTemplate>
+                        </MudTable>
+                    </MudPaper>
+                </MudItem>
+            </MudGrid>
+
+            <MudGrid>
+                <MudItem xs="12" md="12">
+                    <MudPaper 
+                        Elevation="3"
+                        Class="pa-4" 
+                        Style="transition: transform 0.3s ease; transform: scale(1);">
+                        <MudText Typo="Typo.h6">Alertas e Ações Pedagógicas</MudText>
+                        <MudAlert Severity="Severity.Warning" Icon="@Icons.Material.Filled.Error">
+                            Estudantes com desempenho abaixo da média precisam de intervenção pedagógica imediata.
+                        </MudAlert>
+                    </MudPaper>
+                </MudItem>
+            </MudGrid>
+        </MudContainer>
+    </MudMainContent>
+</MudLayout>
 
 @code {
-    
+
+    private class MudChartOptions
+    {
+        public bool Responsive { get; set; }
+        public Dictionary<string, MudChartAxis> Scales { get; set; }
+    }
+
+    // Dados de desempenho (esses seriam preenchidos dinamicamente do banco de dados ou API)
+    private List<StudentPerformance> studentsBelowAverage = new List<StudentPerformance>
+    {
+        new StudentPerformance { Name = "Gelson Diogo", CurrentGrade = 4.5, History = "Queda nas últimas provas" },
+        new StudentPerformance { Name = "Azaque Torres", CurrentGrade = 4.8, History = "Desempenho inconsistente" }
+    };
+
+    private List<ChartData> performanceData = new List<ChartData>
+    {
+        new ChartData { Date = "Jan", Value = 7 },
+        new ChartData { Date = "Feb", Value = 6.5 },
+        new ChartData { Date = "Mar", Value = 8 },
+        new ChartData { Date = "Apr", Value = 7.5 }
+    };
+
+    private MudChartOptions chartOptions = new MudChartOptions
+    {
+        Responsive = true,
+        Scales = new Dictionary<string, MudChartAxis>
+        {
+            { "y", new MudChartAxis { Ticks = new MudChartTicks { BeginAtZero = true } } }
+        }
+    };
+
+    private class MudChartTicks
+    {
+        public bool BeginAtZero { get; set; }
+    }
+
+    private class MudChartAxis
+    {
+        public object Ticks { get; set; }
+    }
+
+    // Métodos de navegação (Exemplo)
+    private void NavigateToRelatorios()
+    {
+        // Navegar para a página de Relatórios de Desempenho
+        NavigationManager.NavigateTo("/relatorios");
+    }
+
+    private void NavigateToDesempenhoAbaixoMedia()
+    {
+        // Navegar para a página de Alunos Abaixo da Média
+        NavigationManager.NavigateTo("/desempenho-abaixo-media");
+    }
+
+    private void NavigateToTendencias()
+    {
+        // Navegar para a página de Tendências Acadêmicas
+        NavigationManager.NavigateTo("/tendencias");
+    }
+
+    private void NavigateToAlertas()
+    {
+        // Navegar para a página de Alertas e Intervenções
+        NavigationManager.NavigateTo("/alertas");
+    }
+
+    // Classes para os dados (essas classes representam as informações de desempenho dos alunos)
+    public class StudentPerformance
+    {
+        public string Name { get; set; }
+        public double CurrentGrade { get; set; }
+        public string History { get; set; }
+    }
+
+    public class ChartData
+    {
+        public string Date { get; set; }
+        public double Value { get; set; }
+    }
 }
