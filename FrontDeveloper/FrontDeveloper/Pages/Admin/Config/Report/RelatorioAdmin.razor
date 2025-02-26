@@ -1,6 +1,125 @@
 ﻿@page "/RelatorioAdmin"
-<h3>RelatorioAdmin</h3>
+
+@using MudBlazor
+
+<MudContainer MaxWidth="MaxWidth.Large">
+    <MudText Typo="Typo.h4" Align="Align.Center">Relatórios e Auditoria</MudText>
+
+    <!-- Seção de Relatórios Acadêmicos -->
+    <MudExpansionPanel Text="Relatórios Acadêmicos" Dense="true">
+        <MudText Typo="Typo.h6">Gerar Relatórios de Desempenho dos Estudantes</MudText>
+        <MudTextField T="bool" Label="Curso" Variant="Variant.Filled" FullWidth="true" Margin="Margin.Normal" />
+        <MudTextField T="bool" Label="Período" Variant="Variant.Filled" FullWidth="true" Margin="Margin.Normal" />
+        <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="GenerateAcademicReport">Gerar Relatório</MudButton>
+
+        <MudText Typo="Typo.h6" Class="mt-4">Relatórios de Frequência e Notas</MudText>
+        <MudTextField T="bool" Label="Turma" Variant="Variant.Filled" FullWidth="true" Margin="Margin.Normal" />
+        <MudTextField T="bool" Label="Disciplina" Variant="Variant.Filled" FullWidth="true" Margin="Margin.Normal" />
+        <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="GenerateAttendanceAndGradesReport">Gerar Relatório</MudButton>
+
+        <MudText Typo="Typo.h6" Class="mt-4">Relatórios de Matrícula e Desistência</MudText>
+        <MudTextField T="bool" Label="Aluno" Variant="Variant.Filled" FullWidth="true" Margin="Margin.Normal" />
+        <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="GenerateEnrollmentAndDropoutReport">Gerar Relatório</MudButton>
+    </MudExpansionPanel>
+
+    <!-- Seção de Relatórios de Sistema -->
+    <MudExpansionPanel Text="Relatórios de Sistema" Dense="true">
+        <MudText Typo="Typo.h6">Relatório de Atividades de Usuários</MudText>
+        <MudTextField T="bool" Label="Usuário" Variant="Variant.Filled" FullWidth="true" Margin="Margin.Normal" />
+        <MudDatePicker Label="Data Inicial" Variant="Variant.Filled" FullWidth="true" Margin="Margin.Normal" />
+        <MudDatePicker Label="Data Final" Variant="Variant.Filled" FullWidth="true" Margin="Margin.Normal" />
+        <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="GenerateUserActivitiesReport">Gerar Relatório</MudButton>
+
+        <MudText Typo="Typo.h6" Class="mt-4">Relatório de Erros ou Falhas no Sistema</MudText>
+        <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="GenerateSystemErrorsReport">Gerar Relatório</MudButton>
+
+        <MudText Typo="Typo.h6" Class="mt-4">Auditoria de Mudanças no Sistema</MudText>
+        <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="GenerateSystemChangesAudit">Gerar Relatório</MudButton>
+    </MudExpansionPanel>
+
+    <!-- Área de Visualização de Relatório (Placeholder para tabelas e dados) -->
+    <MudPaper Class="mt-4">
+        <MudTable Items="@reportData" Bordered="true">
+            <HeaderContent>
+                <MudTh>Data</MudTh>
+                <MudTh>Descrição</MudTh>
+                <MudTh>Valor</MudTh>
+            </HeaderContent>
+            <RowTemplate>
+                <MudTd DataLabel="Data">@context.Date</MudTd>
+                <MudTd DataLabel="Descrição">@context.Description</MudTd>
+                <MudTd DataLabel="Valor">@context.Value</MudTd>
+            </RowTemplate>
+        </MudTable>
+
+        <!-- Link para Exportar -->
+        <MudButton
+            Href="/Admin/Exportar"
+            Variant="Variant.Filled"
+            Color="Color.Secondary"
+            OnClick="ExportReport"
+            Class="mt-4">
+            Exportar Relatório
+        </MudButton>
+    </MudPaper>
+</MudContainer>
 
 @code {
-    
+    private List<ReportData> reportData = new List<ReportData>();
+
+    // Função para gerar relatório acadêmico
+    private void GenerateAcademicReport()
+    {
+        // Simulação de dados para o relatório acadêmico
+        reportData.Add(new ReportData { Date = DateTime.Now, Description = "Desempenho do Aluno", Value = "A+" });
+    }
+
+    // Função para gerar relatório de frequência e notas
+    private void GenerateAttendanceAndGradesReport()
+    {
+        // Simulação de dados para o relatório de frequência e notas
+        reportData.Add(new ReportData { Date = DateTime.Now, Description = "Frequência e Notas", Value = "Presente, Nota 9" });
+    }
+
+    // Função para gerar relatório de matrícula e desistência
+    private void GenerateEnrollmentAndDropoutReport()
+    {
+        // Simulação de dados para o relatório de matrícula e desistência
+        reportData.Add(new ReportData { Date = DateTime.Now, Description = "Matrícula", Value = "Matriculado" });
+    }
+
+    // Função para gerar relatório de atividades de usuários
+    private void GenerateUserActivitiesReport()
+    {
+        // Simulação de dados para o relatório de atividades
+        reportData.Add(new ReportData { Date = DateTime.Now, Description = "Atividade de Login", Value = "Login Realizado" });
+    }
+
+    // Função para gerar relatório de erros ou falhas
+    private void GenerateSystemErrorsReport()
+    {
+        // Simulação de dados para o relatório de erros
+        reportData.Add(new ReportData { Date = DateTime.Now, Description = "Erro no Sistema", Value = "Falha no login" });
+    }
+
+    // Função para gerar auditoria de mudanças no sistema
+    private void GenerateSystemChangesAudit()
+    {
+        // Simulação de dados para a auditoria de mudanças
+        reportData.Add(new ReportData { Date = DateTime.Now, Description = "Alteração no Sistema", Value = "Atualização de versão" });
+    }
+
+    // Função para exportar relatório (simulação de exportação)
+    private void ExportReport()
+    {
+        // Lógica de exportação (exemplo simples, em produção você pode usar bibliotecas como EPPlus ou CsvHelper)
+        Console.WriteLine("Relatório Exportado!");
+    }
+
+    public class ReportData
+    {
+        public DateTime Date { get; set; }
+        public string Description { get; set; }
+        public string Value { get; set; }
+    }
 }
