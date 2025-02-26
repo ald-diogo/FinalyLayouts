@@ -1,6 +1,79 @@
-﻿@page "/Senhas"
-<h3>Senhas</h3>
+﻿@page "/Admin/Senhas"
+
+@using MudBlazor
+
+<PageTitle>Segurança do Sistema - Gerenciar Senhas</PageTitle>
+
+<MudPaper Class="pa-4">
+    <MudText Typo="Typo.h4" GutterBottom>
+        Gerenciamento de Senhas
+    </MudText>
+
+    <!-- Seção de Redefinir Senha de Usuários -->
+    <MudExpansionPanel Text="Redefinir Senha de Usuários" Icon="@Icons.Material.Filled.LockReset" Elevation="1">
+        <MudTextField @bind-Value="email" Label="E-mail do Usuário" FullWidth="true" Margin="Margin.Dense" />
+        <MudButton Color="Color.Primary" OnClick="RedefinirSenha" Variant="Variant.Filled" FullWidth="true">
+            Enviar Link de Redefinição
+        </MudButton>
+    </MudExpansionPanel>
+
+    <MudDivider />
+
+    <!-- Seção de Configuração de Políticas de Senhas -->
+    <MudExpansionPanel Text="Configuração de Políticas de Senhas" Icon="@Icons.Material.Filled.Security" Elevation="1">
+        <MudText Typo="Typo.body1" GutterBottom>
+            Defina as políticas de senhas para garantir segurança no acesso ao sistema.
+        </MudText>
+
+        <MudCheckBox T="bool" @bind-Checked="politicaSenhaComplexidade" Label="Exigir Senhas Complexas (Números, Letras e Caracteres Especiais)" />
+        <MudTextField @bind-Value="senhaMinimaCaracteres" Label="Número Mínimo de Caracteres" Type="number" FullWidth="true" Margin="Margin.Dense" />
+
+        <MudCheckBox T="bool" @bind-Checked="politicaSenhaExpiracao" Label="Forçar Expiração de Senha a Cada X Dias" />
+        <MudTextField @bind-Value="diasExpiracao" Label="Número de Dias para Expiração da Senha" Type="number" FullWidth="true" Margin="Margin.Dense" Disabled="!politicaSenhaExpiracao" />
+
+        <MudCheckBox T="bool" @bind-Checked="notificarExpiracao" Label="Notificar Usuário Antes da Expiração" />
+        <MudTextField @bind-Value="diasAvisoExpiracao" Label="Número de Dias Antes de Expirar para Notificar" Type="number" FullWidth="true" Margin="Margin.Dense" Disabled="!notificarExpiracao" />
+
+        <MudButton Color="Color.Secondary" OnClick="SalvarConfiguracoes" Variant="Variant.Filled" FullWidth="true">
+            Salvar Configurações
+        </MudButton>
+    </MudExpansionPanel>
+</MudPaper>
 
 @code {
-    
+    // Variáveis para a redefinição de senha
+    private string email = string.Empty;
+
+    // Variáveis para as configurações de políticas de senha
+    private bool politicaSenhaComplexidade = true;
+    private int senhaMinimaCaracteres = 8;
+    private bool politicaSenhaExpiracao = true;
+    private int diasExpiracao = 90;
+    private bool notificarExpiracao = true;
+    private int diasAvisoExpiracao = 15;
+
+    // Método para redefinir senha
+    private void RedefinirSenha()
+    {
+        if (string.IsNullOrEmpty(email))
+        {
+            // Exibir erro ou mensagem
+            Console.WriteLine("Por favor, insira um e-mail.");
+            return;
+        }
+
+        // Lógica para enviar o link de redefinição de senha ao e-mail do usuário
+        Console.WriteLine($"Um link de redefinição de senha foi enviado para: {email}");
+    }
+
+    // Método para salvar as configurações das políticas de senha
+    private void SalvarConfiguracoes()
+    {
+        // Lógica para salvar as configurações
+        Console.WriteLine($"Configurações Salvas:");
+        Console.WriteLine($"- Complexidade de Senha: {politicaSenhaComplexidade}");
+        Console.WriteLine($"- Mínimo de Caracteres: {senhaMinimaCaracteres}");
+        Console.WriteLine($"- Expiração de Senha: {politicaSenhaExpiracao}, Expira em {diasExpiracao} dias");
+        Console.WriteLine($"- Notificação de Expiração: {notificarExpiracao}, Notificar com {diasAvisoExpiracao} dias de antecedência");
+    }
 }
