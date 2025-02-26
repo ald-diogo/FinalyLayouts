@@ -1,6 +1,71 @@
 ﻿@page "/Coor/Menu"
-<h3>Menu</h3>
 
-@code {
-    
-}
+<MudNavLink Href="/Coor/Index" Match="NavLinkMatch.All">
+    <MudIcon Icon="@Icons.Material.Filled.Home" IconColor="Color.Warning" />
+    Início
+</MudNavLink>
+
+<MudNavGroup
+    Icon="@Icons.Material.Filled.Dashboard"
+    IconColor="Color.Error"
+    Title="Painel"
+    Expanded="true">
+    <MudNavLink
+        Href="/Coor/Atribuicao"
+        Match="NavLinkMatch.Prefix"
+        Icon="@Icons.Material.Filled.PersonAdd"
+        IconColor="Color.Success">
+        Atribuição de Professores
+    </MudNavLink>
+
+    <MudNavLink
+        Href="/Coor/GradeCurricular"
+        Match="NavLinkMatch.Prefix"
+        Icon="@Icons.Material.Filled.MenuBook"
+        IconColor="Color.Surface">
+        Grade Curricular
+    </MudNavLink>
+
+    <MudNavLink
+        T="bool"
+        Href="/Coor/Cronogramas"
+        Match="NavLinkMatch.Prefix"
+        Icon="@Icons.Material.Filled.Schedule"
+        IconColor="Color.Success">
+        Cronogramas
+    </MudNavLink>
+
+    <MudNavLink
+        Href="/Coor/Administracao"
+        Match="NavLinkMatch.Prefix"
+        Icon="@Icons.Material.Filled.AdminPanelSettings"
+        IconColor="Color.Secondary">
+        Administração
+    </MudNavLink>
+</MudNavGroup>
+
+<MudNavLink
+    T="bool"
+    Href="/Coor/Seguranca"
+    Match="NavLinkMatch.Prefix"
+    Icon="@Icons.Material.Filled.Lock"
+    IconColor = "Color.Default">Segurança
+</MudNavLink>
+
+<MudNavLink
+    Href="/Coor/Suporte"
+    Match="NavLinkMatch.Prefix"
+    Icon="@Icons.Material.Filled.Help"
+    IconColor="Color.Surface">
+    Suporte
+</MudNavLink>
+
+
+
+<MudNavLink
+    Href="/Coor/Sobre"
+    Match="NavLinkMatch.Prefix"
+    Icon="@Icons.Material.Filled.Info"
+    IconColor="Color.Info">
+    Sobre
+</MudNavLink>
