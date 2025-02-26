@@ -1,0 +1,140 @@
+﻿@page "/Admin/GestaoUsuarios"
+@using MudBlazor
+
+<PageTitle>Segurança no Sistema de Reservas</PageTitle>
+
+<MudContainer MaxWidth="MaxWidth.Large">
+    <!-- Header de Introdução -->
+    <MudText Typo="Typo.h3" Align="Align.Center" Color="Color.Primary">
+        Gestão de Usuários
+    </MudText>
+
+    <MudText Typo="Typo.h6" Align="Align.Center" Color="Color.Inherit">
+        Tenha Acesso Total aos Seus Usuários Monitorando Seu Desempenho e Aproveitamento Escolar Dos Estudantes.
+    </MudText>
+</MudContainer>
+
+<MudContainer MaxWidth="MaxWidth.Large" Class="security-section">
+    <!-- Níveis de Acesso -->
+    <MudGrid>
+        <MudItem xs="12" sm="6" lg="4">
+            <MudPaper Elevation="4" Class="security-card">
+                <MudIcon Icon="icons-material-lock" Color="Color.Primary" Size="Size.Large"/>
+                <MudText Typo="Typo.h5" Align="Align.Center">
+                    Coordenador Acadêmico
+                </MudText>
+                <MudText Align="Align.Center">
+                    Controle rigoroso de quem tem acesso às informações sensíveis do sistema, garantindo que apenas usuários autorizados possam realizar determinadas ações.
+                </MudText>
+                <MudButton Href="/" Variant="Variant.Filled" Color="Color.Primary" Size="Size.Medium" FullWidth>
+                    Ver Mais Detalhes
+                </MudButton>
+            </MudPaper>
+        </MudItem>
+
+        <MudItem xs="12" sm="6" lg="4">
+            <MudPaper Elevation="4" Class="security-card">
+                <MudIcon Icon="icons-material-security" Color="Color.Secondary" Size="Size.Large"/>
+                <MudText Typo="Typo.h5" Align="Align.Center">
+                    Professores
+                </MudText>
+                <MudText Align="Align.Center">
+                    Controle rigoroso de quem tem acesso às informações sensíveis do sistema, garantindo que apenas usuários autorizados possam realizar determinadas ações.
+                </MudText>
+                <MudButton Href="/" Variant="Variant.Filled" Color="Color.Primary" Size="Size.Medium" FullWidth>
+                    Ver Mais Detalhes
+                </MudButton>
+            </MudPaper>
+        </MudItem>
+
+        <MudItem xs="12" sm="6" lg="4">
+            <MudPaper Elevation="4" Class="security-card">
+                <MudIcon Icon="icons-material-account-circle" Color="Color.Tertiary" Size="Size.Large"/>
+
+                <MudText Typo="Typo.h5" Align="Align.Center">
+                    Estudantes
+                </MudText>
+                <MudText Align="Align.Center">
+                    Controle rigoroso de quem tem acesso às informações sensíveis do sistema, garantindo que apenas usuários autorizados possam realizar determinadas ações.
+                </MudText>
+                <MudButton Href="/" Variant="Variant.Filled" Color="Color.Primary" Size="Size.Medium" FullWidth>
+                    Ver Mais Detalhes
+                </MudButton>
+            </MudPaper>
+        </MudItem>
+    </MudGrid>
+</MudContainer>
+
+<MudContainer MaxWidth="MaxWidth.Large" Class="security-section">
+    <!-- Outros Usuários -->
+    <MudText Typo="Typo.h4" Align="Align.Center" Color="Color.Primary">
+        Outros Usuários
+    </MudText>
+
+    <MudText Typo="Typo.body1" Align="Align.Center" Color="Color.Inherit">
+        Todos os dados trocados entre os usuários e o sistema são criptografados, utilizando tecnologia de criptografia de ponta, garantindo que informações sensíveis nunca sejam expostas.
+    </MudText>
+
+    <MudGrid>
+        <MudItem xs="12" sm="4">
+            <MudPaper Elevation="4" Class="security-card">
+                <MudIcon Icon="icons-material-encryption" Color="Color.Primary" Size="Size.Large"/>
+
+                <MudText Typo="Typo.h6" Align="Align.Center">
+                    Secretário Acadêmico
+                </MudText>
+
+                <MudText Align="Align.Center">
+                    Controle rigoroso de quem tem acesso às informações sensíveis do sistema, garantindo que apenas usuários autorizados possam realizar determinadas ações.
+                </MudText>
+                <MudButton Href="/" Variant="Variant.Filled" Color="Color.Primary" Size="Size.Medium" FullWidth>
+                    Ver Mais Detalhes
+                </MudButton>
+            </MudPaper>
+        </MudItem>
+
+        <MudItem xs="12" sm="4">
+            <MudPaper Elevation="4" Class="security-card">
+                <MudIcon Icon="icons-material-lock" Color="Color.Secondary" Size="Size.Large"/>
+
+                <MudText Typo="Typo.h6" Align="Align.Center">
+                    Consultor Financeiro
+                </MudText>
+
+                <MudText Align="Align.Center">
+                    Controle rigoroso de quem tem acesso às informações sensíveis do sistema, garantindo que apenas usuários autorizados possam realizar determinadas ações.
+                </MudText>
+                <MudButton Href="/" Variant="Variant.Filled" Color="Color.Primary" Size="Size.Medium" FullWidth>
+                    Ver Mais Detalhes
+                </MudButton>
+            </MudPaper>
+        </MudItem>
+
+        <MudItem xs="12" sm="4">
+            <MudPaper Elevation="4" Class="security-card">
+                <MudIcon Icon="icons-material-key" Color="Color.Tertiary" Size="Size.Large"/>
+
+                <MudText Typo="Typo.h6" Align="Align.Center">
+                    Funcionário
+                </MudText>
+
+                <MudText Align="Align.Center">
+                    Controle rigoroso de quem tem acesso às informações sensíveis do sistema, garantindo que apenas usuários autorizados possam realizar determinadas ações.
+                </MudText>
+                <MudButton Href="/" Variant="Variant.Filled" Color="Color.Primary" Size="Size.Medium" FullWidth>
+                    Ver Mais Detalhes
+                </MudButton>
+            </MudPaper>
+        </MudItem>
+    </MudGrid>
+</MudContainer>
+
+<MudContainer MaxWidth="MaxWidth.Large" Class="security-section saiba-mais-container">
+    <!-- Outros conteúdos do Container -->
+    <MudButton Href="/" Variant="Variant.Filled" Color="Color.Secondary" Size="Size.Large" FullWidth>
+        Saiba Mais
+    </MudButton>
+</MudContainer>
+
+
+
