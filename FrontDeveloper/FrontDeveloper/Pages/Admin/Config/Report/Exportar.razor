@@ -1,6 +1,104 @@
 ﻿@page "/Admin/Exportar"
-<h3>Exportar</h3>
+
+@using MudBlazor
+@inject IJSRuntime JSRuntime
+
+<MudContainer MaxWidth="MaxWidth.Medium">
+    <MudCard>
+        <MudCardContent>
+            <MudText Typo="Typo.h4" Align="Align.Center">Exportar Relatórios</MudText>
+            <MudText Typo="Typo.body1" Align="Align.Center" Color="Color.Primary">
+                Escolha o formato e o intervalo de datas para exportar os relatórios.
+            </MudText>
+        </MudCardContent>
+
+        <MudCardContent>
+            <!-- Filtros de Relatório -->
+            <MudGrid>
+                <MudItem xs="12" sm="6" md="4">
+                    <MudDatePicker Label="Data Início" @bind-Date="dataInicio" InputAdornment="InputAdornment.Start" Icon="calendar_today" />
+                </MudItem>
+                <MudItem xs="12" sm="6" md="4">
+                    <MudDatePicker Label="Data Fim" @bind-Date="dataFim" InputAdornment="InputAdornment.Start" Icon="calendar_today" />
+                </MudItem>
+                <MudItem xs="12" sm="6" md="4">
+                    <MudSelect T="string" Label="Tipo de Relatório" @bind-Value="tipoRelatorio" Icon="report" Dense="true">
+                        <MudSelectItem Value="1">Vendas</MudSelectItem>
+                        <MudSelectItem Value="2">Financeiro</MudSelectItem>
+                        <MudSelectItem Value="3">Desempenho</MudSelectItem>
+                    </MudSelect>
+                </MudItem>
+            </MudGrid>
+
+            <MudGrid>
+                <MudItem xs="12" sm="6" md="4">
+                    <MudButton Variant="Variant.Filled" Color="Color.Primary" FullWidth="true" OnClick="ExportarRelatorioExcel">
+                        <MudIcon Icon="excel" /> Exportar para Excel
+                    </MudButton>
+                </MudItem>
+
+                <MudItem xs="12" sm="6" md="4">
+                    <MudButton Variant="Variant.Filled" Color="Color.Secondary" FullWidth="true" OnClick="ExportarRelatorioPdf">
+                        <MudIcon Icon="picture_as_pdf" /> Exportar para PDF
+                    </MudButton>
+                </MudItem>
+            </MudGrid>
+        </MudCardContent>
+
+        <MudCardContent>
+            @if (mostrarMensagem)
+            {
+                <MudAlert Severity="Severity.Success" Icon="check_circle" Closeable="true">
+                    Relatório exportado com sucesso!
+                </MudAlert>
+            }
+
+            @if (erroMensagem)
+            {
+                <MudAlert Severity="Severity.Error" Icon="error" Closeable="true">
+                    Erro ao exportar o relatório. Tente novamente.
+                </MudAlert>
+            }
+        </MudCardContent>
+    </MudCard>
+</MudContainer>
 
 @code {
-    
+    private DateTime? dataInicio { get; set; }
+    private DateTime? dataFim { get; set; }
+    private string tipoRelatorio { get; set; }
+    private bool mostrarMensagem = false;
+    private bool erroMensagem = false;
+
+    private async Task ExportarRelatorioExcel()
+    {
+        try
+        {
+            // Lógica para exportar relatório para Excel
+            mostrarMensagem = true;
+            erroMensagem = false;
+            await JSRuntime.InvokeVoidAsync("alert", "Relatório exportado para Excel.");
+        }
+        catch
+        {
+            erroMensagem = true;
+            mostrarMensagem = false;
+        }
+    }
+
+    private async Task ExportarRelatorioPdf()
+    {
+        try
+        {
+            // Lógica para exportar relatório para PDF
+            mostrarMensagem = true;
+            erroMensagem = false;
+            await JSRuntime.InvokeVoidAsync("alert", "Relatório exportado para PDF.");
+        }
+        catch
+        {
+            erroMensagem = true;
+            mostrarMensagem = false;
+        }
+    }
 }
