@@ -1,0 +1,122 @@
+﻿@page "/Admin/Curso"
+
+@using MudBlazor
+
+<MudContainer MaxWidth="MaxWidth.Large">
+    <MudGrid>
+        <!-- Seção Criar Curso -->
+        <MudItem xs="12" md="4">
+            <MudCard>
+                <MudCardHeader>
+                    <MudText Typo="Typo.h6">Criar Curso</MudText>
+                </MudCardHeader>
+                <MudCardContent>
+                    <MudTextField T="string" Label="Nome do Curso" Variant="Variant.Outlined" FullWidth />
+                    <MudTextField T="string" Label="Descrição do Curso" Variant="Variant.Outlined" FullWidth Multiline Rows="4" />
+                    <MudTextField T="string" Label="Duração (em semestres/anos)" Variant="Variant.Outlined" FullWidth />
+                    <MudTextField T="string" Label="Pré-requisitos" Variant="Variant.Outlined" FullWidth />
+                </MudCardContent>
+                <MudCardActions>
+                    <MudButton Href="" Color="Color.Primary" Variant="Variant.Filled">Criar Curso</MudButton>
+                </MudCardActions>
+            </MudCard>
+        </MudItem>
+
+        <!-- Seção Gerenciar Turmas -->
+        <MudItem xs="12" md="4">
+            <MudCard>
+                <MudCardHeader>
+                    <MudText Typo="Typo.h6">Gerenciar Turmas</MudText>
+                </MudCardHeader>
+                <MudCardContent>
+                    <MudTextField T="string" Label="Nome da Turma" Variant="Variant.Outlined" FullWidth />
+                    <MudTextField T="string" Label="Código da Turma" Variant="Variant.Outlined" FullWidth />
+                    <MudTextField T="string" Label="Capacidade" Variant="Variant.Outlined" FullWidth />
+                </MudCardContent>
+                <MudCardActions>
+                    <MudButton Color="Color.Primary" Variant="Variant.Filled">Criar Turma</MudButton>
+                </MudCardActions>
+            </MudCard>
+        </MudItem>
+
+        <!-- Seção Definir Grade Curricular -->
+        <MudItem xs="12" md="4">
+            <MudCard>
+                <MudCardHeader>
+                    <MudText Typo="Typo.h6">Definir Grade Curricular</MudText>
+                </MudCardHeader>
+                <MudCardContent>
+                    <MudTextField T="string" Label="Disciplinas Obrigatórias" Variant="Variant.Outlined" FullWidth />
+                    <MudTextField T="string" Label="Disciplinas Eletivas" Variant="Variant.Outlined" FullWidth />
+                    <MudTextField T="string" Label="Carga Horária de Cada Disciplina" Variant="Variant.Outlined" FullWidth />
+                    <MudTextField T="string" Label="Sequência de Disciplinas" Variant="Variant.Outlined" FullWidth />
+                </MudCardContent>
+                <MudCardActions>
+                    <MudButton Color="Color.Primary" Variant="Variant.Filled">Salvar Grade Curricular</MudButton>
+                </MudCardActions>
+            </MudCard>
+        </MudItem>
+    </MudGrid>
+
+    <!-- Tabela de Turmas Existentes -->
+    <MudCard>
+        <MudCardHeader>
+            <MudText Typo="Typo.h6">Turmas Cadastradas</MudText>
+        </MudCardHeader>
+        <MudCardContent>
+            <MudTable Items="turmas">
+                <MudTableHeader>
+                    <MudTh>Nome</MudTh>
+                    <MudTh>Código</MudTh>
+                    <MudTh>Capacidade</MudTh>
+                    <MudTh>Ações</MudTh>
+                </MudTableHeader>
+                <MudTableBody>
+                    @foreach (var turma in turmas)
+                    {
+                        <MudTr>
+                            <MudTd>@turma.Nome</MudTd>
+                            <MudTd>@turma.Codigo</MudTd>
+                            <MudTd>@turma.Capacidade</MudTd>
+                            <MudTd>
+                                <MudButton Color="Color.Secondary" Size="Size.Small" OnClick="@(() => EditarTurma(turma))">Editar</MudButton>
+                                <MudButton Color="Color.Error" Size="Size.Small" OnClick="@(() => DeletarTurma(turma))">Deletar</MudButton>
+                            </MudTd>
+                        </MudTr>
+                    }
+                </MudTableBody>
+            </MudTable>
+        </MudCardContent>
+    </MudCard>
+</MudContainer>
+
+@code {
+    // Simulação de dados
+    private List<Turma> turmas = new List<Turma>
+    {
+        new Turma { Nome = "Turma A", Codigo = "T001", Capacidade = 30 },
+        new Turma { Nome = "Turma B", Codigo = "T002", Capacidade = 25 }
+    };
+
+    // Modelo de Turma
+    public class Turma
+    {
+        public string Nome { get; set; }
+        public string Codigo { get; set; }
+        public int Capacidade { get; set; }
+    }
+
+    // Funções de Ação
+    private void EditarTurma(Turma turma)
+    {
+        // Lógica para editar turma
+        Console.WriteLine($"Editando turma {turma.Nome}");
+    }
+
+    private void DeletarTurma(Turma turma)
+    {
+        // Lógica para deletar turma
+        Console.WriteLine($"Deletando turma {turma.Nome}");
+        turmas.Remove(turma);
+    }
+}

@@ -1,0 +1,117 @@
+﻿@page "/Admin/DataHora"
+
+@using MudBlazor
+
+<MudContainer>
+    <MudPaper Elevation="4" Class="pa-4">
+        <MudText Typo="Typo.h4">Configurações de Data e Hora</MudText>
+
+        <!-- Definir Fuso Horário -->
+        <MudGrid>
+            <MudItem xs="12" sm="6">
+                <MudTextField Label="Fuso Horário" Variant="Variant.Filled" FullWidth @bind-Value="timezone" />
+            </MudItem>
+        </MudGrid>
+
+        <!-- Configuração do Calendário Acadêmico -->
+        <MudText Typo="Typo.h6" Class="mt-4">Calendário Acadêmico</MudText>
+
+        <MudGrid>
+            <MudItem xs="12" sm="6">
+                <MudDatePicker Label="Início do Semestre" @bind-Date="startDate" FullWidth />
+            </MudItem>
+            <MudItem xs="12" sm="6">
+                <MudDatePicker Label="Fim do Semestre" @bind-Date="endDate" FullWidth />
+            </MudItem>
+        </MudGrid>
+
+        <MudGrid>
+            <MudItem xs="12">
+                <MudTextField Label="Adicionar Feriado" Variant="Variant.Filled" FullWidth @bind-Value="holiday" />
+            </MudItem>
+        </MudGrid>
+
+        <!-- Preferências de Sistema -->
+        <MudText Typo="Typo.h4" Class="mt-6">Preferências de Sistema</MudText>
+
+        <!-- Idioma do Sistema -->
+        <MudGrid>
+            <MudItem xs="12" sm="6">
+                <MudSelect Label="Idioma" @bind-Value="selectedLanguage" FullWidth>
+                    <MudSelectItem Value="pt">Português</MudSelectItem>
+                    <MudSelectItem Value="en">Inglês</MudSelectItem>
+                    <MudSelectItem Value="es">Espanhol</MudSelectItem>
+                </MudSelect>
+            </MudItem>
+        </MudGrid>
+
+        <!-- Formatação de Dados -->
+        <MudText Typo="Typo.h6" Class="mt-4">Formatação de Dados</MudText>
+
+        <MudGrid>
+            <MudItem xs="12" sm="4">
+              
+            </MudItem>
+            <MudItem xs="12" sm="4">
+                <MudSelect Label="Formato de Hora" @bind-Value="timeFormat" FullWidth>
+                    <MudSelectItem Value="12">12h</MudSelectItem>
+                    <MudSelectItem Value="24">24h</MudSelectItem>
+                </MudSelect>
+            </MudItem>
+            <MudItem xs="12" sm="4">
+                <MudSelect Label="Moeda" @bind-Value="currencySymbol" FullWidth>
+                    <MudSelectItem Value="BRL">R$</MudSelectItem>
+                    <MudSelectItem Value="USD">$</MudSelectItem>
+                    <MudSelectItem Value="EUR">€</MudSelectItem>
+                </MudSelect>
+            </MudItem>
+        </MudGrid>
+
+        <!-- Botões de Ação -->
+        <MudGrid>
+            <MudItem xs="12" class="mt-4">
+                <MudButton Color="Color.Primary" Variant="Variant.Filled" OnClick="SaveSettings">Salvar</MudButton>
+                <MudButton Color="Color.Secondary" Variant="Variant.Filled" OnClick="CancelSettings" Class="ml-2">Cancelar</MudButton>
+            </MudItem>
+        </MudGrid>
+    </MudPaper>
+</MudContainer>
+
+@code {
+    // Propriedades para vincular os dados
+    private DateTime? startDate;
+    private DateTime? endDate;
+    private string selectedLanguage = "pt";
+    private string dateFormat = "dd/MM/yyyy";
+    private string timeFormat = "12h";
+    private string currencySymbol = "BRL";
+    private string timezone;  // Fuso horário
+    private string holiday;   // Feriado
+    private object pt;
+    private object en;
+    private object es;
+    private object EUR;
+    private object USD;
+    private object BRL;
+    private object MM;
+    private object yyyy;
+    public object dd { get; set; }
+
+    // Métodos para salvar e cancelar
+    private void SaveSettings()
+    {
+        // Lógica para salvar as configurações
+        Console.WriteLine("Configurações salvas!");
+        Console.WriteLine($"Idioma: {selectedLanguage}, Data: {dateFormat}, Hora: {timeFormat}, Moeda: {currencySymbol}");
+        // Salvar as configurações no backend ou em localStorage
+    }
+
+    private void CancelSettings()
+    {
+        // Lógica para cancelar alterações
+        Console.WriteLine("Alterações canceladas.");
+        // Resetar as variáveis para os valores anteriores ou originais, se necessário
+    }
+}
+
+

@@ -1,0 +1,221 @@
+﻿@page "/Admin/Professores"
+
+@using MudBlazor
+@inject IJSRuntime JSRuntime
+
+<MudContainer>
+    <MudText Typo="Typo.h4">Gestão de Professores</MudText>
+
+    <!-- Botões para adicionar e buscar -->
+    <MudGrid>
+        <MudItem xs="12" sm="6">
+            <MudButton
+                Href=""
+                Variant="Variant.Filled"
+                Color="Color.Primary"
+                OnClick="AbrirModalAdicionarProfessor">
+                Adicionar Novo Professor
+            </MudButton>
+        </MudItem>
+        <MudItem xs="12" sm="6" class="d-flex justify-end"/>
+        <MudTextField @bind-Value="searchTerm" Label="Buscar" Variant="Variant.Outlined" Icon="search" FullWidth/>
+    </MudGrid>
+
+    <!-- Tabela de Professores -->
+    <MudTable Items="professores" Filter="FilterFunc" Striped="true" Hover="true" Bordered="true">
+        <HeaderContent>
+            <MudTh>Nome</MudTh>
+            <MudTh>Especialização</MudTh>
+            <MudTh>Disciplinas</MudTh>
+            <MudTh>Turmas</MudTh>
+            <MudTh>Ações</MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd DataLabel="Nome">@context.Nome</MudTd>
+            <MudTd DataLabel="Especialização">@context.Especializacao</MudTd>
+            <MudTd DataLabel="Disciplinas">@context.Disciplinas</MudTd>
+            <MudTd DataLabel="Turmas">@context.Turmas</MudTd>
+            <MudTd DataLabel="Periodo">@context.Periodo</MudTd>
+            <MudTd DataLabel="Grau Academico">@context.GrauAcademico</MudTd>
+            <MudTd DataLabel="Salas">@context.Salas</MudTd>
+            <MudTd DataLabel="Data de Contrato">@context.DataContrato</MudTd>
+            <MudTd DataLabel="Telefone">@context.Telefone</MudTd>
+            <MudTd DataLabel="Morada">@context.Morada</MudTd>
+            <MudTd DataLabel="Email">@context.Email</MudTd>
+            <MudTd DataLabel="Genero">@context.Genero</MudTd>
+            <MudTd DataLabel="Ações">
+                <MudButton  Size="Size.Small" OnClick="() => EditarProfessor(context)">Editar</MudButton>
+                <MudButton Size="Size.Small" Color="Color.Error" OnClick="() => ExcluirProfessor(context)">Excluir</MudButton>
+            </MudTd>
+        </RowTemplate>
+    </MudTable>
+
+    <!-- Modal de Adicionar ou Editar Professor -->
+    <MudDialog @bind-IsOpen="dialogOpen">
+        <DialogContent>
+            <!-- Nome -->
+            <MudTextField Label="Nome" @bind-Value="professor.Nome" FullWidth Icon="person" />
+
+            <!-- Especialização - Select -->
+            <MudSelect Label="Especialização" @bind-Value="professor.Especializacao" FullWidth Icon="school">
+                <MudSelectItem Value="Matemática">Matemática</MudSelectItem>
+                <MudSelectItem Value="Física">Física</MudSelectItem>
+                <MudSelectItem Value="Química">Química</MudSelectItem>
+                <MudSelectItem Value="Biologia">Biologia</MudSelectItem>
+            </MudSelect>
+
+            <!-- Disciplinas - Select -->
+            <MudSelect Label="Disciplinas" @bind-Value="professor.Disciplinas" FullWidth Icon="book">
+                <MudSelectItem Value="Álgebra">Álgebra</MudSelectItem>
+                <MudSelectItem Value="Cálculo">Cálculo</MudSelectItem>
+                <MudSelectItem Value="Física ">Física Experimental</MudSelectItem>
+                <MudSelectItem Value="Genética">Genética</MudSelectItem>
+            </MudSelect>
+
+            <!-- Período - Select -->
+            <MudSelect Label="Período" @bind-Value="professor.Periodo" FullWidth Icon="access_time">
+                <MudSelectItem Value="Manhã">Manhã</MudSelectItem>
+                <MudSelectItem Value="Tarde">Tarde</MudSelectItem>
+                <MudSelectItem Value="Noite">Noite</MudSelectItem>
+            </MudSelect>
+
+            <!-- Salas - Select -->
+            <MudSelect Label="Salas" @bind-Value="professor.Salas" FullWidth Icon="room">
+                <MudSelectItem Value="101">101</MudSelectItem>
+                <MudSelectItem Value="102">102</MudSelectItem>
+                <MudSelectItem Value="201">201</MudSelectItem>
+                <MudSelectItem Value="202">202</MudSelectItem>
+            </MudSelect>
+
+            <!-- Grau Acadêmico - Select -->
+            <MudSelect Label="Grau Acadêmico" @bind-Value="professor.GrauAcademico" FullWidth Icon="star">
+                <MudSelectItem Value="Bacharel">Bacharel</MudSelectItem>
+                <MudSelectItem Value="Mestre">Mestre</MudSelectItem>
+                <MudSelectItem Value="Doutor">Doutor</MudSelectItem>
+            </MudSelect>
+
+            <!-- Gênero - Select -->
+            <MudSelect Label="Gênero" @bind-Value="professor.Genero" FullWidth Icon="gender_transgender">
+                <MudSelectItem Value="Masculino">Masculino</MudSelectItem>
+                <MudSelectItem Value="Feminino">Feminino</MudSelectItem>
+                <MudSelectItem Value="Outro">Outro</MudSelectItem>
+            </MudSelect>
+
+            <!-- Turmas - Select -->
+            <MudSelect Label="Turmas" @bind-Value="professor.Turmas" FullWidth Icon="school">
+                <MudSelectItem Value=" A">Turma A</MudSelectItem>
+                <MudSelectItem Value=" B">Turma B</MudSelectItem>
+                <MudSelectItem Value=" C">Turma C</MudSelectItem>
+            </MudSelect>
+
+            <!-- Data de Contrato -->
+            <MudDatePicker Label="Data de Contrato" @bind-Date="professor.DataContrato" FullWidth Icon="event" />
+
+            <!-- Telefone -->
+            <MudTextField Label="Telefone" @bind-Value="professor.Telefone" FullWidth InputRegex="^[0-9]*$" HelperText="Apenas números são permitidos" Icon="phone" />
+
+            <!-- Morada -->
+            <MudTextField Label="Morada" @bind-Value="professor.Morada" FullWidth Icon="location_on" />
+
+            <!-- E-mail -->
+            <MudTextField Label="E-mail" @bind-Value="professor.Email" FullWidth Icon="email" />
+        </DialogContent>
+        <DialogActions>
+            <MudButton Color="Color.Primary" OnClick="SalvarProfessor">Salvar</MudButton>
+            <MudButton Color="Color.Secondary" OnClick="CancelarEdicao">Cancelar</MudButton>
+        </DialogActions>
+    </MudDialog>
+</MudContainer>
+
+@code {
+private List<Professor> professores = new List<Professor>
+{
+    new Professor { Nome = "João Silva", Especializacao = "Matemática", Disciplinas = "Álgebra", Turmas = "Turma A", Periodo = "Manhã", GrauAcademico = "Mestre", Salas = "101, 102", DataContrato = DateTime.Parse("2022-01-10"), Telefone = "987654321", Morada = "Rua X, 123", Email = "joao.silva@email.com", Genero = "Masculino" },
+    new Professor { Nome = "Maria Oliveira", Especializacao = "Física", Disciplinas = "Mecânica", Turmas = "Turma B", Periodo = "Tarde", GrauAcademico = "Doutora", Salas = "201", DataContrato = DateTime.Parse("2023-03-05"), Telefone = "912345678", Morada = "Avenida Y, 456", Email = "maria.oliveira@email.com", Genero = "Feminino" }
+};
+
+private Professor professor = new Professor();
+private bool dialogOpen = false;
+private string searchTerm = string.Empty;
+public object Matemática { get; set; }
+public object Física { get; set; }
+public object Química { get; set; }
+public object Biologia { get; set; }
+public object Cálculo { get; set; }
+public object Álgebra { get; set; }
+public object Genética { get; set; }
+public object Manhã { get; set; }
+public object Tarde { get; set; }
+public object Noite { get; set; }
+public object Bacharel { get; set; }
+public object Mestre { get; set; }
+public object Doutor { get; set; }
+public object Masculino { get; set; }
+public object Feminino { get; set; }
+public object Outro { get; set; }
+public object A { get; set; }
+public object B { get; set; }
+public object C { get; set; }
+
+// Função para abrir o modal de adicionar/editar
+private void AbrirModalAdicionarProfessor()
+{
+    professor = new Professor(); // Limpar o modelo
+    dialogOpen = true;
+}
+
+// Função para editar o professor
+private void EditarProfessor(Professor selectedProfessor)
+{
+    professor = selectedProfessor;
+    dialogOpen = true;
+}
+
+// Função para salvar o professor
+private void SalvarProfessor()
+{
+    if (!professores.Contains(professor))
+    {
+        professores.Add(professor);
+    }
+    dialogOpen = false;
+}
+
+// Função para cancelar a edição
+private void CancelarEdicao()
+{
+    dialogOpen = false;
+}
+
+// Função de filtro para busca
+private bool FilterFunc(Professor professor)
+{
+    if (string.IsNullOrEmpty(searchTerm))
+        return true;
+
+    return professor.Nome.Contains(searchTerm, StringComparison.InvariantCultureIgnoreCase) ||
+           professor.Especializacao.Contains(searchTerm, StringComparison.InvariantCultureIgnoreCase);
+}
+
+// Função para excluir o professor
+private void ExcluirProfessor(Professor selectedProfessor)
+{
+    professores.Remove(selectedProfessor);
+}
+
+public class Professor
+{
+    public string Nome { get; set; }
+    public string Especializacao { get; set; }
+    public string Disciplinas { get; set; }
+    public string Turmas { get; set; }
+    public string Periodo { get; set; }
+    public string GrauAcademico { get; set; }
+    public string Salas { get; set; }
+    public DateTime? DataContrato { get; set; }
+    public string Telefone { get; set; }
+    public string Morada { get; set; }
+    public string Email { get; set; }
+    public string Genero { get; set; }
+}
+}

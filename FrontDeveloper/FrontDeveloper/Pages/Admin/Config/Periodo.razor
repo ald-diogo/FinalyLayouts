@@ -1,0 +1,110 @@
+﻿@page "/Admin/Periodo"
+
+@using MudBlazor
+@inject IDialogService DialogService
+
+<PageTitle>Períodos Acadêmicos</PageTitle>
+
+<MudContainer MaxWidth="MaxWidth.Large">
+    <!-- Cabeçalho -->
+    <MudText Typo="Typo.h4">Gerenciar Períodos Acadêmicos</MudText>
+
+    <!-- Criar Período Acadêmico -->
+    <MudCard>
+        <MudCardContent>
+            <MudTextField @bind-Value="nomePeriodo" Label="Nome do Período" FullWidth="true" />
+            <MudDatePicker @bind-Date="dataInicio" Label="Data de Início" FullWidth="true" />
+            <MudDatePicker @bind-Date="dataTermino" Label="Data de Término" FullWidth="true" />
+            <MudButton Color="Color.Primary" OnClick="CriarPeriodo" FullWidth="true">Criar Período</MudButton>
+        </MudCardContent>
+    </MudCard>
+
+    <!-- Lista de Períodos Acadêmicos Ativos -->
+    <MudText Typo="Typo.h6" Class="mt-4">Períodos Acadêmicos Ativos</MudText>
+    <MudTable Items="periodos" Hover="true">
+        <HeaderContent>
+            <MudTh>Nome do Período</MudTh>
+            <MudTh>Data de Início</MudTh>
+            <MudTh>Data de Término</MudTh>
+            <MudTh>Status</MudTh>
+            <MudTh>Ações</MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd DataLabel="Nome do Período">@context.NomePeriodo</MudTd>
+            <MudTd DataLabel="Data de Início">@context.DataInicio.ToString("dd/MM/yyyy")</MudTd>
+            <MudTd DataLabel="Data de Término">@context.DataTermino.ToString("dd/MM/yyyy")</MudTd>
+            <MudTd DataLabel="Status">@context.Status</MudTd>
+            <MudTd>
+                <!-- Alteração aqui -->
+                <MudIconButton Color="Color.Primary" OnClick="@(() => EditarPeriodo(context))" Icon="@Icons.Material.Filled.Edit" />
+                <MudIconButton Color="Color.Error" OnClick="@(() => ExcluirPeriodo(context))" Icon="@Icons.Material.Filled.Delete" />
+            </MudTd>
+        </RowTemplate>
+    </MudTable>
+</MudContainer>
+
+@code {
+    private string nomePeriodo;
+    private DateTime? dataInicio;
+    private DateTime? dataTermino;
+
+    // Lista de Períodos Acadêmicos (dados fictícios para exemplo)
+    private List<PeriodoAcademico> periodos = new List<PeriodoAcademico>
+    {
+        new PeriodoAcademico { NomePeriodo = "Semestre 2025", DataInicio = new DateTime(2025, 02, 01), DataTermino = new DateTime(2025, 07, 31), Status = "Ativo" },
+        new PeriodoAcademico { NomePeriodo = "Semestre 2024", DataInicio = new DateTime(2024, 08, 01), DataTermino = new DateTime(2024, 12, 31), Status = "Finalizado" }
+    };
+
+    // Método para Criar Período Acadêmico
+    private void CriarPeriodo()
+    {
+        if (dataInicio.HasValue && dataTermino.HasValue && !string.IsNullOrWhiteSpace(nomePeriodo))
+        {
+            periodos.Add(new PeriodoAcademico
+            {
+                NomePeriodo = nomePeriodo,
+                DataInicio = dataInicio.Value,
+                DataTermino = dataTermino.Value,
+                Status = "Ativo"
+            });
+
+            nomePeriodo = string.Empty;
+            dataInicio = null;
+            dataTermino = null;
+        }
+    }
+
+    // Método para Editar Período Acadêmico
+    private void EditarPeriodo(PeriodoAcademico periodo)
+    {
+        // Lógica para editar os dados do período (pode abrir um formulário em um modal)
+        Console.WriteLine($"Editando período: {periodo.NomePeriodo}");
+    }
+
+    // Método para Excluir Período Acadêmico
+    private void ExcluirPeriodo(PeriodoAcademico periodo)
+    {
+        var resultado = DialogService.ShowMessageBox(
+            "Confirmação",
+            $"Você tem certeza que deseja excluir o período acadêmico {periodo.NomePeriodo}?",
+            yesText: "Sim",
+            noText: "Não"
+        );
+
+        if (resultado.Result == true)
+        {
+            periodos.Remove(periodo);
+        }
+    }
+
+    // Classe que representa um Período Acadêmico
+    public class PeriodoAcademico
+    {
+        public string NomePeriodo { get; set; }
+        public DateTime DataInicio { get; set; }
+        public DateTime DataTermino { get; set; }
+        public string Status { get; set; }
+    }
+}
+
+
