@@ -1,7 +1,7 @@
 ﻿@page "/Admin/GestaoUsuarios"
 @using MudBlazor
 
-<PageTitle>Segurança no Sistema de Reservas</PageTitle>
+<PageTitle>Segurança no Sistema de Gestão Acadêmica</PageTitle>
 
 <MudContainer MaxWidth="MaxWidth.Large">
     <!-- Header de Introdução -->
@@ -10,22 +10,22 @@
     </MudText>
 
     <MudText Typo="Typo.h6" Align="Align.Center" Color="Color.Inherit">
-        Tenha Acesso Total aos Seus Usuários Monitorando Seu Desempenho e Aproveitamento Escolar Dos Estudantes.
+        Gerencie Todos os Aspectos da Sua Instituição, Acompanhando o Desempenho Acadêmico dos Estudantes, a Atuação de Professores, Coordenação Acadêmica, Consultoria Financeira e a Gestão Administrativa em Tempo Real.
     </MudText>
 </MudContainer>
-
 <MudContainer MaxWidth="MaxWidth.Large" Class="security-section">
     <!-- Níveis de Acesso -->
     <MudGrid>
         <MudItem xs="12" sm="6" lg="4">
-            <MudPaper Elevation="4" Class="security-card">
+            <MudPaper Elevation="4" Class="security-card" Display="Flex" AlignItems="Stretch">
                 <MudIcon Icon="icons-material-lock" Color="Color.Primary" Size="Size.Large"/>
                 <MudText Typo="Typo.h5" Align="Align.Center">
                     Coordenador Acadêmico
                 </MudText>
-                <MudText Align="Align.Center">
-                    Controle rigoroso de quem tem acesso às informações sensíveis do sistema, garantindo que apenas usuários autorizados possam realizar determinadas ações.
+                <MudText Align="Align.Center" Class="flex-grow-1">
+                    O Coordenador Acadêmico tem um papel essencial na gestão escolar, sendo responsável pelo planejamento de turmas, alocação de professores, acompanhamento do desempenho acadêmico dos estudantes, e supervisão de atividades curriculares. Além disso, garante que o acesso às informações sensíveis seja rigorosamente controlado, permitindo que apenas usuários autorizados possam realizar ações críticas dentro do sistema.
                 </MudText>
+
                 <MudButton Href="/" Variant="Variant.Filled" Color="Color.Primary" Size="Size.Medium" FullWidth>
                     Ver Mais Detalhes
                 </MudButton>
@@ -33,14 +33,15 @@
         </MudItem>
 
         <MudItem xs="12" sm="6" lg="4">
-            <MudPaper Elevation="4" Class="security-card">
+            <MudPaper Elevation="4" Class="security-card" Display="Flex" AlignItems="Stretch">
                 <MudIcon Icon="icons-material-security" Color="Color.Secondary" Size="Size.Large"/>
                 <MudText Typo="Typo.h5" Align="Align.Center">
                     Professores
                 </MudText>
-                <MudText Align="Align.Center">
-                    Controle rigoroso de quem tem acesso às informações sensíveis do sistema, garantindo que apenas usuários autorizados possam realizar determinadas ações.
+                <MudText Align="Align.Center" Class="flex-grow-1">
+                    Os Professores têm um papel fundamental na formação dos estudantes, sendo responsáveis pelo planejamento de aulas, avaliação do desempenho acadêmico, acompanhamento individualizado dos alunos e comunicação constante com os coordenadores e outros membros da equipe escolar. O sistema também garante um controle rigoroso de acesso às informações sensíveis, permitindo que apenas os professores e outros usuários autorizados possam realizar ações relacionadas ao gerenciamento acadêmico e avaliação.
                 </MudText>
+
                 <MudButton Href="/" Variant="Variant.Filled" Color="Color.Primary" Size="Size.Medium" FullWidth>
                     Ver Mais Detalhes
                 </MudButton>
@@ -48,14 +49,13 @@
         </MudItem>
 
         <MudItem xs="12" sm="6" lg="4">
-            <MudPaper Elevation="4" Class="security-card">
+            <MudPaper Elevation="4" Class="security-card" Display="Flex" AlignItems="Stretch">
                 <MudIcon Icon="icons-material-account-circle" Color="Color.Tertiary" Size="Size.Large"/>
-
                 <MudText Typo="Typo.h5" Align="Align.Center">
                     Estudantes
                 </MudText>
-                <MudText Align="Align.Center">
-                    Controle rigoroso de quem tem acesso às informações sensíveis do sistema, garantindo que apenas usuários autorizados possam realizar determinadas ações.
+                <MudText Align="Align.Center" Class="flex-grow-1">
+                    Os Estudantes têm acesso a informações essenciais sobre seu desempenho acadêmico, como notas, histórico de disciplinas e resultados de avaliações. Além disso, podem se inscrever em disciplinas, acessar materiais de estudo e interagir com professores e coordenadores. O sistema garante um controle rigoroso de acesso, permitindo que os estudantes visualizem apenas suas próprias informações e realizem ações dentro dos limites de sua autonomia.
                 </MudText>
                 <MudButton Href="/" Variant="Variant.Filled" Color="Color.Primary" Size="Size.Medium" FullWidth>
                     Ver Mais Detalhes
@@ -77,16 +77,15 @@
 
     <MudGrid>
         <MudItem xs="12" sm="4">
-            <MudPaper Elevation="4" Class="security-card">
+            <MudPaper Elevation="4" Class="security-card" Display="Flex" AlignItems="Stretch">
                 <MudIcon Icon="icons-material-encryption" Color="Color.Primary" Size="Size.Large"/>
-
                 <MudText Typo="Typo.h6" Align="Align.Center">
                     Secretário Acadêmico
                 </MudText>
-
-                <MudText Align="Align.Center">
-                    Controle rigoroso de quem tem acesso às informações sensíveis do sistema, garantindo que apenas usuários autorizados possam realizar determinadas ações.
+                <MudText Align="Align.Center" Class="flex-grow-1">
+                    O Secretário Acadêmico desempenha um papel crucial na gestão administrativa da instituição, sendo responsável pela matrícula de estudantes, controle de registros acadêmicos, emissão de documentos oficiais e suporte à coordenação acadêmica e professores. Ele também garante que as informações sensíveis do sistema sejam protegidas, com um controle rigoroso de acesso, permitindo que apenas usuários autorizados possam realizar ações administrativas importantes.
                 </MudText>
+
                 <MudButton Href="/" Variant="Variant.Filled" Color="Color.Primary" Size="Size.Medium" FullWidth>
                     Ver Mais Detalhes
                 </MudButton>
@@ -94,16 +93,15 @@
         </MudItem>
 
         <MudItem xs="12" sm="4">
-            <MudPaper Elevation="4" Class="security-card">
+            <MudPaper Elevation="4" Class="security-card" Display="Flex" AlignItems="Stretch">
                 <MudIcon Icon="icons-material-lock" Color="Color.Secondary" Size="Size.Large"/>
-
                 <MudText Typo="Typo.h6" Align="Align.Center">
                     Consultor Financeiro
                 </MudText>
-
-                <MudText Align="Align.Center">
-                    Controle rigoroso de quem tem acesso às informações sensíveis do sistema, garantindo que apenas usuários autorizados possam realizar determinadas ações.
+                <MudText Align="Align.Center" Class="flex-grow-1">
+                    O Consultor Financeiro é responsável pela gestão financeira da instituição, incluindo o controle de pagamentos de mensalidades, concessão de bolsas de estudo, elaboração de relatórios financeiros e planejamento orçamentário. Além disso, ele monitora a saúde financeira da escola e auxilia na implementação de políticas financeiras. O sistema assegura um controle rigoroso de acesso, garantindo que apenas usuários autorizados possam acessar informações financeiras sensíveis e realizar operações relacionadas.
                 </MudText>
+
                 <MudButton Href="/" Variant="Variant.Filled" Color="Color.Primary" Size="Size.Medium" FullWidth>
                     Ver Mais Detalhes
                 </MudButton>
@@ -111,16 +109,15 @@
         </MudItem>
 
         <MudItem xs="12" sm="4">
-            <MudPaper Elevation="4" Class="security-card">
+            <MudPaper Elevation="4" Class="security-card" Display="Flex" AlignItems="Stretch">
                 <MudIcon Icon="icons-material-key" Color="Color.Tertiary" Size="Size.Large"/>
-
                 <MudText Typo="Typo.h6" Align="Align.Center">
                     Funcionário
                 </MudText>
-
-                <MudText Align="Align.Center">
-                    Controle rigoroso de quem tem acesso às informações sensíveis do sistema, garantindo que apenas usuários autorizados possam realizar determinadas ações.
+                <MudText Align="Align.Center" Class="flex-grow-1">
+                    Os Funcionários desempenham funções essenciais no apoio administrativo e operacional da instituição, como a organização de documentos, suporte em atividades diárias, e assistência na comunicação entre setores. Eles ajudam na logística de eventos, na gestão de registros administrativos e colaboram com a equipe para manter o bom funcionamento da escola. O sistema garante um controle rigoroso de acesso, permitindo que apenas usuários autorizados possam acessar e realizar ações relacionadas a informações administrativas e operacionais sensíveis.
                 </MudText>
+
                 <MudButton Href="/" Variant="Variant.Filled" Color="Color.Primary" Size="Size.Medium" FullWidth>
                     Ver Mais Detalhes
                 </MudButton>
@@ -128,6 +125,7 @@
         </MudItem>
     </MudGrid>
 </MudContainer>
+
 
 <MudContainer MaxWidth="MaxWidth.Large" Class="security-section saiba-mais-container">
     <!-- Outros conteúdos do Container -->
