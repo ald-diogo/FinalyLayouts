@@ -1,0 +1,127 @@
+﻿@page "/Admin/Backups"
+
+@using MudBlazor
+
+<MudContainer>
+    <MudGrid>
+        <MudItem xs="12">
+            <MudTypography Variant="Variants.H5">Gerenciamento de Backups e Recuperação</MudTypography>
+            <MudTypography Variant="Variants.Body1">
+                Realize backups manuais, agende backups automáticos e recupere dados facilmente.
+            </MudTypography>
+        </MudItem>
+
+        <!-- Backup Manual -->
+        <MudItem xs="12" md="6">
+            <MudCard>
+                <MudCardContent>
+                    <MudTypography Variant="Variants.H6" Class="mb-2">Realizar Backup Manual</MudTypography>
+                    <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="IniciarBackupManual" StartIcon="@Icons.Material.Filled.Backup" FullWidth="true">
+                        Iniciar Backup Manual
+                    </MudButton>
+                    <MudTooltip Text="Clique para realizar um backup manual imediatamente." Arrow="true">
+                        <MudIconButton Icon="@Icons.Material.Filled.HelpOutline" Color="Color.Info" Size="Size.Small" />
+                    </MudTooltip>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+
+        <!-- Agendar Backup Automático -->
+        <MudItem xs="12" md="6">
+            <MudCard>
+                <MudCardContent>
+                    <MudTypography Variant="Variants.H6" Class="mb-2">Agendar Backup Automático</MudTypography>
+                    <MudTextField Label="Frequência" Variant="Variant.Filled" @bind-Value="frequencia" StartIcon="@Icons.Material.Filled.Schedule" FullWidth="true" />
+                    <MudTextField Label="Hora" Variant="Variant.Filled" @bind-Value="horaBackup" StartIcon="@Icons.Material.Filled.AccessTime" FullWidth="true" />
+                    <MudButton Variant="Variant.Filled" Color="Color.Secondary" OnClick="AgendarBackup" StartIcon="@Icons.Material.Filled.Alarm" FullWidth="true">
+                        Agendar Backup
+                    </MudButton>
+                    <MudTooltip Text="Defina a frequência e o horário para o backup ser realizado automaticamente." Arrow="true">
+                        <MudIconButton Icon="@Icons.Material.Filled.HelpOutline" Color="Color.Info" Size="Size.Small" />
+                    </MudTooltip>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+
+        <!-- Restaurar Backup -->
+        <MudItem xs="12" md="6">
+            <MudCard>
+                <MudCardContent>
+                    <MudTypography Variant="Variants.H6" Class="mb-2">Restaurar Backup</MudTypography>
+                    <MudSelect Label="Selecione Backup" Variant="Variant.Filled" @bind-Value="backupSelecionado" StartIcon="@Icons.Material.Filled.Restore" FullWidth="true">
+                        <MudSelectItem Value="1">Backup 1 - 01/01/2025</MudSelectItem>
+                        <MudSelectItem Value="2">Backup 2 - 02/01/2025</MudSelectItem>
+                    </MudSelect>
+                    <MudButton Variant="Variant.Filled" Color="Color.Error" OnClick="RestaurarBackup" StartIcon="@Icons.Material.Filled.RestoreFromTrash" FullWidth="true">
+                        Restaurar Backup
+                    </MudButton>
+                    <MudTooltip Text="Escolha um backup anterior para restaurá-lo." Arrow="true">
+                        <MudIconButton Icon="@Icons.Material.Filled.HelpOutline" Color="Color.Info" Size="Size.Small" />
+                    </MudTooltip>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+
+        <!-- Histórico de Backups -->
+        <MudItem xs="12">
+            <MudCard>
+                <MudCardContent>
+                    <MudTypography Variant="Variants.H6" Class="mb-2">Histórico de Backups Realizados</MudTypography>
+                    <MudTable Items="@historicoBackups" Hover="true">
+                        <HeaderContent>
+                            <MudTh>Data</MudTh>
+                            <MudTh>Tipo de Backup</MudTh>
+                            <MudTh>Status</MudTh>
+                            <MudTh>Tamanho</MudTh>
+                        </HeaderContent>
+                        <RowTemplate>
+                            <MudTd DataLabel="Data">@context.Data</MudTd>
+                            <MudTd DataLabel="Tipo de Backup">@context.TipoBackup</MudTd>
+                            <MudTd DataLabel="Status">@context.Status</MudTd>
+                            <MudTd DataLabel="Tamanho">@context.Tamanho</MudTd>
+                        </RowTemplate>
+                    </MudTable>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+    </MudGrid>
+</MudContainer>
+
+@code {
+    private string frequencia;
+    private string horaBackup;
+    private string backupSelecionado;
+
+    private List<BackupHistorico> historicoBackups = new List<BackupHistorico>
+    {
+        new BackupHistorico { Data = "01/01/2025", TipoBackup = "Completo", Status = "Sucesso", Tamanho = "5GB" },
+        new BackupHistorico { Data = "02/01/2025", TipoBackup = "Incremental", Status = "Falha", Tamanho = "2GB" },
+        new BackupHistorico { Data = "03/01/2025", TipoBackup = "Completo", Status = "Sucesso", Tamanho = "5GB" },
+    };
+
+    private void IniciarBackupManual()
+    {
+        // Lógica para realizar o backup manual
+        Console.WriteLine("Backup manual iniciado...");
+    }
+
+    private void AgendarBackup()
+    {
+        // Lógica para agendar o backup automático
+        Console.WriteLine($"Backup agendado para {frequencia} às {horaBackup}.");
+    }
+
+    private void RestaurarBackup()
+    {
+        // Lógica para restaurar backup selecionado
+        Console.WriteLine($"Restaurando backup {backupSelecionado}...");
+    }
+
+    public class BackupHistorico
+    {
+        public string Data { get; set; }
+        public string TipoBackup { get; set; }
+        public string Status { get; set; }
+        public string Tamanho { get; set; }
+    }
+}
