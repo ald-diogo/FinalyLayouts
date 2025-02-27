@@ -1,4 +1,5 @@
-﻿@inherits LayoutComponentBase
+﻿@using MudBlazor.Utilities
+@inherits LayoutComponentBase
 
 <MudLayout>
     <MudAppBar Elevation="1" Color="Color.Dark">
@@ -31,4 +32,33 @@
     
     private MudTheme _theme = new();
     private bool _isDarkMode;
+    
+    private MudTheme _lightTheme = new MudTheme()
+    {
+        PaletteLight = new PaletteLight()
+        {
+            Primary = "#1EFA2D",
+            Background = Colors.Blue.Lighten4,
+            Secondary = Colors.LightBlue.Darken3,
+            TextPrimary = Colors.Shades.Black,
+            AppbarText = Colors.Shades.Black,
+            AppbarBackground = new MudColor("#1EFA2D"),
+            DrawerText = Colors.Shades.Black,
+            DrawerBackground = Colors.LightBlue.Lighten4
+        }
+    };
+
+    private MudTheme _darkTheme = new MudTheme()
+    {
+        PaletteDark = new PaletteDark()
+        {
+            Primary = Colors.LightBlue.Accent3,
+            Secondary = Colors.LightBlue.Darken3,
+            AppbarBackground = Colors.LightBlue.Accent3,
+            AppbarText = Colors.Shades.Black
+        }
+    };
+
+    private MudTheme _currentTheme => _isDarkMode ? _darkTheme : _lightTheme;
+
 }
