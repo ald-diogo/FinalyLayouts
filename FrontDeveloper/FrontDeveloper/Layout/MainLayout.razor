@@ -9,12 +9,13 @@
         <MudSwitch ThumbIcon="" @bind-Value="_isDarkMode" Color="Color.Primary" Class="ma-4" T="bool" />
     </MudAppBar>
 
-    <MudDrawer @bind-Open="_drawerOpen" Elevation="2" Color="Color.Dark">
+    <MudDrawer @bind-Open="_drawerOpen" Elevation="2" Color="Color.Dark" Breakpoint="Breakpoint.Md">
         <MudDrawerHeader>
             <MudText Typo="Typo.h5" Class="mt-1" Color="Color.Primary">Menu</MudText>
         </MudDrawerHeader>
         <NavMenu/>
     </MudDrawer>
+
     <MudMainContent>
         @Body
     </MudMainContent>
