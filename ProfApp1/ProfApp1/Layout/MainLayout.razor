@@ -1,0 +1,30 @@
+﻿@inherits LayoutComponentBase
+<MudThemeProvider />
+
+<MudLayout>
+    <MudAppBar Elevation="1" Color="Color.Dark">
+        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Primary" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
+        <MudSpacer />
+        <MudIconButton Icon="@Icons.Material.Filled.MoreVert" Color="Color.Primary" Edge="Edge.End" />
+    </MudAppBar>
+    <MudDrawer @bind-Open="_drawerOpen" Elevation="2" Color="Color.Dark">
+        <MudDrawerHeader>
+            <MudText Typo="Typo.h5" Color="Color.Primary" Class="mt-1">Menu</MudText>
+        </MudDrawerHeader>
+        
+        <MudNavMenu>
+            <MenuProfessor/>
+        </MudNavMenu>
+    </MudDrawer>
+    <MudMainContent>
+        @*Body*@
+    </MudMainContent>
+</MudLayout>
+@code {
+    bool _drawerOpen = true;
+
+    void DrawerToggle()
+    {
+        _drawerOpen = !_drawerOpen;
+    }
+}

@@ -1,0 +1,124 @@
+﻿<MudNavLink Href="/Admin/Index" Match="NavLinkMatch.All">
+    <MudIcon Icon="@Icons.Material.Filled.Home" IconColor="Color.Warning" />
+    Início
+</MudNavLink>
+
+<MudNavGroup
+    Icon="@Icons.Material.Filled.Settings"
+    IconColor="Color.Primary"
+    Title="Configurações do Sistema"
+    Expanded="true">
+
+    <MudNavLink
+        Href="/Admin/DataHora"
+        Match="NavLinkMatch.Prefix"
+        Icon="@Icons.Material.Filled.Settings"
+        IconColor="Color.Default">
+        Configurações Data e Hora
+    </MudNavLink>
+
+    <MudNavLink
+        Href="/Admin/Senhas"
+        Match="NavLinkMatch.Prefix"
+        Icon="@Icons.Material.Filled.Settings"
+        IconColor="Color.Default">
+        Gestão de Senhas
+    </MudNavLink>
+
+    <MudNavLink
+        Href="/Admin/Monitoramento"
+        Match="NavLinkMatch.Prefix"
+        Icon="@Icons.Material.Filled.Settings"
+        IconColor="Color.Default">
+        Ver Notificações
+    </MudNavLink>
+
+    <MudNavLink
+        Href="/Admin/Backups"
+        Match="NavLinkMatch.Prefix"
+        Icon="@Icons.Material.Filled.Settings"
+        IconColor="Color.Default">
+        Backups
+    </MudNavLink>
+
+    <MudNavLink
+        Href="/Admin/Periodo"
+        Match="NavLinkMatch.Prefix"
+        Icon="@Icons.Material.Filled.Event"
+        IconColor="Color.Default">
+        Períodos Acadêmicos
+    </MudNavLink>
+
+    <MudNavLink
+        Href=""
+        Match="NavLinkMatch.Prefix"
+        Icon="@Icons.Material.Filled.Group"
+        IconColor="Color.Default">
+        Cursos
+    </MudNavLink>
+</MudNavGroup>
+
+<MudNavLink
+    T="bool"
+    Href="/"
+    Match="NavLinkMatch.Prefix"
+    Icon="@Icons.Material.Filled.Assessment"
+    IconColor="Color.Success">
+    Relatórios
+</MudNavLink>
+
+<MudNavGroup
+    Icon="@Icons.Material.Filled.Dashboard"
+    IconColor="Color.Error"
+    Title="Painel"
+    Expanded="true">
+
+    <MudNavGroup
+        Icon="@Icons.Material.Filled.People"
+        IconColor="Color.Success"
+        Title="Usuários"
+        Expanded="true">
+
+        <MudNavLink
+            Href="/Admin/GestaoUsuarios"
+            Match="NavLinkMatch.Prefix"
+            Icon="@Icons.Material.Filled.People"
+            IconColor="Color.Default">
+            Gestão de Usuários
+        </MudNavLink>
+    </MudNavGroup>
+</MudNavGroup>
+
+<MudNavLink
+    T="bool"
+    Href="/Admin/Seguranca"
+    Match="NavLinkMatch.Prefix"
+    Icon="@Icons.Material.Filled.Lock"
+    IconColor = "Color.Default">Segurança
+</MudNavLink>
+
+<MudNavLink
+    Href="/Admin/Manutencao"
+    Match="NavLinkMatch.Prefix"
+    Icon="@Icons.Material.Filled.Build"
+    IconColor="Color.Error">
+    Manutenção
+</MudNavLink>
+
+<MudNavLink
+    Href="/Admin/Suporte"
+    Match="NavLinkMatch.Prefix"
+    Icon="@Icons.Material.Filled.Help"
+    IconColor="Color.Surface">
+    Suporte
+</MudNavLink>
+
+
+
+<MudNavLink
+    Href="/Admin/Sobre"
+    Match="NavLinkMatch.Prefix"
+    Icon="@Icons.Material.Filled.Info"
+    IconColor="Color.Info">
+    Sobre
+</MudNavLink>

@@ -1,0 +1,49 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Dev\\RiderProjects\\FinalyLayouts\\BlazorAppTestDrive\\BlazorAppTestDrive\\bin\\Debug\\net9.0\\wwwroot\\_framework\\blazor.webassembly.js",
+      "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js"
+    },
+    {
+      "Id": "C:\\Dev\\RiderProjects\\FinalyLayouts\\BlazorAppTestDrive\\BlazorAppTestDrive\\wwwroot\\css\\app.css",
+      "PackagePath": "staticwebassets\\css\\app.css"
+    },
+    {
+      "Id": "C:\\Dev\\RiderProjects\\FinalyLayouts\\BlazorAppTestDrive\\BlazorAppTestDrive\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "C:\\Dev\\RiderProjects\\FinalyLayouts\\BlazorAppTestDrive\\BlazorAppTestDrive\\wwwroot\\icon-192.png",
+      "PackagePath": "staticwebassets\\icon-192.png"
+    },
+    {
+      "Id": "C:\\Dev\\RiderProjects\\FinalyLayouts\\BlazorAppTestDrive\\BlazorAppTestDrive\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "C:\\Dev\\RiderProjects\\FinalyLayouts\\BlazorAppTestDrive\\BlazorAppTestDrive\\wwwroot\\sample-data\\weather.json",
+      "PackagePath": "staticwebassets\\sample-data\\weather.json"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.BlazorAppTestDrive.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.BlazorAppTestDrive.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.build.BlazorAppTestDrive.props",
+      "PackagePath": "build\\BlazorAppTestDrive.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.buildMultiTargeting.BlazorAppTestDrive.props",
+      "PackagePath": "buildMultiTargeting\\BlazorAppTestDrive.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.buildTransitive.BlazorAppTestDrive.props",
+      "PackagePath": "buildTransitive\\BlazorAppTestDrive.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

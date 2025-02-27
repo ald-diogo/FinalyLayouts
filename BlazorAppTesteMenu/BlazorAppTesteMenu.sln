@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorAppTesteMenu", "BlazorAppTesteMenu\BlazorAppTesteMenu.csproj", "{AE17CEB1-8AEE-4BD8-8FB7-FE0DE81EF64C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AE17CEB1-8AEE-4BD8-8FB7-FE0DE81EF64C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE17CEB1-8AEE-4BD8-8FB7-FE0DE81EF64C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE17CEB1-8AEE-4BD8-8FB7-FE0DE81EF64C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE17CEB1-8AEE-4BD8-8FB7-FE0DE81EF64C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

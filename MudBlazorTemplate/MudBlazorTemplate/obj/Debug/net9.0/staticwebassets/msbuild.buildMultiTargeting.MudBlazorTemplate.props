@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\MudBlazorTemplate.props" />
+</Project>

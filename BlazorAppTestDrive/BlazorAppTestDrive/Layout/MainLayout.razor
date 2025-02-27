@@ -1,0 +1,86 @@
+﻿@using MudBlazor.Utilities
+@inherits LayoutComponentBase
+
+<MudThemeProvider 
+    @ref="_mudThemeProvider"
+    Theme="_theme" 
+    IsDarkMode="true" 
+    bind-IsDarkMode="@_isDarkTheme"/>
+
+<MudLayout>
+    <MudAppBar Elevation="1">
+        <MudIconButton 
+            Icon="@Icons.Material.Filled.Menu" 
+            Color="Color.Inherit" 
+            Edge="Edge.Start" 
+            OnClick="@((e) => DrawerToggle())" />
+        Menu
+        <MudSpacer />
+        <MudSwitch T="bool" @bind-Value="@_isDarkTheme" />
+        
+        <MudSpacer />
+        <MudIconButton 
+            Icon="@Icons.Material.Filled.MoreVert" 
+            Color="Color.Inherit" 
+            Edge="Edge.End" />
+    </MudAppBar>
+    <MudSwitch T="bool" @bind-Value="@_isDarkTheme" />
+    <MudDrawer @bind-Open="_drawerOpen" ClipMode="DrawerClipMode.Always" Elevation="2">
+        <NavMenu/>
+    </MudDrawer>
+    
+    <MudMainContent>
+        @*Body*@
+    </MudMainContent>
+</MudLayout>
+
+@code {
+    bool _drawerOpen = true;
+    bool _isDarkTheme = true;
+    MudThemeProvider _mudThemeProvider = null!;
+
+    private MudTheme _theme = new()
+    {
+        Typography = new Typography()
+        {
+            Default = new DefaultTypography()
+            {
+                FontFamily = ["Raleway","sans-serif"]
+            },
+            
+        },
+        PaletteLight = new PaletteLight
+        {
+            Primary = new MudColor("#1EFA2D"),
+            PrimaryContrastText = new MudColor("#000000"),
+            Secondary = Colors.LightBlue.Darken3,
+            Background = new MudColor("#1EFA2D"),
+            AppbarBackground = Colors.Shades.Black,
+            TextPrimary = Colors.Shades.Black,
+            DrawerText = Colors.Shades.White,
+            DrawerBackground = Colors.Blue.Darken4
+        }
+    };
+
+    protected override async Task OnAfterRenderAsync(bool firsRender)
+    {
+        if (firsRender)
+        {
+            _isDarkTheme = await _mudThemeProvider.GetSystemPreference();
+            await _mudThemeProvider.WatchSystemPreference(OnSystemPreferenceChanged);
+            StateHasChanged();
+        }
+    } 
+    
+    Task OnSystemPreferenceChanged(bool newValue)
+    {
+        _isDarkTheme = newValue;
+        return Task.CompletedTask;
+        ;
+    }
+
+    void DrawerToggle()
+    {
+        _drawerOpen = !_drawerOpen;
+    }
+}
