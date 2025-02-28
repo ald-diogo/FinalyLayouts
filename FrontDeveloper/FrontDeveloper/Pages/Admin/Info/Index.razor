@@ -3,6 +3,8 @@
 
 @layout MainLayout
 
+@inject ISnackbar Snackbar
+
 <MudLayout>
     <MudAppBar Color="Color.Primary" Elevation="4">
         <MudText Typo="Typo.h6" Color="Color.Inherit">Sistema de Gestão Academica!</MudText>
@@ -69,6 +71,7 @@
                             Color="Color.Secondary"
                             Variant="Variant.Filled"
                             Class="mt-4"
+                            @onclick="@(() => Snackbar.Add("Deseja Saber mais sobre o Aplicativo Clique em Saiba mais", Severity.Success))"
                             FullWidth="true">
                             Ver Ofertas
                         </MudButton>
