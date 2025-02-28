@@ -4,6 +4,21 @@
 </MudNavLink>
 
 <MudNavGroup
+    Icon="@Icons.Material.Filled.People"
+    IconColor="Color.Success"
+    Title="Usuários"
+    Expanded="true">
+
+    <MudNavLink
+        Href="/Admin/GestaoUsuarios"
+        Match="NavLinkMatch.Prefix"
+        Icon="@Icons.Material.Filled.Group"
+        IconColor="Color.Default">
+        Gestão de Usuários
+    </MudNavLink>
+</MudNavGroup>
+
+<MudNavGroup
     Icon="@Icons.Material.Filled.Settings"
     IconColor="Color.Primary"
     Title="Configurações do Sistema"
@@ -72,21 +87,6 @@
     IconColor="Color.Error"
     Title="Painel"
     Expanded="true">
-
-    <MudNavGroup
-        Icon="@Icons.Material.Filled.People"
-        IconColor="Color.Success"
-        Title="Usuários"
-        Expanded="true">
-
-        <MudNavLink
-            Href="/Admin/GestaoUsuarios"
-            Match="NavLinkMatch.Prefix"
-            Icon="@Icons.Material.Filled.People"
-            IconColor="Color.Default">
-            Gestão de Usuários
-        </MudNavLink>
-    </MudNavGroup>
 </MudNavGroup>
 
 <MudNavLink
