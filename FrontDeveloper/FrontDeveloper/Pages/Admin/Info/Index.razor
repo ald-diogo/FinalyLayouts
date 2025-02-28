@@ -6,6 +6,7 @@
 @inject ISnackbar Snackbar
 @inject NavigationManager Navigation
 
+
 <MudLayout>
     <MudAppBar Color="Color.Primary" Elevation="4">
         <MudText Typo="Typo.h6" Color="Color.Inherit">Sistema de Gestão Academica!</MudText>
@@ -53,6 +54,10 @@
                         </MudButton>
 
                         <MudChip T="string">@state</MudChip>
+                        
+                        <MudAlert Severity="@alertSeverity" @bind-Open="alertVisible">
+                            @alertMessage
+                        </MudAlert>
                     </MudPaper>
                 </MudItem>
             </MudGrid>
@@ -103,18 +108,41 @@
 
 @code {
     [Inject] private IDialogService DialogService { get; set; }
+    
     private string state = "Clique no botão!";
+    private string alertMessage = "";
+    private bool alertVisible = false;
+    private Severity alertSeverity = Severity.Normal;
 
     private async Task OnComeceAgoraClicked()
     {
-        bool? result = await DialogService.ShowMessageBox(
-            "Atenção", 
-            "Deletar não pode ser desfeito!", 
+        var parameters = new DialogParameters();
+        parameters.Add("ContentText", "Clique no Botão!");
+
+        var dialog = await DialogService.ShowMessageBox(
+            "Atenção",
+            "Clique no Botão!",
             yesText: "Sim", noText: "Não", cancelText: "Cancelar");
 
-        state = result == null ? "Cancelado" : "Deletado!";
-        StateHasChanged();
+        if (dialog == true)
+        {
+            alertMessage = "Processo iniciado com Sucesso!";
+            alertSeverity = Severity.Success; // Alerta verde
+        }
+        else if (dialog == false)
+        {
+            alertMessage = "Início Cancelado!";
+            alertSeverity = Severity.Error; // Alerta vermelho
+        }
+        else
+        {
+            alertMessage = "Início Cancelado!";
+            alertSeverity = Severity.Warning; // Alerta laranja
+        }
+
+        alertVisible = true;
     }
+
 
     private void OnVerOfertasClicked()
     {
