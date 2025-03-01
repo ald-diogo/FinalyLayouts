@@ -1,8 +1,9 @@
 ﻿<MudNavLink Href="/Admin/Index" Match="NavLinkMatch.All">
-    <MudIcon Icon="@Icons.Material.Filled.Home" IconColor="Color.Warning" />
+    <MudIcon Icon="@Icons.Material.Filled.Home" IconColor="Color.Primary" />
     Início
 </MudNavLink>
 
+<!-- Grupo de Usuários -->
 <MudNavGroup
     Icon="@Icons.Material.Filled.People"
     IconColor="Color.Success"
@@ -12,12 +13,13 @@
     <MudNavLink
         Href="/Admin/GestaoUsuarios"
         Match="NavLinkMatch.Prefix"
-        Icon="@Icons.Material.Filled.Group"
-        IconColor="Color.Default">
+        Icon="@Icons.Material.Filled.AccountCircle"
+        IconColor="Color.Primary">
         Gestão de Usuários
     </MudNavLink>
 </MudNavGroup>
 
+<!-- Grupo de Configurações do Sistema -->
 <MudNavGroup
     Icon="@Icons.Material.Filled.Settings"
     IconColor="Color.Primary"
@@ -27,7 +29,7 @@
     <MudNavLink
         Href="/Admin/DataHora"
         Match="NavLinkMatch.Prefix"
-        Icon="@Icons.Material.Filled.Settings"
+        Icon="@Icons.Material.Filled.AccessTime"
         IconColor="Color.Default">
         Configurações Data e Hora
     </MudNavLink>
@@ -35,7 +37,7 @@
     <MudNavLink
         Href="/Admin/Senhas"
         Match="NavLinkMatch.Prefix"
-        Icon="@Icons.Material.Filled.Settings"
+        Icon="@Icons.Material.Filled.LockOpen"
         IconColor="Color.Default">
         Gestão de Senhas
     </MudNavLink>
@@ -43,15 +45,15 @@
     <MudNavLink
         Href="/Admin/Monitoramento"
         Match="NavLinkMatch.Prefix"
-        Icon="@Icons.Material.Filled.Settings"
-        IconColor="Color.Default">
+        Icon="@Icons.Material.Filled.NotificationImportant"
+        IconColor="Color.Warning">
         Ver Notificações
     </MudNavLink>
 
     <MudNavLink
         Href="/Admin/Backups"
         Match="NavLinkMatch.Prefix"
-        Icon="@Icons.Material.Filled.Settings"
+        Icon="@Icons.Material.Filled.Backup"
         IconColor="Color.Default">
         Backups
     </MudNavLink>
@@ -73,6 +75,7 @@
     </MudNavLink>
 </MudNavGroup>
 
+<!-- Relatórios -->
 <MudNavLink
     T="bool"
     Href="/"
@@ -82,6 +85,7 @@
     Relatórios
 </MudNavLink>
 
+<!-- Grupo de Painel -->
 <MudNavGroup
     Icon="@Icons.Material.Filled.Dashboard"
     IconColor="Color.Error"
@@ -89,14 +93,17 @@
     Expanded="true">
 </MudNavGroup>
 
+<!-- Segurança -->
 <MudNavLink
     T="bool"
     Href="/Admin/Seguranca"
     Match="NavLinkMatch.Prefix"
     Icon="@Icons.Material.Filled.Lock"
-    IconColor = "Color.Default">Segurança
+    IconColor="Color.Error">
+    Segurança
 </MudNavLink>
 
+<!-- Manutenção -->
 <MudNavLink
     Href="/Admin/Manutencao"
     Match="NavLinkMatch.Prefix"
@@ -105,16 +112,16 @@
     Manutenção
 </MudNavLink>
 
+<!-- Suporte -->
 <MudNavLink
     Href="/Admin/Suporte"
     Match="NavLinkMatch.Prefix"
     Icon="@Icons.Material.Filled.Help"
-    IconColor="Color.Surface">
+    IconColor="Color.Info">
     Suporte
 </MudNavLink>
 
-
-
+<!-- Sobre -->
 <MudNavLink
     Href="/Admin/Sobre"
     Match="NavLinkMatch.Prefix"
@@ -122,3 +129,4 @@
     IconColor="Color.Info">
     Sobre
 </MudNavLink>
+
