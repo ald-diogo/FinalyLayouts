@@ -1,180 +1,122 @@
 ﻿@page "/CadastroEst"
 @using FrontDeveloper.Models
 @using MudBlazor
-@inject NavigationManager NavigationManager
 
-<PageTitle>Cadastro de Estudantes</PageTitle>
 
-<MudText Typo="Typo.h4" Align="Align.Center" Color="Color.Primary">Cadastro de Estudantes</MudText>
+@inject NavigationManager Navigation
+@inject ISnackbar Snackbar
 
-<MudContainer>
-    <MudForm @ref="form" Model="@estudante" OnValidSubmit="CadastrarEstudante">
+<MudPaper Class="pa-4">
+    <MudText Typo="Typo.h4" Align="Align.Center">Cadastro de Estudante</MudText>
+
+    <MudForm @ref="form" OnValidSubmit="HandleValidSubmit">
         <MudGrid>
-            <!-- Primeira Linha -->
-            <MudItem xs="12" sm="3">
-                <MudTextField
-                    ShrinkLabel
-                    Label="Nome" 
-                    @bind-Value="estudante.Nome"
-                    Variant="Variant.Outlined"
-                    Required="true" />
+            <!-- Linha 1 -->
+            <MudItem xs="3">
+                <MudTextField ShrinkLabel @bind-Value="nome" Label="Nome" Variant="Variant.Outlined" />
             </MudItem>
-            
-            <MudItem xs="12" sm="3">
-                <MudSelect @bind-Value="gender" Label="Selecionar Gênero" Variant="Variant.Outlined">
-                    <MudSelectItem Value="@("Masculino")">Masculino</MudSelectItem>
-                    <MudSelectItem Value="@("Feminino")">Feminino</MudSelectItem>
-                    <MudSelectItem Value="@("Outro")">Outro</MudSelectItem>
+            <MudItem xs="3">
+                <MudSelect @bind-Value="genero" Label="Gênero" Variant="Variant.Outlined">
+                    <MudSelectItem Value="@("Masculino")" />
+                    <MudSelectItem Value="@("Feminino")" />
+                    <MudSelectItem Value="@("Outro")" />
                 </MudSelect>
-
-                <p>Gênero Selecionado: @(string.IsNullOrEmpty(gender) ? "Nenhum selecionado" : gender)</p>
-
-                @code {
-                    string gender = ""; // Inicializando o valor como vazio
-                }
             </MudItem>
-            
-            <MudItem xs="12" sm="3">
-                <MudDatePicker 
-                    Label="yyyy-MM-dd"
+            <MudItem xs="3">
+                <MudDatePicker
+                    Label="Data de Nascimento"
                     Editable="true"
-                    @bind-Date="_date3" 
+                    @bind-Date="_dataNascimento"
                     Mask="@(new DateMask("0000-00-00"))"
-                    DateFormat="yyyy-MM-dd" 
+                    DateFormat="yyyy-MM-dd"
                     Placeholder="ISO Date"
                     Variant="Variant.Outlined" />
             </MudItem>
-            
-            <MudItem xs="12" sm="3">
-                <MudSelect
-                    Label="Período"
-                    @bind-Value="estudante.Periodo"
-                    Required="true"
-                    Variant="Variant.Outlined">
-                    <MudSelectItem Value="@("")" />
-                    <MudSelectItem Value="@("Manhã")"/>
-                    <MudSelectItem Value="@("Tarde")"/>
-                    <MudSelectItem Value="@("Pós-Laboral")"/>
+            <MudItem xs="3">
+                <MudSelect @bind-Value="periodo" Label="Período" Variant="Variant.Outlined">
+                    <MudSelectItem Value="@("Manhã")" />
+                    <MudSelectItem Value="@("Tarde")" />
+                    <MudSelectItem Value="@("Pós-Laboral")" />
                 </MudSelect>
             </MudItem>
 
-            <!-- Segunda Linha -->
-            <MudItem xs="12" sm="3">
-                <MudSelect
-                    @bind-Value="estudante.Sala"
-                    Label="Sala"
-                    Variant="Variant.Outlined"
-                    Required="true">
-                    <MudSelectItem Value="@("")" />
-                    <MudSelectItem Value="@("01")"/>
-                    <MudSelectItem Value="@("02")"/>
-                    <MudSelectItem Value="@("03")"/>
-                    <MudSelectItem Value="@("04")"/>
+            <!-- Linha 2 -->
+            <MudItem xs="3">
+                <MudSelect @bind-Value="curso" Label="Curso" Variant="Variant.Outlined">
+                    <MudSelectItem Value="@("Ciência da Computação")" />
+                    <MudSelectItem Value="@("Engenharia Elétrica")" />
+                    <MudSelectItem Value="@("Administração")" />
                 </MudSelect>
             </MudItem>
-            
-            <MudItem xs="12" sm="3">
-                <MudSelect
-                    Label="Classe"
-                    @bind-Value="estudante.Classe"
-                    Required="true"
-                    Variant="Variant.Outlined">
-                    <MudSelectItem Value="@("")" />
-                    <MudSelectItem Value="@("10º")"/>
-                    <MudSelectItem Value="@("11º")"/>
-                    <MudSelectItem Value="@("12º")"/>
-                </MudSelect>
-            </MudItem>
-            
-            <MudItem xs="12" sm="3">
-                <MudSelect 
-                    Label="Turma" 
-                    @bind-Value="estudante.Turma" 
-                    Required="true" 
-                    Variant="Variant.Outlined">
-                    <MudSelectItem Value="@("")" />
-                    <MudSelectItem Value="@("Turma A")" />
-                    <MudSelectItem Value="@("Turma B")" />
-                    <MudSelectItem Value="@("Turma C")" />
-                    <MudSelectItem Value="@("Turma D")" />
-                </MudSelect>
-            </MudItem>
-            
-            <MudItem xs="12" sm="3">
-                <MudSelect 
-                    Label="Curso" 
-                    @bind-Value="estudante.Curso"
-                    Required="true" 
-                    Variant="Variant.Outlined">
-                    <MudSelectItem Value="@("")" />
-                    <MudSelectItem Value="@("Engenharia")"/>
-                    <MudSelectItem Value="@("Medicina")"/>
-                    <MudSelectItem Value="@("Design")"/>
-                    <MudSelectItem Value="@("Arquitetura")"/>
-                </MudSelect>
-            </MudItem>
-
-            <!-- Terceira Linha -->
-            <MudItem xs="12" sm="3">
-                <MudSelect 
-                    Label="Ano de Frequência" 
-                    @bind-Value="estudante.AnoFrequencia" 
-                    Required="true"
-                    Variant="Variant.Outlined">
-                    <MudSelectItem Value="@("")" />
-                    <MudSelectItem Value="@("2023/2024")" />
+            <MudItem xs="3">
+                <MudSelect @bind-Value="anoLectivo" Label="Ano Letivo" Variant="Variant.Outlined">
                     <MudSelectItem Value="@("2024/2025")" />
                     <MudSelectItem Value="@("2025/2026")" />
                     <MudSelectItem Value="@("2026/2027")" />
                 </MudSelect>
             </MudItem>
-            <MudItem xs="12" sm="3">
-                <MudTextField
-                    ShrinkLabel
-                    Label="Telefone"
-                    @bind-Value="estudante.Telefone"
-                    Variant="Variant.Outlined"
-                    Required="true" />
+            <MudItem xs="3">
+                <MudSelect @bind-Value="classe" Label="Classe" Variant="Variant.Outlined">
+                    <MudSelectItem Value="@("10")" />
+                    <MudSelectItem Value="@("11")" />
+                    <MudSelectItem Value="@("12")" />
+                </MudSelect>
             </MudItem>
-            
-            <MudItem xs="12" sm="3">
-                <MudTextField
-                    ShrinkLabel
-                    Label="Morada" 
-                    @bind-Value="estudante.Morada" 
-                    Variant="Variant.Outlined"
-                    Required="true" />
+            <MudItem xs="3">
+                <MudSelect @bind-Value="turma" Label="Turma" Variant="Variant.Outlined">
+                    <MudSelectItem Value="@("A")" />
+                    <MudSelectItem Value="@("B")" />
+                    <MudSelectItem Value="@("C")" />
+                </MudSelect>
             </MudItem>
-            
-            <MudItem xs="12" sm="3">
-                <MudTextField
-                    ShrinkLabel
-                    Label="Email" 
-                    @bind-Value="estudante.Email"
-                    Variant="Variant.Outlined"
-                    Required="true" />
+
+            <!-- Linha 3 -->
+            <MudItem xs="3">
+                <MudSelect @bind-Value="sala" Label="Sala" Variant="Variant.Outlined">
+                    <MudSelectItem Value="@("Sala 01")" />
+                    <MudSelectItem Value="@("Sala 02")" />
+                    <MudSelectItem Value="@("Sala 03")" />
+                </MudSelect>
+            </MudItem>
+            <MudItem xs="3">
+                <MudTextField ShrinkLabel @bind-Value="telefone" Label="Telefone" Variant="Variant.Outlined" />
+            </MudItem>
+            <MudItem xs="3">
+                <MudTextField ShrinkLabel @bind-Value="morada" Label="Morada" Variant="Variant.Outlined" />
+            </MudItem>
+            <MudItem xs="3">
+                <MudTextField ShrinkLabel @bind-Value="email" Label="Email" Variant="Variant.Outlined" />
             </MudItem>
         </MudGrid>
 
-        <MudButton ButtonType="ButtonType.Submit" Color="Color.Primary">Cadastrar</MudButton>
+        <!-- Botão Cadastrar -->
+        <MudButton
+            Type="Submit"
+            Color="Color.Success"
+            Variant="Variant.Filled"
+            FullWidth="true"
+            @onclick="@(() => Snackbar.Add("Cadastro Realizado Com Sucesso!", Severity.Success))">
+            Cadastrar
+        </MudButton>
     </MudForm>
-</MudContainer>
+</MudPaper>
+
 
 @code {
-    private Estudante estudante = new Estudante();
+
+   
+
+    private string nome, genero, periodo, curso, anoLectivo, classe, turma, sala, telefone, morada, email;
+    private DateTime? _dataNascimento = null;
     private MudForm form;
-    private DateTime? _date3 = null;
+    private ElementReference snackbar;
 
-    // Lista de estudantes que será usada para armazenar os estudantes cadastrados
-    private List<Estudante> Estudantes = new List<Estudante>();
-
-    private void CadastrarEstudante()
+    private async Task HandleValidSubmit()
     {
-        // Adiciona o estudante à lista de estudantes
-        Estudantes.Add(estudante);
-        
-        // Redireciona para a página de lista de estudantes
-        NavigationManager.NavigateTo("/Admin/ListaEstudantes");
+        // Após o cadastro, redireciona para a página de listagem
+        Navigation.NavigateTo("/Admin/ListaEstudantes");
     }
 }
+
+
 
