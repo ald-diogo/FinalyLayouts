@@ -35,7 +35,7 @@
         <RowTemplate>
             <MudTd DataLabel="Nome">@context.Nome</MudTd>
             <MudTd DataLabel="Gênero">@context.Genero</MudTd>
-            <MudTd DataLabel="Data de Nascimento">@context.Genero</MudTd>
+            <MudTd DataLabel="Data de Nascimento">@context.DataNascimento</MudTd>
             <MudTd DataLabel="Período">@context.Periodo</MudTd>
             <MudTd DataLabel="Curso">@context.Curso</MudTd>
             <MudTd DataLabel="Ano Lectivo">@context.AnoLectivo</MudTd>
@@ -85,8 +85,8 @@
         // Dados simulados. Aqui você pode buscar os dados de um banco de dados ou API
         estudantes = new List<Estudante>
         {
-            new Estudante { Nome = "João Silva", Genero = "Masculino", Periodo = "Manhã", Curso = "Ciência da Computação", AnoLectivo = "2025", Classe = "1ª", Turma = "A", Sala = "101", Telefone = "912345678", Morada = "Rua A", Email = "joao@example.com" },
-            new Estudante { Nome = "Maria Costa", Genero = "Feminino", Periodo = "Tarde", Curso = "Engenharia", AnoLectivo = "2025", Classe = "2ª", Turma = "B", Sala = "102", Telefone = "913456789", Morada = "Rua B", Email = "maria@example.com" }
+            new Estudante { Nome = "João Silva", DataNascimento="null", Genero = "Masculino", Periodo = "Manhã", Curso = "Ciência da Computação", AnoLectivo = "2025", Classe = "1ª", Turma = "A", Sala = "101", Telefone = "912345678", Morada = "Rua A", Email = "joao@example.com" },
+            new Estudante { Nome = "Maria Costa", DataNascimento="null", Genero = "Feminino", Periodo = "Tarde", Curso = "Engenharia", AnoLectivo = "2025", Classe = "2ª", Turma = "B", Sala = "102", Telefone = "913456789", Morada = "Rua B", Email = "maria@example.com" }
         };
     }
 
@@ -106,6 +106,7 @@
     {
         public string Nome { get; set; }
         public string Genero { get; set; }
+        public string DataNascimento { get; set; }
         public string Periodo { get; set; }
         public string Curso { get; set; }
         public string AnoLectivo { get; set; }
