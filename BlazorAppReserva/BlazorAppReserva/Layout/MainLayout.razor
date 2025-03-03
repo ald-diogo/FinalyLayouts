@@ -1,29 +1,29 @@
-﻿@inherits LayoutComponentBase
+﻿@using MudBlazor.Utilities
+@inherits LayoutComponentBase
 
 <MudLayout>
     <MudAppBar Elevation="1" Color="Color.Dark">
-        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Warning" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())"/>
+        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Warning" 
+                       Edge="Edge.Start" OnClick="@((e) => DrawerToggle())"/>
         <MudSpacer/>
         <MudThemeProvider @bind-IsDarkMode="@_isDarkMode" Theme="_theme" />
         <MudSwitch ThumbIcon="" @bind-Value="_isDarkMode" Color="Color.Primary" Class="ma-4" T="bool" />
     </MudAppBar>
 
-    <MudDrawer @bind-Open="_drawerOpen" Elevation="2" Color="Color.Dark">
+    <MudDrawer @bind-Open="_drawerOpen" Elevation="2" Color="Color.Dark" Breakpoint="Breakpoint.Md">
         <MudDrawerHeader>
             <MudText Typo="Typo.h5" Class="mt-1" Color="Color.Primary">Menu</MudText>
         </MudDrawerHeader>
         <NavMenu/>
     </MudDrawer>
+
     <MudMainContent>
         @Body
     </MudMainContent>
-
-    <MudDialogProvider />
-
-    <MudSnackbarProvider />
 </MudLayout>
 
-
+<MudDialogProvider />
+<MudSnackbarProvider />
 
 @code {
     bool _drawerOpen = true;
@@ -35,4 +35,32 @@
     
     private MudTheme _theme = new();
     private bool _isDarkMode;
+    
+    private MudTheme _lightTheme = new MudTheme()
+    {
+        PaletteLight = new PaletteLight()
+        {
+            Primary = "#1EFA2D",
+            Background = Colors.Blue.Lighten4,
+            Secondary = Colors.LightBlue.Darken3,
+            TextPrimary = Colors.Shades.Black,
+            AppbarText = Colors.Shades.Black,
+            AppbarBackground = new MudColor("#1EFA2D"),
+            DrawerText = Colors.Shades.Black,
+            DrawerBackground = Colors.LightBlue.Lighten4
+        }
+    };
+
+    private MudTheme _darkTheme = new MudTheme()
+    {
+        PaletteDark = new PaletteDark()
+        {
+            Primary = Colors.LightBlue.Accent3,
+            Secondary = Colors.LightBlue.Darken3,
+            AppbarBackground = Colors.LightBlue.Accent3,
+            AppbarText = Colors.Shades.Black
+        }
+    };
+
+    private MudTheme _currentTheme => _isDarkMode ? _darkTheme : _lightTheme;
 }

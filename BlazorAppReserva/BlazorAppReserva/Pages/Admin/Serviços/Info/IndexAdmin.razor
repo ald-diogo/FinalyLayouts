@@ -6,33 +6,18 @@
 @inject ISnackbar Snackbar
 @inject NavigationManager Navigation
 
-
 <MudLayout>
     <MudAppBar Color="Color.Primary" Elevation="4">
-        <MudText Typo="Typo.h6" Color="Color.Inherit">Reserve Já!</MudText>
+        <MudText Typo="Typo.h6" Color="Color.Inherit">Sistema de Gestão de Reservas de Hotel</MudText>
         <MudSpacer />
-
         <MudButton
-            Href=""
+            Href="/Admin/Login"
             Color="Color.Inherit"
             Variant="Variant.Text"
             @onclick="NavigateToLogin">
-            <MudIconButton 
-                Icon="@Icons.Material.Filled.Login"
-                Color="Color.Success" />
+            <MudIconButton Icon="@Icons.Material.Filled.Login" Color="Color.Success" />
             Login
         </MudButton>
-
-        <MudButton
-            Href="/Admin/Registrar"
-            Color="Color.Inherit"
-            Variant="Variant.Text"
-            @onclick="NavigateToRegister"
-            EndIcon="Icons.Material.Filled.PersonAdd">
-            <MudIconButton Icon="@Icons.Material.Filled.PersonAdd" Color="Color.Success" />
-            Registrar
-        </MudButton>
-
     </MudAppBar>
 
     <MudMainContent>
@@ -40,24 +25,22 @@
             <MudGrid>
                 <MudItem xs="12" sm="6">
                     <MudPaper Elevation="4" Square="true" Class="pa-4">
-                        
-                        <MudText Typo="Typo.h4" Align="Align.Center">Bem-vindo ao Reserve Já!</MudText>
-
+                        <MudText Typo="Typo.h4" Align="Align.Center">
+                            Bem-vindo(a) ao Sistema de Gestão de Reservas de Hotel!
+                        </MudText>
                         <MudText Typo="Typo.body1" Align="Align.Center" Class="mt-3">
-                            Reserve seu hotel de forma rápida e fácil, com uma ampla gama de opções para suas férias ou viagem de negócios.
+                            Reserve seu quarto de forma rápida e fácil, com uma ampla gama de opções de acomodações disponíveis para você.
                         </MudText>
                     </MudPaper>
                 </MudItem>
 
                 <MudItem xs="12" sm="6">
                     <MudPaper Elevation="4" Square="true" Class="pa-4">
-                        
                         <MudText Typo="Typo.h6">Como Funciona</MudText>
-
                         <MudText Typo="Typo.body2">
-                            1. Escolha o seu destino. <br/>
-                            2. Selecione o hotel ideal. <br/>
-                            3. Reserve o seu quarto e aproveite a estadia!
+                            1. Escolha o tipo de quarto desejado. <br/>
+                            2. Selecione as datas de entrada e saída. <br/>
+                            3. Finalize sua reserva e aproveite sua estadia!
                         </MudText>
 
                         <MudButton
@@ -70,7 +53,7 @@
                         </MudButton>
 
                         <MudChip T="string">@state</MudChip>
-
+                        
                         <MudAlert Severity="@alertSeverity" @bind-Open="alertVisible">
                             @alertMessage
                         </MudAlert>
@@ -81,13 +64,10 @@
             <MudGrid Class="mt-4">
                 <MudItem xs="12" sm="6">
                     <MudPaper Elevation="4" Square="true" Class="pa-4">
-                        
-                        <MudText Typo="Typo.h6" Align="Align.Center">Ofertas Especiais</MudText>
-
+                        <MudText Typo="Typo.h6" Align="Align.Center">Quartos Disponíveis</MudText>
                         <MudText Typo="Typo.body2" Align="Align.Center" Class="mt-2">
                             Confira as promoções e descontos exclusivos para reservas de última hora.
                         </MudText>
-
                         <MudButton
                             Color="Color.Secondary"
                             Variant="Variant.Filled"
@@ -101,18 +81,19 @@
 
                 <MudItem xs="12" sm="6">
                     <MudPaper Elevation="4" Square="true" Class="pa-4">
-                        <MudText Typo="Typo.h6" Align="Align.Center">Sobre nós</MudText>
+                        <MudText Typo="Typo.h6" Align="Align.Center">Sobre o Hotel</MudText>
                         <MudText Typo="Typo.body2" Align="Align.Center" Class="mt-2">
-                            Somos uma plataforma confiável e segura para realizar reservas em hotéis ao redor do mundo.
+                            Somos um hotel confortável e confiável, oferecendo uma estadia única para nossos hóspedes.
                         </MudText>
-                        
+
                         <MudButton
                             Href="/Admin/Sobre"
                             Color="Color.Info"
                             Variant="Variant.Filled"
                             Class="mt-4"
-                            FullWidth="true"
-                            @onclick="NavigateToAbout">Saiba mais</MudButton>
+                            FullWidth="true">
+                            Saiba mais
+                        </MudButton>
                     </MudPaper>
                 </MudItem>
             </MudGrid>
@@ -120,15 +101,12 @@
     </MudMainContent>
 
     <MudFooter Elevation="4" Class="pa-4">
-        <MudText
-            Typo="Typo.body2"
-            Align="Align.Center">
-            © 2025 Reserve Já. Todos os direitos reservados.
-        </MudText>
+        <MudText Typo="Typo.body2" Align="Align.Center">© 2025 Sistema de Reservas de Hotel. Todos os direitos reservados.</MudText>
     </MudFooter>
 </MudLayout>
 
 @code {
+   
     [Inject] private IDialogService DialogService { get; set; }
     
     private string state = "Clique no botão!";
@@ -148,7 +126,7 @@
 
         if (dialog == true)
         {
-            alertMessage = "Processo iniciado com Sucesso!";
+            alertMessage = "Reserva iniciada com Sucesso!";
             alertSeverity = Severity.Success; // Alerta verde
         }
         else if (dialog == false)
@@ -165,29 +143,22 @@
         alertVisible = true;
     }
 
+
+    private void OnVerOfertasClicked()
+    {
+        Snackbar.Add("Deseja saber mais sobre as ofertas de quartos? Clique em Saiba mais!", Severity.Success);
+    }
+
     private void NavigateToLogin()
     {
-        Navigation.NavigateTo("/login");
-    }
-
-    private void NavigateToRegister()
-    {
-        Navigation.NavigateTo("/Admin/Registrar");
-    }
-
-    private void NavigateToSearch()
-    {
-        Navigation.NavigateTo("/Admin/Pesquisar");
+        Navigation.NavigateTo("/Admin/Login");
     }
 
     private void NavigateToAbout()
     {
         Navigation.NavigateTo("/Admin/Sobre");
     }
-
-    private async Task OnVerOfertasClicked()
-    {
-        // Ação para visualização de ofertas
-        Snackbar.Add("Ofertas em breve!", Severity.Info);
-    }
 }
+
+
+

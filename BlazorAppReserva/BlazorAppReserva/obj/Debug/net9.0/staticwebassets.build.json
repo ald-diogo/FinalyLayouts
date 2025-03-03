@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "nMOt0E75n9ULxD6aGiZjEP0XWrdQRiW0cYOBkH3+GLA=",
+  "Hash": "2qaDqh7Ic4IxeXv3CA2Pw7cGKD0CYKHlUQv+FbUoVlo=",
   "Source": "BlazorAppReserva",
   "BasePath": "/",
   "Mode": "Root",
@@ -31,8 +31,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "WasmResource",
       "AssetTraitValue": "manifest",
-      "Fingerprint": "wxbgpdtui0",
-      "Integrity": "jAK3VptywUCRHClfEKsq8yzug3HwwvpnDyQ/+BxRALE=",
+      "Fingerprint": "x62qqx55t3",
+      "Integrity": "mZs3LZQXw+8ZH50QXP/PVbPB/E3MqtANt09IjvJ1tEU=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "obj\\Debug\\net9.0\\blazor.boot.json"
@@ -73,8 +73,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "WasmResource",
       "AssetTraitValue": "symbol",
-      "Fingerprint": "2ee64srwb0",
-      "Integrity": "pk3RN9FTW0bdfP9AihAthl6xp/t5Ko5EIXRPJ1I/9/Y=",
+      "Fingerprint": "vfosffkeyz",
+      "Integrity": "RcpYjbLS5sr2eVOBka7nbclxTomaqG0H7qSR3QsA2eU=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "obj\\Debug\\net9.0\\BlazorAppReserva.pdb"
@@ -94,8 +94,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "WasmResource",
       "AssetTraitValue": "runtime",
-      "Fingerprint": "0z1uhr6m5n",
-      "Integrity": "hL0CaCP7QoGMoluZm4+r/D5rDL328VpF9lMCeu06MPc=",
+      "Fingerprint": "1t7k1pvxh4",
+      "Integrity": "e8YDDF3Tmrjb3/VMFZnoWp1VDfCYgB8Qzt6nv9p8cUU=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Dev\\RiderProjects\\FinalyLayouts\\BlazorAppReserva\\BlazorAppReserva\\obj\\Debug\\net9.0\\webcil\\BlazorAppReserva.wasm"
@@ -5078,12 +5078,12 @@
       "OriginalItemSpec": "C:\\Dev\\RiderProjects\\FinalyLayouts\\BlazorAppReserva\\BlazorAppReserva\\bin\\Debug\\net9.0\\wwwroot\\_framework\\System.IO.Pipelines.wasm"
     },
     {
-      "Identity": "C:\\Dev\\RiderProjects\\FinalyLayouts\\BlazorAppReserva\\BlazorAppReserva\\obj\\Debug\\net9.0\\compressed\\4p61ckt6w0-2ee64srwb0.gz",
+      "Identity": "C:\\Dev\\RiderProjects\\FinalyLayouts\\BlazorAppReserva\\BlazorAppReserva\\obj\\Debug\\net9.0\\compressed\\4p61ckt6w0-vfosffkeyz.gz",
       "SourceId": "BlazorAppReserva",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Dev\\RiderProjects\\FinalyLayouts\\BlazorAppReserva\\BlazorAppReserva\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "/",
-      "RelativePath": "_framework/BlazorAppReserva#[.{fingerprint=2ee64srwb0}]!.pdb.gz",
+      "RelativePath": "_framework/BlazorAppReserva#[.{fingerprint=vfosffkeyz}]!.pdb.gz",
       "AssetKind": "Build",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -5092,8 +5092,8 @@
       "RelatedAsset": "C:\\Dev\\RiderProjects\\FinalyLayouts\\BlazorAppReserva\\BlazorAppReserva\\bin\\Debug\\net9.0\\wwwroot\\_framework\\BlazorAppReserva.pdb",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "2vvjd8z5qr",
-      "Integrity": "8hpTj1RgEiiYQXemjn7qH4UpB7aezwOecYRapx4ve5Y=",
+      "Fingerprint": "0x4xdzl7yb",
+      "Integrity": "JEA3zp8Jh30qxh7i1Qx0yjNgJooCU5kvENLCI4KUstU=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Dev\\RiderProjects\\FinalyLayouts\\BlazorAppReserva\\BlazorAppReserva\\bin\\Debug\\net9.0\\wwwroot\\_framework\\BlazorAppReserva.pdb"
@@ -6947,7 +6947,7 @@
       "OriginalItemSpec": "C:\\Dev\\RiderProjects\\FinalyLayouts\\BlazorAppReserva\\BlazorAppReserva\\bin\\Debug\\net9.0\\wwwroot\\_framework\\dotnet.runtime.js.map"
     },
     {
-      "Identity": "C:\\Dev\\RiderProjects\\FinalyLayouts\\BlazorAppReserva\\BlazorAppReserva\\obj\\Debug\\net9.0\\compressed\\mflp4e0joc-wxbgpdtui0.gz",
+      "Identity": "C:\\Dev\\RiderProjects\\FinalyLayouts\\BlazorAppReserva\\BlazorAppReserva\\obj\\Debug\\net9.0\\compressed\\mflp4e0joc-x62qqx55t3.gz",
       "SourceId": "BlazorAppReserva",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Dev\\RiderProjects\\FinalyLayouts\\BlazorAppReserva\\BlazorAppReserva\\obj\\Debug\\net9.0\\compressed\\",
@@ -6961,8 +6961,8 @@
       "RelatedAsset": "C:\\Dev\\RiderProjects\\FinalyLayouts\\BlazorAppReserva\\BlazorAppReserva\\bin\\Debug\\net9.0\\wwwroot\\_framework\\blazor.boot.json",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "hnyzsvhbo8",
-      "Integrity": "LeKFTsgpx2IgXMoFd8YyVl45Msci+b6TZS4gSNuIe0E=",
+      "Fingerprint": "blenh0akk9",
+      "Integrity": "YQXwwkohEHPF5TM5sVV3nfAEKlTXgjR3x1Q3SLQrots=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Dev\\RiderProjects\\FinalyLayouts\\BlazorAppReserva\\BlazorAppReserva\\bin\\Debug\\net9.0\\wwwroot\\_framework\\blazor.boot.json"
@@ -7514,12 +7514,12 @@
       "OriginalItemSpec": "C:\\Dev\\RiderProjects\\FinalyLayouts\\BlazorAppReserva\\BlazorAppReserva\\bin\\Debug\\net9.0\\wwwroot\\_framework\\System.Linq.Expressions.wasm"
     },
     {
-      "Identity": "C:\\Dev\\RiderProjects\\FinalyLayouts\\BlazorAppReserva\\BlazorAppReserva\\obj\\Debug\\net9.0\\compressed\\qdlbnkpy1v-0z1uhr6m5n.gz",
+      "Identity": "C:\\Dev\\RiderProjects\\FinalyLayouts\\BlazorAppReserva\\BlazorAppReserva\\obj\\Debug\\net9.0\\compressed\\qdlbnkpy1v-1t7k1pvxh4.gz",
       "SourceId": "BlazorAppReserva",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Dev\\RiderProjects\\FinalyLayouts\\BlazorAppReserva\\BlazorAppReserva\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "/",
-      "RelativePath": "_framework/BlazorAppReserva#[.{fingerprint=0z1uhr6m5n}]!.wasm.gz",
+      "RelativePath": "_framework/BlazorAppReserva#[.{fingerprint=1t7k1pvxh4}]!.wasm.gz",
       "AssetKind": "Build",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -7528,8 +7528,8 @@
       "RelatedAsset": "C:\\Dev\\RiderProjects\\FinalyLayouts\\BlazorAppReserva\\BlazorAppReserva\\bin\\Debug\\net9.0\\wwwroot\\_framework\\BlazorAppReserva.wasm",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "89f77j2k9u",
-      "Integrity": "BARhKruoSbHS1GfCI8ilCJSymFWnLWBYXAtUqHAQ7+k=",
+      "Fingerprint": "89ft3d7zrx",
+      "Integrity": "hKZY+78pEriD55dN1qJi2YiT8Aq1gjfDQtpy8J8O+zE=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Dev\\RiderProjects\\FinalyLayouts\\BlazorAppReserva\\BlazorAppReserva\\bin\\Debug\\net9.0\\wwwroot\\_framework\\BlazorAppReserva.wasm"
@@ -9347,11 +9347,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"jAK3VptywUCRHClfEKsq8yzug3HwwvpnDyQ/+BxRALE=\""
+          "Value": "\"mZs3LZQXw+8ZH50QXP/PVbPB/E3MqtANt09IjvJ1tEU=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 28 Feb 2025 17:41:41 GMT"
+          "Value": "Mon, 03 Mar 2025 16:45:56 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -9361,18 +9361,18 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-jAK3VptywUCRHClfEKsq8yzug3HwwvpnDyQ/+BxRALE="
+          "Value": "sha256-mZs3LZQXw+8ZH50QXP/PVbPB/E3MqtANt09IjvJ1tEU="
         }
       ]
     },
     {
       "Route": "_framework/blazor.boot.json",
-      "AssetFile": "C:\\Dev\\RiderProjects\\FinalyLayouts\\BlazorAppReserva\\BlazorAppReserva\\obj\\Debug\\net9.0\\compressed\\mflp4e0joc-wxbgpdtui0.gz",
+      "AssetFile": "C:\\Dev\\RiderProjects\\FinalyLayouts\\BlazorAppReserva\\BlazorAppReserva\\obj\\Debug\\net9.0\\compressed\\mflp4e0joc-x62qqx55t3.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000080025608"
+          "Quality": "0.000080057642"
         }
       ],
       "ResponseHeaders": [
@@ -9382,15 +9382,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "12495"
+          "Value": "12490"
         },
         {
           "Name": "ETag",
-          "Value": "\"LeKFTsgpx2IgXMoFd8YyVl45Msci+b6TZS4gSNuIe0E=\""
+          "Value": "\"YQXwwkohEHPF5TM5sVV3nfAEKlTXgjR3x1Q3SLQrots=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 28 Feb 2025 17:38:52 GMT"
+          "Value": "Mon, 03 Mar 2025 16:26:52 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -9410,19 +9410,19 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"jAK3VptywUCRHClfEKsq8yzug3HwwvpnDyQ/+BxRALE=\""
+          "Value": "W/\"mZs3LZQXw+8ZH50QXP/PVbPB/E3MqtANt09IjvJ1tEU=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-jAK3VptywUCRHClfEKsq8yzug3HwwvpnDyQ/+BxRALE="
+          "Value": "sha256-mZs3LZQXw+8ZH50QXP/PVbPB/E3MqtANt09IjvJ1tEU="
         }
       ]
     },
     {
       "Route": "_framework/blazor.boot.json.gz",
-      "AssetFile": "C:\\Dev\\RiderProjects\\FinalyLayouts\\BlazorAppReserva\\BlazorAppReserva\\obj\\Debug\\net9.0\\compressed\\mflp4e0joc-wxbgpdtui0.gz",
+      "AssetFile": "C:\\Dev\\RiderProjects\\FinalyLayouts\\BlazorAppReserva\\BlazorAppReserva\\obj\\Debug\\net9.0\\compressed\\mflp4e0joc-x62qqx55t3.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -9431,7 +9431,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "12495"
+          "Value": "12490"
         },
         {
           "Name": "Content-Type",
@@ -9439,11 +9439,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"LeKFTsgpx2IgXMoFd8YyVl45Msci+b6TZS4gSNuIe0E=\""
+          "Value": "\"YQXwwkohEHPF5TM5sVV3nfAEKlTXgjR3x1Q3SLQrots=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 28 Feb 2025 17:38:52 GMT"
+          "Value": "Mon, 03 Mar 2025 16:26:52 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -9461,7 +9461,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-LeKFTsgpx2IgXMoFd8YyVl45Msci+b6TZS4gSNuIe0E="
+          "Value": "sha256-YQXwwkohEHPF5TM5sVV3nfAEKlTXgjR3x1Q3SLQrots="
         }
       ]
     },
@@ -9603,7 +9603,7 @@
       ]
     },
     {
-      "Route": "_framework/BlazorAppReserva.0z1uhr6m5n.wasm",
+      "Route": "_framework/BlazorAppReserva.1t7k1pvxh4.wasm",
       "AssetFile": "C:\\Dev\\RiderProjects\\FinalyLayouts\\BlazorAppReserva\\BlazorAppReserva\\bin\\Debug\\net9.0\\wwwroot\\_framework\\BlazorAppReserva.wasm",
       "Selectors": [],
       "ResponseHeaders": [
@@ -9613,7 +9613,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "262421"
+          "Value": "263957"
         },
         {
           "Name": "Content-Type",
@@ -9621,11 +9621,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"hL0CaCP7QoGMoluZm4+r/D5rDL328VpF9lMCeu06MPc=\""
+          "Value": "\"e8YDDF3Tmrjb3/VMFZnoWp1VDfCYgB8Qzt6nv9p8cUU=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 28 Feb 2025 17:41:38 GMT"
+          "Value": "Mon, 03 Mar 2025 16:45:54 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -9635,7 +9635,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "0z1uhr6m5n"
+          "Value": "1t7k1pvxh4"
         },
         {
           "Name": "label",
@@ -9643,18 +9643,18 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-hL0CaCP7QoGMoluZm4+r/D5rDL328VpF9lMCeu06MPc="
+          "Value": "sha256-e8YDDF3Tmrjb3/VMFZnoWp1VDfCYgB8Qzt6nv9p8cUU="
         }
       ]
     },
     {
-      "Route": "_framework/BlazorAppReserva.0z1uhr6m5n.wasm",
-      "AssetFile": "C:\\Dev\\RiderProjects\\FinalyLayouts\\BlazorAppReserva\\BlazorAppReserva\\obj\\Debug\\net9.0\\compressed\\qdlbnkpy1v-0z1uhr6m5n.gz",
+      "Route": "_framework/BlazorAppReserva.1t7k1pvxh4.wasm",
+      "AssetFile": "C:\\Dev\\RiderProjects\\FinalyLayouts\\BlazorAppReserva\\BlazorAppReserva\\obj\\Debug\\net9.0\\compressed\\qdlbnkpy1v-1t7k1pvxh4.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000014451911"
+          "Quality": "0.000014337945"
         }
       ],
       "ResponseHeaders": [
@@ -9664,15 +9664,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "69194"
+          "Value": "69744"
         },
         {
           "Name": "ETag",
-          "Value": "\"BARhKruoSbHS1GfCI8ilCJSymFWnLWBYXAtUqHAQ7+k=\""
+          "Value": "\"hKZY+78pEriD55dN1qJi2YiT8Aq1gjfDQtpy8J8O+zE=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 28 Feb 2025 17:41:41 GMT"
+          "Value": "Mon, 03 Mar 2025 16:45:56 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -9692,13 +9692,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"hL0CaCP7QoGMoluZm4+r/D5rDL328VpF9lMCeu06MPc=\""
+          "Value": "W/\"e8YDDF3Tmrjb3/VMFZnoWp1VDfCYgB8Qzt6nv9p8cUU=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "0z1uhr6m5n"
+          "Value": "1t7k1pvxh4"
         },
         {
           "Name": "label",
@@ -9706,13 +9706,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-hL0CaCP7QoGMoluZm4+r/D5rDL328VpF9lMCeu06MPc="
+          "Value": "sha256-e8YDDF3Tmrjb3/VMFZnoWp1VDfCYgB8Qzt6nv9p8cUU="
         }
       ]
     },
     {
-      "Route": "_framework/BlazorAppReserva.0z1uhr6m5n.wasm.gz",
-      "AssetFile": "C:\\Dev\\RiderProjects\\FinalyLayouts\\BlazorAppReserva\\BlazorAppReserva\\obj\\Debug\\net9.0\\compressed\\qdlbnkpy1v-0z1uhr6m5n.gz",
+      "Route": "_framework/BlazorAppReserva.1t7k1pvxh4.wasm.gz",
+      "AssetFile": "C:\\Dev\\RiderProjects\\FinalyLayouts\\BlazorAppReserva\\BlazorAppReserva\\obj\\Debug\\net9.0\\compressed\\qdlbnkpy1v-1t7k1pvxh4.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -9721,7 +9721,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "69194"
+          "Value": "69744"
         },
         {
           "Name": "Content-Type",
@@ -9729,11 +9729,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"BARhKruoSbHS1GfCI8ilCJSymFWnLWBYXAtUqHAQ7+k=\""
+          "Value": "\"hKZY+78pEriD55dN1qJi2YiT8Aq1gjfDQtpy8J8O+zE=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 28 Feb 2025 17:41:41 GMT"
+          "Value": "Mon, 03 Mar 2025 16:45:56 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -9751,7 +9751,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "0z1uhr6m5n"
+          "Value": "1t7k1pvxh4"
         },
         {
           "Name": "label",
@@ -9759,12 +9759,12 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-BARhKruoSbHS1GfCI8ilCJSymFWnLWBYXAtUqHAQ7+k="
+          "Value": "sha256-hKZY+78pEriD55dN1qJi2YiT8Aq1gjfDQtpy8J8O+zE="
         }
       ]
     },
     {
-      "Route": "_framework/BlazorAppReserva.2ee64srwb0.pdb",
+      "Route": "_framework/BlazorAppReserva.pdb",
       "AssetFile": "C:\\Dev\\RiderProjects\\FinalyLayouts\\BlazorAppReserva\\BlazorAppReserva\\bin\\Debug\\net9.0\\wwwroot\\_framework\\BlazorAppReserva.pdb",
       "Selectors": [],
       "ResponseHeaders": [
@@ -9774,7 +9774,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "154920"
+          "Value": "156208"
         },
         {
           "Name": "Content-Type",
@@ -9782,40 +9782,32 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"pk3RN9FTW0bdfP9AihAthl6xp/t5Ko5EIXRPJ1I/9/Y=\""
+          "Value": "\"RcpYjbLS5sr2eVOBka7nbclxTomaqG0H7qSR3QsA2eU=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 28 Feb 2025 17:41:36 GMT"
+          "Value": "Mon, 03 Mar 2025 16:45:53 GMT"
         },
         {
           "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
+          "Value": "no-cache"
         }
       ],
       "EndpointProperties": [
         {
-          "Name": "fingerprint",
-          "Value": "2ee64srwb0"
-        },
-        {
-          "Name": "label",
-          "Value": "_framework/BlazorAppReserva.pdb"
-        },
-        {
           "Name": "integrity",
-          "Value": "sha256-pk3RN9FTW0bdfP9AihAthl6xp/t5Ko5EIXRPJ1I/9/Y="
+          "Value": "sha256-RcpYjbLS5sr2eVOBka7nbclxTomaqG0H7qSR3QsA2eU="
         }
       ]
     },
     {
-      "Route": "_framework/BlazorAppReserva.2ee64srwb0.pdb",
-      "AssetFile": "C:\\Dev\\RiderProjects\\FinalyLayouts\\BlazorAppReserva\\BlazorAppReserva\\obj\\Debug\\net9.0\\compressed\\4p61ckt6w0-2ee64srwb0.gz",
+      "Route": "_framework/BlazorAppReserva.pdb",
+      "AssetFile": "C:\\Dev\\RiderProjects\\FinalyLayouts\\BlazorAppReserva\\BlazorAppReserva\\obj\\Debug\\net9.0\\compressed\\4p61ckt6w0-vfosffkeyz.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000007289905"
+          "Quality": "0.000007231390"
         }
       ],
       "ResponseHeaders": [
@@ -9825,19 +9817,19 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "137175"
+          "Value": "138285"
         },
         {
           "Name": "ETag",
-          "Value": "\"8hpTj1RgEiiYQXemjn7qH4UpB7aezwOecYRapx4ve5Y=\""
+          "Value": "\"JEA3zp8Jh30qxh7i1Qx0yjNgJooCU5kvENLCI4KUstU=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 28 Feb 2025 17:41:41 GMT"
+          "Value": "Mon, 03 Mar 2025 16:45:56 GMT"
         },
         {
           "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
+          "Value": "no-cache"
         },
         {
           "Name": "Content-Encoding",
@@ -9853,27 +9845,19 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"pk3RN9FTW0bdfP9AihAthl6xp/t5Ko5EIXRPJ1I/9/Y=\""
+          "Value": "W/\"RcpYjbLS5sr2eVOBka7nbclxTomaqG0H7qSR3QsA2eU=\""
         }
       ],
       "EndpointProperties": [
         {
-          "Name": "fingerprint",
-          "Value": "2ee64srwb0"
-        },
-        {
-          "Name": "label",
-          "Value": "_framework/BlazorAppReserva.pdb"
-        },
-        {
           "Name": "integrity",
-          "Value": "sha256-pk3RN9FTW0bdfP9AihAthl6xp/t5Ko5EIXRPJ1I/9/Y="
+          "Value": "sha256-RcpYjbLS5sr2eVOBka7nbclxTomaqG0H7qSR3QsA2eU="
         }
       ]
     },
     {
-      "Route": "_framework/BlazorAppReserva.2ee64srwb0.pdb.gz",
-      "AssetFile": "C:\\Dev\\RiderProjects\\FinalyLayouts\\BlazorAppReserva\\BlazorAppReserva\\obj\\Debug\\net9.0\\compressed\\4p61ckt6w0-2ee64srwb0.gz",
+      "Route": "_framework/BlazorAppReserva.pdb.gz",
+      "AssetFile": "C:\\Dev\\RiderProjects\\FinalyLayouts\\BlazorAppReserva\\BlazorAppReserva\\obj\\Debug\\net9.0\\compressed\\4p61ckt6w0-vfosffkeyz.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -9882,7 +9866,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "137175"
+          "Value": "138285"
         },
         {
           "Name": "Content-Type",
@@ -9890,11 +9874,164 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"8hpTj1RgEiiYQXemjn7qH4UpB7aezwOecYRapx4ve5Y=\""
+          "Value": "\"JEA3zp8Jh30qxh7i1Qx0yjNgJooCU5kvENLCI4KUstU=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 28 Feb 2025 17:41:41 GMT"
+          "Value": "Mon, 03 Mar 2025 16:45:56 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-JEA3zp8Jh30qxh7i1Qx0yjNgJooCU5kvENLCI4KUstU="
+        }
+      ]
+    },
+    {
+      "Route": "_framework/BlazorAppReserva.vfosffkeyz.pdb",
+      "AssetFile": "C:\\Dev\\RiderProjects\\FinalyLayouts\\BlazorAppReserva\\BlazorAppReserva\\bin\\Debug\\net9.0\\wwwroot\\_framework\\BlazorAppReserva.pdb",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "156208"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/octet-stream"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"RcpYjbLS5sr2eVOBka7nbclxTomaqG0H7qSR3QsA2eU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 03 Mar 2025 16:45:53 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "vfosffkeyz"
+        },
+        {
+          "Name": "label",
+          "Value": "_framework/BlazorAppReserva.pdb"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-RcpYjbLS5sr2eVOBka7nbclxTomaqG0H7qSR3QsA2eU="
+        }
+      ]
+    },
+    {
+      "Route": "_framework/BlazorAppReserva.vfosffkeyz.pdb",
+      "AssetFile": "C:\\Dev\\RiderProjects\\FinalyLayouts\\BlazorAppReserva\\BlazorAppReserva\\obj\\Debug\\net9.0\\compressed\\4p61ckt6w0-vfosffkeyz.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000007231390"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "138285"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"JEA3zp8Jh30qxh7i1Qx0yjNgJooCU5kvENLCI4KUstU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 03 Mar 2025 16:45:56 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/octet-stream"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"RcpYjbLS5sr2eVOBka7nbclxTomaqG0H7qSR3QsA2eU=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "vfosffkeyz"
+        },
+        {
+          "Name": "label",
+          "Value": "_framework/BlazorAppReserva.pdb"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-RcpYjbLS5sr2eVOBka7nbclxTomaqG0H7qSR3QsA2eU="
+        }
+      ]
+    },
+    {
+      "Route": "_framework/BlazorAppReserva.vfosffkeyz.pdb.gz",
+      "AssetFile": "C:\\Dev\\RiderProjects\\FinalyLayouts\\BlazorAppReserva\\BlazorAppReserva\\obj\\Debug\\net9.0\\compressed\\4p61ckt6w0-vfosffkeyz.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "138285"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/octet-stream"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"JEA3zp8Jh30qxh7i1Qx0yjNgJooCU5kvENLCI4KUstU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 03 Mar 2025 16:45:56 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -9912,7 +10049,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "2ee64srwb0"
+          "Value": "vfosffkeyz"
         },
         {
           "Name": "label",
@@ -9920,144 +10057,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-8hpTj1RgEiiYQXemjn7qH4UpB7aezwOecYRapx4ve5Y="
-        }
-      ]
-    },
-    {
-      "Route": "_framework/BlazorAppReserva.pdb",
-      "AssetFile": "C:\\Dev\\RiderProjects\\FinalyLayouts\\BlazorAppReserva\\BlazorAppReserva\\bin\\Debug\\net9.0\\wwwroot\\_framework\\BlazorAppReserva.pdb",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "154920"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "application/octet-stream"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"pk3RN9FTW0bdfP9AihAthl6xp/t5Ko5EIXRPJ1I/9/Y=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Fri, 28 Feb 2025 17:41:36 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-pk3RN9FTW0bdfP9AihAthl6xp/t5Ko5EIXRPJ1I/9/Y="
-        }
-      ]
-    },
-    {
-      "Route": "_framework/BlazorAppReserva.pdb",
-      "AssetFile": "C:\\Dev\\RiderProjects\\FinalyLayouts\\BlazorAppReserva\\BlazorAppReserva\\obj\\Debug\\net9.0\\compressed\\4p61ckt6w0-2ee64srwb0.gz",
-      "Selectors": [
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip",
-          "Quality": "0.000007289905"
-        }
-      ],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "137175"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"8hpTj1RgEiiYQXemjn7qH4UpB7aezwOecYRapx4ve5Y=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Fri, 28 Feb 2025 17:41:41 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "application/octet-stream"
-        },
-        {
-          "Name": "ETag",
-          "Value": "W/\"pk3RN9FTW0bdfP9AihAthl6xp/t5Ko5EIXRPJ1I/9/Y=\""
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-pk3RN9FTW0bdfP9AihAthl6xp/t5Ko5EIXRPJ1I/9/Y="
-        }
-      ]
-    },
-    {
-      "Route": "_framework/BlazorAppReserva.pdb.gz",
-      "AssetFile": "C:\\Dev\\RiderProjects\\FinalyLayouts\\BlazorAppReserva\\BlazorAppReserva\\obj\\Debug\\net9.0\\compressed\\4p61ckt6w0-2ee64srwb0.gz",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "137175"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "application/octet-stream"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"8hpTj1RgEiiYQXemjn7qH4UpB7aezwOecYRapx4ve5Y=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Fri, 28 Feb 2025 17:41:41 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "no-cache"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-8hpTj1RgEiiYQXemjn7qH4UpB7aezwOecYRapx4ve5Y="
+          "Value": "sha256-JEA3zp8Jh30qxh7i1Qx0yjNgJooCU5kvENLCI4KUstU="
         }
       ]
     },
@@ -10072,7 +10072,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "262421"
+          "Value": "263957"
         },
         {
           "Name": "Content-Type",
@@ -10080,11 +10080,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"hL0CaCP7QoGMoluZm4+r/D5rDL328VpF9lMCeu06MPc=\""
+          "Value": "\"e8YDDF3Tmrjb3/VMFZnoWp1VDfCYgB8Qzt6nv9p8cUU=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 28 Feb 2025 17:41:38 GMT"
+          "Value": "Mon, 03 Mar 2025 16:45:54 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -10094,18 +10094,18 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-hL0CaCP7QoGMoluZm4+r/D5rDL328VpF9lMCeu06MPc="
+          "Value": "sha256-e8YDDF3Tmrjb3/VMFZnoWp1VDfCYgB8Qzt6nv9p8cUU="
         }
       ]
     },
     {
       "Route": "_framework/BlazorAppReserva.wasm",
-      "AssetFile": "C:\\Dev\\RiderProjects\\FinalyLayouts\\BlazorAppReserva\\BlazorAppReserva\\obj\\Debug\\net9.0\\compressed\\qdlbnkpy1v-0z1uhr6m5n.gz",
+      "AssetFile": "C:\\Dev\\RiderProjects\\FinalyLayouts\\BlazorAppReserva\\BlazorAppReserva\\obj\\Debug\\net9.0\\compressed\\qdlbnkpy1v-1t7k1pvxh4.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000014451911"
+          "Quality": "0.000014337945"
         }
       ],
       "ResponseHeaders": [
@@ -10115,15 +10115,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "69194"
+          "Value": "69744"
         },
         {
           "Name": "ETag",
-          "Value": "\"BARhKruoSbHS1GfCI8ilCJSymFWnLWBYXAtUqHAQ7+k=\""
+          "Value": "\"hKZY+78pEriD55dN1qJi2YiT8Aq1gjfDQtpy8J8O+zE=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 28 Feb 2025 17:41:41 GMT"
+          "Value": "Mon, 03 Mar 2025 16:45:56 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -10143,19 +10143,19 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"hL0CaCP7QoGMoluZm4+r/D5rDL328VpF9lMCeu06MPc=\""
+          "Value": "W/\"e8YDDF3Tmrjb3/VMFZnoWp1VDfCYgB8Qzt6nv9p8cUU=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-hL0CaCP7QoGMoluZm4+r/D5rDL328VpF9lMCeu06MPc="
+          "Value": "sha256-e8YDDF3Tmrjb3/VMFZnoWp1VDfCYgB8Qzt6nv9p8cUU="
         }
       ]
     },
     {
       "Route": "_framework/BlazorAppReserva.wasm.gz",
-      "AssetFile": "C:\\Dev\\RiderProjects\\FinalyLayouts\\BlazorAppReserva\\BlazorAppReserva\\obj\\Debug\\net9.0\\compressed\\qdlbnkpy1v-0z1uhr6m5n.gz",
+      "AssetFile": "C:\\Dev\\RiderProjects\\FinalyLayouts\\BlazorAppReserva\\BlazorAppReserva\\obj\\Debug\\net9.0\\compressed\\qdlbnkpy1v-1t7k1pvxh4.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -10164,7 +10164,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "69194"
+          "Value": "69744"
         },
         {
           "Name": "Content-Type",
@@ -10172,11 +10172,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"BARhKruoSbHS1GfCI8ilCJSymFWnLWBYXAtUqHAQ7+k=\""
+          "Value": "\"hKZY+78pEriD55dN1qJi2YiT8Aq1gjfDQtpy8J8O+zE=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 28 Feb 2025 17:41:41 GMT"
+          "Value": "Mon, 03 Mar 2025 16:45:56 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -10194,7 +10194,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-BARhKruoSbHS1GfCI8ilCJSymFWnLWBYXAtUqHAQ7+k="
+          "Value": "sha256-hKZY+78pEriD55dN1qJi2YiT8Aq1gjfDQtpy8J8O+zE="
         }
       ]
     },
