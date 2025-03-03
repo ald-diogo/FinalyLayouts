@@ -21,7 +21,7 @@
     </MudAppBar>
 
     <MudMainContent>
-        <MudContainer>
+        <MudContainer Style="@containerStyle">
             <MudGrid>
                 <MudItem xs="12" sm="6">
                     <MudPaper Elevation="4" Square="true" Class="pa-4">
@@ -113,6 +113,7 @@
     private string alertMessage = "";
     private bool alertVisible = false;
     private Severity alertSeverity = Severity.Normal;
+    private string? containerStyle;
 
     private async Task OnComeceAgoraClicked()
     {
@@ -159,6 +160,7 @@
         Navigation.NavigateTo("/Admin/Sobre");
     }
 }
+
 
 
 
