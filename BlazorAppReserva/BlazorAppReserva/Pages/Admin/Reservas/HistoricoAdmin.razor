@@ -45,14 +45,16 @@
             <MudTd>@context.TotalPrice.ToString("C")</MudTd>
             <MudTd>
                 <MudButton Color="Color.Primary" Variant="Variant.Text" OnClick="(() => ViewDetails(context))">
-                    Ver Detalhes
+                    <MudIcon Icon="@Icons.Material.Filled.Visibility" /> Ver Detalhes
                 </MudButton>
+
                 @if (context.Status == "Upcoming")
                 {
                     <MudButton Color="Color.Error" Variant="Variant.Text" OnClick="(() => CancelReservation(context))">
-                        Cancelar
+                        <MudIcon Icon="@Icons.Material.Filled.Cancel" /> Cancelar
                     </MudButton>
                 }
+
             </MudTd>
         </RowTemplate>
     </MudTable>
