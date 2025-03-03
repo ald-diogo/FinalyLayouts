@@ -19,10 +19,18 @@
             <MudIconButton Icon="@Icons.Material.Filled.Login" Color="Color.Success" />
             Login
         </MudButton>
+
+        <MudButton
+            Color="Color.Inherit"
+            Variant="Variant.Text"
+            @onclick="ToggleMaximize">
+            <MudIconButton Icon="@Icons.Material.Filled.Fullscreen" Color="Color.Inherit" />
+            Max/Min
+        </MudButton>
     </MudAppBar>
 
     <MudMainContent>
-        <MudContainer>
+        <MudContainer Style="@containerStyle">
             <MudGrid>
                 <MudItem xs="12" sm="6">
                     <MudPaper Elevation="4" Square="true" Class="pa-4">
@@ -107,6 +115,15 @@
 </MudLayout>
 
 @code {
+    private bool isMaximized = true;
+
+    // Estilo que controla o tamanho do container
+    private string containerStyle => isMaximized ? "height: auto; transition: height 0.5s;" : "height: 0; overflow: hidden; transition: height 0.5s;";
+
+    private void ToggleMaximize()
+    {
+        isMaximized = !isMaximized;
+    }
     [Inject] private IDialogService DialogService { get; set; }
     
     private string state = "Clique no botão!";
