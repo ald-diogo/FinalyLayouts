@@ -1,59 +1,14 @@
 ﻿@page "/Admin/Relatorio"
 @using MudBlazor
 
-<MudPaper Class="pa-4">
-    <MudChart 
-        ChartType="ChartType.Pie" 
-        InputData="@data" 
-        @bind-SelectedIndex="Index"
-        InputLabels="@labels" 
-        Width="300px" 
-        Height="300px" />
-</MudPaper>
-
-<MudPaper Class="pa-4 mt-2 d-flex justify-center">
-    <MudButton OnClick="AddDataSize" Variant="Variant.Filled" Color="Color.Primary">Adiconar</MudButton>
-    
-    <MudButton @onclick="RandomizeData" Variant="Variant.Filled" Class="mx-4">Aleatório</MudButton>
-    
-    <MudButton OnClick="RemoveDataSize" Variant="Variant.Filled" Color="Color.Secondary">Remover</MudButton>
-</MudPaper>
-
-<MudText Typo="Typo.h6">Selected portion of the chart: @Index</MudText>
+<MudChart ChartType="ChartType.Donut" Width="300px" Height="300px" InputData="@data" InputLabels="@labels">
+    <CustomGraphics>
+        <text class="donut-inner-text" x="47%" y="35%" dominant-baseline="middle" text-anchor="middle" fill="black" font-family="Helvetica" font-size="2">Total</text>
+        <text class="donut-inner-text" x="47%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="black" font-family="Helvetica" font-size="5">@data.Sum().ToString()</text>
+    </CustomGraphics>
+</MudChart>
 
 @code {
-    private int Index = -1; //default value cannot be 0 -> first selectedindex is 0.
-    int dataSize = 4;
-    double[] data = { 77, 25, 20, 5 };
-    string[] labels = { "Visitante", "Hospede", "Administrador", "Gerente", "Recepcionista", "Marketer",
-        "Proprietário ", "Provedor Externo" };
-
-    Random random = new Random();
-
-    void RandomizeData()
-    {
-        var new_data = new double[dataSize];
-        for (int i = 0; i < new_data.Length; i++)
-            new_data[i] = random.NextDouble() * 100;
-        data = new_data;
-        StateHasChanged();
-    }
-
-    void AddDataSize()
-    {
-        if (dataSize < 8)
-        {
-            dataSize = dataSize + 1;
-            RandomizeData();
-        }
-    }
-
-    void RemoveDataSize()
-    {
-        if (dataSize > 0)
-        {
-            dataSize = dataSize - 1;
-            RandomizeData();
-        }
-    }
+    public double[] data = { 15, 65, 15, 5 };
+    public string[] labels = { "Eficiência", "Acessibilidade", "Comodidade", "Análise" };
 }
