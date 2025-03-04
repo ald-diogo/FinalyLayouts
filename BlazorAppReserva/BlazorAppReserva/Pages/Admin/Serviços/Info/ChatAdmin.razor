@@ -2,6 +2,7 @@
 
 @using MudBlazor
 @inject NavigationManager Navigation
+@inject ISnackbar Snackbar
 
 <MudDialogProvider />
 <MudSnackbarProvider />
@@ -79,12 +80,7 @@
     </MudChatBubble>
 </MudChat>
 
-<MudDropContainer 
-    T="DropItem" 
-    Items="_items" 
-    CanDropClass="mud-border-info"
-    NoDropClass="mud-border-error" 
-    CanDrop="@( (item,identifier ) => _items.Count(x => x.Identifier == identifier ) == 0)" ItemsSelector="@((item,dropzone) => item.Identifier == dropzone)" ItemDropped="ItemUpdated" Class="border-2 border-solid mud-border-lines-default">
+<MudDropContainer T="DropItem" Items="_items" CanDropClass="mud-border-info" NoDropClass="mud-border-error" CanDrop="CanDrop" ItemsSelector="@( (item,dropzone) => item.Identifier == dropzone)" ItemDropped="ItemUpdated" Class="border-2 border-solid mud-border-lines-default">
     <ChildContent>
         @for(int r = 0; r < 8; r++)
         {
@@ -93,12 +89,7 @@
                 @for (int c = 0; c < 8; c++)
                 {
                     var col = c.ToString();
-                    <MudDropZone 
-                        T="DropItem" 
-                        Identifier="@($"{row}{col}")" 
-                        DraggingClass="mud-theme-success" 
-                        Class="d-flex justify-center align-center border-2 border-solid docs-gray-bg mud-border-lines-default" 
-                        Style="height:64px;width:64px;"/>
+                    <MudDropZone T="DropItem" Identifier="@($"{row}{col}")" DraggingClass="mud-theme-success" Class="d-flex justify-center align-center border-2 border-solid docs-gray-bg mud-border-lines-default" Style="height:64px;width:64px;" />
                 }
             </div>
         }
@@ -110,12 +101,89 @@
     </ItemRenderer>
 </MudDropContainer>
 
+<MudSnackbarProvider />
+
 @code {
-    private void ItemUpdated(MudItemDropInfo<DropItem> dropItem)
+    private bool CanDrop(DropItem item, string identifier)
     {
-        dropItem.Item.Identifier = dropItem.DropzoneIdentifier;
+        return IsValidMove(item.Identifier, identifier);
     }
 
+    //Funcao para Adversario Virtual
+    private void ItemUpdated(MudItemDropInfo<DropItem> dropItem)
+    {
+        if (IsValidMove(dropItem.Item.Identifier, dropItem.DropzoneIdentifier))
+        {
+            dropItem.Item.Identifier = dropItem.DropzoneIdentifier;
+            CheckGameStatus();
+            MakeAIMove();
+
+            // Remover a peça inimiga se já existir no local
+            var capturedPiece = _items.FirstOrDefault(x => x.Identifier == dropItem.DropzoneIdentifier);
+            if (capturedPiece != null)
+            {
+                _items.Remove(capturedPiece);
+            }
+
+            // Mover a peça
+            dropItem.Item.Identifier = dropItem.DropzoneIdentifier;
+
+            // Verificar se o jogo terminou
+            CheckGameStatus();
+
+            // Fazer a jogada da IA
+            MakeAIMove();
+        }
+    }
+
+    private bool IsValidMove(string from, string to)
+    {
+        // Implementação das regras básicas do xadrez
+        int fromRow = int.Parse(from[0].ToString());
+        int fromCol = int.Parse(from[1].ToString());
+        int toRow = int.Parse(to[0].ToString());
+        int toCol = int.Parse(to[1].ToString());
+
+        return Math.Abs(toRow - fromRow) <= 1 && Math.Abs(toCol - fromCol) <= 1;
+    }
+
+    private void MakeAIMove()
+    {
+        var random = new Random();
+        var aiPieces = _items.Where(x => x.Color == Color.Secondary).ToList();
+        if (aiPieces.Any())
+        {
+            var piece = aiPieces[random.Next(aiPieces.Count)];
+            var possibleMoves = Enumerable.Range(0, 8).SelectMany(r => Enumerable.Range(0, 8).Select(c => $"{r}{c}"))
+                .Where(pos => IsValidMove(piece.Identifier, pos) && !_items.Any(x => x.Identifier == pos)).ToList();
+
+            if (possibleMoves.Any())
+            {
+                piece.Identifier = possibleMoves[random.Next(possibleMoves.Count)];
+            }
+        }
+        CheckGameStatus();
+    }
+
+    private async void CheckGameStatus()
+    {
+        bool playerHasKing = _items.Any(x => x.Icon == Icons.Custom.Uncategorized.ChessKing && x.Color == Color.Primary);
+        bool aiHasKing = _items.Any(x => x.Icon == Icons.Custom.Uncategorized.ChessKing && x.Color == Color.Secondary);
+
+        await InvokeAsync(() =>
+        {
+            if (!playerHasKing)
+            {
+                Snackbar.Add("Você perdeu! Tente novamente.", Severity.Error);
+            }
+            else if (!aiHasKing)
+            {
+                Snackbar.Add("Você ganhou! Parabéns!", Severity.Success);
+            }
+        });
+    }
+
+    //Pecas em jogo
     private List<DropItem> _items = new()
     {
         new DropItem(){ Icon = @Icons.Custom.Uncategorized.ChessRook, Color = Color.Primary, Identifier = "00" },

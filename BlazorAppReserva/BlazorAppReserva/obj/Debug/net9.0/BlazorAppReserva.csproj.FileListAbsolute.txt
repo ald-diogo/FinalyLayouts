@@ -1043,10 +1043,10 @@ C:\Dev\RiderProjects\FinalyLayouts\BlazorAppReserva\BlazorAppReserva\obj\Debug\n
 C:\Dev\RiderProjects\FinalyLayouts\BlazorAppReserva\BlazorAppReserva\obj\Debug\net9.0\compressed\wkgkw6wybh-3xkk945u2k.gz
 C:\Dev\RiderProjects\FinalyLayouts\BlazorAppReserva\BlazorAppReserva\obj\Debug\net9.0\compressed\jeevj3um9n-9xij6k04y6.gz
 C:\Dev\RiderProjects\FinalyLayouts\BlazorAppReserva\BlazorAppReserva\obj\Debug\net9.0\BlazorAppReserva.sourcelink.json
-C:\Dev\RiderProjects\FinalyLayouts\BlazorAppReserva\BlazorAppReserva\bin\Debug\net9.0\wwwroot\_framework\BlazorAppReserva.g8rv5xik2a.pdb
-C:\Dev\RiderProjects\FinalyLayouts\BlazorAppReserva\BlazorAppReserva\bin\Debug\net9.0\wwwroot\_framework\BlazorAppReserva.ago66xavrg.wasm
-C:\Dev\RiderProjects\FinalyLayouts\BlazorAppReserva\BlazorAppReserva\bin\Debug\net9.0\wwwroot\_framework\BlazorAppReserva.g8rv5xik2a.pdb.gz
-C:\Dev\RiderProjects\FinalyLayouts\BlazorAppReserva\BlazorAppReserva\bin\Debug\net9.0\wwwroot\_framework\BlazorAppReserva.ago66xavrg.wasm.gz
-C:\Dev\RiderProjects\FinalyLayouts\BlazorAppReserva\BlazorAppReserva\obj\Debug\net9.0\compressed\qdlbnkpy1v-ago66xavrg.gz
-C:\Dev\RiderProjects\FinalyLayouts\BlazorAppReserva\BlazorAppReserva\obj\Debug\net9.0\compressed\4p61ckt6w0-g8rv5xik2a.gz
-C:\Dev\RiderProjects\FinalyLayouts\BlazorAppReserva\BlazorAppReserva\obj\Debug\net9.0\compressed\mflp4e0joc-5shl3vhek0.gz
+C:\Dev\RiderProjects\FinalyLayouts\BlazorAppReserva\BlazorAppReserva\bin\Debug\net9.0\wwwroot\_framework\BlazorAppReserva.jqewte8jnq.pdb
+C:\Dev\RiderProjects\FinalyLayouts\BlazorAppReserva\BlazorAppReserva\bin\Debug\net9.0\wwwroot\_framework\BlazorAppReserva.2xdk9rrgff.wasm
+C:\Dev\RiderProjects\FinalyLayouts\BlazorAppReserva\BlazorAppReserva\bin\Debug\net9.0\wwwroot\_framework\BlazorAppReserva.jqewte8jnq.pdb.gz
+C:\Dev\RiderProjects\FinalyLayouts\BlazorAppReserva\BlazorAppReserva\bin\Debug\net9.0\wwwroot\_framework\BlazorAppReserva.2xdk9rrgff.wasm.gz
+C:\Dev\RiderProjects\FinalyLayouts\BlazorAppReserva\BlazorAppReserva\obj\Debug\net9.0\compressed\qdlbnkpy1v-2xdk9rrgff.gz
+C:\Dev\RiderProjects\FinalyLayouts\BlazorAppReserva\BlazorAppReserva\obj\Debug\net9.0\compressed\4p61ckt6w0-jqewte8jnq.gz
+C:\Dev\RiderProjects\FinalyLayouts\BlazorAppReserva\BlazorAppReserva\obj\Debug\net9.0\compressed\mflp4e0joc-qmf7xr9grm.gz
