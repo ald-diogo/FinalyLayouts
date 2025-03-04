@@ -127,6 +127,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGV2XEluZGV4LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Dev/RiderProjects/FinalyLayouts/BlazorAppReserva/BlazorAppReserva/Pages/Dev/Metodos/Kanban.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGV2XE1ldG9kb3NcS2FuYmFuLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Dev/RiderProjects/FinalyLayouts/BlazorAppReserva/BlazorAppReserva/Pages/Dev/Seguranca.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGV2XFNlZ3VyYW5jYS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
