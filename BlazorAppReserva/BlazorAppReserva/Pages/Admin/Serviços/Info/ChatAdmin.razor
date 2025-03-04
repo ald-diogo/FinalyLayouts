@@ -20,7 +20,7 @@
         Eu sou seu amigo virtual, sempre pronto para ajudar. 😄
     </MudText>
     
-    <MudImage Fluid="true" Src="images/Chat.jpg" Alt="AntDroid IA" Class="rounded-lg mt-4" />
+    <MudImage Fluid="true" Src="Img/Chat.jpg" Alt="AntDroid IA" Class="rounded-lg mt-4" />
 
     <MudText Typo="Typo.body2" Align="Align.Center" Color="Color.Secondary" Class="mt-4">
         Em que posso te ajudar hoje? 🌟
@@ -80,7 +80,15 @@
     </MudChatBubble>
 </MudChat>
 
-<MudDropContainer T="DropItem" Items="_items" CanDropClass="mud-border-info" NoDropClass="mud-border-error" CanDrop="CanDrop" ItemsSelector="@( (item,dropzone) => item.Identifier == dropzone)" ItemDropped="ItemUpdated" Class="border-2 border-solid mud-border-lines-default">
+<MudDropContainer 
+    T="DropItem" 
+    Items="_items" 
+    CanDropClass="mud-border-info" 
+    NoDropClass="mud-border-error" 
+    CanDrop="CanDrop" 
+    ItemsSelector="@( (item,dropzone) => item.Identifier == dropzone)"
+    ItemDropped="ItemUpdated" 
+    Class="border-2 border-solid mud-border-lines-default">
     <ChildContent>
         @for(int r = 0; r < 8; r++)
         {
@@ -89,7 +97,12 @@
                 @for (int c = 0; c < 8; c++)
                 {
                     var col = c.ToString();
-                    <MudDropZone T="DropItem" Identifier="@($"{row}{col}")" DraggingClass="mud-theme-success" Class="d-flex justify-center align-center border-2 border-solid docs-gray-bg mud-border-lines-default" Style="height:64px;width:64px;" />
+                    <MudDropZone 
+                        T="DropItem" 
+                        Identifier="@($"{row}{col}")"
+                        DraggingClass="mud-theme-success" 
+                        Class="d-flex justify-center align-center border-2 border-solid docs-gray-bg mud-border-lines-default" 
+                        Style="height:64px;width:64px;" />
                 }
             </div>
         }

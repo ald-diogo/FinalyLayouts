@@ -2,10 +2,116 @@
 
 @using MudBlazor
 
-<PageTitle>Lista de Usuários</PageTitle>
+<MudContainer>
+    <MudTabs Variant="Variant.Text" Centered="true" Class="mud-elevation-2">
+        <MudTabPanel Text="Criar Novo Usuário" Icon="@Icons.Material.Filled.Person" IconColor="Color.Success">
+            <MudCard Class="p-4 fade-in">
+                <MudTextField 
+                    Label="Nome" 
+                    @bind-Value="newUser.Name" 
+                    Adornment="Adornment.Start" 
+                    AdornmentIcon="@Icons.Material.Filled.Person" 
+                    Variant="Variant.Outlined" />
+                
+                <MudTextField 
+                    Label="E-mail"
+                    @bind-Value="newUser.Email" 
+                    Adornment="Adornment.Start" 
+                    AdornmentIcon="@Icons.Material.Filled.Email" 
+                    Variant="Variant.Outlined" />
+                
+                <MudTextField 
+                    Label="Senha" 
+                    @bind-Value="newUser.Password" 
+                    Type="password" 
+                    Adornment="Adornment.Start" 
+                    AdornmentIcon="@Icons.Material.Filled.Lock"
+                    Variant="Variant.Outlined" />
+                
+                <MudButton
+                    Color="Color.Success"
+                    OnClick="CadastrarUsuario"
+                    StartIcon="@Icons.Material.Filled.AddCircle"
+                    Variant="Variant.Outlined">
+                    Cadastrar
+                </MudButton>
+            </MudCard>
+        </MudTabPanel>
 
-<MudTabs Outlined="true">
-    <MudTabPanel Text="Api" Icon="@Icons.Material.Filled.Api"/>
-    <MudTabPanel Icon="@Icons.Material.Filled.Build"/>
-    <MudTabPanel Text="Bug Report" Icon="@Icons.Material.Filled.BugReport"/>
-</MudTabs>
+        <MudTabPanel Text="Editar Perfil" Icon="@Icons.Material.Filled.Edit" IconColor="Color.Primary">
+            <MudTable Items="@usuarios" Hover="true" Striped="true" Class="fade-in">
+                <HeaderContent>
+                    <MudTh>Nome</MudTh>
+                    <MudTh>Email</MudTh>
+                    <MudTh>Senha</MudTh>
+                    <MudTh>Acções</MudTh>
+                </HeaderContent>
+                <RowTemplate>
+                    <MudTd>@context.Name</MudTd>
+                    <MudTd>@context.Email</MudTd>
+                    <MudTd>@context.Password</MudTd>
+                    <MudTd>
+                        <MudButton
+                            Color="Color.Primary"
+                            OnClick="() => EditarUsuario(context)"
+                            StartIcon="@Icons.Material.Filled.Edit">
+                            Editar
+                        </MudButton>
+                    </MudTd>
+                </RowTemplate>
+            </MudTable>
+        </MudTabPanel>
+
+        <MudTabPanel Text="Excluir Usuário" Icon="@Icons.Material.Filled.Delete" IconColor="Color.Error">
+            <MudTable Items="@usuarios" Hover="true" Striped="true" Class="fade-in">
+                <RowTemplate>
+                    <MudTd>@context.Name</MudTd>
+                    <MudTd>
+                        <MudButton
+                            Icon="@Icons.Material.Filled.Delete"
+                            Color="Color.Error"
+                            OnClick="() => ExcluirUsuario(context)"
+                            StartIcon="@Icons.Material.Filled.Delete">
+                            Excluir
+                        </MudButton>
+                    </MudTd>
+                </RowTemplate>
+            </MudTable>
+        </MudTabPanel>
+
+        <MudTabPanel Text="Gerenciar Permissões" Icon="@Icons.Material.Filled.Save" IconColor="Color.Secondary">
+            <MudTable Items="@usuarios" Hover="true" Striped="true" Class="fade-in">
+                <RowTemplate>
+                    <MudTd>@context.Name</MudTd>
+                    <MudTd>
+                        
+                    </MudTd>
+                </RowTemplate>
+            </MudTable>
+            <MudButton
+                Color="Color.Primary"
+                OnClick="SalvarPermissoes"
+                StartIcon="@Icons.Material.Filled.Save">
+                Salvar Permissões
+            </MudButton>
+        </MudTabPanel>
+    </MudTabs>
+</MudContainer>
+
+@code {
+    private List<Usuario> usuarios = new();
+    private Usuario newUser = new();
+
+    private void CadastrarUsuario() { /* Lógica de cadastro */ }
+    private void EditarUsuario(Usuario user) { /* Lógica de edição */ }
+    private void ExcluirUsuario(Usuario user) { /* Lógica de exclusão */ }
+    private void SalvarPermissoes() { /* Lógica de salvar permissões */ }
+
+    public class Usuario {
+        public string Name { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
+        public string Role { get; set; }
+        public string Permission { get; set; }
+    }
+}
