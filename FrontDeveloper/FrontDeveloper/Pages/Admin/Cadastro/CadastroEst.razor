@@ -23,14 +23,14 @@
                 </MudSelect>
             </MudItem>
             <MudItem xs="3">
-                <MudDatePicker
-                    Label="Data de Nascimento"
-                    Editable="true"
-                    @bind-Date="_dataNascimento"
-                    Mask="@(new DateMask("0000-00-00"))"
-                    DateFormat="yyyy-MM-dd"
-                    Placeholder="ISO Date"
-                    Variant="Variant.Outlined" />
+                <MudTextField 
+                    T="DateTime?"
+                    ShrinkLabel
+                    @bind-Value="_dataNascimento"
+                    Format="yyyy-MM-dd" 
+                    Label="Data de Nascimento"  
+                    InputType="InputType.Date"
+                    Variant="Variant.Outlined"/>
             </MudItem>
             <MudItem xs="3">
                 <MudSelect @bind-Value="periodo" Label="Período" Variant="Variant.Outlined">
