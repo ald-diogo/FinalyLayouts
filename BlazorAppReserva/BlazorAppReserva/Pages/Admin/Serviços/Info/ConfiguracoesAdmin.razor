@@ -1,0 +1,134 @@
+﻿@page "/Admin/Configuracoes"
+
+@inject ISnackbar Snackbar
+@using MudBlazor
+
+<MudContainer Class="p-4">
+    <MudPaper Class="p-4" Elevation="3">
+        <MudTypography Variant="H4" Class="mb-3">⚙️ Configurações do Sistema</MudTypography>
+        <MudDivider />
+
+        <!-- Ajuste de Tarifas -->
+        <MudExpansionPanels>
+            <MudExpansionPanel Text="💰 Ajustar Tarifas" Icon="@Icons.Material.Filled.AttachMoney">
+                <MudTable T="bool">
+                    <MudTableRow>
+                        <MudTableCell>Tipo de Quarto</MudTableCell>
+                        <MudTableCell>Preço Atual</MudTableCell>
+                        <MudTableCell>Novo Preço</MudTableCell>
+                        <MudTableCell>Acção</MudTableCell>
+                    </MudTableRow>
+                    @foreach (var tarifa in tarifas)
+                    {
+                        <MudTableRow>
+                            <MudTableCell>@tarifa.Tipo</MudTableCell>
+                            <MudTableCell>@($"R$ {tarifa.Preco:F2}")</MudTableCell>
+                            <MudTableCell>
+                                <MudTextField @bind-Value="tarifa.NovoPreco" Variant="Variant.Outlined" />
+                            </MudTableCell>
+                            <MudTableCell>
+                                <MudButton
+                                    Color="Color.Success"
+                                    OnClick="() => AtualizarTarifa(tarifa)">
+                                    Salvar
+                                </MudButton>
+                            </MudTableCell>
+                        </MudTableRow>
+                    }
+                </MudTable>
+            </MudExpansionPanel>
+
+            <!-- Políticas de Cancelamento -->
+            <MudExpansionPanel Text="📜 Definir Políticas de Cancelamento" Icon="@Icons.Material.Filled.Gavel">
+                <MudSelect Label="Escolha a política" @bind-Value="politicaSelecionada" Variant="Variant.Outlined">
+                    <MudSelectItem Value="@("Reembolso total")" />
+                    <MudSelectItem Value="@("Reembolso parcial")" />
+                    <MudSelectItem Value="@("Não reembolsável")" />
+                </MudSelect>
+                @code {
+                    string politica="";
+                }
+                <MudButton Color="Color.Primary" OnClick="SalvarPolitica">Aplicar Política</MudButton>
+            </MudExpansionPanel>
+
+            <!-- Alteração de Idioma -->
+            <MudExpansionPanel Text="🌍 Alterar Idioma do Sistema" Icon="@Icons.Material.Filled.Language">
+                <MudSelect Label="Selecione o idioma" @bind-Value="idiomaSelecionado">
+                    <MudSelectItem Value="@("Português")" />
+                    <MudSelectItem Value="@("Inglês")" />
+                    <MudSelectItem Value="@("Espanhol")" />
+                </MudSelect>
+                @code {
+                    string idioma="";
+                }
+                <MudSwitch T="bool" Label="Ativar tradução automática" bind-Checked="traducaoAutomatica" />
+                <MudButton Color="Color.Info" OnClick="SalvarIdioma">Aplicar Idioma</MudButton>
+            </MudExpansionPanel>
+
+            <!-- Métodos de Pagamento -->
+            <MudExpansionPanel Text="💳 Configurar Métodos de Pagamento" Icon="@Icons.Material.Filled.CreditCard">
+                @foreach (var metodo in metodosPagamento)
+                {
+                    <MudCheckbox Label="@metodo.Nome" bind-Checked="metodo.Ativo" />
+                }
+                <MudButton Color="Color.Warning" OnClick="SalvarMetodosPagamento">Salvar Métodos</MudButton>
+            </MudExpansionPanel>
+        </MudExpansionPanels>
+    </MudPaper>
+</MudContainer>
+
+<MudSnackbarProvider />
+
+@code {
+    private List<Tarifa> tarifas = new()
+    {
+        new Tarifa { Tipo = "Standard", Preco = 150.00 },
+        new Tarifa { Tipo = "Luxo", Preco = 250.00 },
+        new Tarifa { Tipo = "Presidencial", Preco = 500.00 }
+    };
+
+    private string politicaSelecionada = "Reembolso total";
+    private string idiomaSelecionado = "Português";
+    private bool traducaoAutomatica = false;
+    private List<MetodoPagamento> metodosPagamento = new()
+    {
+        new MetodoPagamento { Nome = "Cartão de Crédito", Ativo = true },
+        new MetodoPagamento { Nome = "PayPal", Ativo = false },
+        new MetodoPagamento { Nome = "Transferência Bancária", Ativo = true },
+        new MetodoPagamento { Nome = "PIX", Ativo = true }
+    };
+
+    private void AtualizarTarifa(Tarifa tarifa)
+    {
+        tarifa.Preco = double.Parse(tarifa.NovoPreco);
+        Snackbar.Add($"Tarifa de {tarifa.Tipo} atualizada para R$ {tarifa.Preco:F2}", Severity.Success);
+    }
+
+    private void SalvarPolitica()
+    {
+        Snackbar.Add($"Política de cancelamento atualizada para: {politicaSelecionada}", Severity.Info);
+    }
+
+    private void SalvarIdioma()
+    {
+        Snackbar.Add($"Idioma alterado para: {idiomaSelecionado}", Severity.Success);
+    }
+
+    private void SalvarMetodosPagamento()
+    {
+        Snackbar.Add("Métodos de pagamento atualizados!", Severity.Success);
+    }
+
+    public class Tarifa
+    {
+        public string Tipo { get; set; }
+        public double Preco { get; set; }
+        public string NovoPreco { get; set; }
+    }
+
+    public class MetodoPagamento
+    {
+        public string Nome { get; set; }
+        public bool Ativo { get; set; }
+    }
+}
