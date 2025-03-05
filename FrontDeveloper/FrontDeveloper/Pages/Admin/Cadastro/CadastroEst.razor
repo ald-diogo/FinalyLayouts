@@ -1,5 +1,4 @@
 ﻿@page "/CadastroEst"
-@using FrontDeveloper.Models
 @using MudBlazor
 @using System.Linq
 
@@ -15,63 +14,19 @@
             <MudItem xs="3">
                 <MudTextField ShrinkLabel @bind-Value="nome" Label="Nome" Variant="Variant.Outlined" />
             </MudItem>
-            
+
             <MudItem xs="3">
-                <MudAutocomplete @bind-Value="genero"
-                                 Label="Gênero"
-                                 Variant="Variant.Outlined"
-                                 Placeholder="Escolha ou digite um gênero"
-                                 Dense="true"
-                                 CoerceValue="true"
-                                 Clearable="true"
-                                 SearchFunc="BuscarGeneros" />
+                <MudAutocomplete 
+                    @bind-Value="genero"
+                    Label="Gênero"
+                    Variant="Variant.Outlined"
+                    Placeholder="Escolha ou digite um gênero"
+                    Dense="true"
+                    CoerceValue="true"
+                    Clearable="true"
+                    SearchFunc="SearchGeneros" />
             </MudItem>
-            @code {
-                private string genero { get; set; } = string.Empty;
 
-                private Task<IEnumerable<string>> BuscarGeneros(string text)
-                {
-                    var opcoes = new List<string> { "Masculino", "Feminino", "Outro" };
-                    return Task.FromResult(opcoes.Where(x => x.Contains(text, StringComparison.OrdinalIgnoreCase)));
-                }
-
-                private Task<IEnumerable<string>>? BuscarGeneros(string? arg1, CancellationToken arg2)
-                {
-                    throw new NotImplementedException();
-                }
-
-                private Task<IEnumerable<string>>? BuscarPeriodos(string? arg1, CancellationToken arg2)
-                {
-                    throw new NotImplementedException();
-                }
-
-                private Task<IEnumerable<string>>? BuscarCursos(string? arg1, CancellationToken arg2)
-                {
-                    throw new NotImplementedException();
-                }
-
-                private Task<IEnumerable<string>>? BuscarAnosLectivos(string? arg1, CancellationToken arg2)
-                {
-                    throw new NotImplementedException();
-                }
-
-                private Task<IEnumerable<string>>? BuscarClasses(string? arg1, CancellationToken arg2)
-                {
-                    throw new NotImplementedException();
-                }
-
-                private Task<IEnumerable<string>>? BuscarTurmas(string? arg1, CancellationToken arg2)
-                {
-                    throw new NotImplementedException();
-                }
-
-                private Task<IEnumerable<string>>? BuscarSalas(string? arg1, CancellationToken arg2)
-                {
-                    throw new NotImplementedException();
-                }
-
-            }
-            
             <MudItem xs="3">
                 <MudTextField 
                     T="DateTime?"
@@ -82,126 +37,81 @@
                     InputType="InputType.Date"
                     Variant="Variant.Outlined"/>
             </MudItem>
-            
-            <MudItem xs="3">
-                <MudAutocomplete @bind-Value="periodo"
-                                 Label="Período"
-                                 Variant="Variant.Outlined"
-                                 Placeholder="Escolha ou digite um período"
-                                 Dense="true"
-                                 CoerceValue="true"
-                                 Clearable="true"
-                                 SearchFunc="BuscarPeriodos" />
-            </MudItem>
-            @code {
-                private string periodo { get; set; } = string.Empty;
 
-                private Task<IEnumerable<string>> BuscarPeriodos(string text)
-                {
-                    var opcoes = new List<string> { "Manhã", "Tarde", "Pós-Laboral" };
-                    return Task.FromResult(opcoes.Where(x => x.Contains(text, StringComparison.OrdinalIgnoreCase)));
-                }
-            }
+            <MudItem xs="3">
+                <MudAutocomplete 
+                    @bind-Value="periodo"
+                    Label="Período"
+                    Variant="Variant.Outlined"
+                    Placeholder="Escolha ou digite um período"
+                    Dense="true"
+                    CoerceValue="true"
+                    Clearable="true"
+                    SearchFunc="SearchPeriodos" />
+            </MudItem>
 
             <!-- Linha 2 -->
             <MudItem xs="3">
-                <MudAutocomplete @bind-Value="curso"
-                                 Label="Curso"
-                                 Variant="Variant.Outlined"
-                                 Placeholder="Escolha ou digite um curso"
-                                 Dense="true"
-                                 CoerceValue="true"
-                                 Clearable="true"
-                                 SearchFunc="BuscarCursos" />
+                <MudAutocomplete 
+                    @bind-Value="curso"
+                    Label="Curso"
+                    Variant="Variant.Outlined"
+                    Placeholder="Escolha ou digite um curso"
+                    Dense="true"
+                    CoerceValue="true"
+                    Clearable="true"
+                    SearchFunc="SearchCursos" />
             </MudItem>
-            @code {
-                private string curso { get; set; } = string.Empty;
 
-                private Task<IEnumerable<string>> BuscarCursos(string text)
-                {
-                    var opcoes = new List<string> { "Ciência da Computação", "Engenharia Elétrica", "Administração" };
-                    return Task.FromResult(opcoes.Where(x => x.Contains(text, StringComparison.OrdinalIgnoreCase)));
-                }
-            }
-            
             <MudItem xs="3">
-                <MudAutocomplete @bind-Value="anoLectivo"
-                                 Label="Ano Lectivo"
-                                 Variant="Variant.Outlined"
-                                 Placeholder="Escolha ou digite um ano lectivo"
-                                 Dense="true"
-                                 CoerceValue="true"
-                                 Clearable="true"
-                                 SearchFunc="BuscarAnosLectivos" />
+                <MudAutocomplete 
+                    @bind-Value="anoLectivo"
+                    Label="Ano Lectivo"
+                    Variant="Variant.Outlined"
+                    Placeholder="Escolha ou digite um ano lectivo"
+                    Dense="true"
+                    CoerceValue="true"
+                    Clearable="true"
+                    SearchFunc="SearchAnosLectivos" />
             </MudItem>
-            @code {
-                private string anoLectivo { get; set; } = string.Empty;
 
-                private Task<IEnumerable<string>> BuscarAnosLectivos(string text)
-                {
-                    var opcoes = new List<string> { "2024/2025", "2025/2026", "2026/2027" };
-                    return Task.FromResult(opcoes.Where(x => x.Contains(text, StringComparison.OrdinalIgnoreCase)));
-                }
-            }
             <MudItem xs="3">
-                <MudAutocomplete @bind-Value="classe"
-                                 Label="Classe"
-                                 Variant="Variant.Outlined"
-                                 Placeholder="Escolha ou digite uma classe"
-                                 Dense="true"
-                                 CoerceValue="true"
-                                 Clearable="true"
-                                 SearchFunc="BuscarClasses" />
+                <MudAutocomplete 
+                    @bind-Value="classe"
+                    Label="Classe"
+                    Variant="Variant.Outlined"
+                    Placeholder="Escolha ou digite uma classe"
+                    Dense="true"
+                    CoerceValue="true"
+                    Clearable="true"
+                    SearchFunc="SearchClasses" />
             </MudItem>
-            @code {
-                private string classe { get; set; } = string.Empty;
 
-                private Task<IEnumerable<string>> BuscarClasses(string text)
-                {
-                    var opcoes = new List<string> { "10", "11", "12" };
-                    return Task.FromResult(opcoes.Where(x => x.Contains(text, StringComparison.OrdinalIgnoreCase)));
-                }
-            }
             <MudItem xs="3">
-                <MudAutocomplete @bind-Value="turma"
-                                 Label="Turma"
-                                 Variant="Variant.Outlined"
-                                 Placeholder="Escolha ou digite uma turma"
-                                 Dense="true"
-                                 CoerceValue="true"
-                                 Clearable="true"
-                                 SearchFunc="BuscarTurmas" />
+                <MudAutocomplete 
+                    @bind-Value="turma"
+                    Label="Turma"
+                    Variant="Variant.Outlined"
+                    Placeholder="Escolha ou digite uma turma"
+                    Dense="true"
+                    CoerceValue="true"
+                    Clearable="true"
+                    SearchFunc="SearchTurmas" />
             </MudItem>
-            @code {
-                private string turma { get; set; } = string.Empty;
-
-                private Task<IEnumerable<string>> BuscarTurmas(string text)
-                {
-                    var opcoes = new List<string> { "A", "B", "C" };
-                    return Task.FromResult(opcoes.Where(x => x.Contains(text, StringComparison.OrdinalIgnoreCase)));
-                }
-            }
 
             <!-- Linha 3 -->
             <MudItem xs="3">
-                <MudAutocomplete @bind-Value="sala"
-                                 Label="Sala"
-                                 Variant="Variant.Outlined"
-                                 Placeholder="Escolha ou digite uma sala"
-                                 Dense="true"
-                                 CoerceValue="true"
-                                 Clearable="true"
-                                 SearchFunc="BuscarSalas" />
+                <MudAutocomplete 
+                    @bind-Value="sala"
+                    Label="Sala"
+                    Variant="Variant.Outlined"
+                    Placeholder="Escolha ou digite uma sala"
+                    Dense="true"
+                    CoerceValue="true"
+                    Clearable="true"
+                    SearchFunc="SearchSalas" />
             </MudItem>
-            @code {
-                private string sala { get; set; } = string.Empty;
 
-                private Task<IEnumerable<string>> BuscarSalas(string text)
-                {
-                    var opcoes = new List<string> { "Sala 01", "Sala 02", "Sala 03" };
-                    return Task.FromResult(opcoes.Where(x => x.Contains(text, StringComparison.OrdinalIgnoreCase)));
-                }
-            }
             <MudItem xs="3">
                 <MudTextField 
                     ShrinkLabel 
@@ -209,7 +119,7 @@
                     Label="Telefone" 
                     Variant="Variant.Outlined" />
             </MudItem>
-            
+
             <MudItem xs="3">
                 <MudTextField 
                     ShrinkLabel 
@@ -217,7 +127,7 @@
                     Label="Morada" 
                     Variant="Variant.Outlined" />
             </MudItem>
-            
+
             <MudItem xs="3">
                 <MudTextField 
                     ShrinkLabel 
@@ -240,19 +150,93 @@
     </MudForm>
 </MudPaper>
 
-
 @code {
     private string nome, telefone, morada, email;
+    private string genero = "", periodo = "", curso = "", anoLectivo = "", classe = "", turma = "", sala = "";
     private DateTime? _dataNascimento = null;
     private MudForm form;
-    private ElementReference snackbar;
+
+    private List<string> listaGeneros = new() { "Masculino", "Feminino", "Outro" };
+    private List<string> listaPeriodos = new() { "Manhã", "Tarde", "Pós-Laboral" };
+    private List<string> listaCursos = new() { "Ciência da Computação", "Engenharia Elétrica", "Administração" };
+    private List<string> listaAnosLectivos = new() { "2024/2025", "2025/2026", "2026/2027" };
+    private List<string> listaClasses = new() { "10", "11", "12" };
+    private List<string> listaTurmas = new() { "A", "B", "C" };
+    private List<string> listaSalas = new() { "Sala 01", "Sala 02", "Sala 03" };
+
+    
+    
+    private async Task<IEnumerable<string>> SearchPeriodos(string text) => await FiltrarLista(text, listaPeriodos);
+    private async Task<IEnumerable<string>> SearchCursos(string text) => await FiltrarLista(text, listaCursos);
+    private async Task<IEnumerable<string>> SearchAnosLectivos(string text) => await FiltrarLista(text, listaAnosLectivos);
+    private async Task<IEnumerable<string>> SearchClasses(string text) => await FiltrarLista(text, listaClasses);
+    private async Task<IEnumerable<string>> SearchTurmas(string text) => await FiltrarLista(text, listaTurmas);
+    private async Task<IEnumerable<string>>? SearchSalas(string? text, CancellationToken cancellationToken) => await FiltrarLista(text, listaSalas);
+
+    private async Task<IEnumerable<string>> FiltrarLista(string text, List<string> lista)
+    {
+        await Task.Delay(200); // Simula um pequeno delay para melhorar a experiência do usuário
+
+        if (string.IsNullOrWhiteSpace(text))
+            return lista; // Retorna a lista completa se nada for digitado
+
+        var resultado = lista
+            .Where(x => x.Contains(text, StringComparison.OrdinalIgnoreCase))
+            .ToList();
+
+        InvokeAsync(StateHasChanged); // Garante que a interface seja atualizada
+        return resultado;
+    }
 
     private async Task HandleValidSubmit()
     {
-        // Após o cadastro, redireciona para a página de listagem
+        // Redireciona para a página de listagem após o cadastro
         Navigation.NavigateTo("/Admin/ListaEstudantes");
     }
+
+    private async Task<IEnumerable<string>>? SearchGeneros(string? text, CancellationToken cancellationToken)
+    {
+        await Task.Delay(200); // Simula um pequeno delay para melhor experiência
+        var listaGeneros = new List<string> { "Masculino", "Feminino", "Outro" };
+
+        if (string.IsNullOrWhiteSpace(text))
+            return listaGeneros; // Retorna toda a lista se nada for digitado
+
+        return listaGeneros.Where(g => g.Contains(text, StringComparison.OrdinalIgnoreCase)).ToList();
+    }
+
+
+    private Task<IEnumerable<string>>? SearchAnosLectivos(string? arg1, CancellationToken arg2)
+    {
+        throw new NotImplementedException();
+    }
+
+    private Task<IEnumerable<string>>? SearchPeriodos(string? arg1, CancellationToken arg2)
+    {
+        throw new NotImplementedException();
+    }
+
+    private Task<IEnumerable<string>>? SearchCursos(string? arg1, CancellationToken arg2)
+    {
+        throw new NotImplementedException();
+    }
+
+    private Task<IEnumerable<string>>? SearchClasses(string? arg1, CancellationToken arg2)
+    {
+        throw new NotImplementedException();
+    }
+
+    private Task<IEnumerable<string>>? SearchTurmas(string? arg1, CancellationToken arg2)
+    {
+        throw new NotImplementedException();
+    }
+
 }
+
+
+
+
+
 
 
 
