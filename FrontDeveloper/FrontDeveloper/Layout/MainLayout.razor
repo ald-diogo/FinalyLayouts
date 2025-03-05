@@ -2,14 +2,17 @@
 @inherits LayoutComponentBase
 
 <MudLayout>
-    <MudAppBar Elevation="1" Color="Color.Inherit">
-        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Warning" 
-                       Edge="Edge.Start" OnClick="@((e) => DrawerToggle())"/>
-        <MudSpacer/>
-        <MudThemeProvider @bind-IsDarkMode="@_isDarkMode" Theme="_theme" />
-        <MudSwitch ThumbIcon="" @bind-Value="_isDarkMode" Color="Color.Primary" Class="ma-4" T="bool" />
-    </MudAppBar>
-
+    @if (!HideAppBar)
+    {
+        <MudAppBar Elevation="1" Color="Color.Inherit">
+            <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Warning"
+                           Edge="Edge.Start" OnClick="@((e) => DrawerToggle())"/>
+            <MudSpacer/>
+            <MudThemeProvider @bind-IsDarkMode="@_isDarkMode" Theme="_theme"/>
+            <MudSwitch ThumbIcon="" @bind-Value="_isDarkMode" Color="Color.Primary" Class="ma-4" T="bool"/>
+        </MudAppBar> 
+    }
+    
     <MudDrawer @bind-Open="_drawerOpen" Elevation="2" Color="Color.Inherit" Breakpoint="Breakpoint.Md">
         <MudDrawerHeader>
             <MudText Typo="Typo.h5" Class="mt-1" Color="Color.Primary">Menu</MudText>
@@ -26,6 +29,7 @@
 <MudSnackbarProvider />
 
 @code {
+    [Parameter] public bool HideAppBar { get; set; } = false;
     bool _drawerOpen = true;
 
     void DrawerToggle()
