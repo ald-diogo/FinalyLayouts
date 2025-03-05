@@ -1,11 +1,17 @@
 ﻿@page "/Admin/Index"
-@using MudBlazor
+
+@using FrontDeveloper
+@using FrontDeveloper.Layout
 
 @layout MainLayout
+@using MudBlazor
 
 @inject ISnackbar Snackbar
 @inject NavigationManager Navigation
 
+<MainLayout HideAppBar="true">
+    
+</MainLayout>
 
 <MudLayout>
     <MudAppBar Color="Color.Primary" Elevation="4">
@@ -62,7 +68,7 @@
                         </MudButton>
 
                         <MudChip T="string">@state</MudChip>
-                        
+
                         <MudAlert Severity="@alertSeverity" @bind-Open="alertVisible">
                             @alertMessage
                         </MudAlert>
