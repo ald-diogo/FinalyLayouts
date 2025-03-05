@@ -18,8 +18,10 @@
 
 <!-- Tabs para controlar os usuários -->
 <MudTabs Elevation="2" Rounded="true" ApplyEffectsToContainer="true" PanelClass="pa-6" Class="my-4">
-    <MudTabPanel Text="Coordenador Acadêmico" Icon="Icons.Material.Filled.Person" Color="Color.Primary">
-        <MudIcon  />
+    <MudTabPanel 
+        Text="Coordenador Acadêmico" 
+        Icon="@Icons.Material.Filled.AdminPanelSettings" 
+        Color="@Color.Primary">
         <MudButton
             Href="/"
             Variant="Variant.Filled"
@@ -30,15 +32,17 @@
         </MudButton>
     </MudTabPanel>
 
+    <MudSpacer />
 
-
-    <MudTabPanel Text="Professores">
+    <MudTabPanel Text="Professores" Icon="@Icons.Material.Filled.Badge" Color="@Color.Primary">
         <MudButton Href="/" Variant="Variant.Filled" Color="Color.Primary" Size="Size.Small" FullWidth>
             Ver Mais Detalhes
         </MudButton>
     </MudTabPanel>
+
+    <MudSpacer />
     
-    <MudTabPanel Text="Estudantes">
+    <MudTabPanel Text="Estudantes" Icon="@Icons.Material.Filled.People" Color="@Color.Primary">
         <MudButton
             Href="/Admin/ListaEstudantes"
             Variant="Variant.Filled"
@@ -58,19 +62,19 @@
 </MudText>
 
 <MudTabs Elevation="2" Rounded="true" ApplyEffectsToContainer="true" PanelClass="pa-6" Class="my-4">
-    <MudTabPanel Text="Secretário Acadêmico">
+    <MudTabPanel Text="Secretário Acadêmico" Icon="@Icons.Material.Filled.Folder" Color="@Color.Primary">
         <MudButton Href="/" Variant="Variant.Filled" Color="Color.Primary" Size="Size.Small" FullWidth>
             Ver Mais Detalhes
         </MudButton>
     </MudTabPanel>
     
-    <MudTabPanel Text="Consultor Financeiro">
+    <MudTabPanel Text="Consultor Financeiro" Icon="@Icons.Material.Filled.Business" Color="@Color.Primary">
         <MudButton Href="/" Variant="Variant.Filled" Color="Color.Primary" Size="Size.Small" FullWidth>
             Ver Mais Detalhes
         </MudButton>
     </MudTabPanel>
     
-    <MudTabPanel Text="Funcionário">
+    <MudTabPanel Text="Funcionário" Icon="@Icons.Material.Filled.Engineering" Color="@Color.Primary">
         <MudButton Href="/" Variant="Variant.Filled" Color="Color.Primary" Size="Size.Small" FullWidth>
             Ver Mais Detalhes
         </MudButton>
