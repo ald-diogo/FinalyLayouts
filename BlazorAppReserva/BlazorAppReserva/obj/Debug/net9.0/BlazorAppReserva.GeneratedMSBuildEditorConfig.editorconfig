@@ -79,6 +79,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cU2VydmnDp29zXEluZm9cSW5kZXhBZG1pbi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Dev/RiderProjects/FinalyLayouts/BlazorAppReserva/BlazorAppReserva/Pages/Admin/Serviços/Info/Monitoramento.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cU2VydmnDp29zXEluZm9cTW9uaXRvcmFtZW50by5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Dev/RiderProjects/FinalyLayouts/BlazorAppReserva/BlazorAppReserva/Pages/Admin/Serviços/Info/PoliticaAdmin.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cU2VydmnDp29zXEluZm9cUG9saXRpY2FBZG1pbi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
