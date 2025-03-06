@@ -2,6 +2,7 @@
 @using MudBlazor
 @using System.Linq
 
+@inject EstudanteService EstudanteService
 @inject NavigationManager Navigation
 @inject ISnackbar Snackbar
 
@@ -16,7 +17,7 @@
             </MudItem>
 
             <MudItem xs="3">
-                <MudAutocomplete 
+                <MudAutocomplete
                     @bind-Value="genero"
                     Label="Gênero"
                     Variant="Variant.Outlined"
@@ -28,18 +29,18 @@
             </MudItem>
 
             <MudItem xs="3">
-                <MudTextField 
+                <MudTextField
                     T="DateTime?"
                     ShrinkLabel
                     @bind-Value="_dataNascimento"
-                    Format="yyyy-MM-dd" 
-                    Label="Data de Nascimento"  
+                    Format="yyyy-MM-dd"
+                    Label="Data de Nascimento"
                     InputType="InputType.Date"
                     Variant="Variant.Outlined"/>
             </MudItem>
 
             <MudItem xs="3">
-                <MudAutocomplete 
+                <MudAutocomplete
                     @bind-Value="periodo"
                     Label="Período"
                     Variant="Variant.Outlined"
@@ -52,7 +53,7 @@
 
             <!-- Linha 2 -->
             <MudItem xs="3">
-                <MudAutocomplete 
+                <MudAutocomplete
                     @bind-Value="curso"
                     Label="Curso"
                     Variant="Variant.Outlined"
@@ -64,7 +65,7 @@
             </MudItem>
 
             <MudItem xs="3">
-                <MudAutocomplete 
+                <MudAutocomplete
                     @bind-Value="anoLectivo"
                     Label="Ano Lectivo"
                     Variant="Variant.Outlined"
@@ -76,7 +77,7 @@
             </MudItem>
 
             <MudItem xs="3">
-                <MudAutocomplete 
+                <MudAutocomplete
                     @bind-Value="classe"
                     Label="Classe"
                     Variant="Variant.Outlined"
@@ -88,7 +89,7 @@
             </MudItem>
 
             <MudItem xs="3">
-                <MudAutocomplete 
+                <MudAutocomplete
                     @bind-Value="turma"
                     Label="Turma"
                     Variant="Variant.Outlined"
@@ -101,7 +102,7 @@
 
             <!-- Linha 3 -->
             <MudItem xs="3">
-                <MudAutocomplete 
+                <MudAutocomplete
                     @bind-Value="sala"
                     Label="Sala"
                     Variant="Variant.Outlined"
@@ -113,38 +114,36 @@
             </MudItem>
 
             <MudItem xs="3">
-                <MudTextField 
-                    ShrinkLabel 
+                <MudTextField
+                    ShrinkLabel
                     @bind-Value="telefone"
-                    Label="Telefone" 
+                    Label="Telefone"
                     Variant="Variant.Outlined" />
             </MudItem>
 
             <MudItem xs="3">
-                <MudTextField 
-                    ShrinkLabel 
-                    @bind-Value="morada" 
-                    Label="Morada" 
+                <MudTextField
+                    ShrinkLabel
+                    @bind-Value="morada"
+                    Label="Morada"
                     Variant="Variant.Outlined" />
             </MudItem>
 
             <MudItem xs="3">
-                <MudTextField 
-                    ShrinkLabel 
-                    @bind-Value="email" 
-                    Label="Email" 
+                <MudTextField
+                    ShrinkLabel
+                    @bind-Value="email"
+                    Label="Email"
                     Variant="Variant.Outlined" />
             </MudItem>
         </MudGrid>
 
-        <!-- Botão Cadastrar -->
+        <!-- Botão Cadastrar corrigido -->
         <MudButton
-            Href="/Admin/ListaEstudantes"
             Type="Submit"
             Color="Color.Success"
             Variant="Variant.Filled"
-            FullWidth="true"
-            @onclick="@(() => Snackbar.Add("Cadastro Realizado Com Sucesso!", Severity.Success))">
+            FullWidth="true">
             Cadastrar
         </MudButton>
     </MudForm>
@@ -164,49 +163,32 @@
     private List<string> listaTurmas = new() { "A", "B", "C" };
     private List<string> listaSalas = new() { "Sala 01", "Sala 02", "Sala 03" };
 
-    
-    
+    // Métodos de pesquisa otimizados
+    private async Task<IEnumerable<string>> SearchGeneros(string text) => await FiltrarLista(text, listaGeneros);
     private async Task<IEnumerable<string>> SearchPeriodos(string text) => await FiltrarLista(text, listaPeriodos);
     private async Task<IEnumerable<string>> SearchCursos(string text) => await FiltrarLista(text, listaCursos);
     private async Task<IEnumerable<string>> SearchAnosLectivos(string text) => await FiltrarLista(text, listaAnosLectivos);
     private async Task<IEnumerable<string>> SearchClasses(string text) => await FiltrarLista(text, listaClasses);
     private async Task<IEnumerable<string>> SearchTurmas(string text) => await FiltrarLista(text, listaTurmas);
-    private async Task<IEnumerable<string>>? SearchSalas(string? text, CancellationToken cancellationToken) => await FiltrarLista(text, listaSalas);
+    private async Task<IEnumerable<string>> SearchSalas(string text) => await FiltrarLista(text, listaSalas);
 
     private async Task<IEnumerable<string>> FiltrarLista(string text, List<string> lista)
     {
         await Task.Delay(200); // Simula um pequeno delay para melhorar a experiência do usuário
 
         if (string.IsNullOrWhiteSpace(text))
-            return lista; // Retorna a lista completa se nada for digitado
+            return lista;
 
-        var resultado = lista
-            .Where(x => x.Contains(text, StringComparison.OrdinalIgnoreCase))
-            .ToList();
-
-        InvokeAsync(StateHasChanged); // Garante que a interface seja atualizada
-        return resultado;
+        return lista.Where(x => x.Contains(text, StringComparison.OrdinalIgnoreCase)).ToList();
     }
 
     private async Task HandleValidSubmit()
     {
-        // Redireciona para a página de listagem após o cadastro
+        Snackbar.Add("Cadastro Realizado Com Sucesso!", Severity.Success);
         Navigation.NavigateTo("/Admin/ListaEstudantes");
     }
 
-    private async Task<IEnumerable<string>>? SearchGeneros(string? text, CancellationToken cancellationToken)
-    {
-        await Task.Delay(200); // Simula um pequeno delay para melhor experiência
-        var listaGeneros = new List<string> { "Masculino", "Feminino", "Outro" };
-
-        if (string.IsNullOrWhiteSpace(text))
-            return listaGeneros; // Retorna toda a lista se nada for digitado
-
-        return listaGeneros.Where(g => g.Contains(text, StringComparison.OrdinalIgnoreCase)).ToList();
-    }
-
-
-    private Task<IEnumerable<string>>? SearchAnosLectivos(string? arg1, CancellationToken arg2)
+    private Task<IEnumerable<string>>? SearchGeneros(string? arg1, CancellationToken arg2)
     {
         throw new NotImplementedException();
     }
@@ -221,12 +203,22 @@
         throw new NotImplementedException();
     }
 
+    private Task<IEnumerable<string>>? SearchAnosLectivos(string? arg1, CancellationToken arg2)
+    {
+        throw new NotImplementedException();
+    }
+
     private Task<IEnumerable<string>>? SearchClasses(string? arg1, CancellationToken arg2)
     {
         throw new NotImplementedException();
     }
 
     private Task<IEnumerable<string>>? SearchTurmas(string? arg1, CancellationToken arg2)
+    {
+        throw new NotImplementedException();
+    }
+
+    private Task<IEnumerable<string>>? SearchSalas(string? arg1, CancellationToken arg2)
     {
         throw new NotImplementedException();
     }

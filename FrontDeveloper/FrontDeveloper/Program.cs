@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using FrontDeveloper;
 using FrontDeveloper.Layout;
+using FrontDeveloper.Pages.Admin;
 using Microsoft.AspNetCore.Components;
 using MudBlazor.Services;
 
@@ -14,5 +15,7 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
 builder.Services.AddMudServices();
 
 builder.Services.AddScoped<LayoutComponentBase, MainLayout>();
+
+builder.Services.AddSingleton<EstudanteService>();
 
 await builder.Build().RunAsync();
