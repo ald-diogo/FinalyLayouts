@@ -7,7 +7,7 @@
         <MudPaper Elevation="6" Class="pa-6 rounded-lg text-center"
                   Style="background: linear-gradient(135deg, #1e1e2f, #3a3a5e); color: white;">
             <MudTypography Typo="Typo.h3" Class="mb-3">
-                <MudIcon Icon="@Icons.Material.Filled.VerifiedUser" Color="Info" Size="Large" />
+                <MudIcon Icon="@Icons.Material.Filled.VerifiedUser" Color="Color.Info" Size="Size.Large" />
                 Monitoramento da Integridade dos Dados
             </MudTypography>
             <MudTypography Typo="Typo.subtitle1">
@@ -22,13 +22,22 @@
             <MudCard Class="pa-4" Elevation="8">
                 <MudCardContent>
                     <MudTypography Typo="Typo.h5">
-                        <MudIcon Icon="@Icons.Material.Filled.Security" Color="Primary" /> Estado Atual da Integridade
+                        <MudIcon Icon="@Icons.Material.Filled.Security" Color="Color.Primary" />
+                        Estado Atual da Integridade
                     </MudTypography>
                     <MudTypography Class="mt-2">Integridade Geral: <b>@IntegrityPercentage%</b></MudTypography>
-                    <MudProgressCircular Value="@IntegrityPercentage" Color="Success" Size="100" Class="mt-3" />
+                    <MudProgressCircular 
+                        Value="@IntegrityPercentage"
+                        Color="Color.Success"
+                        Size="Size.Large" 
+                        Class="mt-3" />
                     <MudTypography Class="mt-2">Última Verificação: <b>@LastCheck</b></MudTypography>
-                    <MudButton Color="Color.Primary" Variant="Variant.Filled" StartIcon="@Icons.Material.Filled.Refresh"
-                               Class="mt-3" OnClick="CheckIntegrity">
+                    <MudButton 
+                        Color="Color.Primary"
+                        Variant="Variant.Filled"
+                        StartIcon="@Icons.Material.Filled.Refresh"
+                        Class="mt-3"
+                        OnClick="CheckIntegrity">
                         Verificar Novamente
                     </MudButton>
                 </MudCardContent>
@@ -40,13 +49,18 @@
             <MudCard Class="pa-4 mt-4" Elevation="8">
                 <MudCardContent>
                     <MudTypography Typo="Typo.h5">
-                        <MudIcon Icon="@Icons.Material.Filled.Warning" Color="Warning" /> Registros com Problemas
+                        <MudIcon Icon="@Icons.Material.Filled.Warning" Color="Color.Warning" /> 
+                        Registros com Problemas
                     </MudTypography>
                     <MudTypography Class="mt-2">Total de Registros: <b>@TotalRecords</b></MudTypography>
                     <MudTypography Class="mt-2">Registros com Erro: <b>@ErrorRecords</b></MudTypography>
                     <MudTypography Class="mt-2">Registros Suspeitos: <b>@SuspectRecords</b></MudTypography>
-                    <MudButton Color="Color.Error" Variant="Variant.Filled" StartIcon="@Icons.Material.Filled.BugReport"
-                               Class="mt-3" OnClick="GenerateReport">
+                    <MudButton 
+                        Color="Color.Error" 
+                        Variant="Variant.Filled" 
+                        StartIcon="@Icons.Material.Filled.BugReport"
+                        Class="mt-3"
+                        OnClick="GenerateReport">
                         Gerar Relatório de Erros
                     </MudButton>
                 </MudCardContent>
@@ -61,11 +75,17 @@
                 <MudCard>
                     <MudCardContent>
                         <MudTimeline>
-                            <MudTimelineItem Icon="@Icons.Material.Filled.CheckCircle" Color="Primary" Title="Verificação - 07/03/2025">
+                            <MudTimelineItem 
+                                Icon="@Icons.Material.Filled.CheckCircle" 
+                                Color="Color.Primary"
+                                Title="Verificação - 07/03/2025">
                                 - Nenhum erro encontrado.
                                 - Status: <b>OK</b> ✅
                             </MudTimelineItem>
-                            <MudTimelineItem Icon="@Icons.Material.Filled.ReportProblem" Color="Warning" Title="Verificação - 05/03/2025">
+                            <MudTimelineItem 
+                                Icon="@Icons.Material.Filled.ReportProblem" 
+                                Color="Color.Warning" 
+                                Title="Verificação - 05/03/2025">
                                 - 3 registros com erro.
                                 - Status: <b>Alerta</b> ⚠️
                             </MudTimelineItem>

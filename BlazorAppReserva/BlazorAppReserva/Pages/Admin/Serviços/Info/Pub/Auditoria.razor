@@ -1,0 +1,126 @@
+﻿@page "/Auditoria"
+
+<MudContainer>
+    <MudCard>
+        <MudCardHeader>
+            <MudText Typo="Typo.h5">📊 Auditoria de Acessos</MudText>
+        </MudCardHeader>
+
+        <!-- Filtros de Pesquisa -->
+        <MudCardContent>
+            <MudGrid>
+                <MudItem xs="12" sm="6" md="3">
+                    <MudSelect Label="Usuário" @bind-Value="selectedUser">
+                        <MudSelectItem Value="Todos">Todos</MudSelectItem>
+                        <MudSelectItem Value="Proprietário">Proprietário do Hotel</MudSelectItem>
+                        <MudSelectItem Value="Hóspede">Hóspede</MudSelectItem>
+                        <MudSelectItem Value="Gerente">Gerente de Hotel</MudSelectItem>
+                        <MudSelectItem Value="Recepcionista">Recepcionista</MudSelectItem>
+                    </MudSelect>
+                </MudItem>
+                <MudItem xs="12" sm="6" md="3">
+                    <MudSelect Label="Tipo de Ação" @bind-Value="selectedAction">
+                        <MudSelectItem Value="Todos">Todos</MudSelectItem>
+                        <MudSelectItem Value="Login">Login</MudSelectItem>
+                        <MudSelectItem Value="Logout">Logout</MudSelectItem>
+                        <MudSelectItem Value="ReservaCriada">Reserva Criada</MudSelectItem>
+                        <MudSelectItem Value="ReservaCancelada">Reserva Cancelada</MudSelectItem>
+                    </MudSelect>
+                </MudItem>
+                <MudItem xs="12" sm="6" md="3">
+                    <MudDatePicker Label="Data Inicial" @bind-Date="startDate" />
+                </MudItem>
+                <MudItem xs="12" sm="6" md="3">
+                    <MudDatePicker Label="Data Final" @bind-Date="endDate" />
+                </MudItem>
+            </MudGrid>
+            <MudButton Color="Color.Primary" Variant="Variant.Filled" OnClick="FiltrarRegistros">🔍 Filtrar</MudButton>
+        </MudCardContent>
+
+        <!-- Tabela de Auditoria -->
+        <MudCardContent>
+            <MudTable Items="@auditoriaFiltrada" Hover="true">
+                <MudTableColumns>
+                    <MudTh>📅 Data</MudTh>
+                    <MudTh>👤 Usuário</MudTh>
+                    <MudTh>⚡ Ação</MudTh>
+                    <MudTh>📍 IP</MudTh>
+                    <MudTh>🔍 Detalhes</MudTh>
+                </MudTableColumns>
+                <MudTr Template="{registro}">
+                    <MudTd>@registro.Data</MudTd>
+                    <MudTd>@registro.Usuario</MudTd>
+                    <MudTd>@registro.Acao</MudTd>
+                    <MudTd>@registro.IP</MudTd>
+                    <MudTd>
+                        <MudButton Color="Color.Info" Variant="Variant.Text" OnClick="() => ExibirDetalhes(registro)">🔎 Ver</MudButton>
+                    </MudTd>
+                </MudTr>
+            </MudTable>
+        </MudCardContent>
+    </MudCard>
+</MudContainer>
+
+<!-- Modal para Detalhes -->
+<MudDialog @bind-IsOpen="exibirDetalhes" MaxWidth="MaxWidth.Medium">
+    <MudDialogTitle>🔎 Detalhes do Acesso</MudDialogTitle>
+    <MudDialogContent>
+        <MudText>👤 <b>Usuário:</b> @registroSelecionado?.Usuario</MudText>
+        <MudText>📅 <b>Data:</b> @registroSelecionado?.Data</MudText>
+        <MudText>⚡ <b>Ação:</b> @registroSelecionado?.Acao</MudText>
+        <MudText>📍 <b>IP:</b> @registroSelecionado?.IP</MudText>
+    </MudDialogContent>
+    <MudDialogActions>
+        <MudButton Color="Color.Primary" OnClick="() => exibirDetalhes = false">Fechar</MudButton>
+    </MudDialogActions>
+</MudDialog>
+
+@code {
+    private string selectedUser = "Todos";
+    private string selectedAction = "Todos";
+    private DateTime? startDate;
+    private DateTime? endDate;
+    private bool exibirDetalhes = false;
+    private RegistroAcesso? registroSelecionado;
+
+    private List<RegistroAcesso> auditoria = new() {
+        new RegistroAcesso { Data = "07/03/2025 10:15", Usuario = "João Silva (Gerente)", Acao = "Login", IP = "192.168.1.10" },
+        new RegistroAcesso { Data = "07/03/2025 10:20", Usuario = "Maria Santos (Recepcionista)", Acao = "Criou Reserva", IP = "192.168.1.15" },
+        new RegistroAcesso { Data = "07/03/2025 10:30", Usuario = "Pedro Lopes (Proprietário)", Acao = "Alterou Tarifas", IP = "192.168.1.5" },
+    };
+
+    private List<RegistroAcesso> auditoriaFiltrada => auditoria
+        .Where(r => (selectedUser == "Todos" || r.Usuario.Contains(selectedUser)))
+        .Where(r => (selectedAction == "Todos" || r.Acao.Contains(selectedAction)))
+        .ToList();
+
+    public object Todos { get; set; }
+    public object Proprietário { get; set; }
+    public object Hóspede { get; set; }
+    public object Gerente { get; set; }
+    public object Recepcionista { get; set; }
+    public RegistroAcesso registro { get; set; }
+    public object Login { get; set; }
+    public object Logout { get; set; }
+    public object ReservaCriada { get; set; }
+    public object ReservaCancelada { get; set; }
+
+    private void FiltrarRegistros()
+    {
+        StateHasChanged();
+    }
+
+    private void ExibirDetalhes(RegistroAcesso registro)
+    {
+        registroSelecionado = registro;
+        exibirDetalhes = true;
+    }
+
+    public class RegistroAcesso
+    {
+        public string Data { get; set; }
+        public string Usuario { get; set; }
+        public string Acao { get; set; }
+        public string IP { get; set; }
+    }
+}
