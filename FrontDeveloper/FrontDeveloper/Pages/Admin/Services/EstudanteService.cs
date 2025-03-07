@@ -1,15 +1,24 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using FrontDeveloper.Models;
-using FrontDeveloper.Pages.Admin;
 
-namespace FrontDeveloper.Pages.Admin;
-
-public class EstudanteService
+namespace FrontDeveloper.Pages.Admin
 {
-    public List<Estudante> Estudantes { get; private set; } = new List<Estudante>();
-
-    public void AdicionarEstudante(Estudante estudante)
+    public class EstudanteService
     {
-        Estudantes.Add(estudante);
+        public List<Estudante> Estudantes { get; private set; } = new List<Estudante>();
+        public event Action? OnChange;
+
+        public void AdicionarEstudante(Estudante estudante)
+        {
+            Estudantes.Add(estudante);
+            OnChange?.Invoke(); // Notifica mudanças
+        }
+
+        public void RemoverEstudante(Estudante estudante)
+        {
+            Estudantes.Remove(estudante);
+            OnChange?.Invoke(); // Notifica mudanças após remoção
+        }
     }
 }

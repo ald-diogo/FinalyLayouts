@@ -1,7 +1,6 @@
 ﻿@page "/Admin/ListaEstudantes"
 @using MudBlazor
 
-@inject EstudanteService EstudanteService
 @inject NavigationManager Navigation
 
 <PageTitle>Lista de Estudantes</PageTitle>
@@ -18,7 +17,7 @@
 </MudButton>
 
 <MudContainer Class="container-com-espaco">
-    <MudTable Items="estudantes" Hover="true" Bordered="true" Striped="true">
+    <MudTable Items="@estudantes" Hover="true" Bordered="true" Striped="true">
         <HeaderContent>
             <MudTh>Nome</MudTh>
             <MudTh>Gênero</MudTh>
@@ -32,35 +31,29 @@
             <MudTh>Telefone</MudTh>
             <MudTh>Morada</MudTh>
             <MudTh>Email</MudTh>
-            <MudTh>Acções</MudTh>
+            <MudTh>Ações</MudTh>
         </HeaderContent>
         <RowTemplate>
-            <MudTd DataLabel="Nome">@context.Nome</MudTd>
-            <MudTd DataLabel="Gênero">@context.Genero</MudTd>
-            <MudTd DataLabel="Data de Nascimento">@context.DataNascimento</MudTd>
-            <MudTd DataLabel="Período">@context.Periodo</MudTd>
-            <MudTd DataLabel="Curso">@context.Curso</MudTd>
-            <MudTd DataLabel="Ano Lectivo">@context.AnoLectivo</MudTd>
-            <MudTd DataLabel="Classe">@context.Classe</MudTd>
-            <MudTd DataLabel="Turma">@context.Turma</MudTd>
-            <MudTd DataLabel="Sala">@context.Sala</MudTd>
-            <MudTd DataLabel="Telefone">@context.Telefone</MudTd>
-            <MudTd DataLabel="Morada">@context.Morada</MudTd>
-            <MudTd DataLabel="Email">@context.Email</MudTd>
-            <MudTd DataLabel="Ações">
-                <MudButton 
-                    Color="Color.Primary" 
-                    Variant="Variant.Filled"
-                    OnClick="@(() => EditarEstudante(context))">
-                    <MudIcon Icon="@Icons.Material.Filled.Edit" />
-                </MudButton>
-                
-                <MudButton 
+            <MudTd>@context.Nome</MudTd>
+            <MudTd>@context.Genero</MudTd>
+            <MudTd>@context.DataNascimento</MudTd>
+            <MudTd>@context.Periodo</MudTd>
+            <MudTd>@context.Curso</MudTd>
+            <MudTd>@context.AnoLectivo</MudTd>
+            <MudTd>@context.Classe</MudTd>
+            <MudTd>@context.Turma</MudTd>
+            <MudTd>@context.Sala</MudTd>
+            <MudTd>@context.Telefone</MudTd>
+            <MudTd>@context.Morada</MudTd>
+            <MudTd>@context.Email</MudTd>
+            <MudTd>
+                <MudIconButton 
+                    Icon="@Icons.Material.Filled.Edit" 
+                    Color="Color.Primary" OnClick="() => EditarEstudante(context)" />
+                <MudIconButton
+                    Icon="@Icons.Material.Filled.Delete"
                     Color="Color.Error" 
-                    Variant="Variant.Filled" 
-                    OnClick="@(() => ExcluirEstudante(context))">
-                    <MudIcon Icon="@Icons.Material.Filled.Delete" />
-                </MudButton>
+                    OnClick="() => ExcluirEstudante(context)" />
             </MudTd>
         </RowTemplate>
     </MudTable>
@@ -68,41 +61,48 @@
 
 <style>
     .novo-estudante-btn {
-        margin-bottom: 20px; /* Ajuste o valor conforme necessário */
+        margin-bottom: 20px;
         margin-left: 20px;
     }
 
     .container-com-espaco {
-        margin-top: 20px; /* Ajuste o valor conforme necessário */
+        margin-top: 20px;
     }
 </style>
 
-
-
-
 @code {
-    private List<Estudante> estudantes = new List<Estudante>();
+    [Inject] private EstudanteService EstudanteService { get; set; }
+
+    private List<Estudante> estudantes = new();
 
     protected override void OnInitialized()
     {
-        // Dados simulados. Aqui você pode buscar os dados de um banco de dados ou API
-        estudantes = new List<Estudante>
+       
+        EstudanteService.OnChange += AtualizarLista;
+    }
+
+    private void AtualizarLista()
+    {
+        InvokeAsync(() =>
         {
-            new Estudante { Nome = "João Silva", DataNascimento="null", Genero = "Masculino", Periodo = "Manhã", Curso = "Ciência da Computação", AnoLectivo = "2025", Classe = "1ª", Turma = "A", Sala = "101", Telefone = "912345678", Morada = "Rua A", Email = "joao@example.com" },
-            new Estudante { Nome = "Maria Costa", DataNascimento="null", Genero = "Feminino", Periodo = "Tarde", Curso = "Engenharia", AnoLectivo = "2025", Classe = "2ª", Turma = "B", Sala = "102", Telefone = "913456789", Morada = "Rua B", Email = "maria@example.com" }
-        };
+            StateHasChanged();
+        });
+    }
+
+    public void Dispose()
+    {
+        EstudanteService.OnChange -= AtualizarLista;
     }
 
     private void EditarEstudante(Estudante estudante)
     {
-        // Lógica para editar o estudante (geralmente redirecionar para uma página de edição)
         Navigation.NavigateTo("/CadastroEst");
     }
 
-    private void ExcluirEstudante(Estudante estudante)
+    private void ExcluirEstudante(Models.Estudante estudante)
     {
-        // Lógica para excluir o estudante
-        estudantes.Remove(estudante);
+        EstudanteService.RemoverEstudante(estudante);
+        AtualizarLista();
     }
 
     public class Estudante
@@ -120,4 +120,10 @@
         public string Morada { get; set; }
         public string Email { get; set; }
     }
+
+    private void ExcluirEstudante(Estudante estudante)
+    {
+        throw new NotImplementedException();
+    }
+
 }
