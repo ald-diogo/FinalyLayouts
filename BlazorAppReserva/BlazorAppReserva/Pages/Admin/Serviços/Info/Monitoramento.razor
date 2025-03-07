@@ -1,6 +1,128 @@
 ﻿@page "/Admin/Monitoramento"
-<h3>Monitoramento</h3>
 
-@code {
-    
-}
+<MudContainer Class="pa-4">
+    <MudPaper 
+        Elevation="4"
+        Class="pa-6 rounded-lg text-center"
+        Style="background: linear-gradient(135deg, #1e1e2f, #3a3a5e); color: white;">
+        <MudTypography Typo="Typo.h3" Class="mb-3">
+            <MudIcon Icon="@Icons.Material.Filled.Security" Color="Color.Primary" Size="Size.Large" />
+            Monitoramento de Segurança
+        </MudTypography>
+        <MudTypography Typo="Typo.subtitle1">
+            Proteja e monitore a integridade do seu sistema em tempo real. 🔒
+        </MudTypography>
+    </MudPaper>
+
+    <MudGrid Class="mt-6">
+        <!-- Card - Monitorar Integridade dos Dados -->
+        <MudSlide In="true" Elevation="6" Class="rounded-lg mt-4">
+            <MudCard Class="pa-4" Style="background: #1e1e2f; color: white;">
+                <MudCardContent>
+                    <MudTypography Typo="Typo.h5">
+                        <MudIcon
+                            Icon="@Icons.Material.Filled.VerifiedUser"
+                            Color="Color.Success" /> Monitorar Integridade dos Dados
+                    </MudTypography>
+
+                    <MudTypography Class="mt-2">
+                        Verifica a segurança e integridade das informações no sistema.
+                    </MudTypography>
+
+                    <MudButton
+                        Color="Color.Primary"
+                        Variant="Variant.Filled"
+                        StartIcon="@Icons.Material.Filled.Shield"
+                        Class="mt-3">
+                        Iniciar Verificação
+                    </MudButton>
+                </MudCardContent>
+            </MudCard>
+        </MudSlide>
+
+        <!-- Card - Auditoria de Acessos -->
+        <MudSlide In="true" Elevation="6" Delay="200" Class="rounded-lg mt-4">
+            <MudCard Class="pa-4" Style="background: #252542; color: white;">
+                <MudCardContent>
+                    <MudTypography Typo="Typo.h5">
+                        <MudIcon
+                            Icon="@Icons.Material.Filled.Visibility"
+                            Color="Color.Warning" />
+                        Auditoria de Acessos
+                    </MudTypography>
+
+                    <MudTypography Class="mt-2">
+                        Registra e exibe acessos e ações dos usuários no sistema.
+                    </MudTypography>
+
+                    <MudButton
+                        Color="Color.Warning"
+                        Variant="Variant.Filled"
+                        StartIcon="@Icons.Material.Filled.List"
+                        Class="mt-3">
+                        Ver Registros
+                    </MudButton>
+                </MudCardContent>
+            </MudCard>
+        </MudSlide>
+
+        <!-- Card - Atualizações de Segurança -->
+        <MudSlide In="true" Elevation="6" Delay="400" Class="rounded-lg mt-4">
+            <MudCard Class="pa-4" Style="background: #303055; color: white;">
+                <MudCardContent>
+                    <MudTypography Typo="Typo.h5">
+                        <MudIcon Icon="@Icons.Material.Filled.SystemUpdate" Color="Color.Info" />
+                        Atualizações de Segurança
+                    </MudTypography>
+                    <MudTypography Class="mt-2">
+                        Mantenha seu sistema sempre atualizado com as últimas melhorias de segurança.
+                    </MudTypography>
+                    <MudButton
+                        Color="Color.Info"
+                        Variant="Variant.Filled"
+                        StartIcon="@Icons.Material.Filled.Update"
+                        Class="mt-3">
+                        Buscar Atualizações
+                    </MudButton>
+                </MudCardContent>
+            </MudCard>
+        </MudSlide>
+    </MudGrid>
+
+    <!-- Painel de Auditoria -->
+    <MudExpansionPanels Class="mt-6">
+        <MudExpansionPanel Text="📜 Registros de Auditoria">
+            <MudCard>
+                <MudCardContent>
+                    <MudTextField 
+                        T="string" 
+                        Label="Filtrar por usuário ou ação"
+                        Variant="Variant.Outlined" 
+                        Adornment="Adornment.Start" 
+                        StartIcon="@Icons.Material.Filled.Search" />
+                    <MudTable T="string">
+                        <MudThead>
+                            <MudTr>
+                                <MudTh>Usuário</MudTh>
+                                <MudTh>Ação</MudTh>
+                                <MudTh>Data</MudTh>
+                            </MudTr>
+                        </MudThead>
+                        <MudTbody>
+                            <MudTr>
+                                <MudTd><MudIcon Icon="@Icons.Material.Filled.Person" /> admin</MudTd>
+                                <MudTd>Login</MudTd>
+                                <MudTd>07/03/2025</MudTd>
+                            </MudTr>
+                            <MudTr>
+                                <MudTd><MudIcon Icon="@Icons.Material.Filled.Person" /> user123</MudTd>
+                                <MudTd>Alteração de senha</MudTd>
+                                <MudTd>06/03/2025</MudTd>
+                            </MudTr>
+                        </MudTbody>
+                    </MudTable>
+                </MudCardContent>
+            </MudCard>
+        </MudExpansionPanel>
+    </MudExpansionPanels>
+</MudContainer>
