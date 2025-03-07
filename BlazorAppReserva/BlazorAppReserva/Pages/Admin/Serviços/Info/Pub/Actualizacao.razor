@@ -1,0 +1,100 @@
+﻿@page "/Actualizacao"
+
+<MudContainer Class="pa-4">
+    <!-- Cabeçalho -->
+    <MudFade In="true" Delay="100">
+        <MudPaper Elevation="6" Class="pa-6 rounded-lg text-center"
+                  Style="background: linear-gradient(135deg, #1e1e2f, #3a3a5e); color: white;">
+            <MudTypography Typo="Typo.h3" Class="mb-3">
+                <MudIcon Icon="@Icons.Material.Filled.Update" Color="Color.Info" Size="Size.Large" />
+                Atualizações do Sistema
+            </MudTypography>
+            <MudTypography Typo="Typo.subtitle1">
+                Mantenha seu sistema de reservas sempre atualizado para melhor desempenho e segurança. 🔄
+            </MudTypography>
+        </MudPaper>
+    </MudFade>
+
+    <MudGrid Class="mt-6">
+        <!-- Card - Verificar Atualizações -->
+        <MudSlide In="true" Delay="200">
+            <MudCard Class="pa-4" Elevation="8">
+                <MudCardContent>
+                    <MudTypography Typo="Typo.h5">
+                        <MudIcon Icon="@Icons.Material.Filled.SystemUpdate" Color="Color.Primary" /> Verificar Atualizações
+                    </MudTypography>
+                    <MudTypography Class="mt-2">Versão Atual: <b>1.0.0</b></MudTypography>
+                    <MudButton Color="Color.Primary" Variant="Variant.Filled" StartIcon="@Icons.Material.Filled.Search" Class="mt-3"
+                               OnClick="CheckForUpdates">
+                        Verificar Agora
+                    </MudButton>
+
+                    <!-- Indicador de carregamento -->
+                    <MudProgressCircular Indeterminate="true" Class="mt-3" Color="Color.Primary" Style="@(CheckingUpdates ? "" : "display:none;")" />
+                </MudCardContent>
+            </MudCard>
+        </MudSlide>
+
+        <!-- Card - Última Atualização -->
+        <MudSlide In="true" Delay="400">
+            <MudCard Class="pa-4 mt-4" Elevation="8">
+                <MudCardContent>
+                    <MudTypography Typo="Typo.h5">
+                        <MudIcon Icon="@Icons.Material.Filled.NewReleases" Color="Color.Success" /> Última Atualização Disponível
+                    </MudTypography>
+                    <MudTypography Class="mt-2">Nova versão: <b>@LatestVersion</b> (Disponível)</MudTypography>
+                    <MudTypography>Correções de bugs e melhorias no sistema de reservas.</MudTypography>
+                    <MudButton Color="Color.Success" Variant="Variant.Filled" StartIcon="@Icons.Material.Filled.FileDownload"
+                               OnClick="DownloadUpdate" Class="mt-3">
+                        Baixar e Instalar
+                    </MudButton>
+
+                    <!-- Barra de progresso da instalação -->
+                    <MudProgressLinear Indeterminate="true" Color="Color.Success" Class="mt-3" Style="@(Downloading ? "" : "display:none;")" />
+                </MudCardContent>
+            </MudCard>
+        </MudSlide>
+    </MudGrid>
+
+    <!-- Histórico de Atualizações -->
+    <MudExpansionPanels Class="mt-6">
+        <MudExpansionPanel Text="📜 Histórico de Atualizações">
+            <MudFade In="true">
+                <MudCard>
+                    <MudCardContent>
+                        <MudTimeline>
+                            <MudTimelineItem Icon="@Icons.Material.Filled.CheckCircle" Color="Color.Primary" Title="Versão 1.1.0 - 07/03/2025">
+                                - Correções de segurança
+                                - Melhorias no sistema de reservas
+                            </MudTimelineItem>
+                            <MudTimelineItem Icon="@Icons.Material.Filled.Update" Color="Color.Success" Title="Versão 1.0.5 - 02/03/2025">
+                                - Novo layout responsivo
+                                - Otimizações no banco de dados
+                            </MudTimelineItem>
+                        </MudTimeline>
+                    </MudCardContent>
+                </MudCard>
+            </MudFade>
+        </MudExpansionPanel>
+    </MudExpansionPanels>
+</MudContainer>
+
+@code {
+    private bool CheckingUpdates = false;
+    private bool Downloading = false;
+    private string LatestVersion = "1.1.0";
+
+    private async Task CheckForUpdates()
+    {
+        CheckingUpdates = true;
+        await Task.Delay(3000); // Simula a busca por atualizações
+        CheckingUpdates = false;
+    }
+
+    private async Task DownloadUpdate()
+    {
+        Downloading = true;
+        await Task.Delay(5000); // Simula o download da atualização
+        Downloading = false;
+    }
+}

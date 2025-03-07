@@ -1,0 +1,100 @@
+﻿@page "/Integridade"
+
+
+<MudContainer Class="pa-4">
+    <!-- Cabeçalho -->
+    <MudFade In="true" Delay="100">
+        <MudPaper Elevation="6" Class="pa-6 rounded-lg text-center"
+                  Style="background: linear-gradient(135deg, #1e1e2f, #3a3a5e); color: white;">
+            <MudTypography Typo="Typo.h3" Class="mb-3">
+                <MudIcon Icon="@Icons.Material.Filled.VerifiedUser" Color="Info" Size="Large" />
+                Monitoramento da Integridade dos Dados
+            </MudTypography>
+            <MudTypography Typo="Typo.subtitle1">
+                Verifique a segurança e a confiabilidade das informações no sistema de reservas. 🏨🔍
+            </MudTypography>
+        </MudPaper>
+    </MudFade>
+
+    <MudGrid Class="mt-6">
+        <!-- Card - Percentual de Integridade -->
+        <MudSlide In="true" Delay="200">
+            <MudCard Class="pa-4" Elevation="8">
+                <MudCardContent>
+                    <MudTypography Typo="Typo.h5">
+                        <MudIcon Icon="@Icons.Material.Filled.Security" Color="Primary" /> Estado Atual da Integridade
+                    </MudTypography>
+                    <MudTypography Class="mt-2">Integridade Geral: <b>@IntegrityPercentage%</b></MudTypography>
+                    <MudProgressCircular Value="@IntegrityPercentage" Color="Success" Size="100" Class="mt-3" />
+                    <MudTypography Class="mt-2">Última Verificação: <b>@LastCheck</b></MudTypography>
+                    <MudButton Color="Color.Primary" Variant="Variant.Filled" StartIcon="@Icons.Material.Filled.Refresh"
+                               Class="mt-3" OnClick="CheckIntegrity">
+                        Verificar Novamente
+                    </MudButton>
+                </MudCardContent>
+            </MudCard>
+        </MudSlide>
+
+        <!-- Card - Status de Registros -->
+        <MudSlide In="true" Delay="400">
+            <MudCard Class="pa-4 mt-4" Elevation="8">
+                <MudCardContent>
+                    <MudTypography Typo="Typo.h5">
+                        <MudIcon Icon="@Icons.Material.Filled.Warning" Color="Warning" /> Registros com Problemas
+                    </MudTypography>
+                    <MudTypography Class="mt-2">Total de Registros: <b>@TotalRecords</b></MudTypography>
+                    <MudTypography Class="mt-2">Registros com Erro: <b>@ErrorRecords</b></MudTypography>
+                    <MudTypography Class="mt-2">Registros Suspeitos: <b>@SuspectRecords</b></MudTypography>
+                    <MudButton Color="Color.Error" Variant="Variant.Filled" StartIcon="@Icons.Material.Filled.BugReport"
+                               Class="mt-3" OnClick="GenerateReport">
+                        Gerar Relatório de Erros
+                    </MudButton>
+                </MudCardContent>
+            </MudCard>
+        </MudSlide>
+    </MudGrid>
+
+    <!-- Histórico de Verificações -->
+    <MudExpansionPanels Class="mt-6">
+        <MudExpansionPanel Text="📜 Histórico de Verificações">
+            <MudFade In="true">
+                <MudCard>
+                    <MudCardContent>
+                        <MudTimeline>
+                            <MudTimelineItem Icon="@Icons.Material.Filled.CheckCircle" Color="Primary" Title="Verificação - 07/03/2025">
+                                - Nenhum erro encontrado.
+                                - Status: <b>OK</b> ✅
+                            </MudTimelineItem>
+                            <MudTimelineItem Icon="@Icons.Material.Filled.ReportProblem" Color="Warning" Title="Verificação - 05/03/2025">
+                                - 3 registros com erro.
+                                - Status: <b>Alerta</b> ⚠️
+                            </MudTimelineItem>
+                        </MudTimeline>
+                    </MudCardContent>
+                </MudCard>
+            </MudFade>
+        </MudExpansionPanel>
+    </MudExpansionPanels>
+</MudContainer>
+
+@code {
+    private int IntegrityPercentage = 98;
+    private int TotalRecords = 5000;
+    private int ErrorRecords = 2;
+    private int SuspectRecords = 5;
+    private string LastCheck = "07/03/2025";
+
+    private async Task CheckIntegrity()
+    {
+        IntegrityPercentage = new Random().Next(90, 100);
+        ErrorRecords = new Random().Next(0, 5);
+        SuspectRecords = new Random().Next(0, 10);
+        LastCheck = DateTime.Now.ToString("dd/MM/yyyy");
+        await Task.Delay(2000);
+    }
+
+    private void GenerateReport()
+    {
+        // Aqui pode-se adicionar um sistema para gerar relatórios detalhados.
+    }
+}
