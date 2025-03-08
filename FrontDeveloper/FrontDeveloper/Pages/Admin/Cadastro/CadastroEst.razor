@@ -15,95 +15,36 @@
             <MudItem xs="3">
                 <MudTextField ShrinkLabel @bind-Value="nome" Label="Nome" Variant="Variant.Outlined" />
             </MudItem>
-            
-            <MudItem xs="3">
-                <MudSelect 
-                    T="string"
-                    Dense="false"
-                    ShrinkLabel 
-                    @bind-Value="genero"
-                    Label="Gênero" 
-                    Variant="Variant.Outlined">
-                    <MudSelectItem Value="@("Masculino")">Masculino</MudSelectItem>
-                    <MudSelectItem Value="@("Feminino")">Feminino</MudSelectItem>
-                    <MudSelectItem Value="@("Outros")">Outros</MudSelectItem>
-                </MudSelect>
 
-                @code {
-                    private string genero { get; set; } = ""; // Inicializa corretamente como string vazia
-                }
+            <MudItem xs="3">
+                <MudTextField ShrinkLabel @bind-Value="genero" Label="Gênero" Variant="Variant.Outlined" />
             </MudItem>
+            
             <MudItem xs="3">
                 <MudTextField T="DateTime?" ShrinkLabel @bind-Value="_dataNascimento" Format="yyyy-MM-dd"
                               Label="Data de Nascimento" InputType="InputType.Date" Variant="Variant.Outlined" />
             </MudItem>
-            
+
             <MudItem xs="3">
-                <MudSelect ShrinkLabel @bind-Value="periodo" Label="Período" Variant="Variant.Outlined">
-                    <MudSelectItem Value="@("Manhã")" />
-                    <MudSelectItem Value="@("Tarde")" />
-                    <MudSelectItem Value="@("Pós-Laboral")" />
-                </MudSelect>
-                @code {
-                    string periodo="";
-                }
+                <MudTextField ShrinkLabel @bind-Value="periodo" Label="Período" Variant="Variant.Outlined" />
             </MudItem>
 
             <!-- Linha 2 -->
             <MudItem xs="3">
-                <MudSelect ShrinkLabel @bind-Value="curso" Label="Curso" Variant="Variant.Outlined">
-                    <MudSelectItem Value="@("Ciência da Computação")" />
-                    <MudSelectItem Value="@("Engenharia Elétrica")" />
-                    <MudSelectItem Value="@("Administração")" />
-                </MudSelect>
-                @code {
-                    string curso="";
-                }
+                <MudTextField ShrinkLabel @bind-Value="anoLectivo" Label="Ano Lectivo" Variant="Variant.Outlined" />
             </MudItem>
-            
+
             <MudItem xs="3">
-                <MudSelect ShrinkLabel @bind-Value="anoLectivo" Label="Ano Lectivo" Variant="Variant.Outlined">
-                    <MudSelectItem Value="@("2024/2025")" />
-                    <MudSelectItem Value="@("2025/2026")" />
-                    <MudSelectItem Value="@("2026/2027")" />
-                </MudSelect>
-                @code {
-                    string anoLectivo="";
-                }
+                <MudTextField ShrinkLabel @bind-Value="classe" Label="Classe" Variant="Variant.Outlined" />
             </MudItem>
-            
+
             <MudItem xs="3">
-                <MudSelect ShrinkLabel @bind-Value="classe" Label="Classe" Variant="Variant.Outlined">
-                    <MudSelectItem Value="@("10")" />
-                    <MudSelectItem Value="@("11")" />
-                    <MudSelectItem Value="@("12")" />
-                </MudSelect>
-                @code {
-                    string classe="";
-                }
-            </MudItem>
-            
-            <MudItem xs="3">
-                <MudSelect ShrinkLabel @bind-Value="turma" Label="Turma" Variant="Variant.Outlined">
-                    <MudSelectItem Value="@("A")" />
-                    <MudSelectItem Value="@("B")" />
-                    <MudSelectItem Value="@("C")" />
-                </MudSelect>
-                @code {
-                    string turma="";
-                }
+                <MudTextField ShrinkLabel @bind-Value="turma" Label="Turma" Variant="Variant.Outlined" />
             </MudItem>
 
             <!-- Linha 3 -->
             <MudItem xs="3">
-                <MudSelect ShrinkLabel @bind-Value="sala" Label="Sala" Variant="Variant.Outlined">
-                    <MudSelectItem Value="@("Sala 01")" />
-                    <MudSelectItem Value="@("Sala 02")" />
-                    <MudSelectItem Value="@("Sala 03")" />
-                </MudSelect>
-                @code {
-                    string sala="";
-                }
+                <MudTextField ShrinkLabel @bind-Value="sala" Label="Sala" Variant="Variant.Outlined" />
             </MudItem>
             
             <MudItem xs="3">
@@ -127,7 +68,7 @@
 </MudPaper>
 
 @code {
-    private string nome, telefone, morada, email;
+    private string nome, genero, periodo, curso, classe, anoLectivo, turma, sala, telefone, morada, email;
     
     private DateTime? _dataNascimento = null;
     private MudForm? form;

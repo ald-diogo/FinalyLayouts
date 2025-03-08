@@ -2,6 +2,7 @@
 
 public class Estudante
 {
+    public int EstudanteId { get; set; } = 0;
     public string Nome { get; set; }
     public string Genero { get; set; }
     public string DataNascimento { get; set; }
