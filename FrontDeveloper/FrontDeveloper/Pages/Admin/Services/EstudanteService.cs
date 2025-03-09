@@ -4,7 +4,7 @@ using FrontDeveloper.Models;
 
 namespace FrontDeveloper.Pages.Admin
 {
-    public class EstudanteService
+    public partial class EstudanteService
     {
         public List<Estudante> Estudantes { get; private set; } = new List<Estudante>();
         public event Action? OnChange;
