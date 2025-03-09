@@ -48,21 +48,26 @@
                 </MudCardContent>
             </MudCard>
         </MudItem>
-
+        
         <!-- Receitas e Despesas -->
-        <!-- Receitas e Despesas -->
-        <div>
-            <MudText Typo="Typo.h6">Receitas e Despesas</MudText>
-            <MudChart
-                ChartType="ChartType.Line"
-                ChartSeries="@Series"
-                @bind-SelectedIndex="Index"
-                XAxisLabels="@XAxisLabels"
-                Width="100%"
-                Height="350px"
-                ChartOptions="@Options"/>
-        </div>
-
+        <MudItem xs="12" md="6">
+            <MudCard Elevation="4" Transition="ScaleIn" Class="report-card">
+                <MudCardContent>
+                    <div>
+                        <MudText Typo="Typo.h6">Receitas e Despesas</MudText>
+                        <MudChart
+                            ChartType="ChartType.Line"
+                            ChartSeries="@Series"
+                            @bind-SelectedIndex="Index"
+                            XAxisLabels="@XAxisLabels"
+                            Width="100%"
+                            Height="350px"
+                            ChartOptions="@Options"/>
+                    </div>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+        
         @code {
             private int Index = -1; // default value cannot be 0 -> first selectedIndex is 0.
             public ChartOptions Options = new ChartOptions();
@@ -72,22 +77,22 @@
                 new ChartSeries()
                 {
                     Name = "Receitas",
-                    Data = new double[] { 10, 41, 35, 51, 49, 62, 69, 91, 148 },
+                    Data = new double[] { 85, 70, 60, 50, 20, 60, 100, 140, 160 },
                     
                 },
                 new ChartSeries()
                 {
                     Name = "Despesas",
-                    Data = new double[] { 90, 79, 72, 69, 62, 62, 55, 65, 70 },
+                    Data = new double[] { 20, 40, 50, 60, 80, 60, 40, 35, 25 },
                     
                 },
             };
 
             public string[] XAxisLabels = { "Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set" };
         }
-
-
-
+        
+        
+        
         <MudDivider />
         <!-- Lucro Bruto -->
         <MudItem xs="12" md="6">

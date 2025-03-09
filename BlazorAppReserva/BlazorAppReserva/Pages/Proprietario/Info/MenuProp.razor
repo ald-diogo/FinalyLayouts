@@ -1,0 +1,102 @@
+﻿@page "/Prop/Menu"
+<MudMenuAdmin>
+    <MudNavLink Href="/Prop/Index" Match="NavLinkMatch.All">
+        <MudIcon Icon="@Icons.Material.Filled.Home" IconColor="Color.Warning" />
+        Início
+    </MudNavLink>
+
+    <MudNavGroup
+        Icon="@Icons.Material.Filled.Dashboard"
+        IconColor="Color.Error"
+        Title="Painel Administrativo"
+        Expanded="true">
+
+        <MudNavLink
+            Href="/Prop/Reservas"
+            Match="NavLinkMatch.Prefix"
+            Icon="@Icons.Material.Filled.Book"
+            IconColor="Color.Default">
+            Gerenciar reservas
+        </MudNavLink>
+
+        <MudNavLink
+            Href="/"
+            Match="NavLinkMatch.Prefix"
+            Icon="@Icons.Material.Filled.Settings"
+            IconColor="Color.Default">
+            Configuração de hotel
+        </MudNavLink>
+
+        <MudNavLink
+            Href="/"
+            Match="NavLinkMatch.Prefix"
+            Icon="@Icons.Material.Filled.MonitorHeart"
+            IconColor="Color.Warning">
+            Monitoramento
+        </MudNavLink>
+        <MudNavGroup
+            Icon="@Icons.Material.Filled.People"
+            IconColor="Color.Success"
+            Title="Usuários"
+            Expanded="true">
+
+            <MudNavLink
+                Href="/"
+                Match="NavLinkMatch.Prefix"
+                Icon="@Icons.Material.Filled.Group"
+                IconColor="Color.Info">
+                Lista de Usuários
+            </MudNavLink>
+        </MudNavGroup>
+
+        <MudNavLink
+            T="bool"
+            Href="/"
+            Match="NavLinkMatch.Prefix"
+            Icon="@Icons.Material.Filled.Assessment"
+            IconColor="Color.Success">
+            Relatórios
+        </MudNavLink>
+
+        <MudNavLink
+            T="bool"
+            Href="/"
+            Match="NavLinkMatch.Prefix"
+            Icon="@Icons.Material.Filled.LocalOffer"
+            IconColor="Color.Warning">
+            Gerenciar promoções e descontos
+        </MudNavLink>
+    </MudNavGroup>
+
+    <MudNavLink
+        T="bool"
+        Href="/Prop/Seguranca"
+        Match="NavLinkMatch.Prefix"
+        Icon="@Icons.Material.Filled.Lock"
+        IconColor = "Color.Default">Segurança
+    </MudNavLink>
+
+    <MudNavLink
+        Href="/Prop/Chat"
+        Match="NavLinkMatch.Prefix"
+        Icon="@Icons.Material.Filled.Chat"
+        IconColor="Color.Success" >
+        Chat
+    </MudNavLink>
+
+    <MudNavLink
+        Href="/Manual"
+        Match="NavLinkMatch.Prefix"
+        Icon="@Icons.Material.Filled.Help"
+        IconColor="Color.Info" >
+        Suporte
+    </MudNavLink>
+
+    <MudNavLink
+        Href="/Prop/Sobre"
+        Match="NavLinkMatch.Prefix"
+        Icon="@Icons.Material.Filled.Info"
+        IconColor="Color.Info">
+        Sobre
+    </MudNavLink>
+</MudMenuAdmin>

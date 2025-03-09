@@ -1,0 +1,356 @@
+﻿@page "/Prop/Chat"
+@using MudBlazor
+@inject NavigationManager Navigation
+@inject ISnackbar Snackbar
+
+<MudDialogProvider />
+<MudSnackbarProvider />
+
+<MudPaper Class="pa-4" Elevation="5" Style="max-width: 600px; margin: 0 auto; background-color: #f9f9f9;">
+    <MudText Typo="Typo.h4" Align="Align.Center" Class="mud-text-primary">Olá, sou o AntDroid! 👋</MudText>
+
+    <MudSpacer />
+
+    <MudText Typo="Typo.h6" Align="Align.Center" Color="Color.Primary">
+        A.(Adaptive) N.(Neural) T.(Transactional) D.(Dynamic) R.(Responsive) O.(Optimization) I.(Intelligent) D.(Data-driven)
+    </MudText>
+
+    <MudText Typo="Typo.body2" Align="Align.Center" Color="Color.Secondary" Class="mt-2">
+        Eu sou seu amigo virtual, sempre pronto para ajudar. 😄
+    </MudText>
+
+    <MudImage Fluid="true" Src="Img/Chat.jpg" Alt="AntDroid IA" Class="rounded-lg mt-4" />
+
+    <MudText Typo="Typo.body2" Align="Align.Center" Color="Color.Secondary" Class="mt-4">
+        Em que posso te ajudar hoje? 🌟
+    </MudText>
+
+    <MudTextField
+        @bind-Value="userMessage"
+        Label="Digite sua mensagem"
+        FullWidth="true"
+        Margin="Margin.Dense"
+        StartAdornment="@Icons.Material.Filled.Chat"
+        Placeholder="Digite aqui para começar..."
+        Class="mt-4"
+        AdornmentColor="Color.Primary"
+        OnKeyPress="OnKeyPress" />
+
+    <MudButton
+        OnClick="SendMessage"
+        Color="Color.Primary"
+        Variant="Variant.Filled"
+        StartIcon="@Icons.Material.Filled.Send"
+        FullWidth="true"
+        Class="mt-2"
+        Disabled="@(string.IsNullOrEmpty(userMessage))"
+        Style="transition: background-color 0.3s ease, transform 0.2s ease;">
+        Enviar 🚀
+    </MudButton>
+
+    <MudList T="string" Class="mt-4" Dense="true">
+        @foreach (var message in messages)
+        {
+            <MudListItem T="string" Class="mud-transition-all">
+                <MudAvatar
+                    Icon="@Icons.Material.Filled.Chat"
+                    Color="Color.Primary"
+                    Size="Size.Medium"
+                    Class="mr-2" />
+                <MudText Class="ml-2 mud-fade-in" Typo="Typo.body1">@message</MudText>
+            </MudListItem>
+        }
+    </MudList>
+
+    <MudSnackbarProvider />
+</MudPaper>
+
+<MudChat ChatPosition="ChatBubblePosition.Start">
+    <MudChatBubble Color="Color.Primary">
+        Acabou, Caro(a) Proprietário(a)
+    </MudChatBubble>
+    <MudChatBubble Color="Color.Primary">
+        Eu tenho a vantagem da plataforma elevada"
+    </MudChatBubble>
+</MudChat>
+<MudChat ChatPosition="ChatBubblePosition.End">
+    <MudChatBubble Color="Color.Success">
+        Você subestima o meu poder!
+    </MudChatBubble>
+</MudChat>
+
+<MudDropContainer
+    T="DropItem"
+    Items="_items"
+    CanDropClass="mud-border-info"
+    NoDropClass="mud-border-error"
+    CanDrop="CanDrop"
+    ItemsSelector="@( (item,dropzone) => item.Identifier == dropzone)"
+    ItemDropped="ItemUpdated"
+    Class="border-2 border-solid mud-border-lines-default">
+    <ChildContent>
+        @for(int r = 0; r < 8; r++)
+        {
+            var row = r.ToString();
+            <div class="d-flex">
+                @for (int c = 0; c < 8; c++)
+                {
+                    var col = c.ToString();
+                    <MudDropZone
+                        T="DropItem"
+                        Identifier="@($"{row}{col}")"
+                        DraggingClass="mud-theme-success"
+                        Class="d-flex justify-center align-center border-2 border-solid docs-gray-bg mud-border-lines-default"
+                        Style="height:64px;width:64px;" />
+                }
+            </div>
+        }
+    </ChildContent>
+    <ItemRenderer>
+        <div class="d-flex justify-center align-center flex-grow-1">
+            <MudIcon Icon="@context.Icon" Color="@context.Color" Size="Size.Large" />
+        </div>
+    </ItemRenderer>
+</MudDropContainer>
+
+<MudSnackbarProvider />
+
+@code {
+    private bool CanDrop(DropItem item, string identifier)
+    {
+        return IsValidMove(item.Identifier, identifier);
+    }
+
+    //Funcao para Adversario Virtual
+    private void ItemUpdated(MudItemDropInfo<DropItem> dropItem)
+    {
+        if (IsValidMove(dropItem.Item.Identifier, dropItem.DropzoneIdentifier))
+        {
+            dropItem.Item.Identifier = dropItem.DropzoneIdentifier;
+            CheckGameStatus();
+            MakeAIMove();
+
+            // Remover a peça inimiga se já existir no local
+            var capturedPiece = _items.FirstOrDefault(x => x.Identifier == dropItem.DropzoneIdentifier);
+            if (capturedPiece != null)
+            {
+                _items.Remove(capturedPiece);
+            }
+
+            // Mover a peça
+            dropItem.Item.Identifier = dropItem.DropzoneIdentifier;
+
+            // Verificar se o jogo terminou
+            CheckGameStatus();
+
+            // Fazer a jogada da IA
+            MakeAIMove();
+        }
+    }
+
+    private bool IsValidMove(string from, string to)
+    {
+        // Implementação das regras básicas do xadrez
+        int fromRow = int.Parse(from[0].ToString());
+        int fromCol = int.Parse(from[1].ToString());
+        int toRow = int.Parse(to[0].ToString());
+        int toCol = int.Parse(to[1].ToString());
+
+        return Math.Abs(toRow - fromRow) <= 1 && Math.Abs(toCol - fromCol) <= 1;
+    }
+
+    private void MakeAIMove()
+    {
+        var random = new Random();
+        var aiPieces = _items.Where(x => x.Color == Color.Secondary).ToList();
+        if (aiPieces.Any())
+        {
+            var piece = aiPieces[random.Next(aiPieces.Count)];
+            var possibleMoves = Enumerable.Range(0, 8).SelectMany(r => Enumerable.Range(0, 8).Select(c => $"{r}{c}"))
+                .Where(pos => IsValidMove(piece.Identifier, pos) && !_items.Any(x => x.Identifier == pos)).ToList();
+
+            if (possibleMoves.Any())
+            {
+                piece.Identifier = possibleMoves[random.Next(possibleMoves.Count)];
+            }
+        }
+        CheckGameStatus();
+    }
+
+    private async void CheckGameStatus()
+    {
+        bool playerHasKing = _items.Any(x => x.Icon == Icons.Custom.Uncategorized.ChessKing && x.Color == Color.Primary);
+        bool aiHasKing = _items.Any(x => x.Icon == Icons.Custom.Uncategorized.ChessKing && x.Color == Color.Secondary);
+
+        await InvokeAsync(() =>
+        {
+            if (!playerHasKing)
+            {
+                Snackbar.Add("Você perdeu! Tente novamente.", Severity.Error);
+            }
+            else if (!aiHasKing)
+            {
+                Snackbar.Add("Você ganhou! Parabéns!", Severity.Success);
+            }
+        });
+    }
+
+    //Pecas em jogo
+    private List<DropItem> _items = new()
+    {
+        new DropItem(){ Icon = @Icons.Custom.Uncategorized.ChessRook, Color = Color.Primary, Identifier = "00" },
+        new DropItem(){ Icon = @Icons.Custom.Uncategorized.ChessKnight, Color = Color.Primary, Identifier = "01" },
+        new DropItem(){ Icon = @Icons.Custom.Uncategorized.ChessBishop, Color = Color.Primary, Identifier = "02" },
+        new DropItem(){ Icon = @Icons.Custom.Uncategorized.ChessQueen, Color = Color.Primary, Identifier = "03" },
+        new DropItem(){ Icon = @Icons.Custom.Uncategorized.ChessKing, Color = Color.Primary, Identifier = "04" },
+        new DropItem(){ Icon = @Icons.Custom.Uncategorized.ChessBishop, Color = Color.Primary, Identifier = "05" },
+        new DropItem(){ Icon = @Icons.Custom.Uncategorized.ChessKnight, Color = Color.Primary, Identifier = "06" },
+        new DropItem(){ Icon = @Icons.Custom.Uncategorized.ChessRook, Color = Color.Primary, Identifier = "07" },
+        new DropItem(){ Icon = @Icons.Custom.Uncategorized.ChessPawn, Color = Color.Primary, Identifier = "10" },
+        new DropItem(){ Icon = @Icons.Custom.Uncategorized.ChessPawn, Color = Color.Primary, Identifier = "11" },
+        new DropItem(){ Icon = @Icons.Custom.Uncategorized.ChessPawn, Color = Color.Primary, Identifier = "12" },
+        new DropItem(){ Icon = @Icons.Custom.Uncategorized.ChessPawn, Color = Color.Primary, Identifier = "13" },
+        new DropItem(){ Icon = @Icons.Custom.Uncategorized.ChessPawn, Color = Color.Primary, Identifier = "14" },
+        new DropItem(){ Icon = @Icons.Custom.Uncategorized.ChessPawn, Color = Color.Primary, Identifier = "15" },
+        new DropItem(){ Icon = @Icons.Custom.Uncategorized.ChessPawn, Color = Color.Primary, Identifier = "16" },
+        new DropItem(){ Icon = @Icons.Custom.Uncategorized.ChessPawn, Color = Color.Primary, Identifier = "17" },
+
+        new DropItem(){ Icon = @Icons.Custom.Uncategorized.ChessPawn, Color = Color.Secondary, Identifier = "60" },
+        new DropItem(){ Icon = @Icons.Custom.Uncategorized.ChessPawn, Color = Color.Secondary, Identifier = "61" },
+        new DropItem(){ Icon = @Icons.Custom.Uncategorized.ChessPawn, Color = Color.Secondary, Identifier = "62" },
+        new DropItem(){ Icon = @Icons.Custom.Uncategorized.ChessPawn, Color = Color.Secondary, Identifier = "63" },
+        new DropItem(){ Icon = @Icons.Custom.Uncategorized.ChessPawn, Color = Color.Secondary, Identifier = "64" },
+        new DropItem(){ Icon = @Icons.Custom.Uncategorized.ChessPawn, Color = Color.Secondary, Identifier = "65" },
+        new DropItem(){ Icon = @Icons.Custom.Uncategorized.ChessPawn, Color = Color.Secondary, Identifier = "66" },
+        new DropItem(){ Icon = @Icons.Custom.Uncategorized.ChessPawn, Color = Color.Secondary, Identifier = "67" },
+        new DropItem(){ Icon = @Icons.Custom.Uncategorized.ChessRook, Color = Color.Secondary, Identifier = "70" },
+        new DropItem(){ Icon = @Icons.Custom.Uncategorized.ChessKnight, Color = Color.Secondary, Identifier = "71" },
+        new DropItem(){ Icon = @Icons.Custom.Uncategorized.ChessBishop, Color = Color.Secondary, Identifier = "72" },
+        new DropItem(){ Icon = @Icons.Custom.Uncategorized.ChessQueen, Color = Color.Secondary, Identifier = "73" },
+        new DropItem(){ Icon = @Icons.Custom.Uncategorized.ChessKing, Color = Color.Secondary, Identifier = "74" },
+        new DropItem(){ Icon = @Icons.Custom.Uncategorized.ChessBishop, Color = Color.Secondary, Identifier = "75" },
+        new DropItem(){ Icon = @Icons.Custom.Uncategorized.ChessKnight, Color = Color.Secondary, Identifier = "76" },
+        new DropItem(){ Icon = @Icons.Custom.Uncategorized.ChessRook, Color = Color.Secondary, Identifier = "77" },
+    };
+
+    public class DropItem
+    {
+        public string Icon { get; init; }
+        public Color Color { get; init; }
+        public string Identifier { get; set; }
+    }
+}
+
+<MudContainer MaxWidth="MaxWidth.Large" Class="testimonial-section">
+    <!-- Depoimentos de Usuários -->
+    <MudText Typo="Typo.h4" Align="Align.Center" Color="Color.Primary">
+        O Que Achou do AntDroid?
+    </MudText>
+
+    <MudCarousel TData="string">
+        <MudCarouselItem>
+            <MudText Typo="Typo.body1" Align="Align.Center">
+                "AntDroid foi ativado. O sistema de reservas está altamente seguro. Eu me sinto confiante ao realizar transações e sei que meus dados estão protegidos."
+            </MudText>
+
+            <MudRating SelectedValue="2" />
+
+            <div class="d-flex flex-column align-center">
+                <MudRating @bind-SelectedValue="selectedVal" HoveredValueChanged="HandleHoveredValueChanged" />
+                <MudText Align="Align.Center" Typo="Typo.subtitle2" Class="deep-purple-text mt-2">@LabelText</MudText>
+            </div>
+        </MudCarouselItem>
+
+        <MudCarouselItem>
+            <MudText Typo="Typo.body1" Align="Align.Center">
+                "AntDroid garante que a segurança nunca seja uma preocupação, graças à criptografia avançada e aos controles rigorosos de acesso."
+            </MudText>
+
+            <MudRating SelectedValue="2" />
+
+            <div class="d-flex flex-column align-center">
+                <MudRating  @bind-SelectedValue="selectedVal" HoveredValueChanged="HandleHoveredValueChanged" />
+                <MudText Align="Align.Center" Typo="Typo.subtitle2" Class="deep-purple-text mt-2">@LabelText</MudText>
+            </div>
+        </MudCarouselItem>
+    </MudCarousel>
+</MudContainer>
+
+@code {
+    private int selectedVal = 0;
+    private int? activeVal;
+
+    private void HandleHoveredValueChanged(int? val) => activeVal = val;
+
+    private string LabelText => (activeVal ?? selectedVal) switch
+    {
+        1 => "Very bad",
+        2 => "Bad",
+        3 => "Sufficient",
+        4 => "Good",
+        5 => "Awesome!",
+        _ => "Rate our product!"
+    };
+}
+
+@code {
+    private string userMessage = string.Empty;
+    private List<string> messages = new List<string>();
+
+    private void SendMessage()
+    {
+        if (!string.IsNullOrEmpty(userMessage))
+        {
+            // Adiciona a mensagem do usuário
+            messages.Add($"Você: {userMessage}");
+
+            // Lógica para o bot responder com base na mensagem do usuário
+            messages.Add(BotResponse(userMessage));
+
+            // Limpa a caixa de mensagem
+            userMessage = string.Empty;
+        }
+    }
+
+    private string BotResponse(string userMessage)
+    {
+        // Respostas com uma abordagem mais amigável e com emojis
+        if (userMessage.Contains("reservar", StringComparison.OrdinalIgnoreCase))
+        {
+            return "Com certeza! 😄 Quando você gostaria de fazer sua reserva? Tenho várias opções incríveis! 🏨✨";
+        }
+        else if (userMessage.Contains("preço", StringComparison.OrdinalIgnoreCase))
+        {
+            return "O preço varia um pouco, dependendo do tipo de quarto e das datas. Qual a data que você tem em mente? 🗓️💸";
+        }
+        else if (userMessage.Contains("disponibilidade", StringComparison.OrdinalIgnoreCase))
+        {
+            return "Estou verificando as opções para você! Me fala a data e o número de hóspedes, e vou garantir que você tenha as melhores opções! 📅🤖";
+        }
+        else if (userMessage.Contains("quarto", StringComparison.OrdinalIgnoreCase))
+        {
+            return "Temos quartos incríveis! 🛏️ Você prefere um quarto individual, duplo, ou até mesmo uma suíte de luxo? 😍";
+        }
+        else if (userMessage.Contains("AntDroid", StringComparison.OrdinalIgnoreCase))
+        {
+            return "Ah, você me conhece! 🤩 Eu sou o AntDroid, a sua IA amiga, sempre aqui para te ajudar a encontrar o melhor quarto e fazer sua reserva de forma rápida e fácil! 🚀";
+        }
+        else if (userMessage.Contains("olá", StringComparison.OrdinalIgnoreCase))
+        {
+            return "Olá! 😄 Como você está hoje? Está pronto para encontrar o melhor quarto para a sua estadia? 🏨";
+        }
+        else
+        {
+            return "Desculpe, não entendi. 😅 Pode reformular? Estou aqui para te ajudar com tudo que precisar! 😊";
+        }
+    }
+
+    private void OnKeyPress(KeyboardEventArgs e)
+    {
+        // Enviar a mensagem quando pressionar a tecla Enter
+        if (e.Key == "Enter" && !string.IsNullOrEmpty(userMessage))
+        {
+            SendMessage();
+        }
+    }
+}

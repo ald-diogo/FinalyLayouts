@@ -171,6 +171,46 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG9zcGVkZVxSZXNlcnZhci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Dev/RiderProjects/FinalyLayouts/BlazorAppReserva/BlazorAppReserva/Pages/Proprietario/Info/Login.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvcHJpZXRhcmlvXEluZm9cTG9naW4ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Dev/RiderProjects/FinalyLayouts/BlazorAppReserva/BlazorAppReserva/Pages/Proprietario/Info/MenuProp.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvcHJpZXRhcmlvXEluZm9cTWVudVByb3AucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Dev/RiderProjects/FinalyLayouts/BlazorAppReserva/BlazorAppReserva/Pages/Proprietario/Info/RecuperarSenha.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvcHJpZXRhcmlvXEluZm9cUmVjdXBlcmFyU2VuaGEucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Dev/RiderProjects/FinalyLayouts/BlazorAppReserva/BlazorAppReserva/Pages/Proprietario/Info/Registrar.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvcHJpZXRhcmlvXEluZm9cUmVnaXN0cmFyLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Dev/RiderProjects/FinalyLayouts/BlazorAppReserva/BlazorAppReserva/Pages/Proprietario/Info/Servicos/Chat.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvcHJpZXRhcmlvXEluZm9cU2Vydmljb3NcQ2hhdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Dev/RiderProjects/FinalyLayouts/BlazorAppReserva/BlazorAppReserva/Pages/Proprietario/Info/Servicos/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvcHJpZXRhcmlvXEluZm9cU2Vydmljb3NcSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Dev/RiderProjects/FinalyLayouts/BlazorAppReserva/BlazorAppReserva/Pages/Proprietario/Info/Servicos/Politica.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvcHJpZXRhcmlvXEluZm9cU2Vydmljb3NcUG9saXRpY2EucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Dev/RiderProjects/FinalyLayouts/BlazorAppReserva/BlazorAppReserva/Pages/Proprietario/Info/Servicos/Seguranca.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvcHJpZXRhcmlvXEluZm9cU2Vydmljb3NcU2VndXJhbmNhLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Dev/RiderProjects/FinalyLayouts/BlazorAppReserva/BlazorAppReserva/Pages/Proprietario/Info/Servicos/Sobre.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvcHJpZXRhcmlvXEluZm9cU2Vydmljb3NcU29icmUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Dev/RiderProjects/FinalyLayouts/BlazorAppReserva/BlazorAppReserva/Pages/Proprietario/Info/Servicos/TermoUso.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvcHJpZXRhcmlvXEluZm9cU2Vydmljb3NcVGVybW9Vc28ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Dev/RiderProjects/FinalyLayouts/BlazorAppReserva/BlazorAppReserva/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
