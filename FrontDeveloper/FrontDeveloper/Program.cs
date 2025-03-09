@@ -16,6 +16,6 @@ builder.Services.AddMudServices();
 
 builder.Services.AddScoped<LayoutComponentBase, MainLayout>();
 
-builder.Services.AddSingleton<EstudanteService>();
+builder.Services.AddSingleton<IEstudanteService, EstudanteService>();
 
 await builder.Build().RunAsync();
