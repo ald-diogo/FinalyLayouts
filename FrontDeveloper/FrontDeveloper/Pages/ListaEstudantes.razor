@@ -1,0 +1,161 @@
+﻿@page "/lista-estudantes"
+@using FrontDeveloper.Pages.Models
+@using FrontDeveloper.Pages.Services
+@inject EstudanteService EstudanteService
+
+<!-- Título -->
+<MudText Align="Align.Center" Color="Color.Primary" Typo="Typo.h5" Class="mb-4 text-center">Lista de Estudantes</MudText>
+
+<MudButton
+    Href="/cadastro-estudante"
+    Class="mt-4"
+    Variant="Variant.Filled"
+    Color="Color.Success">
+    <MudIcon Icon="@Icons.Material.Filled.PersonAdd" Class="mr-2" />
+    Novo Estudante
+</MudButton>
+
+<MudTable Items="estudantes" Hover="true">
+    <HeaderContent>
+        <MudTh>Nome</MudTh>
+        <MudTh>Gênero</MudTh>
+        <MudTh>Data de Nascimento</MudTh>
+        <MudTh>Curso</MudTh>
+        <MudTh>Período</MudTh>
+        <MudTh>Sala</MudTh>
+        <MudTh>Turma</MudTh>
+        <MudTh>Classe</MudTh>
+        <MudTh>Ano de Frequência</MudTh>
+        <MudTh>Telefone</MudTh>
+        <MudTh>Morada</MudTh>
+        <MudTh>E-mail</MudTh>
+        <MudTh>Ações</MudTh>
+    </HeaderContent>
+    <RowTemplate Context="estudante">
+        <MudTd>@estudante.Nome</MudTd>
+        <MudTd>@estudante.Genero</MudTd>
+        <MudTd>@estudante.DataNascimento</MudTd>
+        <MudTd>@estudante.Curso</MudTd>
+        <MudTd>@estudante.Periodo</MudTd>
+        <MudTd>@estudante.Sala</MudTd>
+        <MudTd>@estudante.Turma</MudTd>
+        <MudTd>@estudante.Classe</MudTd>
+        <MudTd>@estudante.AnoFrequencia</MudTd>
+        <MudTd>@estudante.Telefone</MudTd>
+        <MudTd>@estudante.Morada</MudTd>
+        <MudTd>@estudante.Email</MudTd>
+        <MudTd>
+            <MudFab
+                Color="Color.Primary"
+                StartIcon="@Icons.Material.Filled.Edit"
+                OnClick="() => EditarEstudante(estudante)" />
+            
+            <MudFab
+                Color="Color.Error"
+                StartIcon="@Icons.Material.Filled.Delete"
+                OnClick="() => ConfirmarRemocao(estudante.Id)"/>
+
+            <MudChip T="string">@estado</MudChip>
+
+            @code{
+                [Inject] private IDialogService DialogService { get; set; }
+                [Inject] private ISnackbar Snackbar { get; set; }
+
+                private string estado = "Clique no botão.";
+
+                private async Task ConfirmarRemocao(int estudanteId)
+                {
+                    bool? resultado = await DialogService.ShowMessageBox(
+                        "Warning",
+                        "Tens a Certeza que Pretendes Eliminar este Registro!",
+                        yesText: "Sim", cancelText: "Não");
+
+                    if (resultado == true)
+                    {
+                        RemoverEstudante(estudanteId);
+                        estado = "Deleted!";
+                        Snackbar.Add("Estudante removido com Sucesso!", Severity.Success);
+                    }
+                    else
+                    {
+                        estado = "Pedido cancelado!";
+                    }
+
+                    StateHasChanged();
+                }
+
+            }
+
+        </MudTd>
+    </RowTemplate>
+</MudTable>
+
+<MudDialog @bind-IsOpen="exibirDialogo">
+    <MudDialogTitle>Editar Estudante</MudDialogTitle>
+    <MudDialogContent>
+        <MudTextField Label="Nome" @bind-Value="estudanteEdicao.Nome" />
+        <MudTextField Label="Gênero" @bind-Value="estudanteEdicao.Genero" />
+        <MudTextField Label="Data de Nascimento" Type="date" @bind-Value="estudanteEdicao.DataNascimento" />
+        <MudTextField Label="Curso" @bind-Value="estudanteEdicao.Curso" />
+        <MudTextField Label="Período" @bind-Value="estudanteEdicao.Periodo" />
+        <MudTextField Label="Sala" @bind-Value="estudanteEdicao.Sala" />
+        <MudTextField Label="Turma" @bind-Value="estudanteEdicao.Turma" />
+        <MudTextField Label="Classe" @bind-Value="estudanteEdicao.Classe" />
+        <MudTextField Label="Ano de Frequência" @bind-Value="estudanteEdicao.AnoFrequencia" Type="number" />
+        <MudTextField Label="Telefone" @bind-Value="estudanteEdicao.Telefone" />
+        <MudTextField Label="Morada" @bind-Value="estudanteEdicao.Morada" />
+        <MudTextField Label="E-mail" @bind-Value="estudanteEdicao.Email" Type="email" />
+    </MudDialogContent>
+    <MudDialogActions>
+        <MudButton Color="Color.Success" OnClick="SalvarEdicao">Salvar</MudButton>
+        <MudButton Color="Color.Secondary" OnClick="() => exibirDialogo = false">Cancelar</MudButton>
+    </MudDialogActions>
+</MudDialog>
+
+@code {
+    private bool exibirDialogo;
+    private Estudante estudanteEdicao = new();
+    private List<Estudante> estudantes = new();
+
+    protected override void OnInitialized()
+    {
+        estudantes = EstudanteService.GetEstudantes();
+    }
+
+    private void EditarEstudante(Estudante estudante)
+    {
+        estudanteEdicao = new Estudante
+        {
+            Id = estudante.Id,
+            Nome = estudante.Nome,
+            Genero = estudante.Genero,
+            DataNascimento = estudante.DataNascimento,
+            Curso = estudante.Curso,
+            Periodo = estudante.Periodo,
+            Sala = estudante.Sala,
+            Turma = estudante.Turma,
+            Classe = estudante.Classe,
+            AnoFrequencia = estudante.AnoFrequencia,
+            Telefone = estudante.Telefone,
+            Morada = estudante.Morada,
+            Email = estudante.Email
+        };
+        exibirDialogo = true;
+        StateHasChanged();
+    }
+
+    private void SalvarEdicao()
+    {
+        EstudanteService.EditarEstudante(estudanteEdicao);
+        estudantes = EstudanteService.GetEstudantes(); // Atualizar a lista
+        exibirDialogo = false;
+        StateHasChanged();
+    }
+
+    private void RemoverEstudante(int id)
+    {
+        EstudanteService.RemoverEstudante(id);
+        estudantes = EstudanteService.GetEstudantes(); // Atualizar após remoção
+        StateHasChanged();
+    }
+}

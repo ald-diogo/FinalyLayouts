@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using FrontDeveloper;
 using FrontDeveloper.Layout;
 using FrontDeveloper.Pages.Admin;
+using FrontDeveloper.Pages.Services;
 using Microsoft.AspNetCore.Components;
 using MudBlazor.Services;
 
@@ -16,6 +17,6 @@ builder.Services.AddMudServices();
 
 builder.Services.AddScoped<LayoutComponentBase, MainLayout>();
 
-builder.Services.AddSingleton<IEstudanteService, EstudanteService>();
+builder.Services.AddScoped<EstudanteService>();
 
 await builder.Build().RunAsync();
