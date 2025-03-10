@@ -2,6 +2,8 @@
 @using FrontDeveloper.Pages.Models
 @using FrontDeveloper.Pages.Services
 @inject EstudanteService EstudanteService
+@inject NavigationManager NavigationManager
+@inject IJSRuntime JSRuntime
 
 <!-- Título -->
 <MudText Align="Align.Center" Color="Color.Primary" Typo="Typo.h5" Class="mb-4 text-center">Lista de Estudantes</MudText>
@@ -66,14 +68,14 @@
                 private async Task ConfirmarRemocao(int estudanteId)
                 {
                     bool? resultado = await DialogService.ShowMessageBox(
-                        "Warning",
+                        "Aviso!",
                         "Tens a Certeza que Pretendes Eliminar este Registro!",
                         yesText: "Sim", cancelText: "Não");
 
                     if (resultado == true)
                     {
                         RemoverEstudante(estudanteId);
-                        estado = "Deleted!";
+                        estado = "Clique no Botão!";
                         Snackbar.Add("Estudante removido com Sucesso!", Severity.Success);
                     }
                     else
@@ -85,71 +87,22 @@
                 }
 
             }
-
         </MudTd>
     </RowTemplate>
 </MudTable>
 
-<MudDialog @bind-IsOpen="exibirDialogo">
-    <MudDialogTitle>Editar Estudante</MudDialogTitle>
-    <MudDialogContent>
-        <MudTextField Label="Nome" @bind-Value="estudanteEdicao.Nome" />
-        <MudTextField Label="Gênero" @bind-Value="estudanteEdicao.Genero" />
-        <MudTextField Label="Data de Nascimento" Type="date" @bind-Value="estudanteEdicao.DataNascimento" />
-        <MudTextField Label="Curso" @bind-Value="estudanteEdicao.Curso" />
-        <MudTextField Label="Período" @bind-Value="estudanteEdicao.Periodo" />
-        <MudTextField Label="Sala" @bind-Value="estudanteEdicao.Sala" />
-        <MudTextField Label="Turma" @bind-Value="estudanteEdicao.Turma" />
-        <MudTextField Label="Classe" @bind-Value="estudanteEdicao.Classe" />
-        <MudTextField Label="Ano de Frequência" @bind-Value="estudanteEdicao.AnoFrequencia" Type="number" />
-        <MudTextField Label="Telefone" @bind-Value="estudanteEdicao.Telefone" />
-        <MudTextField Label="Morada" @bind-Value="estudanteEdicao.Morada" />
-        <MudTextField Label="E-mail" @bind-Value="estudanteEdicao.Email" Type="email" />
-    </MudDialogContent>
-    <MudDialogActions>
-        <MudButton Color="Color.Success" OnClick="SalvarEdicao">Salvar</MudButton>
-        <MudButton Color="Color.Secondary" OnClick="() => exibirDialogo = false">Cancelar</MudButton>
-    </MudDialogActions>
-</MudDialog>
-
 @code {
-    private bool exibirDialogo;
-    private Estudante estudanteEdicao = new();
     private List<Estudante> estudantes = new();
 
     protected override void OnInitialized()
     {
         estudantes = EstudanteService.GetEstudantes();
     }
-
-    private void EditarEstudante(Estudante estudante)
+    
+    private async Task EditarEstudante(Estudante estudante)
     {
-        estudanteEdicao = new Estudante
-        {
-            Id = estudante.Id,
-            Nome = estudante.Nome,
-            Genero = estudante.Genero,
-            DataNascimento = estudante.DataNascimento,
-            Curso = estudante.Curso,
-            Periodo = estudante.Periodo,
-            Sala = estudante.Sala,
-            Turma = estudante.Turma,
-            Classe = estudante.Classe,
-            AnoFrequencia = estudante.AnoFrequencia,
-            Telefone = estudante.Telefone,
-            Morada = estudante.Morada,
-            Email = estudante.Email
-        };
-        exibirDialogo = true;
-        StateHasChanged();
-    }
-
-    private void SalvarEdicao()
-    {
-        EstudanteService.EditarEstudante(estudanteEdicao);
-        estudantes = EstudanteService.GetEstudantes(); // Atualizar a lista
-        exibirDialogo = false;
-        StateHasChanged();
+        await JSRuntime.InvokeVoidAsync("localStorage.setItem", "estudanteEdicao", System.Text.Json.JsonSerializer.Serialize(estudante));
+        NavigationManager.NavigateTo("/cadastro-estudante");
     }
 
     private void RemoverEstudante(int id)
@@ -159,3 +112,5 @@
         StateHasChanged();
     }
 }
+
+
