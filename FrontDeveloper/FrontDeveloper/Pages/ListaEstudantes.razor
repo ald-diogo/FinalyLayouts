@@ -4,20 +4,24 @@
 @inject EstudanteService EstudanteService
 @inject NavigationManager NavigationManager
 @inject IJSRuntime JSRuntime
+@inject IDialogService DialogService
+@inject ISnackbar Snackbar
 
 <!-- Título -->
-<MudText Align="Align.Center" Color="Color.Primary" Typo="Typo.h5" Class="mb-4 text-center">Lista de Estudantes</MudText>
+<MudText Align="Align.Center" Color="Color.Primary" Typo="Typo.h5" Class="mb-4 text-center">
+    Lista de Estudantes
+</MudText>
 
 <MudButton
     Href="/cadastro-estudante"
-    Class="mt-4"
+    Class="mb-5"
     Variant="Variant.Filled"
     Color="Color.Success">
     <MudIcon Icon="@Icons.Material.Filled.PersonAdd" Class="mr-2" />
     Novo Estudante
 </MudButton>
 
-<MudTable Items="estudantes" Hover="true">
+<MudTable Items="estudantes" Hover="true" Class="mb-5">
     <HeaderContent>
         <MudTh>Nome</MudTh>
         <MudTh>Gênero</MudTh>
@@ -36,7 +40,8 @@
     <RowTemplate Context="estudante">
         <MudTd>@estudante.Nome</MudTd>
         <MudTd>@estudante.Genero</MudTd>
-        <MudTd>@estudante.DataNascimento</MudTd>
+        <MudTd>@(estudante.DataNascimento?.ToString("dd/MM/yyyy") ?? "Sem data")</MudTd>
+
         <MudTd>@estudante.Curso</MudTd>
         <MudTd>@estudante.Periodo</MudTd>
         <MudTd>@estudante.Sala</MudTd>
@@ -47,46 +52,8 @@
         <MudTd>@estudante.Morada</MudTd>
         <MudTd>@estudante.Email</MudTd>
         <MudTd>
-            <MudFab
-                Color="Color.Primary"
-                StartIcon="@Icons.Material.Filled.Edit"
-                OnClick="() => EditarEstudante(estudante)" />
-            
-            <MudFab
-                Color="Color.Error"
-                StartIcon="@Icons.Material.Filled.Delete"
-                OnClick="() => ConfirmarRemocao(estudante.Id)"/>
-
-            <MudChip T="string">@estado</MudChip>
-
-            @code{
-                [Inject] private IDialogService DialogService { get; set; }
-                [Inject] private ISnackbar Snackbar { get; set; }
-
-                private string estado = "Clique no botão.";
-
-                private async Task ConfirmarRemocao(int estudanteId)
-                {
-                    bool? resultado = await DialogService.ShowMessageBox(
-                        "Aviso!",
-                        "Tens a Certeza que Pretendes Eliminar este Registro!",
-                        yesText: "Sim", cancelText: "Não");
-
-                    if (resultado == true)
-                    {
-                        RemoverEstudante(estudanteId);
-                        estado = "Clique no Botão!";
-                        Snackbar.Add("Estudante removido com Sucesso!", Severity.Success);
-                    }
-                    else
-                    {
-                        estado = "Pedido cancelado!";
-                    }
-
-                    StateHasChanged();
-                }
-
-            }
+            <MudIconButton Color="Color.Primary" Icon="@Icons.Material.Filled.Edit" OnClick="() => EditarEstudante(estudante)" />
+            <MudIconButton Color="Color.Error" Icon="@Icons.Material.Filled.Delete" OnClick="() => ConfirmarRemocao(estudante.Id)" />
         </MudTd>
     </RowTemplate>
 </MudTable>
@@ -98,19 +65,34 @@
     {
         estudantes = EstudanteService.GetEstudantes();
     }
-    
+
     private async Task EditarEstudante(Estudante estudante)
     {
         await JSRuntime.InvokeVoidAsync("localStorage.setItem", "estudanteEdicao", System.Text.Json.JsonSerializer.Serialize(estudante));
         NavigationManager.NavigateTo("/cadastro-estudante");
     }
 
+    private async Task ConfirmarRemocao(int estudanteId)
+    {
+        bool? resultado = await DialogService.ShowMessageBox(
+            "Aviso!",
+            "Tem certeza que deseja excluir este estudante?",
+            yesText: "Sim", cancelText: "Não");
+
+        if (resultado == true)
+        {
+            RemoverEstudante(estudanteId);
+            Snackbar.Add("Estudante removido com sucesso!", Severity.Success);
+        }
+    }
+
     private void RemoverEstudante(int id)
     {
         EstudanteService.RemoverEstudante(id);
-        estudantes = EstudanteService.GetEstudantes(); // Atualizar após remoção
+        estudantes = EstudanteService.GetEstudantes(); // Atualizar lista
         StateHasChanged();
     }
 }
+
 
 
