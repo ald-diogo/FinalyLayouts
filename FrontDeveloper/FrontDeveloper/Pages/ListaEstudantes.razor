@@ -7,11 +7,12 @@
 @inject IDialogService DialogService
 @inject ISnackbar Snackbar
 
-<!-- Título -->
+<!-- Título da página -->
 <MudText Align="Align.Center" Color="Color.Primary" Typo="Typo.h5" Class="mb-4 text-center">
     Lista de Estudantes
 </MudText>
 
+<!-- Botão para adicionar um novo estudante -->
 <MudButton
     Href="/cadastro-estudante"
     Class="mb-5"
@@ -21,7 +22,9 @@
     Novo Estudante
 </MudButton>
 
+<!-- Tabela para exibição da lista de estudantes -->
 <MudTable Items="estudantes" Hover="true" Class="mb-5">
+    <!-- Cabeçalho da tabela -->
     <HeaderContent>
         <MudTh>Nome</MudTh>
         <MudTh>Gênero</MudTh>
@@ -37,11 +40,12 @@
         <MudTh>E-mail</MudTh>
         <MudTh>Ações</MudTh>
     </HeaderContent>
+    
+    <!-- Preenchimento das linhas da tabela com os dados dos estudantes -->
     <RowTemplate Context="estudante">
         <MudTd>@estudante.Nome</MudTd>
         <MudTd>@estudante.Genero</MudTd>
         <MudTd>@(estudante.DataNascimento?.ToString("dd/MM/yyyy") ?? "Sem data")</MudTd>
-
         <MudTd>@estudante.Curso</MudTd>
         <MudTd>@estudante.Periodo</MudTd>
         <MudTd>@estudante.Sala</MudTd>
@@ -52,33 +56,43 @@
         <MudTd>@estudante.Morada</MudTd>
         <MudTd>@estudante.Email</MudTd>
         <MudTd>
-            <MudIconButton Color="Color.Primary" Icon="@Icons.Material.Filled.Edit" OnClick="() => EditarEstudante(estudante)" />
-            <MudIconButton Color="Color.Error" Icon="@Icons.Material.Filled.Delete" OnClick="() => ConfirmarRemocao(estudante.Id)" />
+            <!-- Botão para editar estudante -->
+            <MudFab Color="Color.Primary" StartIcon="@Icons.Material.Filled.Edit" @onclick="() => EditarEstudante(estudante)" />
+            
+            <!-- Botão para excluir estudante -->
+            <MudFab Color="Color.Error" StartIcon="@Icons.Material.Filled.Delete" @onclick="() => ConfirmarRemocao(estudante.Id)" />
         </MudTd>
     </RowTemplate>
 </MudTable>
 
 @code {
-    private List<Estudante> estudantes = new();
+    private List<Estudante> estudantes = new(); // Lista que armazena os estudantes
 
+    // Método chamado ao inicializar o componente para carregar os estudantes
     protected override void OnInitialized()
     {
         estudantes = EstudanteService.GetEstudantes();
     }
 
+    // Método para editar um estudante
     private async Task EditarEstudante(Estudante estudante)
     {
+        // Armazena os dados do estudante na localStorage para edição
         await JSRuntime.InvokeVoidAsync("localStorage.setItem", "estudanteEdicao", System.Text.Json.JsonSerializer.Serialize(estudante));
+        // Redireciona para a página de cadastro do estudante
         NavigationManager.NavigateTo("/cadastro-estudante");
     }
 
+    // Método para confirmar a remoção de um estudante
     private async Task ConfirmarRemocao(int estudanteId)
     {
+        // Exibe uma caixa de diálogo para confirmação
         bool? resultado = await DialogService.ShowMessageBox(
             "Aviso!",
             "Tem certeza que deseja excluir este estudante?",
             yesText: "Sim", cancelText: "Não");
 
+        // Se o usuário confirmar, remove o estudante
         if (resultado == true)
         {
             RemoverEstudante(estudanteId);
@@ -86,13 +100,15 @@
         }
     }
 
+    // Método para remover um estudante
     private void RemoverEstudante(int id)
     {
-        EstudanteService.RemoverEstudante(id);
-        estudantes = EstudanteService.GetEstudantes(); // Atualizar lista
-        StateHasChanged();
+        EstudanteService.RemoverEstudante(id); // Chama o serviço para remover
+        estudantes = EstudanteService.GetEstudantes(); // Atualiza a lista de estudantes
+        StateHasChanged(); // Atualiza a interface
     }
 }
+
 
 
 

@@ -8,10 +8,12 @@
 
 <MudPaper Class="p-4" Elevation="4">
     <MudForm>
+        <!-- Cabeçalho da página -->
         <MudText Align="Align.Center" Color="Color.Primary" Typo="Typo.h5">
             Cadastro de Estudantes
         </MudText>
 
+        <!-- Primeira linha de campos do formulário -->
         <MudGrid Spacing="2">
             <MudItem xs="12" md="3" Class="mb-3">
                 <MudTextField Label="Nome" @bind-Value="estudante.Nome" Variant="Variant.Outlined" Required />
@@ -30,6 +32,7 @@
             </MudItem>
         </MudGrid>
 
+        <!-- Segunda linha de campos do formulário -->
         <MudGrid Spacing="2">
             <MudItem xs="12" md="3" Class="mb-3">
                 <MudTextField Label="Período" @bind-Value="estudante.Periodo" Variant="Variant.Outlined" Required />
@@ -48,6 +51,7 @@
             </MudItem>
         </MudGrid>
 
+        <!-- Terceira linha de campos do formulário -->
         <MudGrid Spacing="2">
             <MudItem xs="12" md="3" Class="mb-3">
                 <MudTextField Label="Ano de Frequência" @bind-Value="estudante.AnoFrequencia" Variant="Variant.Outlined" Type="number" Required />
@@ -66,10 +70,12 @@
             </MudItem>
         </MudGrid>
 
+        <!-- Botão de cadastro -->
         <MudGrid Justify="Justify.Center">
             <MudItem xs="12" md="4" Class="mt-4">
-                <MudButton Color="Color.Success" Variant="Variant.Filled" OnClick="CadastrarEstudante" Style="width: 100%;">
-                    Salvar
+                <MudButton Color="Color.Success" Variant="Variant.Filled" Style="width: 100%;"
+                           @onclick="@(() => { CadastrarEstudante(); Snackbar.Add("Cadastro efetuado com sucesso!", Severity.Success); })">
+                    Cadastrar
                 </MudButton>
             </MudItem>
         </MudGrid>
@@ -77,8 +83,10 @@
 </MudPaper>
 
 @code {
+    // Objeto que armazena os dados do estudante
     private Estudante estudante = new();
 
+    // Método chamado na inicialização da página
     protected override async Task OnInitializedAsync()
     {
         var estudanteJson = await JSRuntime.InvokeAsync<string>("localStorage.getItem", "estudanteEdicao");
@@ -89,6 +97,7 @@
         }
     }
 
+    // Método para cadastrar ou editar um estudante
     private async Task CadastrarEstudante()
     {
         if (estudante.Id > 0)
@@ -100,4 +109,5 @@
         Navigation.NavigateTo("/lista-estudantes");
     }
 }
+
 
