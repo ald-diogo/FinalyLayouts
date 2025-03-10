@@ -1,158 +1,127 @@
 ﻿@page "/Prop/Reservas"
-@inject ISnackbar Snackbar
 
-<MudContainer MaxWidth="MaxWidth.Large" Class="pa-4">
+@using BlazorAppReserva.Pages.Admin.Reservas
+@using MudBlazor
 
-    <!-- 🏨 Banner do Gerenciamento de Reservas -->
-    <MudPaper Elevation="4" Class="pa-4 mb-4 animate-fade">
-        <MudText Typo="Typo.h4" Class="text-center">
-            <MudIcon Icon="@Icons.Material.Filled.BookOnline" Color="Color.Primary" />
-            Gerenciamento de Reservas
-        </MudText>
-        <MudText Class="text-muted text-center">
-            Consulte, altere e gerencie as reservas do hotel de forma intuitiva e rápida!
-        </MudText>
+<MudContainer>
+    <!-- Cabeçalho -->
+    <MudPaper Elevation="4" Class="pa-4 d-flex justify-space-between align-center">
+        <MudTypography Variant="H4" Class="fade-in">📅 Gerenciamento de Reservas</MudTypography>
+        <MudButton 
+            Variant="Variant.Outlined"
+            Color="Color.Primary" 
+            StartIcon="@Icons.Material.Filled.Refresh" 
+            OnClick="AtualizarReservas">
+            Actualizar
+        </MudButton>
     </MudPaper>
-
-    <!-- 🎥 Carrossel de Promoções -->
-    <MudCarousel Class="mb-4 animate-slide" Height="250px">
-        <MudCarouselItem>
-            <MudCard Class="h-100 hover-zoom">
-                <MudImage Src="/images/promo1.jpg" Alt="Promoção de Quartos" />
-                <MudCardContent>
-                    <MudText Typo="Typo.h6">🌟 Promoção Especial!</MudText>
-                    <MudText>Reserve agora e ganhe 10% de desconto na sua estadia.</MudText>
-                </MudCardContent>
-            </MudCard>
-        </MudCarouselItem>
-        <MudCarouselItem>
-            <MudCard Class="h-100 hover-zoom">
-                <MudImage Src="/images/spa.jpg" Alt="Spa e Bem-estar" />
-                <MudCardContent>
-                    <MudText Typo="Typo.h6">🧘 Relaxamento Total!</MudText>
-                    <MudText>Aproveite nosso SPA exclusivo durante a sua estadia.</MudText>
-                </MudCardContent>
-            </MudCard>
-        </MudCarouselItem>
-    </MudCarousel>
-
-    <!-- 🔍 Pesquisa e Filtro -->
-    <MudGrid>
-        <MudItem xs="12" md="6">
-            <MudTextField Label="🔍 Pesquisar Reserva" Variant="Variant.Outlined" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" @bind-Value="SearchTerm" />
+    
+    <!-- Filtros de Pesquisa -->
+    <MudGrid Class="mt-4 slide-in">
+        <MudItem xs="12" sm="6" md="3">
+            <MudTextField
+                Variant="Variant.Outlined"
+                Label="Buscar Hóspede" 
+                @bind-Value="searchTerm" 
+                Adornment="Adornment.Start" 
+                AdornmentIcon="@Icons.Material.Filled.Search"
+                Required/>
         </MudItem>
-        <MudItem xs="12" md="6">
-            <MudSelect Label="📆 Filtrar por Status" Variant="Variant.Outlined" @bind-Value="FiltroStatus">
-                <MudSelectItem Value="Ativas">Reservas Ativas 🟢</MudSelectItem>
-                <MudSelectItem Value="Passadas">Reservas Passadas 🔴</MudSelectItem>
-                <MudSelectItem Value="Todas">Todas</MudSelectItem>
+        <MudItem xs="12" sm="6" md="3">
+            <MudDatePicker 
+                Variant="Variant.Outlined"
+                Label="Data de Entrada"
+                @bind-Date="checkInDate" 
+                Required/>
+        </MudItem>
+        <MudItem xs="12" sm="6" md="3">
+            <MudDatePicker Variant="Variant.Outlined" Label="Data de Saída" @bind-Date="checkOutDate" />
+        </MudItem>
+        <MudItem xs="12" sm="6" md="3">
+            <MudSelect Variant="Variant.Outlined" Label="Status" @bind-Value="selectedStatus">
+                <MudSelectItem Value="Ativa">Ativa</MudSelectItem>
+                <MudSelectItem Value="Cancelada">Cancelada</MudSelectItem>
+                <MudSelectItem Value="Concluída">Concluída</MudSelectItem>
             </MudSelect>
         </MudItem>
     </MudGrid>
-
-    <!-- 📊 Tabela de Reservas -->
-    <MudTable Items="ReservasFiltradas" Dense="true" Hover="true" Class="mt-4 animate-fade">
-        <MudTableHead>
-            <MudTableRow>
-                <MudTableCell><b>🆔 ID</b></MudTableCell>
-                <MudTableCell><b>👤 Hóspede</b></MudTableCell>
-                <MudTableCell><b>🛏️ Tipo de Quarto</b></MudTableCell>
-                <MudTableCell><b>📅 Entrada</b></MudTableCell>
-                <MudTableCell><b>📅 Saída</b></MudTableCell>
-                <MudTableCell><b>🔄 Ações</b></MudTableCell>
-            </MudTableRow>
-        </MudTableHead>
-        <MudTableBody>
-            @foreach (var reserva in ReservasFiltradas)
-            {
-                <MudTableRow Class="@((reserva.Status == "Ativas") ? "bg-green-light" : "bg-red-light") animate-slide">
-                    <MudTableCell>@reserva.Id</MudTableCell>
-                    <MudTableCell>@reserva.Hospede</MudTableCell>
-                    <MudTableCell>@reserva.TipoQuarto</MudTableCell>
-                    <MudTableCell>@reserva.DataEntrada.ToShortDateString()</MudTableCell>
-                    <MudTableCell>@reserva.DataSaida.ToShortDateString()</MudTableCell>
-                    <MudTableCell>
-                        <MudButton Icon="@Icons.Material.Filled.Info" Color="Color.Primary" Variant="Variant.Filled" OnClick="() => AbrirDetalhes(reserva)">Detalhes</MudButton>
-                        <MudButton Icon="@Icons.Material.Filled.Edit" Color="Color.Warning" Variant="Variant.Filled" OnClick="() => AlterarReserva(reserva)" Class="ml-2 hover-grow">Alterar</MudButton>
-                        <MudButton Icon="@Icons.Material.Filled.Delete" Color="Color.Error" Variant="Variant.Filled" OnClick="() => CancelarReserva(reserva)" Class="ml-2 hover-grow">Cancelar</MudButton>
-                    </MudTableCell>
-                </MudTableRow>
-            }
-        </MudTableBody>
+    
+    <!-- Tabela de Reservas -->
+    <MudTable Items="reservas" Hover="true" Dense="true" Class="mt-4 fade-in">
+        <HeaderContent>
+            <MudTh>Hóspede</MudTh>
+            <MudTh>Quarto</MudTh>
+            <MudTh>Entrada</MudTh>
+            <MudTh>Saída</MudTh>
+            <MudTh>Status</MudTh>
+            <MudTh>Acções</MudTh>
+        </HeaderContent>
+        <RowTemplate Context="reserva">
+            <MudTd>@reserva.Hospede</MudTd>
+            <MudTd>@reserva.Quarto</MudTd>
+            <MudTd>@reserva.DataEntrada.ToShortDateString()</MudTd>
+            <MudTd>@reserva.DataSaida.ToShortDateString()</MudTd>
+            <MudTd>
+                <MudChip
+                    T="string"
+                    Color="@(reserva.Status == "Ativa" ? Color.Success : reserva.Status == "Cancelada" ? Color.Error : Color.Info)">
+                    @reserva.Status
+                </MudChip>
+            </MudTd>
+            <MudTd>
+                <MudIconButton 
+                    Icon="@Icons.Material.Filled.Visibility" 
+                    Color="Color.Primary" OnClick="() => VerDetalhes(reserva)" />
+                <MudIconButton
+                    Icon="@Icons.Material.Filled.Edit" 
+                    Color="Color.Secondary" OnClick="() => EditarReserva(reserva)" />
+                <MudIconButton 
+                    Icon="@Icons.Material.Filled.Delete" 
+                    Color="Color.Error" OnClick="() => CancelarReserva(reserva)" />
+            </MudTd>
+        </RowTemplate>
     </MudTable>
-
-    <!-- 📢 Notificação -->
-    <MudSnackbarProvider />
-
-    <!-- 🏨 Modal de Detalhes da Reserva -->
-    <MudDialog @bind-IsOpen="ExibirDetalhes" MaxWidth="MaxWidth.Medium" Class="animate-fade">
-        <MudDialogTitle>📄 Detalhes da Reserva</MudDialogTitle>
-        <MudDialogContent>
-            @if (ReservaSelecionada != null)
-            {
-                <MudText><b>Hóspede:</b> @ReservaSelecionada.Hospede</MudText>
-                <MudText><b>Tipo de Quarto:</b> @ReservaSelecionada.TipoQuarto</MudText>
-                <MudText><b>Data de Entrada:</b> @ReservaSelecionada.DataEntrada.ToShortDateString()</MudText>
-                <MudText><b>Data de Saída:</b> @ReservaSelecionada.DataSaida.ToShortDateString()</MudText>
-            }
-        </MudDialogContent>
-        <MudDialogActions>
-            <MudButton Color="Color.Primary" OnClick="FecharDetalhes">Fechar</MudButton>
-        </MudDialogActions>
-    </MudDialog>
-
+    
+    <!-- Conteúdo Publicitário -->
+    <MudPaper Elevation="4" Class="pa-4 mt-6 text-center bounce-in">
+        <MudTypography Variant="H5">🏨 Promoção Especial!</MudTypography>
+        <MudTypography>Reserve um quarto de luxo e ganhe um jantar gratuito! 🍽️</MudTypography>
+        <MudButton 
+            Href=""
+            Variant="Variant.Outlined" 
+            Color="Color.Success" 
+            StartIcon="@Icons.Material.Filled.LocalOffer">
+            Saiba Mais
+        </MudButton>
+    </MudPaper>
 </MudContainer>
 
 @code {
-    private string SearchTerm = "";
-private string FiltroStatus = "Ativas";
-private bool ExibirDetalhes = false;
-private Reserva ReservaSelecionada;
+    private string searchTerm;
+    private DateTime? checkInDate;
+    private DateTime? checkOutDate;
+    private string selectedStatus;
+    
+    private List<GerenciarReservasAdmin.Reserva> reservas = new();
+    public object Ativa { get; set; }
+    public object Cancelada { get; set; }
+    public object Concluída { get; set; }
 
-
-private List<Reserva> Reservas = new()
-{
-    new Reserva { Id = 1, Hospede = "João Silva", TipoQuarto = "Deluxe", DataEntrada = DateTime.Today, DataSaida = DateTime.Today.AddDays(3), Status = "Ativas" },
-    new Reserva { Id = 2, Hospede = "Maria Souza", TipoQuarto = "Standard", DataEntrada = DateTime.Today.AddDays(-10), DataSaida = DateTime.Today.AddDays(-7), Status = "Passadas" }
-};
-
-private List<Reserva> ReservasFiltradas => Reservas?
-    .Where(r => (FiltroStatus == "Todas" || r.Status == FiltroStatus) && 
-                (string.IsNullOrWhiteSpace(SearchTerm) || r.Hospede.Contains(SearchTerm, StringComparison.OrdinalIgnoreCase)))
-    .ToList() ?? new List<Reserva>();
-
-
-public object Todas { get; set; }
-public object Ativas { get; set; }
-public object Passadas { get; set; }
-
-private void AbrirDetalhes(Reserva reserva)
-{
-    ReservaSelecionada = reserva;
-    ExibirDetalhes = true;
+    private void AtualizarReservas() { /* Atualiza os dados da tabela */ }
+    private void VerDetalhes(GerenciarReservasAdmin.Reserva reserva) { /* Exibe detalhes da reserva */ }
+    private void EditarReserva(GerenciarReservasAdmin.Reserva reserva) { /* Permite editar */ }
+    private void CancelarReserva(GerenciarReservasAdmin.Reserva reserva) { /* Confirma e remove */ }
+    
+    public class Reserva
+    {
+        public string Hospede { get; set; }
+        public string Quarto { get; set; }
+        public DateTime DataEntrada { get; set; }
+        public DateTime DataSaida { get; set; }
+        public string Status { get; set; }
+    }
 }
 
-private void FecharDetalhes() => ExibirDetalhes = false;
 
-private void AlterarReserva(Reserva reserva)
-{
-    Snackbar?.Add($"Reserva de {reserva.Hospede} foi alterada com sucesso!", Severity.Success);
-}
 
-private void CancelarReserva(Reserva reserva)
-{
-    Reservas.Remove(reserva);
-    Snackbar?.Add($"Reserva de {reserva.Hospede} foi cancelada.", Severity.Warning);
-}
 
-private class Reserva
-{
-    public int Id { get; set; }
-    public string Hospede { get; set; }
-    public string TipoQuarto { get; set; }
-    public DateTime DataEntrada { get; set; }
-    public DateTime DataSaida { get; set; }
-    public string Status { get; set; }
-}
-
-}

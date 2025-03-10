@@ -1,0 +1,111 @@
+﻿@page "/Prop/Tarifas"
+
+<MudContainer MaxWidth="MaxWidth.False" Class="pa-4">
+    <!-- Cabeçalho -->
+    <MudPaper Class="pa-4 text-center" Elevation="6">
+        <MudIcon 
+            Icon="@Icons.Material.Filled.MonetizationOn"
+            Size="Size.Large" 
+            Color="Color.Warning" 
+            Class="mb-2"/>
+        <MudText Typo="Typo.h4" Class="mb-2">Definir e Ajustar Tarifas</MudText>
+        <MudText Typo="Typo.subtitle1">Gerencie suas tarifas e promoções para maximizar a ocupação do hotel!</MudText>
+    </MudPaper>
+
+    <!-- Ajustar Tarifas de Quartos -->
+    <MudCard Class="mt-4" Elevation="4">
+        <MudCardHeader>
+            <MudIcon 
+                Icon="@Icons.Material.Filled.AttachMoney" 
+                Size="Size.Medium" 
+                Color="Color.Primary" 
+                Class="mr-2"/>
+            <MudText Typo="Typo.h5">Ajustar Tarifas de Quartos</MudText>
+        </MudCardHeader>
+        <MudCardContent>
+            <MudGrid Spacing="3">
+                <MudItem xs="12" md="4">
+                    <MudSelect T="string" Variant="Variant.Outlined" Label="Selecione o Quarto">
+                        <MudSelectItem Value="1">Standard</MudSelectItem>
+                        <MudSelectItem Value="2">Luxo</MudSelectItem>
+                        <MudSelectItem Value="3">Presidencial</MudSelectItem>
+                    </MudSelect>
+                </MudItem>
+                
+                <MudItem xs="12" md="4">
+                    <MudTextField
+                        T="string"
+                        Variant="Variant.Outlined"
+                        Label="Preço Atual"
+                        Disabled="true" 
+                        Adornment="Adornment.Start" 
+                        AdornmentIcon="@Icons.Material.Filled.AttachMoney"/>
+                </MudItem>
+                
+                <MudItem xs="12" md="4">
+                    <MudNumericField
+                        T="string"
+                        Variant="Variant.Outlined"
+                        Label="Novo Preço" 
+                        Adornment="Adornment.Start" 
+                        AdornmentIcon="@Icons.Material.Filled.Money"/>
+                </MudItem>
+            </MudGrid>
+            <MudButton
+                Color="Color.Primary"
+                Variant="Variant.Filled"
+                Class="mt-3">
+                Salvar Alterações
+            </MudButton>
+        </MudCardContent>
+    </MudCard>
+
+    <!-- Criar Ofertas e Descontos -->
+    <MudCard Class="mt-4" Elevation="4">
+        <MudCardHeader>
+            <MudIcon Icon="@Icons.Material.Filled.LocalOffer" Size="Size.Medium" Color="Color.Success" Class="mr-2"/>
+            <MudText Typo="Typo.h5">Criar Ofertas e Descontos</MudText>
+        </MudCardHeader>
+        <MudCardContent>
+            <MudTextField T="string" Label="Nome da Oferta"/>
+            <MudSelect T="string" Label="Tipo de Desconto">
+                <MudSelectItem Value="1">Porcentagem</MudSelectItem>
+                <MudSelectItem Value="2">Valor Fixo</MudSelectItem>
+            </MudSelect>
+            
+            <MudNumericField
+                T="string"
+                Label="Valor do Desconto" 
+                Adornment="Adornment.Start" 
+                AdornmentIcon="@Icons.Material.Filled.Percent"/>
+            <MudButton Color="Color.Success" Variant="Variant.Filled" Class="mt-3">Criar Oferta</MudButton>
+        </MudCardContent>
+    </MudCard>
+
+    <!-- Definir Tarifas Sazonais -->
+    <MudCard Class="mt-4" Elevation="4">
+        <MudCardHeader>
+            <MudIcon Icon="@Icons.Material.Filled.Event" Size="Size.Medium" Color="Color.Warning" Class="mr-2"/>
+            <MudText Typo="Typo.h5">Definir Tarifas Sazonais</MudText>
+        </MudCardHeader>
+        <MudCardContent>
+            <MudSelect T="string" Label="Selecione a Temporada">
+                <MudSelectItem Value="1">Alta Temporada</MudSelectItem>
+                <MudSelectItem Value="2">Baixa Temporada</MudSelectItem>
+                <MudSelectItem Value="3">Feriados</MudSelectItem>
+            </MudSelect>
+            <MudSlider Min="0.5" Max="2" Step="0.1" Label="Multiplicador de Tarifa" Value="1"/>
+            <MudButton Color="Color.Warning" Variant="Variant.Filled" Class="mt-3">Aplicar Tarifas</MudButton>
+        </MudCardContent>
+    </MudCard>
+
+    <!-- Animação e Chamada Publicitária -->
+    <MudPaper Class="mt-4 text-center pa-4" Elevation="6" Style="background: linear-gradient(135deg, #7b4397, #dc2430); color: white;">
+        <MudText Typo="Typo.h5">Promoção Especial!</MudText>
+        <MudText Typo="Typo.subtitle1">Aproveite descontos exclusivos para aumentar a ocupação do seu hotel!</MudText>
+        <MudIcon 
+            Icon="@Icons.Material.Filled.Star" 
+            Size="Size.Large" 
+            Color="Color.Warning" Class="animate__animated animate__bounce mt-2"/>
+    </MudPaper>
+</MudContainer>
