@@ -1,0 +1,167 @@
+﻿@page "/cadastro-estudante"
+@using BlazorCrud.Pages.Models
+@using BlazorCrud.Pages.Services
+@inject EstudanteService EstudanteService
+@inject NavigationManager Navigation
+@inject ISnackbar Snackbar
+
+<MudPaper Class="p-4" Elevation="4">
+    
+    <!-- Título -->
+    <MudText Align="Align.Center" Color="Color.Primary" Typo="Typo.h5" Class="mb-4 text-center">Cadastro de Estudantes</MudText>
+
+    <MudForm>
+        <!-- Primeira linha -->
+        <MudGrid Class="mb-3">
+            <MudItem xs="12" md="3">
+                <MudTextField 
+                    Label="Nome" 
+                    @bind-Value="estudante.Nome"
+                    Variant="Variant.Outlined"
+                    Required />
+            </MudItem>
+            
+            <MudItem xs="12" md="3">
+                <MudTextField 
+                    Label="Gênero" 
+                    @bind-Value="estudante.Genero"
+                    Variant="Variant.Outlined"
+                    Placeholder="Masculino / Feminino / Outros" 
+                    Required  />
+            </MudItem>  
+            
+            <MudItem xs="12" md="3">
+                <MudTextField
+                    T="DateTime?"
+                    Format="yyyy-MM-dd"
+                    Label="Data de Nascimento"
+                    InputType="InputType.Date"
+                    Variant="Variant.Outlined"
+                    Required
+                    @bind-Value="estudante.DataNascimento" />
+            </MudItem>
+
+            <MudItem xs="12" md="3">
+                <MudTextField
+                    Label="Curso"
+                    @bind-Value="estudante.Curso"
+                    Variant="Variant.Outlined"
+                    Placeholder="Digite o curso..."
+                    Required />
+            </MudItem>
+        </MudGrid>
+
+        <!-- Segunda linha -->
+        <MudGrid Class="mb-3">
+            <MudItem xs="12" md="3">
+                <MudTextField
+                    Label="Período"
+                    @bind-Value="estudante.Periodo"
+                    Variant="Variant.Outlined"
+                    Placeholder="Manhã / Tarde / Pós-Laboral"
+                    Required />
+            </MudItem>
+
+            <MudItem xs="12" md="3">
+                <MudTextField
+                    Label="Sala"
+                    @bind-Value="estudante.Sala"
+                    Variant="Variant.Outlined"
+                    Placeholder="Digite o número da sala"
+                    Required />
+            </MudItem>
+            
+            <MudItem xs="12" md="3">
+                <MudTextField
+                    Label="Turma"
+                    @bind-Value="estudante.Turma"
+                    Variant="Variant.Outlined"
+                    Placeholder="Digite a turma"
+                    Required />
+            </MudItem>
+
+            <MudItem xs="12" md="3">
+                <MudTextField
+                    Label="Classe"
+                    @bind-Value="estudante.Classe"
+                    Variant="Variant.Outlined"
+                    Placeholder="Digite a classe..."
+                    Required />
+            </MudItem>
+        </MudGrid>
+        
+        <!-- Terceira linha -->
+        <MudGrid Class="mb-3">
+            <MudItem xs="12" md="3">
+                <MudTextField
+                    Label="Ano de Frequência"
+                    @bind-Value="estudante.AnoFrequencia"
+                    Variant="Variant.Outlined"
+                    Type="number"
+                    Required />
+            </MudItem>
+
+            <MudItem xs="12" md="3">
+                <MudTextField
+                    Label="Telefone"
+                    @bind-Value="estudante.Telefone"
+                    Type="tel"
+                    Variant="Variant.Outlined"
+                    Placeholder="(+244) ___-___-___"
+                    Required />
+            </MudItem>
+
+            <MudItem xs="12" md="3">
+                <MudTextField
+                    Label="Morada"
+                    @bind-Value="estudante.Morada"
+                    Variant="Variant.Outlined"
+                    Placeholder="Digite o endereço"
+                    Required />
+            </MudItem>
+
+            <MudItem xs="12" md="3">
+                <MudTextField
+                    Label="E-mail"
+                    @bind-Value="estudante.Email"
+                    Type="email"
+                    Variant="Variant.Outlined"
+                    Placeholder="Digite o e-mail"
+                    Required />
+            </MudItem>
+        </MudGrid>
+        
+        <!-- Botão Cadastrar 100% da largura -->
+        <MudGrid Justify="Justify.Center">
+            <MudItem xs="12">
+                <MudButton
+                    Color="Color.Success"
+                    Variant="Variant.Filled"
+                    OnClick="@(() => {
+                                CadastrarEstudante();
+                                Snackbar.Add("Cadastro efetuado com sucesso!", Severity.Success);
+                            })"
+                    Style="width: 100%; height: 50px;">
+                    Cadastrar
+                </MudButton>
+            </MudItem>
+        </MudGrid>
+
+    </MudForm>
+</MudPaper>
+
+@code {
+    private Estudante estudante = new();
+
+    private async Task CadastrarEstudante()
+    {
+        EstudanteService.AdicionarEstudante(estudante);
+        estudante = new(); // Limpar formulário
+
+        // Redirecionar para a página de listagem
+        Navigation.NavigateTo("/lista-estudantes");
+    }
+}
+
+
+
