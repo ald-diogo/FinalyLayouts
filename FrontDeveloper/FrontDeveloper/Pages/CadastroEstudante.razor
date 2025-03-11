@@ -16,57 +16,147 @@
         <!-- Primeira linha de campos do formulário -->
         <MudGrid Spacing="2">
             <MudItem xs="12" md="3" Class="mb-3">
-                <MudTextField Label="Nome" @bind-Value="estudante.Nome" Variant="Variant.Outlined" Required />
+                <MudTextField
+                    Label="Nome"
+                    @bind-Value="estudante.Nome"
+                    Variant="Variant.Outlined"
+                    Required
+                    Adornment="Adornment.End"
+                    AdornmentIcon="@Icons.Material.Filled.AccountCircle"
+                    AdornmentColor="Color.Primary" />
             </MudItem>
 
             <MudItem xs="12" md="3" Class="mb-3">
-                <MudTextField Label="Gênero" @bind-Value="estudante.Genero" Variant="Variant.Outlined" Required />
+                <MudTextField
+                    Label="Gênero"
+                    @bind-Value="estudante.Genero"
+                    Variant="Variant.Outlined"
+                    Required
+                    Adornment="Adornment.End"
+                    AdornmentIcon="@Icons.Material.Filled.Transgender"
+                    AdornmentColor="Color.Primary"/>
             </MudItem>  
 
             <MudItem xs="12" md="3" Class="mb-3">
-                <MudTextField T="DateTime?" Format="yyyy-MM-dd" Label="Data de Nascimento" InputType="InputType.Date" Variant="Variant.Outlined" Required @bind-Value="estudante.DataNascimento" />
+                <MudTextField
+                    T="DateTime?"
+                    Format="yyyy-MM-dd"
+                    Label="Data de Nascimento"
+                    InputType="InputType.Date"
+                    Variant="Variant.Outlined"
+                    Required
+                    Adornment="Adornment.End"
+                    AdornmentIcon="@Icons.Material.Filled.CalendarToday"
+                    @bind-Value="estudante.DataNascimento"
+                    AdornmentColor="Color.Primary"/>
             </MudItem>
 
             <MudItem xs="12" md="3" Class="mb-3">
-                <MudTextField Label="Curso" @bind-Value="estudante.Curso" Variant="Variant.Outlined" Required />
+                <MudTextField
+                    Label="Curso"
+                    @bind-Value="estudante.Curso"
+                    Variant="Variant.Outlined"
+                    Required
+                    Adornment="Adornment.End"
+                    AdornmentIcon="@Icons.Material.Filled.School"
+                    AdornmentColor="Color.Primary"/>
             </MudItem>
         </MudGrid>
 
         <!-- Segunda linha de campos do formulário -->
         <MudGrid Spacing="2">
             <MudItem xs="12" md="3" Class="mb-3">
-                <MudTextField Label="Período" @bind-Value="estudante.Periodo" Variant="Variant.Outlined" Required />
+                <MudTextField
+                    Label="Período"
+                    @bind-Value="estudante.Periodo"
+                    Variant="Variant.Outlined"
+                    Required
+                    Adornment="Adornment.End"
+                    AdornmentIcon="@Icons.Material.Filled.History"
+                    AdornmentColor="Color.Primary"/>
             </MudItem>
 
             <MudItem xs="12" md="3" Class="mb-3">
-                <MudTextField Label="Sala" @bind-Value="estudante.Sala" Variant="Variant.Outlined" Required />
+                <MudTextField
+                    Label="Sala"
+                    @bind-Value="estudante.Sala"
+                    Variant="Variant.Outlined"
+                    Required
+                    Adornment="Adornment.End"
+                    AdornmentIcon="@Icons.Material.Filled.School"
+                    AdornmentColor="Color.Primary"/>
             </MudItem>
 
             <MudItem xs="12" md="3" Class="mb-3">
-                <MudTextField Label="Turma" @bind-Value="estudante.Turma" Variant="Variant.Outlined" Required />
+                <MudTextField
+                    Label="Turma"
+                    @bind-Value="estudante.Turma"
+                    Variant="Variant.Outlined"
+                    Required
+                    Adornment="Adornment.End"
+                    AdornmentIcon="@Icons.Material.Filled.Groups"
+                    AdornmentColor="Color.Primary"/>
             </MudItem>
 
             <MudItem xs="12" md="3" Class="mb-3">
-                <MudTextField Label="Classe" @bind-Value="estudante.Classe" Variant="Variant.Outlined" Required />
+                <MudTextField
+                    Label="Classe"
+                    @bind-Value="estudante.Classe"
+                    Variant="Variant.Outlined"
+                    Required
+                    Adornment="Adornment.End"
+                    AdornmentIcon="@Icons.Material.Filled.CastForEducation"
+                    AdornmentColor="Color.Primary"/>
             </MudItem>
         </MudGrid>
 
         <!-- Terceira linha de campos do formulário -->
         <MudGrid Spacing="2">
             <MudItem xs="12" md="3" Class="mb-3">
-                <MudTextField Label="Ano de Frequência" @bind-Value="estudante.AnoFrequencia" Variant="Variant.Outlined" Type="number" Required />
+                <MudTextField
+                    Label="Ano de Frequência"
+                    @bind-Value="estudante.AnoFrequencia"
+                    Variant="Variant.Outlined"
+                    Type="number"
+                    Required
+                    Adornment="Adornment.End"
+                    AdornmentIcon="@Icons.Material.Filled.HistoryEdu"
+                    AdornmentColor="Color.Primary"/>
             </MudItem>
 
             <MudItem xs="12" md="3" Class="mb-3">
-                <MudTextField Label="Telefone" @bind-Value="estudante.Telefone" Type="tel" Variant="Variant.Outlined" Required />
+                <MudTextField
+                    Label="Telefone"
+                    @bind-Value="estudante.Telefone"
+                    Type="tel"
+                    Variant="Variant.Outlined"
+                    Required
+                    Adornment="Adornment.End"
+                    AdornmentIcon="@Icons.Material.Filled.Smartphone"
+                    AdornmentColor="Color.Primary"/>
             </MudItem>
 
             <MudItem xs="12" md="3" Class="mb-3">
-                <MudTextField Label="Morada" @bind-Value="estudante.Morada" Variant="Variant.Outlined" Required />
+                <MudTextField
+                    Label="Morada"
+                    @bind-Value="estudante.Morada"
+                    Variant="Variant.Outlined"
+                    Required
+                    Adornment="Adornment.End"
+                    AdornmentIcon="@Icons.Material.Filled.LocationOn"
+                    AdornmentColor="Color.Primary"/>
             </MudItem>
 
             <MudItem xs="12" md="3" Class="mb-3">
-                <MudTextField Label="E-mail" @bind-Value="estudante.Email" Type="email" Variant="Variant.Outlined" Required />
+                <MudTextField
+                    Label="E-mail"
+                    @bind-Value="estudante.Email"
+                    Type="email"
+                    Variant="Variant.Outlined"
+                    Required
+                    Adornment="Adornment.End"
+                    AdornmentIcon="@Icons.Material.Filled.ContactMail"
+                    AdornmentColor="Color.Primary"/>
             </MudItem>
         </MudGrid>
 

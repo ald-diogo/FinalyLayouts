@@ -18,5 +18,9 @@ builder.Services.AddMudServices();
 builder.Services.AddScoped<LayoutComponentBase, MainLayout>();
 
 builder.Services.AddScoped<EstudanteService>();
+builder.Services.AddScoped<CoordenadorService>();
+builder.Services.AddScoped<ProfessorService>();
+builder.Services.AddScoped<SecretarioService>();
+builder.Services.AddScoped<FuncionarioService>();
 
 await builder.Build().RunAsync();
