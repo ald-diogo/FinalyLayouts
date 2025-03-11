@@ -46,5 +46,14 @@ public class EstudanteService
     {
         estudantes.RemoveAll(e => e.Id == id); // Remove o estudante pelo ID
     }
+    
+    // Método para buscar estudantes pelo nome (ignora maiúsculas e minúsculas)
+    public List<Estudante> BuscarEstudantePorNome(string nome)
+    {
+        // Retorna todos os estudantes cujo nome contenha o termo informado (case insensitive)
+        return estudantes
+            .Where(e => e.Nome.Contains(nome, System.StringComparison.OrdinalIgnoreCase))
+            .ToList();
+    }
 }
 
