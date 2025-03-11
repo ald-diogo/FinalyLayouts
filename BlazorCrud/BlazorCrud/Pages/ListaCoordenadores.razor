@@ -1,0 +1,155 @@
+﻿@page "/lista-coordenadores"
+@using BlazorCrud.Pages.Models
+@using BlazorCrud.Pages.Services
+@inject CoordenadorService CoordenadorService
+@inject NavigationManager NavigationManager
+@inject IJSRuntime JSRuntime
+@inject IDialogService DialogService
+@inject ISnackbar Snackbar
+
+<!-- Título da página -->
+<MudText Align="Align.Center" Color="Color.Primary" Typo="Typo.h5" Class="mb-4 text-center">
+    Lista de Coordenadores
+</MudText>
+
+<!-- Botão para adicionar um novo coordenador -->
+<MudGrid>
+    <MudItem xs="2">
+        <MudButton
+            Href="/cadastro-coordenador"
+            Class="mt-4"
+            Variant="Variant.Filled"
+            Color="Color.Success">
+            <MudIcon Icon="@Icons.Material.Filled.PersonAdd" Class="mr-2" />
+            Novo Coordenador
+        </MudButton>
+    </MudItem>
+    
+    <MudItem xs="9">
+        <MudTextField
+            Variant="Variant.Outlined"
+            Label="Pesquisar"
+            @bind-Value="termoPesquisa"
+            Adornment="Adornment.End"
+            AdornmentIcon="@Icons.Material.Filled.Search"
+            OnKeyUp="Pesquisar"
+            Class="mt-4" />
+    </MudItem>
+</MudGrid>
+
+<!-- Tabela para exibição da lista de coordenadores -->
+<MudTable Items="coordenadores" Hover="true" Class="mb-5">
+    <!-- Cabeçalho da tabela -->
+    <HeaderContent>
+        <MudTh>Nome Completo</MudTh>
+        <MudTh>Gênero</MudTh>
+
+        <MudTh>Departamento</MudTh>
+
+        <MudTh>Cargo</MudTh>
+
+        <MudTh>Matrícula</MudTh>
+
+        <MudTh>Data de Admissão</MudTh>
+
+        <MudTh>Status</MudTh>
+
+        <MudTh>Último Login</MudTh>
+        
+        <MudTh>Telefone</MudTh>
+        <MudTh>Morada</MudTh>
+        <MudTh>E-mail</MudTh>
+        <MudTh>Acções</MudTh>
+    </HeaderContent>
+    
+    <!-- Preenchimento das linhas da tabela com os dados dos coordenadores -->
+    <RowTemplate Context="coordenador">
+        <MudTd>@coordenador.NomeCompleto</MudTd>
+        <MudTd>@coordenador.Genero</MudTd>
+
+        <MudTd>@coordenador.Departamento</MudTd>
+
+        <MudTd>@coordenador.Cargo</MudTd>
+
+        <MudTd>@coordenador.Matricula</MudTd>
+
+        <MudTd>@(coordenador.DataAdmissao?.ToString("dd/MM/yyyy") ?? "Sem data")</MudTd>
+
+        <MudTd>@coordenador.Status</MudTd>
+
+        <MudTd>@(coordenador.UltimoLogin?.ToString("dd/MM/yyyy HH:mm") ?? "Nunca")</MudTd>
+        
+        <MudTd>@coordenador.Telefone</MudTd>
+
+        <MudTd>@coordenador.Morada</MudTd>
+        <MudTd>@coordenador.Email</MudTd>
+        
+        <MudTd>
+            <!-- Botão para editar coordenador -->
+            <MudFab 
+                Color="Color.Primary" 
+                StartIcon="@Icons.Material.Filled.Edit" 
+                @onclick="() => EditarCoordenador(coordenador)" />
+            
+            <!-- Botão para excluir coordenador -->
+            <MudFab 
+                Color="Color.Error" 
+                StartIcon="@Icons.Material.Filled.Delete" 
+                @onclick="() => ConfirmarRemocao(coordenador.Id)" />
+        </MudTd>
+    </RowTemplate>
+</MudTable>
+
+@code {
+    private string termoPesquisa = "";
+    private List<Coordenador> coordenadores = new(); // Lista que armazena os coordenadores
+
+    // Método chamado ao inicializar o componente para carregar os coordenadores
+    protected override void OnInitialized()
+    {
+        coordenadores = CoordenadorService.GetCoordenadores();
+    }
+
+    // Método para editar um coordenador
+    private async Task EditarCoordenador(Coordenador coordenador)
+    {
+        await JSRuntime.InvokeVoidAsync("localStorage.setItem", "coordenadorEdicao", System.Text.Json.JsonSerializer.Serialize(coordenador));
+        NavigationManager.NavigateTo("/cadastro-coordenador");
+    }
+
+    // Método para confirmar a remoção de um coordenador
+    private async Task ConfirmarRemocao(int coordenadorId)
+    {
+        bool? resultado = await DialogService.ShowMessageBox(
+            "Aviso!",
+            "Tem certeza que deseja excluir este coordenador?",
+            yesText: "Sim", cancelText: "Não");
+
+        if (resultado == true)
+        {
+            RemoverCoordenador(coordenadorId);
+            Snackbar.Add("Coordenador removido com sucesso!", Severity.Success);
+        }
+    }
+
+    // Método para remover um coordenador
+    private void RemoverCoordenador(int id)
+    {
+        CoordenadorService.RemoverCoordenador(id);
+        coordenadores = CoordenadorService.GetCoordenadores();
+        StateHasChanged();
+    }
+    
+    // Método de pesquisa
+    private void Pesquisar()
+    {
+        if (string.IsNullOrWhiteSpace(termoPesquisa))
+        {
+            coordenadores = CoordenadorService.GetCoordenadores();
+        }
+        else
+        {
+            coordenadores = CoordenadorService.BuscarCoordenadorPorNome(termoPesquisa);
+        }
+    }
+}

@@ -1,0 +1,125 @@
+﻿@page "/lista-funcionarios"
+@using BlazorCrud.Pages.Models
+@using BlazorCrud.Pages.Services
+@inject FuncionarioService FuncionarioService
+@inject NavigationManager NavigationManager
+@inject IJSRuntime JSRuntime
+@inject IDialogService DialogService
+@inject ISnackbar Snackbar
+
+<!-- Título da página -->
+<MudText Align="Align.Center" Color="Color.Primary" Typo="Typo.h5" Class="mb-4 text-center">
+    Lista de Funcionários
+</MudText>
+
+<!-- Botão para adicionar um novo funcionário -->
+<MudGrid>
+    <MudItem xs="2">
+        <MudButton
+            Href="/cadastro-funcionario"
+            Class="mt-4"
+            Variant="Variant.Filled"
+            Color="Color.Success">
+            <MudIcon Icon="@Icons.Material.Filled.PersonAdd" Class="mr-2" />
+            Novo Funcionário
+        </MudButton>
+    </MudItem>
+    
+    <MudItem xs="9">
+        <MudTextField
+            Variant="Variant.Outlined"
+            Label="Pesquisar"
+            @bind-Value="termoPesquisa"
+            Adornment="Adornment.End"
+            AdornmentIcon="@Icons.Material.Filled.Search"
+            OnKeyUp="Pesquisar"
+            Class="mt-4" />
+    </MudItem>
+</MudGrid>
+
+<!-- Tabela para exibição da lista de funcionários -->
+<MudTable Items="funcionarios" Hover="true" Class="mb-5">
+    <HeaderContent>
+        <MudTh>Nome</MudTh>
+        <MudTh>Gênero</MudTh>
+        <MudTh>Departamento</MudTh>
+        <MudTh>Cargo</MudTh>
+        <MudTh>Data de Admissão</MudTh>
+        <MudTh>Tipo de Contrato</MudTh>
+        <MudTh>Telefone</MudTh>
+        <MudTh>Email</MudTh>
+        <MudTh>Salário</MudTh>
+        <MudTh>Ações</MudTh>
+    </HeaderContent>
+    
+    <RowTemplate Context="funcionario">
+        <MudTd>@funcionario.Nome</MudTd>
+        <MudTd>@funcionario.Genero</MudTd>
+        <MudTd>@funcionario.Departamento</MudTd>
+        <MudTd>@funcionario.Cargo</MudTd>
+        <MudTd>@(funcionario.DataAdmissao?.ToString("dd/MM/yyyy") ?? "Sem data")</MudTd>
+        <MudTd>@funcionario.TipoContrato</MudTd>
+        <MudTd>@funcionario.Telefone</MudTd>
+        <MudTd>@funcionario.Email</MudTd>
+        <MudTd>@funcionario.Salario.ToString("C")</MudTd>
+        <MudTd>
+            <MudFab 
+                Color="Color.Primary" 
+                StartIcon="@Icons.Material.Filled.Edit"
+                @onclick="() => EditarFuncionario(funcionario)" />
+            <MudFab 
+                Color="Color.Error" 
+                StartIcon="@Icons.Material.Filled.Delete"
+                @onclick="() => ConfirmarRemocao(funcionario.FuncionarioId)" />
+        </MudTd>
+    </RowTemplate>
+</MudTable>
+
+@code {
+    private string termoPesquisa = "";
+    private List<Funcionario> funcionarios = new();
+
+    protected override void OnInitialized()
+    {
+        funcionarios = FuncionarioService.GetFuncionarios();
+    }
+
+    private async Task EditarFuncionario(Funcionario funcionario)
+    {
+        await JSRuntime.InvokeVoidAsync("localStorage.setItem", "funcionarioEdicao", System.Text.Json.JsonSerializer.Serialize(funcionario));
+        NavigationManager.NavigateTo("/cadastro-funcionario");
+    }
+
+    private async Task ConfirmarRemocao(int funcionarioId)
+    {
+        bool? resultado = await DialogService.ShowMessageBox(
+            "Aviso!",
+            "Tem certeza que deseja excluir este funcionário?",
+            yesText: "Sim", cancelText: "Não");
+
+        if (resultado == true)
+        {
+            RemoverFuncionario(funcionarioId);
+            Snackbar.Add("Funcionário removido com sucesso!", Severity.Success);
+        }
+    }
+
+    private void RemoverFuncionario(int id)
+    {
+        FuncionarioService.RemoverFuncionario(id);
+        funcionarios = FuncionarioService.GetFuncionarios();
+        StateHasChanged();
+    }
+    
+    private void Pesquisar()
+    {
+        if (string.IsNullOrWhiteSpace(termoPesquisa))
+        {
+            funcionarios = FuncionarioService.GetFuncionarios();
+        }
+        else
+        {
+            funcionarios = FuncionarioService.BuscarFuncionarioPorNome(termoPesquisa);
+        }
+    }
+}

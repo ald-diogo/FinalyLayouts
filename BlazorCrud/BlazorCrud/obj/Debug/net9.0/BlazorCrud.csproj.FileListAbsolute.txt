@@ -1043,10 +1043,10 @@ C:\Dev\RiderProjects\FinalyLayouts\BlazorCrud\BlazorCrud\obj\Debug\net9.0\Blazor
 C:\Dev\RiderProjects\FinalyLayouts\BlazorCrud\BlazorCrud\obj\Debug\net9.0\refint\BlazorCrud.dll
 C:\Dev\RiderProjects\FinalyLayouts\BlazorCrud\BlazorCrud\obj\Debug\net9.0\BlazorCrud.pdb
 C:\Dev\RiderProjects\FinalyLayouts\BlazorCrud\BlazorCrud\obj\Debug\net9.0\ref\BlazorCrud.dll
-C:\Dev\RiderProjects\FinalyLayouts\BlazorCrud\BlazorCrud\bin\Debug\net9.0\wwwroot\_framework\BlazorCrud.zh09lkvvzj.pdb
-C:\Dev\RiderProjects\FinalyLayouts\BlazorCrud\BlazorCrud\bin\Debug\net9.0\wwwroot\_framework\BlazorCrud.flzg9sbgeo.wasm
-C:\Dev\RiderProjects\FinalyLayouts\BlazorCrud\BlazorCrud\bin\Debug\net9.0\wwwroot\_framework\BlazorCrud.flzg9sbgeo.wasm.gz
-C:\Dev\RiderProjects\FinalyLayouts\BlazorCrud\BlazorCrud\bin\Debug\net9.0\wwwroot\_framework\BlazorCrud.zh09lkvvzj.pdb.gz
-C:\Dev\RiderProjects\FinalyLayouts\BlazorCrud\BlazorCrud\obj\Debug\net9.0\compressed\2i22jr5gkr-flzg9sbgeo.gz
-C:\Dev\RiderProjects\FinalyLayouts\BlazorCrud\BlazorCrud\obj\Debug\net9.0\compressed\qkgcropnkm-zh09lkvvzj.gz
-C:\Dev\RiderProjects\FinalyLayouts\BlazorCrud\BlazorCrud\obj\Debug\net9.0\compressed\2yczppv2xt-i7y6dlhnfu.gz
+C:\Dev\RiderProjects\FinalyLayouts\BlazorCrud\BlazorCrud\bin\Debug\net9.0\wwwroot\_framework\BlazorCrud.coep77geyx.pdb
+C:\Dev\RiderProjects\FinalyLayouts\BlazorCrud\BlazorCrud\bin\Debug\net9.0\wwwroot\_framework\BlazorCrud.ksb32ocfxq.wasm
+C:\Dev\RiderProjects\FinalyLayouts\BlazorCrud\BlazorCrud\bin\Debug\net9.0\wwwroot\_framework\BlazorCrud.ksb32ocfxq.wasm.gz
+C:\Dev\RiderProjects\FinalyLayouts\BlazorCrud\BlazorCrud\bin\Debug\net9.0\wwwroot\_framework\BlazorCrud.coep77geyx.pdb.gz
+C:\Dev\RiderProjects\FinalyLayouts\BlazorCrud\BlazorCrud\obj\Debug\net9.0\compressed\2i22jr5gkr-ksb32ocfxq.gz
+C:\Dev\RiderProjects\FinalyLayouts\BlazorCrud\BlazorCrud\obj\Debug\net9.0\compressed\qkgcropnkm-coep77geyx.gz
+C:\Dev\RiderProjects\FinalyLayouts\BlazorCrud\BlazorCrud\obj\Debug\net9.0\compressed\2yczppv2xt-u4f7tixwv2.gz

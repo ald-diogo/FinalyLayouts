@@ -1,0 +1,185 @@
+﻿@page "/cadastro-coordenador"
+@using BlazorCrud.Pages.Models
+@using BlazorCrud.Pages.Services
+@inject CoordenadorService CoordenadorService
+@inject NavigationManager Navigation
+@inject ISnackbar Snackbar
+@inject IJSRuntime JSRuntime
+
+<MudPaper Class="p-4" Elevation="4">
+    <MudForm>
+        <!-- Cabeçalho da página -->
+        <MudText Align="Align.Center" Color="Color.Primary" Typo="Typo.h5">
+            Cadastro de Coordenadores
+        </MudText>
+
+        <MudGrid Spacing="2">
+            <!-- Primeira linha -->
+            <MudItem xs="12" md="3" Class="mb-3">
+                <MudTextField
+                    Label="Nome Completo"
+                    @bind-Value="coordenador.NomeCompleto"
+                    Variant="Variant.Outlined"
+                    Adornment="Adornment.End"
+                    AdornmentIcon="@Icons.Material.Filled.Person"
+                    Required />
+            </MudItem>
+            <MudItem xs="12" md="3" Class="mb-3">
+                <MudTextField
+                    Label="Gênero"
+                    @bind-Value="coordenador.Genero"
+                    Variant="Variant.Outlined"
+                    Required
+                    Adornment="Adornment.End"
+                    AdornmentIcon="@Icons.Material.Filled.Wc" />
+            </MudItem>
+            <MudItem xs="12" md="3" Class="mb-3">
+                <MudTextField
+                    Label="Departamento"
+                    @bind-Value="coordenador.Departamento"
+                    Variant="Variant.Outlined"
+                    Required
+                    Adornment="Adornment.End"
+                    AdornmentIcon="@Icons.Material.Filled.Apartment" />
+            </MudItem>
+            <MudItem xs="12" md="3" Class="mb-3">
+                <MudTextField
+                    Label="Cargo"
+                    @bind-Value="coordenador.Cargo"
+                    Variant="Variant.Outlined"
+                    Required
+                    Adornment="Adornment.End"
+                    AdornmentIcon="@Icons.Material.Filled.Work" />
+            </MudItem>
+        </MudGrid>
+
+        <MudGrid Spacing="2">
+            <!-- Segunda linha -->
+            <MudItem xs="12" md="3" Class="mb-3">
+                <MudTextField
+                    Label="Matrícula"
+                    @bind-Value="coordenador.Matricula"
+                    Variant="Variant.Outlined"
+                    Required
+                    Adornment="Adornment.End"
+                    AdornmentIcon="@Icons.Material.Filled.Badge" />
+            </MudItem>
+            <MudItem xs="12" md="3" Class="mb-3">
+                <MudTextField 
+                    T="DateTime?" 
+                    Format="yyyy-MM-dd" 
+                    Label="Data de Admissão" 
+                    InputType="InputType.Date" 
+                    Variant="Variant.Outlined" 
+                    Required @bind-Value="coordenador.DataAdmissao" />
+            </MudItem>
+            
+            <MudItem xs="12" md="3" Class="mb-3">
+                <MudTextField  
+                    @bind-Value="Password" 
+                    Label="Senha" 
+                    Variant="Variant.Outlined" 
+                    InputType="@PasswordInput" 
+                    Adornment="Adornment.End" 
+                    AdornmentIcon="@PasswordInputIcon" 
+                    OnAdornmentClick="ButtonTestclick" 
+                    AdornmentAriaLabel="Show Password" 
+                    Required />
+            </MudItem>
+            @code {
+                public double? Amount { get; set; }
+                public int? Weight { get; set; }
+                public string Password { get; set;} = "";
+
+                bool isShow;
+                InputType PasswordInput = InputType.Password;
+                string PasswordInputIcon = Icons.Material.Filled.VisibilityOff;
+
+                void ButtonTestclick()
+                {
+                    @if (isShow)
+                    {
+                        isShow = false;
+                        PasswordInputIcon = Icons.Material.Filled.VisibilityOff;
+                        PasswordInput = InputType.Password;
+                    }
+                    else {
+                        isShow = true;
+                        PasswordInputIcon = Icons.Material.Filled.Visibility;
+                        PasswordInput = InputType.Text;
+                    }
+                }
+            }
+            <MudItem xs="12" md="3" Class="mb-3">
+                <MudTextField
+                    Label="Status"
+                    @bind-Value="coordenador.Status"
+                    Variant="Variant.Outlined"
+                    Required
+                    Adornment="Adornment.End"
+                    AdornmentIcon="@Icons.Material.Filled.CheckCircle" />
+            </MudItem>
+        </MudGrid>
+
+        <MudGrid Spacing="2">
+            <!-- Terceira linha -->
+            <MudItem xs="12" md="4" Class="mb-3">
+                <MudTextField Label="Username" @bind-Value="coordenador.Username" Variant="Variant.Outlined" Required />
+            </MudItem>
+            <MudItem xs="12" md="4" Class="mb-3">
+                <MudTextField T="DateTime?" Format="yyyy-MM-ddTHH:mm" Label="Último Login" InputType="InputType.DateTimeLocal" Variant="Variant.Outlined" @bind-Value="coordenador.UltimoLogin" Disabled />
+            </MudItem>
+            <MudItem xs="12" md="4" Class="mb-3">
+                <MudTextField Label="Telefone" @bind-Value="coordenador.Telefone" Type="tel" Variant="Variant.Outlined" Required />
+            </MudItem>
+            <MudItem xs="12" md="4" Class="mb-3">
+                <MudTextField Label="Morada" @bind-Value="coordenador.Morada" Variant="Variant.Outlined" Required />
+            </MudItem>
+            <MudItem xs="12" md="4" Class="mb-3">
+                <MudTextField Label="E-mail" @bind-Value="coordenador.Email" Type="email" Variant="Variant.Outlined" Required />
+            </MudItem>
+        </MudGrid>
+
+
+        <!-- Botão de cadastro -->
+        <MudGrid Justify="Justify.Center">
+            <MudItem xs="12" md="4" Class="mt-4">
+                <MudButton 
+                    Color="Color.Success" 
+                    Variant="Variant.Filled" 
+                    Style="width: 100%; height: 50px;"
+                           @onclick="@(() => { CadastrarCoordenador(); Snackbar.Add("Cadastro efetuado com sucesso!", Severity.Success); })">
+                    Cadastrar
+                </MudButton>
+            </MudItem>
+        </MudGrid>
+    </MudForm>
+</MudPaper>
+
+@code {
+    // Objeto que armazena os dados do coordenador
+    private Coordenador coordenador = new();
+
+    // Método chamado na inicialização da página
+    protected override async Task OnInitializedAsync()
+    {
+        var coordenadorJson = await JSRuntime.InvokeAsync<string>("localStorage.getItem", "coordenadorEdicao");
+
+        if (!string.IsNullOrEmpty(coordenadorJson))
+        {
+            coordenador = System.Text.Json.JsonSerializer.Deserialize<Coordenador>(coordenadorJson);
+        }
+    }
+
+    // Método para cadastrar ou editar um coordenador
+    private async Task CadastrarCoordenador()
+    {
+        if (coordenador.CoordenadorId > 0)
+            CoordenadorService.EditarCoordenador(coordenador);
+        else
+            CoordenadorService.AdicionarCoordenador(coordenador);
+
+        await JSRuntime.InvokeVoidAsync("localStorage.removeItem", "coordenadorEdicao");
+        Navigation.NavigateTo("/lista-coordenadores");
+    }
+}
