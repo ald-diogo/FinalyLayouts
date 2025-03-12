@@ -13,9 +13,9 @@
             Cadastro de Coordenadores Acadêmicos
         </MudText>
 
-        <!-- Primeira linha de campos do formulário -->
         <MudGrid Spacing="2">
-            <MudItem xs="12" md="4" Class="mb-3">
+            <!-- Primeira linha -->
+            <MudItem xs="12" md="2" Class="mb-3">
                 <MudTextField
                     Label="Nome"
                     @bind-Value="coordenador.Nome"
@@ -26,7 +26,7 @@
                     AdornmentColor="Color.Primary" />
             </MudItem>
 
-            <MudItem xs="12" md="4" Class="mb-3">
+            <MudItem xs="12" md="2" Class="mb-3">
                 <MudTextField
                     Label="Gênero"
                     @bind-Value="coordenador.Genero"
@@ -35,9 +35,9 @@
                     Adornment="Adornment.End"
                     AdornmentIcon="@Icons.Material.Filled.Transgender"
                     AdornmentColor="Color.Primary"/>
-            </MudItem>  
+            </MudItem>
 
-            <MudItem xs="12" md="4" Class="mb-3">
+            <MudItem xs="12" md="2" Class="mb-3">
                 <MudTextField
                     T="DateTime?"
                     Format="yyyy-MM-dd"
@@ -50,11 +50,8 @@
                     @bind-Value="coordenador.DataContratacao"
                     AdornmentColor="Color.Primary"/>
             </MudItem>
-        </MudGrid>
 
-        <!-- Segunda linha de campos do formulário -->
-        <MudGrid Spacing="2">
-            <MudItem xs="12" md="4" Class="mb-3">
+            <MudItem xs="12" md="2" Class="mb-3">
                 <MudTextField
                     Label="Departamento"
                     @bind-Value="coordenador.Departamento"
@@ -65,7 +62,7 @@
                     AdornmentColor="Color.Primary"/>
             </MudItem>
 
-            <MudItem xs="12" md="4" Class="mb-3">
+            <MudItem xs="12" md="2" Class="mb-3">
                 <MudTextField
                     Label="Curso Responsável"
                     @bind-Value="coordenador.CursoResponsavel"
@@ -77,9 +74,9 @@
             </MudItem>
         </MudGrid>
 
-        <!-- Terceira linha de campos do formulário -->
         <MudGrid Spacing="2">
-            <MudItem xs="12" md="4" Class="mb-3">
+            <!-- Segunda linha -->
+            <MudItem xs="12" md="2" Class="mb-3">
                 <MudTextField
                     Label="Usuário"
                     @bind-Value="coordenador.Usuario"
@@ -90,7 +87,7 @@
                     AdornmentColor="Color.Primary"/>
             </MudItem>
 
-            <MudItem xs="12" md="4" Class="mb-3">
+            <MudItem xs="12" md="2" Class="mb-3">
                 <MudTextField
                     Label="Senha"
                     @bind-Value="coordenador.Senha"
@@ -101,11 +98,8 @@
                     AdornmentIcon="@Icons.Material.Filled.Lock"
                     AdornmentColor="Color.Primary"/>
             </MudItem>
-        </MudGrid>
 
-        <!-- Quarta linha de campos do formulário -->
-        <MudGrid Spacing="2">
-            <MudItem xs="12" md="4" Class="mb-3">
+            <MudItem xs="12" md="2" Class="mb-3">
                 <MudTextField
                     Label="Telefone"
                     @bind-Value="coordenador.Telefone"
@@ -117,7 +111,7 @@
                     AdornmentColor="Color.Primary"/>
             </MudItem>
 
-            <MudItem xs="12" md="4" Class="mb-3">
+            <MudItem xs="12" md="2" Class="mb-3">
                 <MudTextField
                     Label="Morada"
                     @bind-Value="coordenador.Morada"
@@ -128,7 +122,7 @@
                     AdornmentColor="Color.Primary"/>
             </MudItem>
 
-            <MudItem xs="12" md="4" Class="mb-3">
+            <MudItem xs="12" md="2" Class="mb-3">
                 <MudTextField
                     Label="E-mail"
                     @bind-Value="coordenador.Email"
