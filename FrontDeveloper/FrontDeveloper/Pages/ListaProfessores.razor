@@ -1,6 +1,135 @@
-﻿@page "/ListaProfessores"
-<h3>ListaProfessores</h3>
+﻿@page "/lista-professores"
+@using FrontDeveloper.Pages.Models
+@using FrontDeveloper.Pages.Services
+@inject ProfessorService ProfessorService
+@inject NavigationManager NavigationManager
+@inject IJSRuntime JSRuntime
+@inject IDialogService DialogService
+@inject ISnackbar Snackbar
+
+<!-- Título da página -->
+<MudText Align="Align.Center" Color="Color.Primary" Typo="Typo.h5" Class="mb-4 text-center">
+    Lista de Professores
+</MudText>
+
+<!-- Botão para adicionar um novo professor -->
+<MudGrid>
+    <MudItem xs="2">
+        <MudButton
+            Href="/cadastro-professor"
+            Class="mt-4"
+            Variant="Variant.Filled"
+            Color="Color.Success">
+            <MudIcon Icon="@Icons.Material.Filled.School" Class="mr-1" />
+            <MudIcon Icon="@Icons.Material.Filled.PersonAdd" Class="mr-2" />
+            Novo Professor
+        </MudButton>
+    </MudItem>
+    
+    <MudItem xs="9">
+        <MudTextField
+            Variant="Variant.Outlined"
+            Label="Pesquisar"
+            @bind-Value="termoPesquisa"
+            Adornment="Adornment.End"
+            AdornmentIcon="@Icons.Material.Filled.Search"
+            OnKeyUp="Pesquisar"
+            Class="mt-4" />
+    </MudItem>
+</MudGrid>
+
+<!-- Tabela para exibição da lista de professores -->
+<MudTable Items="professores" Hover="true" Class="mb-5">
+    <!-- Cabeçalho da tabela -->
+    <HeaderContent>
+        <MudTh>Nome Completo</MudTh>
+        <MudTh>Gênero</MudTh>
+        <MudTh>Data de Admissão</MudTh>
+        <MudTh>Departamento</MudTh>
+        <MudTh>Disciplinas Lecionadas</MudTh>
+        <MudTh>Grau Acadêmico</MudTh>
+        <MudTh>Regime de Trabalho</MudTh>
+        <MudTh>Telefone</MudTh>
+        <MudTh>E-mail</MudTh>
+        <MudTh>Ações</MudTh>
+    </HeaderContent>
+    
+    <!-- Preenchimento das linhas da tabela com os dados dos professores -->
+    <RowTemplate Context="professor">
+        <MudTd>@professor.NomeCompleto</MudTd>
+        <MudTd>@professor.Genero</MudTd>
+        <MudTd>@(professor.DataAdmissao?.ToString("dd/MM/yyyy") ?? "Sem data")</MudTd>
+        <MudTd>@professor.Departamento</MudTd>
+        <MudTd>@professor.DisciplinasLecionadas</MudTd>
+        <MudTd>@professor.GrauAcademico</MudTd>
+        <MudTd>@professor.RegimeTrabalho</MudTd>
+        <MudTd>@professor.Telefone</MudTd>
+        <MudTd>@professor.Email</MudTd>
+        <MudTd>
+            <!-- Botão para editar professor -->
+            <MudFab Color="Color.Primary" StartIcon="@Icons.Material.Filled.Edit" @onclick="() => EditarProfessor(professor)" />
+            
+            <!-- Botão para excluir professor -->
+            <MudFab Color="Color.Error" StartIcon="@Icons.Material.Filled.Delete" @onclick="() => ConfirmarRemocao(professor.ProfessorId)" />
+        </MudTd>
+    </RowTemplate>
+</MudTable>
 
 @code {
+    private string termoPesquisa = "";
     
+    private List<Professor> professores = new(); // Lista que armazena os professores
+
+    // Método chamado ao inicializar o componente para carregar os professores
+    protected override void OnInitialized()
+    {
+        professores = ProfessorService.GetProfessores();
+    }
+
+    // Método para editar um professor
+    private async Task EditarProfessor(Professor professor)
+    {
+        // Armazena os dados do professor na localStorage para edição
+        await JSRuntime.InvokeVoidAsync("localStorage.setItem", "professorEdicao", System.Text.Json.JsonSerializer.Serialize(professor));
+        // Redireciona para a página de cadastro do professor
+        NavigationManager.NavigateTo("/cadastro-professor");
+    }
+
+    // Método para confirmar a remoção de um professor
+    private async Task ConfirmarRemocao(int professorId)
+    {
+        // Exibe uma caixa de diálogo para confirmação
+        bool? resultado = await DialogService.ShowMessageBox(
+            "Aviso!",
+            "Tem certeza que deseja excluir este professor?",
+            yesText: "Sim", cancelText: "Não");
+
+        // Se o usuário confirmar, remove o professor
+        if (resultado == true)
+        {
+            RemoverProfessor(professorId);
+            Snackbar.Add("Professor removido com sucesso!", Severity.Success);
+        }
+    }
+
+    // Método para remover um professor
+    private void RemoverProfessor(int id)
+    {
+        ProfessorService.RemoverProfessor(id); // Chama o serviço para remover
+        professores = ProfessorService.GetProfessores(); // Atualiza a lista de professores
+        StateHasChanged(); // Atualiza a interface
+    }
+    
+    // Método de pesquisa
+    private void Pesquisar()
+    {
+        if (string.IsNullOrWhiteSpace(termoPesquisa))
+        {
+            professores = ProfessorService.GetProfessores();
+        }
+        else
+        {
+            professores = ProfessorService.BuscarProfessorPorNome(termoPesquisa);
+        }
+    }
 }

@@ -1,6 +1,167 @@
-﻿@page "/CadastroProfessor"
-<h3>CadastroProfessor</h3>
+﻿@page "/cadastro-professor"
+@using FrontDeveloper.Pages.Models
+@using FrontDeveloper.Pages.Services
+@inject ProfessorService ProfessorService
+@inject NavigationManager Navigation
+@inject ISnackbar Snackbar
+@inject IJSRuntime JSRuntime
+
+<MudPaper Class="p-4" Elevation="4">
+    <MudForm>
+        <!-- Cabeçalho da página -->
+        <MudText Align="Align.Center" Color="Color.Primary" Typo="Typo.h5">
+            Cadastro de Professores
+        </MudText>
+
+        <!-- Primeira linha de campos do formulário -->
+        <MudGrid Spacing="2">
+            <MudItem xs="12" md="4" Class="mb-3">
+                <MudTextField
+                    Label="Nome Completo"
+                    @bind-Value="professor.NomeCompleto"
+                    Variant="Variant.Outlined"
+                    Required
+                    Adornment="Adornment.End"
+                    AdornmentIcon="@Icons.Material.Filled.AccountCircle"
+                    AdornmentColor="Color.Primary" />
+            </MudItem>
+
+            <MudItem xs="12" md="4" Class="mb-3">
+                <MudTextField
+                    Label="Gênero"
+                    @bind-Value="professor.Genero"
+                    Variant="Variant.Outlined"
+                    Required
+                    Adornment="Adornment.End"
+                    AdornmentIcon="@Icons.Material.Filled.Transgender"
+                    AdornmentColor="Color.Primary"/>
+            </MudItem>  
+
+            <MudItem xs="12" md="4" Class="mb-3">
+                <MudTextField
+                    T="DateTime?"
+                    Format="yyyy-MM-dd"
+                    Label="Data de Admissão"
+                    InputType="InputType.Date"
+                    Variant="Variant.Outlined"
+                    Required
+                    Adornment="Adornment.End"
+                    AdornmentIcon="@Icons.Material.Filled.CalendarToday"
+                    @bind-Value="professor.DataAdmissao"
+                    AdornmentColor="Color.Primary"/>
+            </MudItem>
+        </MudGrid>
+
+        <!-- Segunda linha de campos do formulário -->
+        <MudGrid Spacing="2">
+            <MudItem xs="12" md="4" Class="mb-3">
+                <MudTextField
+                    Label="Número de Identificação"
+                    @bind-Value="professor.NumeroIdentificacao"
+                    Variant="Variant.Outlined"
+                    Required
+                    Adornment="Adornment.End"
+                    AdornmentIcon="@Icons.Material.Filled.Badge"
+                    AdornmentColor="Color.Primary"/>
+            </MudItem>
+
+            <MudItem xs="12" md="4" Class="mb-3">
+                <MudTextField
+                    Label="Departamento"
+                    @bind-Value="professor.Departamento"
+                    Variant="Variant.Outlined"
+                    Required
+                    Adornment="Adornment.End"
+                    AdornmentIcon="@Icons.Material.Filled.Business"
+                    AdornmentColor="Color.Primary"/>
+            </MudItem>
+
+            <MudItem xs="12" md="4" Class="mb-3">
+                <MudTextField
+                    Label="Disciplinas Lecionadas"
+                    @bind-Value="professor.DisciplinasLecionadas"
+                    Variant="Variant.Outlined"
+                    Required
+                    Adornment="Adornment.End"
+                    AdornmentIcon="@Icons.Material.Filled.Book"
+                    AdornmentColor="Color.Primary"/>
+            </MudItem>
+        </MudGrid>
+
+        <!-- Terceira linha de campos do formulário -->
+        <MudGrid Spacing="2">
+            <MudItem xs="12" md="4" Class="mb-3">
+                <MudTextField
+                    Label="Telefone"
+                    @bind-Value="professor.Telefone"
+                    Type="tel"
+                    Variant="Variant.Outlined"
+                    Required
+                    Adornment="Adornment.End"
+                    AdornmentIcon="@Icons.Material.Filled.Smartphone"
+                    AdornmentColor="Color.Primary"/>
+            </MudItem>
+
+            <MudItem xs="12" md="4" Class="mb-3">
+                <MudTextField
+                    Label="Endereço"
+                    @bind-Value="professor.Endereco"
+                    Variant="Variant.Outlined"
+                    Required
+                    Adornment="Adornment.End"
+                    AdornmentIcon="@Icons.Material.Filled.LocationOn"
+                    AdornmentColor="Color.Primary"/>
+            </MudItem>
+
+            <MudItem xs="12" md="4" Class="mb-3">
+                <MudTextField
+                    Label="E-mail"
+                    @bind-Value="professor.Email"
+                    Type="email"
+                    Variant="Variant.Outlined"
+                    Required
+                    Adornment="Adornment.End"
+                    AdornmentIcon="@Icons.Material.Filled.ContactMail"
+                    AdornmentColor="Color.Primary"/>
+            </MudItem>
+        </MudGrid>
+
+        <!-- Botão de cadastro -->
+        <MudGrid Justify="Justify.Center">
+            <MudItem xs="12" md="4" Class="mt-4">
+                <MudButton Color="Color.Success" Variant="Variant.Filled" Style="width: 100%; height: 100%;"
+                           @onclick="@(() => { CadastrarProfessor(); Snackbar.Add("Cadastro efetuado com sucesso!", Severity.Success); })">
+                    Cadastrar
+                </MudButton>
+            </MudItem>
+        </MudGrid>
+    </MudForm>
+</MudPaper>
 
 @code {
-    
+    // Objeto que armazena os dados do professor
+    private Professor professor = new();
+
+    // Método chamado na inicialização da página
+    protected override async Task OnInitializedAsync()
+    {
+        var professorJson = await JSRuntime.InvokeAsync<string>("localStorage.getItem", "professorEdicao");
+
+        if (!string.IsNullOrEmpty(professorJson))
+        {
+            professor = System.Text.Json.JsonSerializer.Deserialize<Professor>(professorJson);
+        }
+    }
+
+    // Método para cadastrar ou editar um professor
+    private async Task CadastrarProfessor()
+    {
+        if (professor.ProfessorId > 0)
+            ProfessorService.EditarProfessor(professor);
+        else
+            ProfessorService.AdicionarProfessor(professor);
+
+        await JSRuntime.InvokeVoidAsync("localStorage.removeItem", "professorEdicao");
+        Navigation.NavigateTo("/lista-professores");
+    }
 }
