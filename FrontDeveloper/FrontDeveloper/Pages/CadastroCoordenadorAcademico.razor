@@ -1,7 +1,7 @@
-﻿@page "/cadastro-estudante"
+﻿@page "/cadastro-coordenador"
 @using FrontDeveloper.Pages.Models
 @using FrontDeveloper.Pages.Services
-@inject EstudanteService EstudanteService
+@inject CoordenadorAcademicoService CoordenadorService
 @inject NavigationManager Navigation
 @inject ISnackbar Snackbar
 @inject IJSRuntime JSRuntime
@@ -10,15 +10,15 @@
     <MudForm>
         <!-- Cabeçalho da página -->
         <MudText Align="Align.Center" Color="Color.Primary" Typo="Typo.h5">
-            Cadastro de Estudantes
+            Cadastro de Coordenadores Acadêmicos
         </MudText>
 
         <!-- Primeira linha de campos do formulário -->
         <MudGrid Spacing="2">
-            <MudItem xs="12" md="3" Class="mb-3">
+            <MudItem xs="12" md="4" Class="mb-3">
                 <MudTextField
                     Label="Nome"
-                    @bind-Value="estudante.Nome"
+                    @bind-Value="coordenador.Nome"
                     Variant="Variant.Outlined"
                     Required
                     Adornment="Adornment.End"
@@ -26,10 +26,10 @@
                     AdornmentColor="Color.Primary" />
             </MudItem>
 
-            <MudItem xs="12" md="3" Class="mb-3">
+            <MudItem xs="12" md="4" Class="mb-3">
                 <MudTextField
                     Label="Gênero"
-                    @bind-Value="estudante.Genero"
+                    @bind-Value="coordenador.Genero"
                     Variant="Variant.Outlined"
                     Required
                     Adornment="Adornment.End"
@@ -37,97 +37,78 @@
                     AdornmentColor="Color.Primary"/>
             </MudItem>  
 
-            <MudItem xs="12" md="3" Class="mb-3">
+            <MudItem xs="12" md="4" Class="mb-3">
                 <MudTextField
                     T="DateTime?"
                     Format="yyyy-MM-dd"
-                    Label="Data de Nascimento"
+                    Label="Data de Contratação"
                     InputType="InputType.Date"
                     Variant="Variant.Outlined"
                     Required
                     Adornment="Adornment.End"
                     AdornmentIcon="@Icons.Material.Filled.CalendarToday"
-                    @bind-Value="estudante.DataNascimento"
-                    AdornmentColor="Color.Primary"/>
-            </MudItem>
-
-            <MudItem xs="12" md="3" Class="mb-3">
-                <MudTextField
-                    Label="Curso"
-                    @bind-Value="estudante.Curso"
-                    Variant="Variant.Outlined"
-                    Required
-                    Adornment="Adornment.End"
-                    AdornmentIcon="@Icons.Material.Filled.School"
+                    @bind-Value="coordenador.DataContratacao"
                     AdornmentColor="Color.Primary"/>
             </MudItem>
         </MudGrid>
 
         <!-- Segunda linha de campos do formulário -->
         <MudGrid Spacing="2">
-            <MudItem xs="12" md="3" Class="mb-3">
+            <MudItem xs="12" md="4" Class="mb-3">
                 <MudTextField
-                    Label="Período"
-                    @bind-Value="estudante.Periodo"
+                    Label="Departamento"
+                    @bind-Value="coordenador.Departamento"
                     Variant="Variant.Outlined"
                     Required
                     Adornment="Adornment.End"
-                    AdornmentIcon="@Icons.Material.Filled.History"
+                    AdornmentIcon="@Icons.Material.Filled.Apartment"
                     AdornmentColor="Color.Primary"/>
             </MudItem>
 
-            <MudItem xs="12" md="3" Class="mb-3">
+            <MudItem xs="12" md="4" Class="mb-3">
                 <MudTextField
-                    Label="Sala"
-                    @bind-Value="estudante.Sala"
+                    Label="Curso Responsável"
+                    @bind-Value="coordenador.CursoResponsavel"
                     Variant="Variant.Outlined"
                     Required
                     Adornment="Adornment.End"
                     AdornmentIcon="@Icons.Material.Filled.School"
                     AdornmentColor="Color.Primary"/>
             </MudItem>
-
-            <MudItem xs="12" md="3" Class="mb-3">
-                <MudTextField
-                    Label="Turma"
-                    @bind-Value="estudante.Turma"
-                    Variant="Variant.Outlined"
-                    Required
-                    Adornment="Adornment.End"
-                    AdornmentIcon="@Icons.Material.Filled.Groups"
-                    AdornmentColor="Color.Primary"/>
-            </MudItem>
-
-            <MudItem xs="12" md="3" Class="mb-3">
-                <MudTextField
-                    Label="Classe"
-                    @bind-Value="estudante.Classe"
-                    Variant="Variant.Outlined"
-                    Required
-                    Adornment="Adornment.End"
-                    AdornmentIcon="@Icons.Material.Filled.CastForEducation"
-                    AdornmentColor="Color.Primary"/>
-            </MudItem>
         </MudGrid>
 
         <!-- Terceira linha de campos do formulário -->
         <MudGrid Spacing="2">
-            <MudItem xs="12" md="3" Class="mb-3">
+            <MudItem xs="12" md="4" Class="mb-3">
                 <MudTextField
-                    Label="Ano de Frequência"
-                    @bind-Value="estudante.AnoFrequencia"
+                    Label="Usuário"
+                    @bind-Value="coordenador.Usuario"
                     Variant="Variant.Outlined"
-                    Type="number"
                     Required
                     Adornment="Adornment.End"
-                    AdornmentIcon="@Icons.Material.Filled.HistoryEdu"
+                    AdornmentIcon="@Icons.Material.Filled.Person"
                     AdornmentColor="Color.Primary"/>
             </MudItem>
 
-            <MudItem xs="12" md="3" Class="mb-3">
+            <MudItem xs="12" md="4" Class="mb-3">
+                <MudTextField
+                    Label="Senha"
+                    @bind-Value="coordenador.Senha"
+                    Type="password"
+                    Variant="Variant.Outlined"
+                    Required
+                    Adornment="Adornment.End"
+                    AdornmentIcon="@Icons.Material.Filled.Lock"
+                    AdornmentColor="Color.Primary"/>
+            </MudItem>
+        </MudGrid>
+
+        <!-- Quarta linha de campos do formulário -->
+        <MudGrid Spacing="2">
+            <MudItem xs="12" md="4" Class="mb-3">
                 <MudTextField
                     Label="Telefone"
-                    @bind-Value="estudante.Telefone"
+                    @bind-Value="coordenador.Telefone"
                     Type="tel"
                     Variant="Variant.Outlined"
                     Required
@@ -136,10 +117,10 @@
                     AdornmentColor="Color.Primary"/>
             </MudItem>
 
-            <MudItem xs="12" md="3" Class="mb-3">
+            <MudItem xs="12" md="4" Class="mb-3">
                 <MudTextField
                     Label="Morada"
-                    @bind-Value="estudante.Morada"
+                    @bind-Value="coordenador.Morada"
                     Variant="Variant.Outlined"
                     Required
                     Adornment="Adornment.End"
@@ -147,10 +128,10 @@
                     AdornmentColor="Color.Primary"/>
             </MudItem>
 
-            <MudItem xs="12" md="3" Class="mb-3">
+            <MudItem xs="12" md="4" Class="mb-3">
                 <MudTextField
                     Label="E-mail"
-                    @bind-Value="estudante.Email"
+                    @bind-Value="coordenador.Email"
                     Type="email"
                     Variant="Variant.Outlined"
                     Required
@@ -164,7 +145,7 @@
         <MudGrid Justify="Justify.Center">
             <MudItem xs="12" md="4" Class="mt-4">
                 <MudButton Color="Color.Success" Variant="Variant.Filled" Style="width: 100%; height: 100%;"
-                           @onclick="@(() => { CadastrarEstudante(); Snackbar.Add("Cadastro efetuado com sucesso!", Severity.Success); })">
+                           @onclick="@(() => { CadastrarCoordenador(); Snackbar.Add("Cadastro efetuado com sucesso!", Severity.Success); })">
                     Cadastrar
                 </MudButton>
             </MudItem>
@@ -173,31 +154,29 @@
 </MudPaper>
 
 @code {
-    // Objeto que armazena os dados do estudante
-    private Estudante estudante = new();
+    // Objeto que armazena os dados do coordenador
+    private CoordenadorAcademico coordenador = new();
 
     // Método chamado na inicialização da página
     protected override async Task OnInitializedAsync()
     {
-        var estudanteJson = await JSRuntime.InvokeAsync<string>("localStorage.getItem", "estudanteEdicao");
+        var coordenadorJson = await JSRuntime.InvokeAsync<string>("localStorage.getItem", "coordenadorEdicao");
 
-        if (!string.IsNullOrEmpty(estudanteJson))
+        if (!string.IsNullOrEmpty(coordenadorJson))
         {
-            estudante = System.Text.Json.JsonSerializer.Deserialize<Estudante>(estudanteJson);
+            coordenador = System.Text.Json.JsonSerializer.Deserialize<CoordenadorAcademico>(coordenadorJson);
         }
     }
 
-    // Método para cadastrar ou editar um estudante
-    private async Task CadastrarEstudante()
+    // Método para cadastrar ou editar um coordenador
+    private async Task CadastrarCoordenador()
     {
-        if (estudante.Id > 0)
-            EstudanteService.EditarEstudante(estudante);
+        if (coordenador.CoordenadorId > 0)
+            CoordenadorService.EditarCoordenador(coordenador);
         else
-            EstudanteService.AdicionarEstudante(estudante);
+            CoordenadorService.AdicionarCoordenador(coordenador);
 
-        await JSRuntime.InvokeVoidAsync("localStorage.removeItem", "estudanteEdicao");
-        Navigation.NavigateTo("/lista-estudantes");
+        await JSRuntime.InvokeVoidAsync("localStorage.removeItem", "coordenadorEdicao");
+        Navigation.NavigateTo("/lista-coordenadores");
     }
 }
-
-

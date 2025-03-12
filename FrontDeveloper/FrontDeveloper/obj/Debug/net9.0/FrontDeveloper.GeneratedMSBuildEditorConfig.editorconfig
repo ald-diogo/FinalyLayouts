@@ -135,8 +135,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWRtaW5cSW5mb1xUZXJtb1Vzby5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/CadastroCoordenador.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FkYXN0cm9Db29yZGVuYWRvci5yYXpvcg==
+[C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/CadastroCoordenadorAcademico.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FkYXN0cm9Db29yZGVuYWRvckFjYWRlbWljby5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/CadastroEstudante.razor]
@@ -219,8 +219,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG9tZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/ListaCoordenadores.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTGlzdGFDb29yZGVuYWRvcmVzLnJhem9y
+[C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/ListaCoordenadoresAcademicos.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTGlzdGFDb29yZGVuYWRvcmVzQWNhZGVtaWNvcy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/ListaEstudantes.razor]
