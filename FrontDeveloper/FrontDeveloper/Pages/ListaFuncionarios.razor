@@ -1,6 +1,133 @@
-﻿@page "/ListaFuncionarios"
-<h3>ListaFuncionarios</h3>
+﻿@page "/lista-funcionarios"
+@using FrontDeveloper.Pages.Models
+@using FrontDeveloper.Pages.Services
+@inject FuncionarioService FuncionarioService
+@inject NavigationManager NavigationManager
+@inject IJSRuntime JSRuntime
+@inject IDialogService DialogService
+@inject ISnackbar Snackbar
+
+<!-- Título da página -->
+<MudText Align="Align.Center" Color="Color.Primary" Typo="Typo.h5" Class="mb-4 text-center">
+    Lista de Funcionários
+</MudText>
+
+<!-- Botão para adicionar um novo funcionário -->
+<MudGrid>
+    <MudItem xs="2">
+        <MudButton
+            Href="/cadastro-funcionario"
+            Class="mt-4"
+            Variant="Variant.Filled"
+            Color="Color.Success">
+            <MudIcon Icon="@Icons.Material.Filled.Work" Class="mr-1" />
+            <MudIcon Icon="@Icons.Material.Filled.PersonAdd" Class="mr-2" />
+            Novo Funcionário
+        </MudButton>
+    </MudItem>
+    
+    <MudItem xs="9">
+        <MudTextField
+            Variant="Variant.Outlined"
+            Label="Pesquisar"
+            @bind-Value="termoPesquisa"
+            Adornment="Adornment.End"
+            AdornmentIcon="@Icons.Material.Filled.Search"
+            OnKeyUp="Pesquisar"
+            Class="mt-4" />
+    </MudItem>
+</MudGrid>
+
+<!-- Tabela para exibição da lista de funcionários -->
+<MudTable Items="funcionarios" Hover="true" Class="mb-5">
+    <HeaderContent>
+        <MudTh>Nome</MudTh>
+        <MudTh>Gênero</MudTh>
+        <MudTh>Departamento</MudTh>
+        <MudTh>Cargo</MudTh>
+        <MudTh>Tipo de Contrato</MudTh>
+        <MudTh>Data de Admissão</MudTh>
+        <MudTh>Horário</MudTh>
+        <MudTh>Salário</MudTh>
+        <MudTh>Telefone</MudTh>
+        <MudTh>Email</MudTh>
+        <MudTh>Ações</MudTh>
+    </HeaderContent>
+    
+    <RowTemplate Context="funcionario">
+        <MudTd>@funcionario.Nome</MudTd>
+        <MudTd>@funcionario.Genero</MudTd>
+        <MudTd>@funcionario.Departamento</MudTd>
+        <MudTd>@funcionario.Cargo</MudTd>
+        <MudTd>@funcionario.TipoContrato</MudTd>
+        <MudTd>@(funcionario.DataAdmissao?.ToString("dd/MM/yyyy") ?? "N/D")</MudTd>
+        <MudTd>@($"{funcionario.HoraEntrada} - {funcionario.HoraSaida}")</MudTd>
+        <MudTd>@funcionario.Salario.ToString("C")</MudTd>
+        <MudTd>@funcionario.Telefone</MudTd>
+        <MudTd>@funcionario.Email</MudTd>
+        <MudTd>
+            <!-- Botão para editar funcionário -->
+            <MudFab Color="Color.Primary" StartIcon="@Icons.Material.Filled.Edit" @onclick="() => EditarFuncionario(funcionario)" />
+            
+            <!-- Botão para excluir funcionário -->
+            <MudFab Color="Color.Error" StartIcon="@Icons.Material.Filled.Delete" @onclick="() => ConfirmarRemocao(funcionario.FuncionarioId)" />
+        </MudTd>
+    </RowTemplate>
+</MudTable>
 
 @code {
+    private string termoPesquisa = "";
     
+    private List<Funcionario> funcionarios = new(); // Lista que armazena os funcionários
+
+    // Método chamado ao inicializar o componente para carregar os funcionários
+    protected override void OnInitialized()
+    {
+        funcionarios = FuncionarioService.GetFuncionarios();
+    }
+
+    // Método para editar um funcionário
+    private async Task EditarFuncionario(Funcionario funcionario)
+    {
+        // Armazena os dados na localStorage para edição
+        await JSRuntime.InvokeVoidAsync("localStorage.setItem", "funcionarioEdicao", System.Text.Json.JsonSerializer.Serialize(funcionario));
+        // Redireciona para a página de cadastro do funcionário
+        NavigationManager.NavigateTo("/cadastro-funcionario");
+    }
+
+    // Método para confirmar a remoção de um funcionário
+    private async Task ConfirmarRemocao(int funcionarioId)
+    {
+        bool? resultado = await DialogService.ShowMessageBox(
+            "Aviso!",
+            "Tem certeza que deseja excluir este funcionário?",
+            yesText: "Sim", cancelText: "Não");
+
+        if (resultado == true)
+        {
+            RemoverFuncionario(funcionarioId);
+            Snackbar.Add("Funcionário removido com sucesso!", Severity.Success);
+        }
+    }
+
+    // Método para remover um funcionário
+    private void RemoverFuncionario(int id)
+    {
+        FuncionarioService.RemoverFuncionario(id);
+        funcionarios = FuncionarioService.GetFuncionarios();
+        StateHasChanged();
+    }
+    
+    // Método de pesquisa
+    private void Pesquisar()
+    {
+        if (string.IsNullOrWhiteSpace(termoPesquisa))
+        {
+            funcionarios = FuncionarioService.GetFuncionarios();
+        }
+        else
+        {
+            funcionarios = FuncionarioService.BuscarFuncionarioPorNome(termoPesquisa);
+        }
+    }
 }
