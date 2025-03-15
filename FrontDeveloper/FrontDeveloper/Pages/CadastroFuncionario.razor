@@ -13,76 +13,202 @@
         </MudText>
 
         <MudGrid Spacing="2">
-            <MudItem xs="12" md="4" Class="mb-3">
-                <MudTextField Label="Nome" @bind-Value="funcionario.Nome" Variant="Variant.Outlined" Required />
+            <!-- Primeira Linha -->
+            <MudItem xs="12" md="2" Class="mb-3">
+                <MudTextField 
+                    Label="Nome" 
+                    @bind-Value="funcionario.Nome"
+                    Variant="Variant.Outlined" 
+                    Required 
+                    Adornment="Adornment.End"
+                    AdornmentIcon="@Icons.Material.Filled.AccountCircle"
+                    AdornmentColor="Color.Primary" />
             </MudItem>
-            <MudItem xs="12" md="4" Class="mb-3">
-                <MudTextField Label="Gênero" @bind-Value="funcionario.Genero" Variant="Variant.Outlined" Required />
+            <MudItem xs="12" md="2" Class="mb-3">
+                <MudTextField 
+                    Label="Gênero" 
+                    @bind-Value="funcionario.Genero" 
+                    Variant="Variant.Outlined" 
+                    Required
+                    Adornment="Adornment.End"
+                    AdornmentIcon="@Icons.Material.Filled.AccountCircle"
+                    AdornmentColor="Color.Primary" />
             </MudItem>
-            <MudItem xs="12" md="4" Class="mb-3">
-                <MudTextField Label="Cargo" @bind-Value="funcionario.Cargo" Variant="Variant.Outlined" Required />
+            <MudItem xs="12" md="2" Class="mb-3">
+                <MudTextField 
+                    Label="Cargo" 
+                    @bind-Value="funcionario.Cargo" 
+                    Variant="Variant.Outlined" 
+                    Required
+                    Adornment="Adornment.End"
+                    AdornmentIcon="@Icons.Material.Filled.AccountCircle"
+                    AdornmentColor="Color.Primary" />
+            </MudItem>
+            <MudItem xs="12" md="2" Class="mb-3">
+                <MudTextField 
+                    Label="Departamento" 
+                    @bind-Value="funcionario.Departamento"
+                    Variant="Variant.Outlined" 
+                    Required
+                    Adornment="Adornment.End"
+                    AdornmentIcon="@Icons.Material.Filled.AccountCircle"
+                    AdornmentColor="Color.Primary" />
+            </MudItem>
+            <MudItem xs="12" md="2" Class="mb-3">
+                <MudTextField 
+                    Label="Data de Admissão" 
+                    @bind-Value="funcionario.DataAdmissao"
+                    Variant="Variant.Outlined"
+                    Required
+                    Adornment="Adornment.End"
+                    AdornmentIcon="@Icons.Material.Filled.AccountCircle"
+                    AdornmentColor="Color.Primary" />
+            </MudItem>
+            <MudItem xs="12" md="2" Class="mb-3">
+                <MudTextField 
+                    Label="Tipo de Contrato" 
+                    @bind-Value="funcionario.TipoContrato"
+                    Variant="Variant.Outlined"
+                    Required
+                    Adornment="Adornment.End"
+                    AdornmentIcon="@Icons.Material.Filled.AccountCircle"
+                    AdornmentColor="Color.Primary" />
             </MudItem>
         </MudGrid>
 
         <MudGrid Spacing="2">
-            <MudItem xs="12" md="4" Class="mb-3">
-                <MudTextField Label="Departamento" @bind-Value="funcionario.Departamento" Variant="Variant.Outlined" Required />
+            <!-- Segunda Linha -->
+            <MudItem xs="12" md="2" Class="mb-3">
+                <MudTextField 
+                    Label="Hora de Entrada"
+                    @bind-Value="funcionario.HoraEntrada" 
+                    Variant="Variant.Outlined"
+                    Required
+                    Adornment="Adornment.End"
+                    AdornmentIcon="@Icons.Material.Filled.AccountCircle"
+                    AdornmentColor="Color.Primary" />
             </MudItem>
-            <MudItem xs="12" md="4" Class="mb-3">
-                <MudTextField Label="Data de Admissão" @bind-Value="funcionario.DataAdmissao" Variant="Variant.Outlined" Required />
+            <MudItem xs="12" md="2" Class="mb-3">
+                <MudTextField 
+                    Label="Hora de Saída" 
+                    @bind-Value="funcionario.HoraSaida" 
+                    Variant="Variant.Outlined" 
+                    Required
+                    Adornment="Adornment.End"
+                    AdornmentIcon="@Icons.Material.Filled.AccountCircle"
+                    AdornmentColor="Color.Primary" />
             </MudItem>
-            <MudItem xs="12" md="4" Class="mb-3">
-                <MudTextField Label="Tipo de Contrato" @bind-Value="funcionario.TipoContrato" Variant="Variant.Outlined" Required />
+            <MudItem xs="12" md="2" Class="mb-3">
+                <MudTextField 
+                    Label="Estado Civil"
+                    @bind-Value="funcionario.EstadoCivil" 
+                    Variant="Variant.Outlined"
+                    Required
+                    Adornment="Adornment.End"
+                    AdornmentIcon="@Icons.Material.Filled.AccountCircle"
+                    AdornmentColor="Color.Primary" />
+            </MudItem>
+            <MudItem xs="12" md="2" Class="mb-3">
+                <MudTextField 
+                    Label="Nacionalidade" 
+                    @bind-Value="funcionario.Nacionalidade"
+                    Variant="Variant.Outlined"
+                    Required
+                    Adornment="Adornment.End"
+                    AdornmentIcon="@Icons.Material.Filled.AccountCircle"
+                    AdornmentColor="Color.Primary" />
+            </MudItem>
+            
+            <MudItem xs="12" md="2" Class="mb-3">
+                <MudTextField 
+                    Label="Documento de Identificação" 
+                    @bind-Value="funcionario.DocumentoIdentificacao" 
+                    Variant="Variant.Outlined" 
+                    Required
+                    Adornment="Adornment.End"
+                    AdornmentIcon="@Icons.Material.Filled.AccountCircle"
+                    AdornmentColor="Color.Primary" />
+            </MudItem>
+            
+            <MudItem xs="12" md="2" Class="mb-3">
+                <MudTextField 
+                    Label="Salário" 
+                    @bind-Value="funcionario.Salario" 
+                    Variant="Variant.Outlined" 
+                    Required
+                    Adornment="Adornment.End"
+                    AdornmentIcon="@Icons.Material.Filled.AccountCircle"
+                    AdornmentColor="Color.Primary" />
             </MudItem>
         </MudGrid>
 
         <MudGrid Spacing="2">
-            <MudItem xs="12" md="4" Class="mb-3">
-                <MudTextField Label="Hora de Entrada" @bind-Value="funcionario.HoraEntrada" Variant="Variant.Outlined" Required />
+            <!-- Terceira Linha -->
+            <MudItem xs="12" md="2" Class="mb-3">
+                <MudTextField 
+                    Label="Nome de Usuário" 
+                    @bind-Value="funcionario.NomeUsuario" 
+                    Variant="Variant.Outlined" 
+                    Required
+                    Adornment="Adornment.End"
+                    AdornmentIcon="@Icons.Material.Filled.Person"
+                    AdornmentColor="Color.Primary" />
             </MudItem>
-            <MudItem xs="12" md="4" Class="mb-3">
-                <MudTextField Label="Hora de Saída" @bind-Value="funcionario.HoraSaida" Variant="Variant.Outlined" Required />
+            
+            <MudItem xs="12" md="2" Class="mb-3">
+                <MudTextField 
+                    Label="Nível de Acesso" 
+                    @bind-Value="funcionario.NivelAcesso" 
+                    Variant="Variant.Outlined" 
+                    Required
+                    Adornment="Adornment.End"
+                    AdornmentIcon="@Icons.Material.Filled.Security"
+                    AdornmentColor="Color.Primary" />
             </MudItem>
-            <MudItem xs="12" md="4" Class="mb-3">
-                <MudTextField Label="Estado Civil" @bind-Value="funcionario.EstadoCivil" Variant="Variant.Outlined" />
+            <MudItem xs="12" md="2" Class="mb-3">
+                <MudTextField 
+                    Label="Último Login" 
+                    @bind-Value="funcionario.UltimoLogin" 
+                    Variant="Variant.Outlined"
+                    Required
+                    Adornment="Adornment.End"
+                    AdornmentIcon="@Icons.Material.Filled.History"
+                    AdornmentColor="Color.Primary" />
+            </MudItem>
+            <MudItem xs="12" md="2" Class="mb-3">
+                <MudTextField 
+                    Label="Telefone" 
+                    @bind-Value="funcionario.Telefone"
+                    Variant="Variant.Outlined" 
+                    Required
+                    Adornment="Adornment.End"
+                    AdornmentIcon="@Icons.Material.Filled.Smartphone"
+                    AdornmentColor="Color.Primary" />
+            </MudItem>
+            
+            <MudItem xs="12" md="2" Class="mb-3">
+                <MudTextField 
+                    Label="Endereço" 
+                    @bind-Value="funcionario.Endereco"
+                    Variant="Variant.Outlined"
+                    Required
+                    Adornment="Adornment.End"
+                    AdornmentIcon="@Icons.Material.Filled.LocationOn"
+                    AdornmentColor="Color.Primary" />
+            </MudItem>
+            <MudItem xs="12" md="2" Class="mb-3">
+                <MudTextField 
+                    Label="E-mail" 
+                    @bind-Value="funcionario.Email"
+                    Variant="Variant.Outlined" 
+                    Required
+                    Adornment="Adornment.End"
+                    AdornmentIcon="@Icons.Material.Filled.ContactMail"
+                    AdornmentColor="Color.Primary" />
             </MudItem>
         </MudGrid>
 
-        <MudGrid Spacing="2">
-            <MudItem xs="12" md="4" Class="mb-3">
-                <MudTextField Label="Nacionalidade" @bind-Value="funcionario.Nacionalidade" Variant="Variant.Outlined" Required />
-            </MudItem>
-            <MudItem xs="12" md="4" Class="mb-3">
-                <MudTextField Label="Documento de Identificação" @bind-Value="funcionario.DocumentoIdentificacao" Variant="Variant.Outlined" Required />
-            </MudItem>
-            <MudItem xs="12" md="4" Class="mb-3">
-                <MudTextField Label="Salário" @bind-Value="funcionario.Salario" Variant="Variant.Outlined" Required />
-            </MudItem>
-        </MudGrid>
 
-        <MudGrid Spacing="2">
-            <MudItem xs="12" md="4" Class="mb-3">
-                <MudTextField Label="Nome de Usuário" @bind-Value="funcionario.NomeUsuario" Variant="Variant.Outlined" Required />
-            </MudItem>
-            <MudItem xs="12" md="4" Class="mb-3">
-                <MudTextField Label="Nível de Acesso" @bind-Value="funcionario.NivelAcesso" Variant="Variant.Outlined" Required />
-            </MudItem>
-            <MudItem xs="12" md="4" Class="mb-3">
-                <MudTextField Label="Último Login" @bind-Value="funcionario.UltimoLogin" Variant="Variant.Outlined" />
-            </MudItem>
-        </MudGrid>
-
-        <MudGrid Spacing="2">
-            <MudItem xs="12" md="4" Class="mb-3">
-                <MudTextField Label="Telefone" @bind-Value="funcionario.Telefone" Variant="Variant.Outlined" Required />
-            </MudItem>
-            <MudItem xs="12" md="4" Class="mb-3">
-                <MudTextField Label="Endereço" @bind-Value="funcionario.Endereco" Variant="Variant.Outlined" />
-            </MudItem>
-            <MudItem xs="12" md="4" Class="mb-3">
-                <MudTextField Label="E-mail" @bind-Value="funcionario.Email" Variant="Variant.Outlined" Required />
-            </MudItem>
-        </MudGrid>
 
         <MudGrid Justify="Justify.Center">
             <MudItem xs="12" md="4" Class="mt-4">
