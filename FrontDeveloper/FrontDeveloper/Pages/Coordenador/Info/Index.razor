@@ -1,121 +1,188 @@
 ﻿@page "/Coor/Index"
+
+@using FrontDeveloper
+@using FrontDeveloper.Layout
+
+@layout MainLayout
 @using MudBlazor
 
-<MudLayout>
+@inject ISnackbar Snackbar
+@inject NavigationManager Navigation
+
+<MainLayout HideAppBar="true">
     <MudAppBar Color="Color.Primary" Elevation="4">
-        <MudText Typo="Typo.h6" Color="Color.Inherit">Sistema de Gestão Academica!</MudText>
-        <MudSpacer />
-
-        <MudButton
-            Href="/Coor/Login"
-            Color="Color.Inherit"
-            Variant="Variant.Text"
-            @onclick="NavigateToLogin">
-            <MudIconButton Icon="@Icons.Material.Filled.Login" Color="Color.Success" />
-            Login
-        </MudButton>
+        
     </MudAppBar>
+</MainLayout>
 
-    <MudMainContent>
-        <MudContainer>
-            <MudGrid>
-                <MudItem xs="12" sm="6">
-                    <MudPaper Elevation="4" Square="true" Class="pa-4">
+<MudText
+    Typo="Typo.h4"
+    Align="Align.Center"
+    Color="Color.Inherit">
+    Sistema de Gestão Academica!
+    <MudButton
+        Href="/Coor/Login"
+        Color="Color.Inherit"
+        Variant="Variant.Text"
+        @onclick="NavigateToLogin">
+        <MudIconButton Icon="@Icons.Material.Filled.Login" Color="Color.Success" />
+        Login
+    </MudButton>
 
-                        <MudText
-                            Typo="Typo.h4"
-                            Align="Align.Center">
-                            Bem-vindo(a) ao Sistema de Gestão Academica!
-                        </MudText>
+    <MudButton
+        Color="Color.Inherit"
+        Variant="Variant.Text"
+        @onclick="ToggleMaximize">
+        <MudIconButton Icon="@Icons.Material.Filled.Fullscreen" Color="Color.Inherit" />
+        Max/Min
+    </MudButton>
+</MudText>
+<MudSpacer />
 
-                        <MudText Typo="Typo.body1" Align="Align.Center" Class="mt-3">
-                            Realize sua matrícula de forma rápida e fácil, com uma ampla gama de cursos disponíveis para o seu desenvolvimento acadêmico.
-                        </MudText>
-                    </MudPaper>
-                </MudItem>
+<MudMainContent>
+    <MudContainer Style="@containerStyle">
+        <MudGrid>
+            <MudItem xs="12" sm="6">
+                <MudPaper Elevation="4" Square="true" Class="pa-4">
+                    <MudText Typo="Typo.h4" Align="Align.Center">
+                        Bem-vindo(a) ao Sistema de Gestão Academica!
+                    </MudText>
+                    <MudText Typo="Typo.body1" Align="Align.Center" Class="mt-3">
+                        Realize sua matrícula de forma rápida e fácil, com uma ampla gama de cursos disponíveis para o seu desenvolvimento acadêmico.
+                    </MudText>
+                </MudPaper>
+            </MudItem>
 
-                <MudItem xs="12" sm="6">
-                    <MudPaper Elevation="4" Square="true" Class="pa-4">
+            <MudItem xs="12" sm="6">
+                <MudPaper Elevation="4" Square="true" Class="pa-4">
+                    <MudText Typo="Typo.h6">Como Funciona</MudText>
+                    <MudText Typo="Typo.body2">
+                        1. Escolha o curso ou disciplina desejada. <br/>
+                        2. Selecione a turma que melhor se adequa à sua agenda. <br/>
+                        3. Finalize sua matrícula e aproveite o semestre!
+                    </MudText>
 
-                        <MudText Typo="Typo.h6">Como Funciona</MudText>
+                    <MudButton
+                        Variant="Variant.Filled"
+                        Color="Color.Primary"
+                        Class="mt-4"
+                        FullWidth="true"
+                        @onclick="OnComeceAgoraClicked">
+                        Comece Agora
+                    </MudButton>
 
-                        <MudText Typo="Typo.body2">
-                            1. Escolha o curso ou disciplina desejada. <br/>
-                            2. Selecione a turma que melhor se adequa à sua agenda. <br/>
-                            3. Finalize sua matrícula e aproveite o semestre!
-                        </MudText>
+                    <MudChip T="string">@state</MudChip>
 
-                        <MudButton
-                            Color="Color.Primary"
-                            Variant="Variant.Filled"
-                            Class="mt-4" FullWidth="true"
-                            @onclick="NavigateToSearch">Comece Agora</MudButton>
-                    </MudPaper>
-                </MudItem>
-            </MudGrid>
+                    <MudAlert Severity="@alertSeverity" @bind-Open="alertVisible">
+                        @alertMessage
+                    </MudAlert>
+                </MudPaper>
+            </MudItem>
+        </MudGrid>
 
-            <MudGrid Class="mt-4">
-                <MudItem xs="12" sm="6">
-                    <MudPaper Elevation="4" Square="true" Class="pa-4">
+        <MudGrid Class="mt-4">
+            <MudItem xs="12" sm="6">
+                <MudPaper Elevation="4" Square="true" Class="pa-4">
+                    <MudText Typo="Typo.h6" Align="Align.Center">Cursos Disponíveis</MudText>
+                    <MudText Typo="Typo.body2" Align="Align.Center" Class="mt-2">
+                        Confira as promoções e descontos exclusivos para matrícula em disciplinas de última hora.
+                    </MudText>
+                    <MudButton
+                        Color="Color.Secondary"
+                        Variant="Variant.Filled"
+                        Class="mt-4"
+                        @onclick="OnVerOfertasClicked"
+                        FullWidth="true">
+                        Ver Ofertas
+                    </MudButton>
+                </MudPaper>
+            </MudItem>
 
-                        <MudText Typo="Typo.h6" Align="Align.Center">Cursos Disponíveis</MudText>
+            <MudItem xs="12" sm="6">
+                <MudPaper Elevation="4" Square="true" Class="pa-4">
+                    <MudText Typo="Typo.h6" Align="Align.Center">Sobre nós</MudText>
+                    <MudText Typo="Typo.body2" Align="Align.Center" Class="mt-2">
+                        Somos uma plataforma confiável e segura para realizar matrículas e gerenciar sua vida acadêmica.
+                    </MudText>
 
-                        <MudText Typo="Typo.body2" Align="Align.Center" Class="mt-2">
-                            Confira as promoções e descontos exclusivos para matrícula em disciplinas de última hora.
-                        </MudText>
-                        <MudButton
-                            Color="Color.Secondary"
-                            Variant="Variant.Filled"
-                            Class="mt-4"
-                            FullWidth="true">
-                            Ver Ofertas
-                        </MudButton>
-                    </MudPaper>
-                </MudItem>
+                    <MudButton
+                        Href="/Coor/Sobre"
+                        Color="Color.Info"
+                        Variant="Variant.Filled"
+                        Class="mt-4"
+                        FullWidth="true">
+                        Saiba mais
+                    </MudButton>
+                </MudPaper>
+            </MudItem>
+        </MudGrid>
+    </MudContainer>
+</MudMainContent>
 
-                <MudItem xs="12" sm="6">
-                    <MudPaper Elevation="4" Square="true" Class="pa-4">
-                        <MudText Typo="Typo.h6" Align="Align.Center">Sobre nós</MudText>
-                        <MudText Typo="Typo.body2" Align="Align.Center" Class="mt-2">
-                            Somos uma plataforma confiável e segura para realizar matrículas e gerenciar sua vida acadêmica.
-                        </MudText>
+<MudFooter Elevation="4" Class="pa-4">
+    <MudText Typo="Typo.body2" Align="Align.Center">© 2025 Sistema de Gestão Academica. Todos os direitos reservados.</MudText>
+</MudFooter>
 
-                        <MudButton
-                            Href="/Admin/Sobre"
-                            Color="Color.Info"
-                            Variant="Variant.Filled"
-                            Class="mt-4"
-                            FullWidth="true"
-                            @onclick="NavigateToAbout">Saiba mais</MudButton>
-                    </MudPaper>
-                </MudItem>
-            </MudGrid>
-        </MudContainer>
-    </MudMainContent>
-
-    <MudFooter Elevation="4" Class="pa-4">
-        <MudText Typo="Typo.body2" Align="Align.Center">© 2025 Sistema de Gestão Academica. Todos os direitos reservados.</MudText>
-    </MudFooter>
-</MudLayout>
-
-@code {
-private void NavigateToLogin()
+@code 
 {
-// Navegar para a página de login
-}
+    private bool isMaximized = true;
 
-private void NavigateToRegister()
-{
-// Navegar para a página de registro
-}
+    // Estilo que controla o tamanho do container
+    private string containerStyle => isMaximized ? "height: auto; transition: height 0.5s;" : "height: 0; overflow: hidden; transition: height 0.5s;";
 
-private void NavigateToSearch()
-{
-// Navegar para a página de pesquisa de hotéis
-}
+    private void ToggleMaximize()
+    {
+        isMaximized = !isMaximized;
+    }
+    [Inject] private IDialogService DialogService { get; set; }
+    
+    private string state = "Clique no botão!";
+    private string alertMessage = "";
+    private bool alertVisible = false;
+    private Severity alertSeverity = Severity.Normal;
 
-private void NavigateToAbout()
-{
-// Navegar para a página "Sobre nós"
-}
+    private async Task OnComeceAgoraClicked()
+    {
+        var parameters = new DialogParameters();
+        parameters.Add("ContentText", "Clique no Botão!");
+
+        var dialog = await DialogService.ShowMessageBox(
+            "Atenção",
+            "Clique no Botão!",
+            yesText: "Sim", noText: "Não", cancelText: "Cancelar");
+
+        if (dialog == true)
+        {
+            alertMessage = "Processo iniciado com Sucesso!";
+            alertSeverity = Severity.Success; // Alerta verde
+        }
+        else if (dialog == false)
+        {
+            alertMessage = "O Acesso foi Negado!";
+            alertSeverity = Severity.Error; // Alerta vermelho
+        }
+        else
+        {
+            alertMessage = "Processo foi Cancelado!";
+            alertSeverity = Severity.Warning; // Alerta laranja
+        }
+
+        alertVisible = true;
+    }
+
+
+    private void OnVerOfertasClicked()
+    {
+        Snackbar.Add("Deseja saber mais sobre o aplicativo? Clique em Saiba mais!", Severity.Success);
+    }
+
+    private void NavigateToLogin()
+    {
+        Navigation.NavigateTo("/Coor/Login");
+    }
+
+    private void NavigateToAbout()
+    {
+        Navigation.NavigateTo("/Coor/Sobre");
+    }
 }

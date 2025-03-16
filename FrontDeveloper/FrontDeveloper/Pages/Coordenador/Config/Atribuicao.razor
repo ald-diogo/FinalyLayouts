@@ -23,7 +23,12 @@
                 FullWidth />
         </MudItem>
         <MudItem xs="12" sm="6">
-            <MudSelect T="string" Label="Filtrar por Área" Variant="Variant.Outlined" Icon="@Icons.Material.Filled.FilterAlt" FullWidth>
+            <MudSelect 
+                T="string"
+                Label="Filtrar por Área"
+                Variant="Variant.Outlined"
+                Icon="@Icons.Material.Filled.FilterAlt"
+                FullWidth>
                 <MudSelectItem Value="Matemática">Matemática</MudSelectItem>
                 <MudSelectItem Value="Física">Física</MudSelectItem>
                 <MudSelectItem Value="Química">Química</MudSelectItem>
@@ -52,7 +57,11 @@
                         <MudTableCell>@professor.Especialidade</MudTableCell>
                         <MudTableCell>@professor.Disponibilidade</MudTableCell>
                         <MudTableCell>
-                            <MudIconButton Icon="@Icons.Material.Filled.Add" Color="Color.Primary" OnClick="@(() => AtribuirProfessor(professor))" />
+                            <MudIconButton
+                                Href="/cadastro-professor"
+                                Icon="@Icons.Material.Filled.Add" 
+                                Color="Color.Primary"
+                                OnClick="@(() => AtribuirProfessor(professor))" />
                         </MudTableCell>
                     </MudTableRow>
                 }
@@ -71,7 +80,11 @@
                         <MudCardContent>
                             <MudText Typo="Typo.h6" Class="text-center">@disciplina.Nome</MudText>
                             <MudText Typo="Typo.body2" Class="text-center">@disciplina.Descrição</MudText>
-                            <MudButton FullWidth Color="Color.Primary" OnClick="@(() => AtribuirProfessorPorDisciplina(disciplina))">
+                            <MudButton
+                                Href="/cadastro-professor"
+                                FullWidth 
+                                Color="Color.Primary" 
+                                OnClick="@(() => AtribuirProfessorPorDisciplina(disciplina))">
                                 Atribuir Professor
                             </MudButton>
                         </MudCardContent>
