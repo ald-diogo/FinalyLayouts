@@ -1,0 +1,142 @@
+﻿@page "/lista-usuarios"
+@using MudBlazor
+
+<PageTitle>Segurança no Sistema de Gestão Acadêmica</PageTitle>
+
+<MudContainer MaxWidth="MaxWidth.Large">
+    <!-- Header de Introdução -->
+    <MudText Typo="Typo.h3" Align="Align.Center" Color="Color.Primary" Class="my-4">
+        Lista de Usuários
+    </MudText>
+
+    <MudText Typo="Typo.h6" Align="Align.Center" Color="Color.Inherit" Class="my-4">
+        Gerencie Todos os Aspectos da Sua Instituição, Acompanhando o Desempenho Acadêmico dos Estudantes, a Atuação de Professores, Coordenação Acadêmica, Consultoria Financeira e a Gestão Administrativa em Tempo Real.
+    </MudText>
+</MudContainer>
+
+<MudSpacer />
+
+<!-- Tabs para controlar os usuários -->
+<MudTabs Elevation="2" Rounded="true" ApplyEffectsToContainer="true" PanelClass="pa-6" Class="my-4">
+    <MudTabPanel
+        Text="Coordenador Acadêmico"
+        Icon="@Icons.Material.Filled.AdminPanelSettings"
+        IconColor="Color.Secondary"
+        Color="@Color.Primary">
+        <MudButton
+            Href="/"
+            Variant="Variant.Filled"
+            Color="Color.Success"
+            Size="Size.Small"
+            FullWidth>
+            Verificar
+        </MudButton>
+    </MudTabPanel>
+
+    <MudSpacer />
+
+    <MudTabPanel
+        Text="Professores"
+        Icon="@Icons.Material.Filled.Badge"
+        IconColor="Color.Info"
+        Color="@Color.Primary">
+        <MudButton
+            Href="/"
+            Variant="Variant.Filled"
+            Color="Color.Success"
+            Size="Size.Small"
+            FullWidth>
+            Verificar
+        </MudButton>
+    </MudTabPanel>
+
+    <MudSpacer />
+
+    <MudTabPanel
+        Text="Estudantes"
+        Icon="@Icons.Material.Filled.People"
+        IconColor="Color.Success"
+        Color="@Color.Primary">
+        <MudButton
+            Href="/"
+            Variant="Variant.Filled"
+            Color="Color.Success"
+            Size="Size.Small"
+            FullWidth>
+            Verificar
+        </MudButton>
+    </MudTabPanel>
+</MudTabs>
+
+<MudSpacer />
+
+<!-- Outros Usuários -->
+<MudText Typo="Typo.h4" Align="Align.Center" Color="Color.Primary" Class="my-4">
+    Outros Usuários
+</MudText>
+
+<MudTabs Elevation="2" Rounded="true" ApplyEffectsToContainer="true" PanelClass="pa-6" Class="my-4">
+    <MudTabPanel
+        Text="Secretário Acadêmico"
+        Icon="@Icons.Material.Filled.Folder"
+        IconColor="Color.Warning"
+        Color="@Color.Success">
+        <MudButton Href="/" Variant="Variant.Filled" Color="Color.Success" Size="Size.Small" FullWidth>
+            Verificar
+        </MudButton>
+    </MudTabPanel>
+
+    <MudTabPanel
+        Text="Consultor Financeiro"
+        Icon="@Icons.Material.Filled.Business"
+        IconColor="Color.Success"
+        Color="@Color.Primary">
+        <MudButton Href="/" Variant="Variant.Filled" Color="Color.Success" Size="Size.Small" FullWidth>
+            Verificar
+        </MudButton>
+    </MudTabPanel>
+
+    <MudTabPanel
+        Text="Funcionário"
+        Icon="@Icons.Material.Filled.Engineering"
+        IconColor="Color.Secondary"
+        Color="@Color.Primary">
+        <MudButton Href="/" Variant="Variant.Filled" Color="Color.Success" Size="Size.Small" FullWidth>
+            Verificar
+        </MudButton>
+    </MudTabPanel>
+</MudTabs>
+
+<MudContainer MaxWidth="MaxWidth.Large" Class="security-section my-4">
+    <MudText Typo="Typo.body1" Align="Align.Center" Color="Color.Inherit">
+        Todos os dados trocados entre os usuários e o sistema são criptografados, utilizando tecnologia de criptografia de ponta, garantindo que informações sensíveis nunca sejam expostas.
+    </MudText>
+</MudContainer>
+
+<MudContainer MaxWidth="MaxWidth.Large" Class="testimonial-section">
+    <!-- Depoimentos de Usuários -->
+    <MudText Typo="Typo.h4" Align="Align.Center" Color="Color.Primary">
+        O Que Nossos Clientes Dizem
+    </MudText>
+
+    <MudCarousel TData="string">
+        <MudCarouselItem>
+            <MudText Typo="Typo.body1" Align="Align.Center">
+                "O sistema de gestão academica é altamente seguro. Eu me sinto confiante ao realizar transações e sei que meus dados estão protegidos."
+            </MudText>
+        </MudCarouselItem>
+
+        <MudCarouselItem>
+            <MudText Typo="Typo.body1" Align="Align.Center">
+                "A segurança nunca foi uma preocupação para mim, graças à criptografia e aos controles rigorosos de acesso."
+            </MudText>
+        </MudCarouselItem>
+    </MudCarousel>
+</MudContainer>
+
+<MudContainer MaxWidth="MaxWidth.Large" Class="security-section saiba-mais-container my-4">
+    <!-- Outros conteúdos do Container -->
+    <MudButton Href="/Admin/Sobre" Variant="Variant.Filled" Color="Color.Secondary" Size="Size.Large" FullWidth>
+        Saiba Mais
+    </MudButton>
+</MudContainer>

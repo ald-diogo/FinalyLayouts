@@ -17,73 +17,16 @@
         IconColor="Color.Primary">
         Gestão de Usuários
     </MudNavLink>
-</MudNavGroup>
-
-<!-- Grupo de Configurações do Sistema -->
-<MudNavGroup
-    Icon="@Icons.Material.Filled.Settings"
-    IconColor="Color.Primary"
-    Title="Configurações do Sistema"
-    Expanded="true">
 
     <MudNavLink
-        Href="/Admin/DataHora"
+        Href="/lista-usuarios"
         Match="NavLinkMatch.Prefix"
-        Icon="@Icons.Material.Filled.AccessTime"
-        IconColor="Color.Default">
-        Configurações Data e Hora
-    </MudNavLink>
-
-    <MudNavLink
-        Href="/Admin/Senhas"
-        Match="NavLinkMatch.Prefix"
-        Icon="@Icons.Material.Filled.LockOpen"
-        IconColor="Color.Default">
-        Gestão de Senhas
-    </MudNavLink>
-
-    <MudNavLink
-        Href="/Admin/Monitoramento"
-        Match="NavLinkMatch.Prefix"
-        Icon="@Icons.Material.Filled.NotificationImportant"
-        IconColor="Color.Warning">
-        Ver Notificações
-    </MudNavLink>
-
-    <MudNavLink
-        Href="/Admin/Backups"
-        Match="NavLinkMatch.Prefix"
-        Icon="@Icons.Material.Filled.Backup"
-        IconColor="Color.Default">
-        Backups
-    </MudNavLink>
-
-    <MudNavLink
-        Href="/Admin/Periodo"
-        Match="NavLinkMatch.Prefix"
-        Icon="@Icons.Material.Filled.Event"
-        IconColor="Color.Default">
-        Períodos Acadêmicos
-    </MudNavLink>
-
-    <MudNavLink
-        Href=""
-        Match="NavLinkMatch.Prefix"
-        Icon="@Icons.Material.Filled.Group"
-        IconColor="Color.Default">
-        Cursos
+        Icon="@Icons.Material.Filled.People"
+        IconColor="Color.Success">
+        Lista de Usuários
     </MudNavLink>
 </MudNavGroup>
 
-<!-- Relatórios -->
-<MudNavLink
-    T="bool"
-    Href="/"
-    Match="NavLinkMatch.Prefix"
-    Icon="@Icons.Material.Filled.Assessment"
-    IconColor="Color.Success">
-    Relatórios
-</MudNavLink>
 
 <!-- Grupo de Painel -->
 <MudNavGroup
@@ -91,6 +34,72 @@
     IconColor="Color.Error"
     Title="Painel"
     Expanded="true">
+
+    <!-- Grupo de Configurações do Sistema -->
+    <MudNavGroup
+        Icon="@Icons.Material.Filled.Settings"
+        IconColor="Color.Primary"
+        Title="Configurações do Sistema"
+        Expanded="true">
+
+        <MudNavLink
+            Href="/Admin/DataHora"
+            Match="NavLinkMatch.Prefix"
+            Icon="@Icons.Material.Filled.AccessTime"
+            IconColor="Color.Default">
+            Configurações Data e Hora
+        </MudNavLink>
+
+        <MudNavLink
+            Href="/Admin/Senhas"
+            Match="NavLinkMatch.Prefix"
+            Icon="@Icons.Material.Filled.LockOpen"
+            IconColor="Color.Default">
+            Gestão de Senhas
+        </MudNavLink>
+
+        <MudNavLink
+            Href="/Admin/Monitoramento"
+            Match="NavLinkMatch.Prefix"
+            Icon="@Icons.Material.Filled.NotificationImportant"
+            IconColor="Color.Warning">
+            Ver Notificações
+        </MudNavLink>
+
+        <MudNavLink
+            Href="/Admin/Backups"
+            Match="NavLinkMatch.Prefix"
+            Icon="@Icons.Material.Filled.Backup"
+            IconColor="Color.Default">
+            Backups
+        </MudNavLink>
+
+        <MudNavLink
+            Href="/Admin/Periodo"
+            Match="NavLinkMatch.Prefix"
+            Icon="@Icons.Material.Filled.Event"
+            IconColor="Color.Default">
+            Períodos Acadêmicos
+        </MudNavLink>
+
+        <MudNavLink
+            Href=""
+            Match="NavLinkMatch.Prefix"
+            Icon="@Icons.Material.Filled.Group"
+            IconColor="Color.Default">
+            Cursos
+        </MudNavLink>
+    </MudNavGroup>
+
+    <!-- Relatórios -->
+    <MudNavLink
+        T="bool"
+        Href="/"
+        Match="NavLinkMatch.Prefix"
+        Icon="@Icons.Material.Filled.Assessment"
+        IconColor="Color.Success">
+        Relatórios
+    </MudNavLink>
 </MudNavGroup>
 
 <!-- Segurança -->
