@@ -1,6 +1,7 @@
 ﻿@page "/Admin/Backups"
 
 @using MudBlazor
+@inject ISnackbar Snackbar
 
 <MudContainer>
     <MudGrid>
@@ -16,11 +17,20 @@
             <MudCard>
                 <MudCardContent>
                     <MudTypography Variant="Variants.H6" Class="mb-2">Realizar Backup Manual</MudTypography>
-                    <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="IniciarBackupManual" StartIcon="@Icons.Material.Filled.Backup" FullWidth="true">
+                    <MudButton
+                        Variant="Variant.Filled"
+                        Color="Color.Primary"
+                        FullWidth="true"
+                        StartIcon="@Icons.Material.Filled.Backup"
+                        @onclick="@(() => { IniciarBackupManual(); Snackbar.Add("Backup manual iniciado com sucesso!", Severity.Info); })">
                         Iniciar Backup Manual
                     </MudButton>
+
                     <MudTooltip Text="Clique para realizar um backup manual imediatamente." Arrow="true">
-                        <MudIconButton Icon="@Icons.Material.Filled.HelpOutline" Color="Color.Info" Size="Size.Small" />
+                        <MudIconButton 
+                            Icon="@Icons.Material.Filled.HelpOutline" 
+                            Color="Color.Info" 
+                            Size="Size.Small" />
                     </MudTooltip>
                 </MudCardContent>
             </MudCard>
@@ -31,13 +41,36 @@
             <MudCard>
                 <MudCardContent>
                     <MudTypography Variant="Variants.H6" Class="mb-2">Agendar Backup Automático</MudTypography>
-                    <MudTextField Label="Frequência" Variant="Variant.Filled" @bind-Value="frequencia" StartIcon="@Icons.Material.Filled.Schedule" FullWidth="true" />
-                    <MudTextField Label="Hora" Variant="Variant.Filled" @bind-Value="horaBackup" StartIcon="@Icons.Material.Filled.AccessTime" FullWidth="true" />
-                    <MudButton Variant="Variant.Filled" Color="Color.Secondary" OnClick="AgendarBackup" StartIcon="@Icons.Material.Filled.Alarm" FullWidth="true">
+                    <MudTextField 
+                        Label="Frequência" 
+                        Variant="Variant.Filled"
+                        @bind-Value="frequencia" 
+                        StartIcon="@Icons.Material.Filled.Schedule"
+                        FullWidth="true" />
+                    
+                    <MudTextField
+                        T="string"
+                        Label="Hora" 
+                        Variant="Variant.Filled"
+                        InputType="InputType.Time"
+                        @bind-Value="horaBackup" 
+                        StartIcon="@Icons.Material.Filled.AccessTime"
+                        FullWidth="true" />
+
+                    <MudButton
+                        Variant="Variant.Filled"
+                        Color="Color.Secondary"
+                        FullWidth="true"
+                        StartIcon="@Icons.Material.Filled.Alarm"
+                        @onclick="@(() => { AgendarBackup(); Snackbar.Add("Aviso: O backup foi agendado com sucesso!", Severity.Warning); })">
                         Agendar Backup
                     </MudButton>
+
                     <MudTooltip Text="Defina a frequência e o horário para o backup ser realizado automaticamente." Arrow="true">
-                        <MudIconButton Icon="@Icons.Material.Filled.HelpOutline" Color="Color.Info" Size="Size.Small" />
+                        <MudIconButton 
+                            Icon="@Icons.Material.Filled.HelpOutline" 
+                            Color="Color.Info" 
+                            Size="Size.Small" />
                     </MudTooltip>
                 </MudCardContent>
             </MudCard>
@@ -52,9 +85,17 @@
                         <MudSelectItem Value="1">Backup 1 - 01/01/2025</MudSelectItem>
                         <MudSelectItem Value="2">Backup 2 - 02/01/2025</MudSelectItem>
                     </MudSelect>
-                    <MudButton Variant="Variant.Filled" Color="Color.Error" OnClick="RestaurarBackup" StartIcon="@Icons.Material.Filled.RestoreFromTrash" FullWidth="true">
+                    
+                    <MudButton
+                        Variant="Variant.Filled"
+                        Color="Color.Error"
+                        FullWidth="true"
+                        StartIcon="@Icons.Material.Filled.RestoreFromTrash"
+                        @onclick="@(() => { RestaurarBackup(); Snackbar.Add("Erro: Falha ao restaurar backup!", Severity.Error); })">
                         Restaurar Backup
                     </MudButton>
+
+
                     <MudTooltip Text="Escolha um backup anterior para restaurá-lo." Arrow="true">
                         <MudIconButton Icon="@Icons.Material.Filled.HelpOutline" Color="Color.Info" Size="Size.Small" />
                     </MudTooltip>
