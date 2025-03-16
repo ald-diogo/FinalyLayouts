@@ -2,10 +2,23 @@
 
 @using MudBlazor
 
-<MudLayout>
-    <MudAppBar Color="Color.Primary">
-        <MudText Typo="Typo.h6" Class="ml-2">Gerenciamento de Grade Curricular</MudText>
+@using FrontDeveloper
+@using FrontDeveloper.Layout
+
+@layout MainLayout
+@using MudBlazor
+
+@inject ISnackbar Snackbar
+@inject NavigationManager Navigation
+
+<MainLayout HideAppBar="true">
+    <MudAppBar Color="Color.Primary" Elevation="4">
+
     </MudAppBar>
+</MainLayout>
+
+<MudLayout>
+    <MudText Typo="Typo.h6" Color="Color.Primary" Class="ml-2">Gerenciamento de Grade Curricular</MudText>
 
     <MudMainContent>
         <MudContainer MaxWidth="MaxWidth.Large" Class="mt-5">
@@ -35,7 +48,12 @@
             </MudPaper>
 
             <!-- Botão de adicionar disciplina -->
-            <MudButton Variant="Variant.Filled" Color="Color.Success" StartIcon="@Icons.Material.Filled.AddCircle" OnClick="AdicionarDisciplina">
+            <MudButton 
+                Href="/cadastro-disciplina"
+                Variant="Variant.Filled" 
+                Color="Color.Success" 
+                StartIcon="@Icons.Material.Filled.AddCircle" 
+                OnClick="AdicionarDisciplina">
                 Adicionar Disciplina
             </MudButton>
 
@@ -49,8 +67,18 @@
                     <MudTextField Label="Pré-Requisitos" @bind-Value="disciplina.PreRequisitos" />
                 </DialogContent>
                 <DialogActions>
-                    <MudButton Color="Color.Primary" OnClick="SalvarAlteracoes">Salvar</MudButton>
-                    <MudButton Color="Color.Secondary" OnClick="CancelarAlteracoes">Cancelar</MudButton>
+                    <MudButton
+                        Color="Color.Primary"
+                        @onclick="@(() => { SalvarAlteracoes(); Snackbar.Add("Alterações salvas com sucesso!", Severity.Success); })">
+                        Salvar
+                    </MudButton>
+
+
+                    <MudButton
+                        Color="Color.Secondary"
+                        @onclick="@(() => { CancelarAlteracoes(); Snackbar.Add("Alterações canceladas!", Severity.Warning); })">
+                        Cancelar
+                    </MudButton>
                 </DialogActions>
             </MudDialog>
 

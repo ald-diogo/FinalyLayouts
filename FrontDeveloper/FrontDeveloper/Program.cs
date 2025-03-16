@@ -23,5 +23,6 @@ builder.Services.AddScoped<ProfessorService>();
 builder.Services.AddScoped<SecretarioService>();
 builder.Services.AddScoped<FuncionarioService>();
 builder.Services.AddScoped<ConsultorService>();
+builder.Services.AddScoped<DisciplinaService>();
 
 await builder.Build().RunAsync();

@@ -1,0 +1,103 @@
+﻿@page "/cadastro-disciplina"
+@using FrontDeveloper.Pages.Models
+@using FrontDeveloper.Pages.Services
+@inject DisciplinaService DisciplinaService
+@inject NavigationManager Navigation
+@inject ISnackbar Snackbar
+@inject IJSRuntime JSRuntime
+
+<MudPaper Class="p-4" Elevation="4">
+    <MudForm>
+        <!-- Cabeçalho da página -->
+        <MudText Align="Align.Center" Color="Color.Primary" Typo="Typo.h5">
+            Cadastro de Disciplinas
+        </MudText>
+
+        <!-- Primeira linha de campos do formulário -->
+        <MudGrid Spacing="2">
+            <MudItem xs="12" md="4" Class="mb-3">
+                <MudTextField
+                    Label="Nome da Disciplina"
+                    @bind-Value="disciplina.Nome"
+                    Variant="Variant.Outlined"
+                    Required
+                    Adornment="Adornment.End"
+                    AdornmentIcon="@Icons.Material.Filled.Book"
+                    AdornmentColor="Color.Primary" />
+            </MudItem>
+
+            <MudItem xs="12" md="4" Class="mb-3">
+                <MudTextField
+                    Label="Carga Horária"
+                    @bind-Value="disciplina.CargaHoraria"
+                    Variant="Variant.Outlined"
+                    Type="number"
+                    Required
+                    Adornment="Adornment.End"
+                    AdornmentIcon="@Icons.Material.Filled.Schedule"
+                    AdornmentColor="Color.Primary"/>
+            </MudItem>  
+
+            <MudItem xs="12" md="4" Class="mb-3">
+                <MudTextField
+                    Label="Semestre"
+                    @bind-Value="disciplina.Semestre"
+                    Variant="Variant.Outlined"
+                    Type="number"
+                    Required
+                    Adornment="Adornment.End"
+                    AdornmentIcon="@Icons.Material.Filled.CalendarMonth"
+                    AdornmentColor="Color.Primary"/>
+            </MudItem>
+
+            <MudItem xs="12" md="6" Class="mb-3">
+                <MudTextField
+                    Label="Descrição"
+                    @bind-Value="disciplina.Descricao"
+                    Variant="Variant.Outlined"
+                    Adornment="Adornment.End"
+                    AdornmentIcon="@Icons.Material.Filled.Description"
+                    AdornmentColor="Color.Primary"/>
+            </MudItem>
+        </MudGrid>
+        
+
+        <!-- Botão de cadastro -->
+        <MudGrid Justify="Justify.Center">
+            <MudItem xs="12" md="4" Class="mt-4">
+                <MudButton Color="Color.Success" Variant="Variant.Filled" Style="width: 100%; height: 100%;"
+                           @onclick="@(() => { CadastrarDisciplina(); Snackbar.Add("Cadastro efetuado com sucesso!", Severity.Success); })">
+                    Cadastrar
+                </MudButton>
+            </MudItem>
+        </MudGrid>
+    </MudForm>
+</MudPaper>
+
+@code {
+    // Objeto que armazena os dados da disciplina
+    private Disciplina disciplina = new();
+
+    // Método chamado na inicialização da página
+    protected override async Task OnInitializedAsync()
+    {
+        var disciplinaJson = await JSRuntime.InvokeAsync<string>("localStorage.getItem", "disciplinaEdicao");
+
+        if (!string.IsNullOrEmpty(disciplinaJson))
+        {
+            disciplina = System.Text.Json.JsonSerializer.Deserialize<Disciplina>(disciplinaJson);
+        }
+    }
+
+    // Método para cadastrar ou editar uma disciplina
+    private async Task CadastrarDisciplina()
+    {
+        if (disciplina.DisciplinaId > 0)
+            DisciplinaService.EditarDisciplina(disciplina);
+        else
+            DisciplinaService.AdicionarDisciplina(disciplina);
+
+        await JSRuntime.InvokeVoidAsync("localStorage.removeItem", "disciplinaEdicao");
+        Navigation.NavigateTo("/Coor/GradeCurricular");
+    }
+}
