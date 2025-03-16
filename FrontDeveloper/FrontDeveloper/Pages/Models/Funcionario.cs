@@ -53,10 +53,11 @@ public class Funcionario
     public TipoContrato TipoContrato { get; set; }
 
     [Required]
-    public TimeOnly HoraEntrada { get; set; }
+    public TimeSpan? HoraEntrada { get; set; }
+
 
     [Required]
-    public TimeOnly HoraSaida { get; set; }
+    public TimeSpan? HoraSaida { get; set; }
 
     [StringLength(50)]
     public string EstadoCivil { get; set; }

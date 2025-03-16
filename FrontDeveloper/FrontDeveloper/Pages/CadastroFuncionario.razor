@@ -24,6 +24,7 @@
                     AdornmentIcon="@Icons.Material.Filled.AccountCircle"
                     AdornmentColor="Color.Primary" />
             </MudItem>
+            
             <MudItem xs="12" md="2" Class="mb-3">
                 <MudTextField 
                     Label="Gênero" 
@@ -31,9 +32,10 @@
                     Variant="Variant.Outlined" 
                     Required
                     Adornment="Adornment.End"
-                    AdornmentIcon="@Icons.Material.Filled.AccountCircle"
+                    AdornmentIcon="@Icons.Material.Filled.Transgender"
                     AdornmentColor="Color.Primary" />
             </MudItem>
+            
             <MudItem xs="12" md="2" Class="mb-3">
                 <MudTextField 
                     Label="Cargo" 
@@ -41,9 +43,10 @@
                     Variant="Variant.Outlined" 
                     Required
                     Adornment="Adornment.End"
-                    AdornmentIcon="@Icons.Material.Filled.AccountCircle"
+                    AdornmentIcon="@Icons.Material.Filled.Work"
                     AdornmentColor="Color.Primary" />
             </MudItem>
+            
             <MudItem xs="12" md="2" Class="mb-3">
                 <MudTextField 
                     Label="Departamento" 
@@ -51,19 +54,24 @@
                     Variant="Variant.Outlined" 
                     Required
                     Adornment="Adornment.End"
-                    AdornmentIcon="@Icons.Material.Filled.AccountCircle"
+                    AdornmentIcon="@Icons.Material.Filled.Apartment"
                     AdornmentColor="Color.Primary" />
             </MudItem>
+            
             <MudItem xs="12" md="2" Class="mb-3">
-                <MudTextField 
-                    Label="Data de Admissão" 
-                    @bind-Value="funcionario.DataAdmissao"
+                <MudTextField
+                    T="DateTime?"
+                    Format="yyyy-MM-dd"
+                    Label="Data de Admissão"
+                    InputType="InputType.Date"
                     Variant="Variant.Outlined"
                     Required
                     Adornment="Adornment.End"
-                    AdornmentIcon="@Icons.Material.Filled.AccountCircle"
-                    AdornmentColor="Color.Primary" />
+                    AdornmentIcon="@Icons.Material.Filled.CalendarToday"
+                    @bind-Value="funcionario.DataAdmissao"
+                    AdornmentColor="Color.Primary"/>
             </MudItem>
+            
             <MudItem xs="12" md="2" Class="mb-3">
                 <MudTextField 
                     Label="Tipo de Contrato" 
@@ -71,7 +79,7 @@
                     Variant="Variant.Outlined"
                     Required
                     Adornment="Adornment.End"
-                    AdornmentIcon="@Icons.Material.Filled.AccountCircle"
+                    AdornmentIcon="@Icons.Material.Filled.Description"
                     AdornmentColor="Color.Primary" />
             </MudItem>
         </MudGrid>
@@ -79,23 +87,26 @@
         <MudGrid Spacing="2">
             <!-- Segunda Linha -->
             <MudItem xs="12" md="2" Class="mb-3">
-                <MudTextField 
-                    Label="Hora de Entrada"
-                    @bind-Value="funcionario.HoraEntrada" 
-                    Variant="Variant.Outlined"
-                    Required
-                    Adornment="Adornment.End"
-                    AdornmentIcon="@Icons.Material.Filled.AccountCircle"
-                    AdornmentColor="Color.Primary" />
+                <MudTextField T="TimeSpan?"
+                              Label="Hora de Entrada"
+                              @bind-Value="funcionario.HoraEntrada"
+                              InputType="InputType.Time"
+                              Variant="Variant.Outlined"
+                              Required
+                              Adornment="Adornment.End"
+                              AdornmentIcon="@Icons.Material.Filled.AccessTime"
+                              AdornmentColor="Color.Primary" />
+
             </MudItem>
             <MudItem xs="12" md="2" Class="mb-3">
-                <MudTextField 
+                <MudTextField T="TimeSpan?"
                     Label="Hora de Saída" 
-                    @bind-Value="funcionario.HoraSaida" 
+                    @bind-Value="funcionario.HoraSaida"
+                    InputType="InputType.Time"
                     Variant="Variant.Outlined" 
                     Required
                     Adornment="Adornment.End"
-                    AdornmentIcon="@Icons.Material.Filled.AccountCircle"
+                    AdornmentIcon="@Icons.Material.Filled.ExitToApp"
                     AdornmentColor="Color.Primary" />
             </MudItem>
             <MudItem xs="12" md="2" Class="mb-3">
@@ -105,7 +116,7 @@
                     Variant="Variant.Outlined"
                     Required
                     Adornment="Adornment.End"
-                    AdornmentIcon="@Icons.Material.Filled.AccountCircle"
+                    AdornmentIcon="@Icons.Material.Filled.Favorite"
                     AdornmentColor="Color.Primary" />
             </MudItem>
             <MudItem xs="12" md="2" Class="mb-3">
@@ -115,7 +126,7 @@
                     Variant="Variant.Outlined"
                     Required
                     Adornment="Adornment.End"
-                    AdornmentIcon="@Icons.Material.Filled.AccountCircle"
+                    AdornmentIcon="@Icons.Material.Filled.Public"
                     AdornmentColor="Color.Primary" />
             </MudItem>
             
@@ -126,7 +137,7 @@
                     Variant="Variant.Outlined" 
                     Required
                     Adornment="Adornment.End"
-                    AdornmentIcon="@Icons.Material.Filled.AccountCircle"
+                    AdornmentIcon="@Icons.Material.Filled.Badge"
                     AdornmentColor="Color.Primary" />
             </MudItem>
             
@@ -137,7 +148,7 @@
                     Variant="Variant.Outlined" 
                     Required
                     Adornment="Adornment.End"
-                    AdornmentIcon="@Icons.Material.Filled.AccountCircle"
+                    AdornmentIcon="@Icons.Material.Filled.AttachMoney"
                     AdornmentColor="Color.Primary" />
             </MudItem>
         </MudGrid>
