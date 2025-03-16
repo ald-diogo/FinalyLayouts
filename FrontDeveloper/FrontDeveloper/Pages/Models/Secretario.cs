@@ -43,11 +43,11 @@ public class Secretario
     public string NomeUsuario { get; set; }
 
     [Required(ErrorMessage = "A senha é obrigatória.")]
-    public string SenhaHash { get; set; } // Armazena a senha criptografada
+    public string SenhaHash { get; set; } 
 
     public DateTime UltimoAcesso { get; set; }
 
-    public bool StatusConta { get; set; } = true; // Conta ativa por padrão
+    public bool StatusConta { get; set; } = true; 
 
     [Required(ErrorMessage = "O telefone é obrigatório.")]
     [Phone(ErrorMessage = "Número de telefone inválido.")]
