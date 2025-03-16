@@ -1,6 +1,7 @@
 ﻿@page "/Admin/DataHora"
 
 @using MudBlazor
+@inject ISnackbar Snackbar
 
 <MudContainer>
     <MudPaper Elevation="4" Class="pa-4">
@@ -9,7 +10,11 @@
         <!-- Definir Fuso Horário -->
         <MudGrid>
             <MudItem xs="12" sm="6">
-                <MudTextField Label="Fuso Horário" Variant="Variant.Filled" FullWidth @bind-Value="timezone" />
+                <MudTextField 
+                    Label="Fuso Horário" 
+                    Variant="Variant.Filled" 
+                    FullWidth 
+                    @bind-Value="timezone" />
             </MudItem>
         </MudGrid>
 
@@ -18,16 +23,38 @@
 
         <MudGrid>
             <MudItem xs="12" sm="6">
-                <MudDatePicker Label="Início do Semestre" @bind-Date="startDate" FullWidth />
+                <MudTextField 
+                    T="DateTime?"
+                    Variant="Variant.Outlined"
+                    Label="Início do Semestre" 
+                    Format="yyyy-MM-dd" 
+                    @bind-Date="startDate"
+                    InputType="InputType.Date"
+                    FullWidth/>
             </MudItem>
+            
             <MudItem xs="12" sm="6">
-                <MudDatePicker Label="Fim do Semestre" @bind-Date="endDate" FullWidth />
+                <MudTextField 
+                    T="DateTime?"
+                    Variant="Variant.Outlined"
+                    Format="yyyy-MM-dd"
+                    Label="Fim do Semestre" 
+                    @bind-Date="endDate"
+                    FullWidth
+                    InputType="InputType.Date"/>
             </MudItem>
         </MudGrid>
 
         <MudGrid>
             <MudItem xs="12">
-                <MudTextField Label="Adicionar Feriado" Variant="Variant.Filled" FullWidth @bind-Value="holiday" />
+                <MudTextField 
+                    Label="Adicionar Feriado" 
+                    Variant="Variant.Filled" 
+                    FullWidth 
+                    @bind-Value="holiday"
+                    Adornment="Adornment.End"
+                    AdornmentIcon="@Icons.Material.Filled.Event"
+                    AdornmentColor="Color.Primary"/>
             </MudItem>
         </MudGrid>
 
@@ -70,8 +97,21 @@
         <!-- Botões de Ação -->
         <MudGrid>
             <MudItem xs="12" class="mt-4">
-                <MudButton Color="Color.Primary" Variant="Variant.Filled" OnClick="SaveSettings">Salvar</MudButton>
-                <MudButton Color="Color.Secondary" Variant="Variant.Filled" OnClick="CancelSettings" Class="ml-2">Cancelar</MudButton>
+                <MudButton
+                    Color="Color.Primary"
+                    Variant="Variant.Filled"
+                    @onclick="@(() => { SaveSettings(); Snackbar.Add("Configurações salvas com sucesso!", Severity.Success); })">
+                    Salvar
+                </MudButton>
+
+
+                <MudButton
+                    Color="Color.Secondary"
+                    Variant="Variant.Filled"
+                    Class="ml-2"
+                    @onclick="@(() => { CancelSettings(); Snackbar.Add("As configurações foram canceladas!", Severity.Warning); })">
+                    Cancelar
+                </MudButton>
             </MudItem>
         </MudGrid>
     </MudPaper>
