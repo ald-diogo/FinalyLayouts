@@ -1,6 +1,142 @@
-﻿@page "/ListaConsultores"
-<h3>ListaConsultores</h3>
+﻿@page "/lista-consultores"
+@using FrontDeveloper.Pages.Models
+@using FrontDeveloper.Pages.Services
+@inject ConsultorService ConsultorService
+@inject NavigationManager NavigationManager
+@inject IJSRuntime JSRuntime
+@inject IDialogService DialogService
+@inject ISnackbar Snackbar
+
+<!-- Título da página -->
+<MudText Align="Align.Center" Color="Color.Primary" Typo="Typo.h5" Class="mb-4 text-center">
+    Lista de Consultores
+</MudText>
+
+<!-- Botão para adicionar um novo consultor -->
+<MudGrid>
+    <MudItem xs="2">
+        <MudButton
+            Href="/cadastro-consultor"
+            Class="mt-4"
+            Variant="Variant.Filled"
+            Color="Color.Success">
+            <MudIcon Icon="@Icons.Material.Filled.Business" Class="mr-1" />
+            <MudIcon Icon="@Icons.Material.Filled.PersonAdd" Class="mr-2" />
+            Novo Consultor
+        </MudButton>
+    </MudItem>
+    
+    <MudItem xs="9">
+        <MudTextField
+            Variant="Variant.Outlined"
+            Label="Pesquisar"
+            @bind-Value="termoPesquisa"
+            Adornment="Adornment.End"
+            AdornmentIcon="@Icons.Material.Filled.Search"
+            OnKeyUp="Pesquisar"
+            Class="mt-4" />
+    </MudItem>
+</MudGrid>
+
+<!-- Tabela para exibição da lista de consultores -->
+<MudTable Items="consultores" Hover="true" Class="mb-5">
+    <!-- Cabeçalho da tabela -->
+    <HeaderContent>
+        <MudTh>Nome</MudTh>
+        <MudTh>Gênero</MudTh>
+        <MudTh>Data de Contratação</MudTh>
+        <MudTh>Cargo</MudTh>
+        <MudTh>Especialização</MudTh>
+        <MudTh>Departamento</MudTh>
+        <MudTh>Salário</MudTh>
+        <MudTh>Regime de Trabalho</MudTh>
+        <MudTh>Usuário do Sistema</MudTh>
+        <MudTh>Nível de Acesso</MudTh>
+        <MudTh>Telefone</MudTh>
+        <MudTh>Endereço</MudTh>
+        <MudTh>E-mail</MudTh>
+        <MudTh>Ações</MudTh>
+    </HeaderContent>
+    
+    <!-- Preenchimento das linhas da tabela com os dados dos consultores -->
+    <RowTemplate Context="consultor">
+        <MudTd>@consultor.Nome</MudTd>
+        <MudTd>@consultor.Genero</MudTd>
+        <MudTd>@(consultor.DataContratacao?.ToString("dd/MM/yyyy") ?? "Sem data")</MudTd>
+        <MudTd>@consultor.Cargo</MudTd>
+        <MudTd>@consultor.Especializacao</MudTd>
+        <MudTd>@consultor.Departamento</MudTd>
+        <MudTd>@consultor.Salario.ToString("C")</MudTd>
+        <MudTd>@consultor.RegimeTrabalho</MudTd>
+        <MudTd>@consultor.UsuarioSistema</MudTd>
+        <MudTd>@consultor.NivelAcesso</MudTd>
+        <MudTd>@consultor.Telefone</MudTd>
+        <MudTd>@consultor.Endereco</MudTd>
+        <MudTd>@consultor.Email</MudTd>
+        <MudTd>
+            <!-- Botão para editar consultor -->
+            <MudFab Color="Color.Primary" StartIcon="@Icons.Material.Filled.Edit" @onclick="() => EditarConsultor(consultor)" />
+            
+            <!-- Botão para excluir consultor -->
+            <MudFab Color="Color.Error" StartIcon="@Icons.Material.Filled.Delete" @onclick="() => ConfirmarRemocao(consultor.ConsultorId)" />
+        </MudTd>
+    </RowTemplate>
+</MudTable>
 
 @code {
+    private string termoPesquisa = "";
+    private List<Consultor> consultores = new(); // Lista que armazena os consultores
+
+    // Método chamado ao inicializar o componente para carregar os consultores
+    protected override void OnInitialized()
+    {
+        consultores = ConsultorService.GetConsultores();
+    }
+
+    // Método para editar um consultor
+    private async Task EditarConsultor(Consultor consultor)
+    {
+        // Armazena os dados do consultor na localStorage para edição
+        await JSRuntime.InvokeVoidAsync("localStorage.setItem", "consultorEdicao", System.Text.Json.JsonSerializer.Serialize(consultor));
+        // Redireciona para a página de cadastro do consultor
+        NavigationManager.NavigateTo("/cadastro-consultor");
+    }
+
+    // Método para confirmar a remoção de um consultor
+    private async Task ConfirmarRemocao(int consultorId)
+    {
+        // Exibe uma caixa de diálogo para confirmação
+        bool? resultado = await DialogService.ShowMessageBox(
+            "Aviso!",
+            "Tem certeza que deseja excluir este consultor?",
+            yesText: "Sim", cancelText: "Não");
+
+        // Se o usuário confirmar, remove o consultor
+        if (resultado == true)
+        {
+            RemoverConsultor(consultorId);
+            Snackbar.Add("Consultor removido com sucesso!", Severity.Success);
+        }
+    }
+
+    // Método para remover um consultor
+    private void RemoverConsultor(int id)
+    {
+        ConsultorService.RemoverConsultor(id); // Chama o serviço para remover
+        consultores = ConsultorService.GetConsultores(); // Atualiza a lista de consultores
+        StateHasChanged(); // Atualiza a interface
+    }
     
+    // Método de pesquisa
+    private void Pesquisar()
+    {
+        if (string.IsNullOrWhiteSpace(termoPesquisa))
+        {
+            consultores = ConsultorService.GetConsultores();
+        }
+        else
+        {
+            consultores = ConsultorService.BuscarConsultorPorNome(termoPesquisa);
+        }
+    }
 }

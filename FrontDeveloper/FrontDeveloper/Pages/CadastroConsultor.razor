@@ -1,6 +1,182 @@
-﻿@page "/CadastroConsultor"
-<h3>CadastroConsultor</h3>
+﻿@page "/cadastro-consultor"
+@using FrontDeveloper.Pages.Models
+@using FrontDeveloper.Pages.Services
+@inject ConsultorService ConsultorService
+@inject NavigationManager Navigation
+@inject ISnackbar Snackbar
+@inject IJSRuntime JSRuntime
+
+<MudPaper Class="p-4" Elevation="4">
+    <MudForm>
+        <!-- Cabeçalho da página -->
+        <MudText Align="Align.Center" Color="Color.Primary" Typo="Typo.h5">
+            Cadastro de Consultores Financeiros
+        </MudText>
+
+        <!-- Primeira linha de campos do formulário -->
+        <MudGrid Spacing="2">
+            <MudItem xs="12" md="4" Class="mb-3">
+                <MudTextField
+                    Label="Nome"
+                    @bind-Value="consultor.Nome"
+                    Variant="Variant.Outlined"
+                    Required
+                    Adornment="Adornment.End"
+                    AdornmentIcon="@Icons.Material.Filled.AccountCircle"
+                    AdornmentColor="Color.Primary" />
+            </MudItem>
+
+            <MudItem xs="12" md="4" Class="mb-3">
+                <MudTextField
+                    Label="Gênero"
+                    @bind-Value="consultor.Genero"
+                    Variant="Variant.Outlined"
+                    Required
+                    Adornment="Adornment.End"
+                    AdornmentIcon="@Icons.Material.Filled.Transgender"
+                    AdornmentColor="Color.Primary"/>
+            </MudItem>  
+
+            <MudItem xs="12" md="4" Class="mb-3">
+                <MudTextField
+                    T="DateTime?"
+                    Format="yyyy-MM-dd"
+                    Label="Data de Contratação"
+                    InputType="InputType.Date"
+                    Variant="Variant.Outlined"
+                    Required
+                    Adornment="Adornment.End"
+                    AdornmentIcon="@Icons.Material.Filled.CalendarToday"
+                    @bind-Value="consultor.DataContratacao"
+                    AdornmentColor="Color.Primary"/>
+            </MudItem>
+        </MudGrid>
+
+        <!-- Segunda linha de campos do formulário -->
+        <MudGrid Spacing="2">
+            <MudItem xs="12" md="4" Class="mb-3">
+                <MudTextField
+                    Label="Especialização"
+                    @bind-Value="consultor.Especializacao"
+                    Variant="Variant.Outlined"
+                    Required
+                    Adornment="Adornment.End"
+                    AdornmentIcon="@Icons.Material.Filled.Work"
+                    AdornmentColor="Color.Primary"/>
+            </MudItem>
+
+            <MudItem xs="12" md="4" Class="mb-3">
+                <MudTextField
+                    Label="Salário"
+                    @bind-Value="consultor.Salario"
+                    Variant="Variant.Outlined"
+                    Type="number"
+                    Required
+                    Adornment="Adornment.End"
+                    AdornmentIcon="@Icons.Material.Filled.AttachMoney"
+                    AdornmentColor="Color.Primary"/>
+            </MudItem>
+
+            <MudItem xs="12" md="4" Class="mb-3">
+                <MudTextField
+                    Label="Regime de Trabalho"
+                    @bind-Value="consultor.RegimeTrabalho"
+                    Variant="Variant.Outlined"
+                    Required
+                    Adornment="Adornment.End"
+                    AdornmentIcon="@Icons.Material.Filled.BusinessCenter"
+                    AdornmentColor="Color.Primary"/>
+            </MudItem>
+        </MudGrid>
+
+        <!-- Terceira linha de campos do formulário -->
+        <MudGrid Spacing="2">
+            <MudItem xs="12" md="4" Class="mb-3">
+                <MudTextField
+                    Label="Usuário do Sistema"
+                    @bind-Value="consultor.UsuarioSistema"
+                    Variant="Variant.Outlined"
+                    Required
+                    Adornment="Adornment.End"
+                    AdornmentIcon="@Icons.Material.Filled.Person"
+                    AdornmentColor="Color.Primary"/>
+            </MudItem>
+
+            <MudItem xs="12" md="4" Class="mb-3">
+                <MudTextField
+                    Label="Telefone"
+                    @bind-Value="consultor.Telefone"
+                    Type="tel"
+                    Variant="Variant.Outlined"
+                    Required
+                    Adornment="Adornment.End"
+                    AdornmentIcon="@Icons.Material.Filled.Smartphone"
+                    AdornmentColor="Color.Primary"/>
+            </MudItem>
+
+            <MudItem xs="12" md="4" Class="mb-3">
+                <MudTextField
+                    Label="Endereço"
+                    @bind-Value="consultor.Endereco"
+                    Variant="Variant.Outlined"
+                    Required
+                    Adornment="Adornment.End"
+                    AdornmentIcon="@Icons.Material.Filled.LocationOn"
+                    AdornmentColor="Color.Primary"/>
+            </MudItem>
+        </MudGrid>
+
+        <!-- Quarta linha de campos do formulário -->
+        <MudGrid Spacing="2">
+            <MudItem xs="12" md="4" Class="mb-3">
+                <MudTextField
+                    Label="E-mail"
+                    @bind-Value="consultor.Email"
+                    Type="email"
+                    Variant="Variant.Outlined"
+                    Required
+                    Adornment="Adornment.End"
+                    AdornmentIcon="@Icons.Material.Filled.ContactMail"
+                    AdornmentColor="Color.Primary"/>
+            </MudItem>
+        </MudGrid>
+
+        <!-- Botão de cadastro -->
+        <MudGrid Justify="Justify.Center">
+            <MudItem xs="12" md="4" Class="mt-4">
+                <MudButton Color="Color.Success" Variant="Variant.Filled" Style="width: 100%; height: 100%;"
+                           @onclick="@(() => { CadastrarConsultor(); Snackbar.Add("Cadastro efetuado com sucesso!", Severity.Success); })">
+                    Cadastrar
+                </MudButton>
+            </MudItem>
+        </MudGrid>
+    </MudForm>
+</MudPaper>
 
 @code {
-    
+    // Objeto que armazena os dados do consultor
+    private Consultor consultor = new();
+
+    // Método chamado na inicialização da página
+    protected override async Task OnInitializedAsync()
+    {
+        var consultorJson = await JSRuntime.InvokeAsync<string>("localStorage.getItem", "consultorEdicao");
+
+        if (!string.IsNullOrEmpty(consultorJson))
+        {
+            consultor = System.Text.Json.JsonSerializer.Deserialize<Consultor>(consultorJson);
+        }
+    }
+
+    // Método para cadastrar ou editar um consultor
+    private async Task CadastrarConsultor()
+    {
+        if (consultor.ConsultorId > 0)
+            ConsultorService.EditarConsultor(consultor);
+        else
+            ConsultorService.AdicionarConsultor(consultor);
+
+        await JSRuntime.InvokeVoidAsync("localStorage.removeItem", "consultorEdicao");
+        Navigation.NavigateTo("/lista-consultores");
+    }
 }

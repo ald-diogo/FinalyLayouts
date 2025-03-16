@@ -36,7 +36,7 @@ public class Secretario
     public decimal Salario { get; set; }
     
     [Required(ErrorMessage = "O horário de trabalho é obrigatório.")]
-    public string HorarioTrabalho { get; set; }
+    public TimeSpan? HorarioTrabalho { get; set; }
     
     [Required(ErrorMessage = "O nome de usuário é obrigatório.")]
     [StringLength(50, ErrorMessage = "O nome de usuário deve ter no máximo 50 caracteres.")]
