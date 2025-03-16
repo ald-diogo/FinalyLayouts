@@ -1,0 +1,79 @@
+﻿@page "/Prof/Menu"
+
+<MudNavLink Href="/Prof/Index" Match="NavLinkMatch.All">
+    <MudIcon Icon="@Icons.Material.Filled.Home" IconColor="Color.Warning" />
+    Início
+</MudNavLink>
+
+<MudNavGroup
+    Icon="@Icons.Material.Filled.Dashboard"
+    IconColor="Color.Error"
+    Title="Painel"
+    Expanded="true">
+    <MudNavLink
+        Href="/"
+        Match="NavLinkMatch.Prefix"
+        Icon="@Icons.Material.Filled.PersonAdd"
+        IconColor="Color.Success">
+        
+    </MudNavLink>
+
+    <MudNavLink
+        Href="/"
+        Match="NavLinkMatch.Prefix"
+        Icon="@Icons.Material.Filled.MenuBook"
+        IconColor="Color.Surface">
+        
+    </MudNavLink>
+    
+    <!-- Ícone de gráfico, representando desempenho -->
+    <MudNavLink
+        Href="/"
+        Match="NavLinkMatch.Prefix"
+        Icon="@Icons.Material.Filled.TrendingUp" 
+        IconColor="Color.Success">
+        
+    </MudNavLink>
+
+
+    <MudNavLink
+        T="bool"
+        Href="/"
+        Match="NavLinkMatch.Prefix"
+        Icon="@Icons.Material.Filled.Schedule"
+        IconColor="Color.Success">
+        
+    </MudNavLink>
+
+    <MudNavLink
+        Href="/"
+        Match="NavLinkMatch.Prefix"
+        Icon="@Icons.Material.Filled.AdminPanelSettings"
+        IconColor="Color.Secondary">
+        
+    </MudNavLink>
+</MudNavGroup>
+
+<MudNavLink
+    T="bool"
+    Href="/Prof/Seguranca"
+    Match="NavLinkMatch.Prefix"
+    Icon="@Icons.Material.Filled.Lock"
+    IconColor = "Color.Default">Segurança
+</MudNavLink>
+
+<MudNavLink
+    Href="/Prof/Suporte"
+    Match="NavLinkMatch.Prefix"
+    Icon="@Icons.Material.Filled.Help"
+    IconColor="Color.Surface">
+    Suporte
+</MudNavLink>
+
+<MudNavLink
+    Href="/Prof/Sobre"
+    Match="NavLinkMatch.Prefix"
+    Icon="@Icons.Material.Filled.Info"
+    IconColor="Color.Info">
+    Sobre
+</MudNavLink>

@@ -1,4 +1,4 @@
-﻿@page "/Coor/Login"
+﻿@page "/Prof/Login"
 @using MudBlazor
 @inject NavigationManager NavigationManager
 
@@ -8,7 +8,7 @@
             Typo="Typo.h4"
             Align="Align.Center"
             Class="mb-4">
-            Seja Bem-Vindo(a)! Caro(a) Coordenador(a)
+            Seja Bem-Vindo(a)! Caro(a) Professor(a)
         </MudText>
 
         <MudForm @ref="loginForm" Model="loginModel" OnValidSubmit="HandleLogin" >
@@ -45,7 +45,7 @@
 
             <!-- Botão Entrar com cor preta e ícone -->
             <MudButton
-                Href="/Coor/Menu"
+                Href="/Prof/Menu"
                 Class="mt-4"
                 FullWidth="true"
                 Variant="Variant.Filled"
@@ -57,7 +57,7 @@
 
             <!-- Botão Esqueci-me da senha com cor vermelha -->
             <MudButton
-                Href="/Coor/RecuperarSenha"
+                Href="/Prof/RecuperarSenha"
                 Class="mt-4"
                 FullWidth="true"
                 Variant="Variant.Filled"
@@ -69,7 +69,7 @@
 
             <!-- Link Criar uma conta com cor roxa -->
             <MudText Align="Align.Center">
-                <MudLink Href="/Coor/Registrar" Color="Color.Default">
+                <MudLink Href="/Prof/Registrar" Color="Color.Default">
                     <MudIconButton Icon="@Icons.Material.Filled.PersonAdd" Color="Color.Inherit" />
                     Criar uma conta
                 </MudLink>
@@ -91,7 +91,7 @@
         {
             loginError = false;
             // Redirecionar para a página de menu após login bem-sucedido
-            NavigationManager.NavigateTo("/Coor/Menu");
+            NavigationManager.NavigateTo("/Prof/Menu");
         }
         else
         {
