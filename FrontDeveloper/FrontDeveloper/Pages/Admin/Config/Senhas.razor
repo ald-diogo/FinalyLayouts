@@ -1,6 +1,7 @@
 ﻿@page "/Admin/Senhas"
 
 @using MudBlazor
+@inject ISnackbar Snackbar
 
 <PageTitle>Segurança do Sistema - Gerenciar Senhas</PageTitle>
 
@@ -34,7 +35,11 @@
         <MudCheckBox T="bool" @bind-Checked="notificarExpiracao" Label="Notificar Usuário Antes da Expiração" />
         <MudTextField @bind-Value="diasAvisoExpiracao" Label="Número de Dias Antes de Expirar para Notificar" Type="number" FullWidth="true" Margin="Margin.Dense" Disabled="!notificarExpiracao" />
 
-        <MudButton Color="Color.Secondary" OnClick="SalvarConfiguracoes" Variant="Variant.Filled" FullWidth="true">
+        <MudButton
+            Color="Color.Secondary"
+            Variant="Variant.Filled"
+            FullWidth="true"
+            @onclick="@(() => { SalvarConfiguracoes(); Snackbar.Add("Configurações salvas com sucesso!", Severity.Success); })">
             Salvar Configurações
         </MudButton>
     </MudExpansionPanel>
