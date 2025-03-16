@@ -2,6 +2,7 @@
 
 @using MudBlazor
 @inject ISnackbar Snackbar
+@inject IDialogService DialogService
 
 <MudContainer>
     <MudGrid>
@@ -22,16 +23,9 @@
                         Color="Color.Primary"
                         FullWidth="true"
                         StartIcon="@Icons.Material.Filled.Backup"
-                        @onclick="@(() => { IniciarBackupManual(); Snackbar.Add("Backup manual iniciado com sucesso!", Severity.Info); })">
+                        @onclick="IniciarBackupManual">
                         Iniciar Backup Manual
                     </MudButton>
-
-                    <MudTooltip Text="Clique para realizar um backup manual imediatamente." Arrow="true">
-                        <MudIconButton 
-                            Icon="@Icons.Material.Filled.HelpOutline" 
-                            Color="Color.Info" 
-                            Size="Size.Small" />
-                    </MudTooltip>
                 </MudCardContent>
             </MudCard>
         </MudItem>
@@ -62,16 +56,11 @@
                         Color="Color.Secondary"
                         FullWidth="true"
                         StartIcon="@Icons.Material.Filled.Alarm"
-                        @onclick="@(() => { AgendarBackup(); Snackbar.Add("Aviso: O backup foi agendado com sucesso!", Severity.Warning); })">
+                        @onclick="OnButtonClicked">
                         Agendar Backup
                     </MudButton>
 
-                    <MudTooltip Text="Defina a frequência e o horário para o backup ser realizado automaticamente." Arrow="true">
-                        <MudIconButton 
-                            Icon="@Icons.Material.Filled.HelpOutline" 
-                            Color="Color.Info" 
-                            Size="Size.Small" />
-                    </MudTooltip>
+                    <MudChip T="string">@state</MudChip>
                 </MudCardContent>
             </MudCard>
         </MudItem>
@@ -91,14 +80,9 @@
                         Color="Color.Error"
                         FullWidth="true"
                         StartIcon="@Icons.Material.Filled.RestoreFromTrash"
-                        @onclick="@(() => { RestaurarBackup(); Snackbar.Add("Erro: Falha ao restaurar backup!", Severity.Error); })">
+                        @onclick="RestaurarBackup">
                         Restaurar Backup
                     </MudButton>
-
-
-                    <MudTooltip Text="Escolha um backup anterior para restaurá-lo." Arrow="true">
-                        <MudIconButton Icon="@Icons.Material.Filled.HelpOutline" Color="Color.Info" Size="Size.Small" />
-                    </MudTooltip>
                 </MudCardContent>
             </MudCard>
         </MudItem>
@@ -129,11 +113,12 @@
 </MudContainer>
 
 @code {
-    private string frequencia;
-    private string horaBackup;
-    private string backupSelecionado;
+    private string frequencia = "";
+    private string horaBackup = "";
+    private string backupSelecionado = "";
+    private string state = "A caixa de diálogo ainda não foi aberta";
 
-    private List<BackupHistorico> historicoBackups = new List<BackupHistorico>
+    private List<BackupHistorico> historicoBackups = new()
     {
         new BackupHistorico { Data = "01/01/2025", TipoBackup = "Completo", Status = "Sucesso", Tamanho = "5GB" },
         new BackupHistorico { Data = "02/01/2025", TipoBackup = "Incremental", Status = "Falha", Tamanho = "2GB" },
@@ -142,27 +127,64 @@
 
     private void IniciarBackupManual()
     {
-        // Lógica para realizar o backup manual
         Console.WriteLine("Backup manual iniciado...");
+        Snackbar.Add("Backup manual iniciado com sucesso!", Severity.Info);
     }
 
-    private void AgendarBackup()
+    private async Task OnButtonClicked()
     {
-        // Lógica para agendar o backup automático
+        bool? result = await DialogService.ShowMessageBox(
+            "Aviso",
+            "Tem certeza que deseja agendar o backup?",
+            yesText: "Agendar",
+            cancelText: "Cancelar"
+        );
+
+        if (result == true)
+        {
+            await AgendarBackup();
+        }
+        else
+        {
+            state = "Operação cancelada!";
+        }
+
+        StateHasChanged();
+    }
+
+    private async Task AgendarBackup()
+    {
+        if (string.IsNullOrWhiteSpace(frequencia) || string.IsNullOrWhiteSpace(horaBackup))
+        {
+            Snackbar.Add("Erro: Frequência e hora do backup são obrigatórias.", Severity.Error);
+            return;
+        }
+
+        await Task.Delay(1000);
         Console.WriteLine($"Backup agendado para {frequencia} às {horaBackup}.");
+        Snackbar.Add("O backup foi agendado com sucesso!", Severity.Success);
+        state = "Backup agendado!";
     }
 
     private void RestaurarBackup()
     {
-        // Lógica para restaurar backup selecionado
-        Console.WriteLine($"Restaurando backup {backupSelecionado}...");
+        if (!string.IsNullOrEmpty(backupSelecionado))
+        {
+            Console.WriteLine($"Restaurando backup {backupSelecionado}...");
+            Snackbar.Add("Backup restaurado com sucesso!", Severity.Success);
+        }
+        else
+        {
+            Snackbar.Add("Erro: Falha ao restaurar backup! Backup não selecionado.", Severity.Error);
+        }
     }
 
     public class BackupHistorico
     {
-        public string Data { get; set; }
-        public string TipoBackup { get; set; }
-        public string Status { get; set; }
-        public string Tamanho { get; set; }
+        public string Data { get; set; } = "";
+        public string TipoBackup { get; set; } = "";
+        public string Status { get; set; } = "";
+        public string Tamanho { get; set; } = "";
     }
 }
+
