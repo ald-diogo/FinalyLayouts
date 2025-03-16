@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "2kaTvZD/KQ1tIXB3ktAUSGFFGcs6MfSPQMnZvzJ9y+E=",
+  "Hash": "UTqMoYPOhJF4NvIOxVjAkct3WzfO7ahk/u5bLTqkXvg=",
   "Source": "FrontDeveloper",
   "BasePath": "/",
   "Mode": "Root",
@@ -31,8 +31,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "WasmResource",
       "AssetTraitValue": "manifest",
-      "Fingerprint": "lgif31yyjf",
-      "Integrity": "NTJ2QFvTrRModo7uldjJMbnhnw7Gw/7xmzYo34Op2iM=",
+      "Fingerprint": "8yxeibcrxm",
+      "Integrity": "oH7kQSF/VubMhEKqVA54l6XgaHb5lAhIA7hPtgof5ZQ=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "obj\\Debug\\net9.0\\blazor.boot.json"
@@ -199,8 +199,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "WasmResource",
       "AssetTraitValue": "symbol",
-      "Fingerprint": "7fa3uw1v6j",
-      "Integrity": "g4VyVWHVLOIFxK1KmZk5KKkUbIKHE0CPGuRZ0iyv8Lk=",
+      "Fingerprint": "70p9a4t8qt",
+      "Integrity": "15A2K6lPxzxkGMcELdKdOeHBmpIWYs4urVV539Z8U9U=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "obj\\Debug\\net9.0\\FrontDeveloper.pdb"
@@ -220,8 +220,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "WasmResource",
       "AssetTraitValue": "runtime",
-      "Fingerprint": "4zhm0cqdwv",
-      "Integrity": "gJRMNAvBv75EUqt8Z2eqlNOxsjHAJN45ovqEgRGWR0M=",
+      "Fingerprint": "nmxr6x959m",
+      "Integrity": "AWMDeM8HznKRg4cJgTzNysm6Cnlw5ThMb1UnSDLyWeQ=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Dev\\RiderProjects\\FinalyLayouts\\FrontDeveloper\\FrontDeveloper\\obj\\Debug\\net9.0\\webcil\\FrontDeveloper.wasm"
@@ -4595,7 +4595,7 @@
       "OriginalItemSpec": "C:\\Dev\\RiderProjects\\FinalyLayouts\\FrontDeveloper\\FrontDeveloper\\bin\\Debug\\net9.0\\wwwroot\\_framework\\System.Diagnostics.Process.wasm"
     },
     {
-      "Identity": "C:\\Dev\\RiderProjects\\FinalyLayouts\\FrontDeveloper\\FrontDeveloper\\obj\\Debug\\net9.0\\compressed\\15ou07cljt-lgif31yyjf.gz",
+      "Identity": "C:\\Dev\\RiderProjects\\FinalyLayouts\\FrontDeveloper\\FrontDeveloper\\obj\\Debug\\net9.0\\compressed\\15ou07cljt-8yxeibcrxm.gz",
       "SourceId": "FrontDeveloper",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Dev\\RiderProjects\\FinalyLayouts\\FrontDeveloper\\FrontDeveloper\\obj\\Debug\\net9.0\\compressed\\",
@@ -4609,8 +4609,8 @@
       "RelatedAsset": "C:\\Dev\\RiderProjects\\FinalyLayouts\\FrontDeveloper\\FrontDeveloper\\bin\\Debug\\net9.0\\wwwroot\\_framework\\blazor.boot.json",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "l4fdr72bp0",
-      "Integrity": "1eSLLcVv3m5SlBGyW/5gIlPDH5vPIi/ZUp9xrmE5848=",
+      "Fingerprint": "lspz5dc36n",
+      "Integrity": "q5k6PpZ90myJmHFYs3Vk/K7iU1nZqsC30H+eOEF1i7I=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Dev\\RiderProjects\\FinalyLayouts\\FrontDeveloper\\FrontDeveloper\\bin\\Debug\\net9.0\\wwwroot\\_framework\\blazor.boot.json"
@@ -6842,12 +6842,12 @@
       "OriginalItemSpec": "C:\\Dev\\RiderProjects\\FinalyLayouts\\FrontDeveloper\\FrontDeveloper\\bin\\Debug\\net9.0\\wwwroot\\_framework\\dotnet.runtime.js"
     },
     {
-      "Identity": "C:\\Dev\\RiderProjects\\FinalyLayouts\\FrontDeveloper\\FrontDeveloper\\obj\\Debug\\net9.0\\compressed\\ka6z20fv6t-7fa3uw1v6j.gz",
+      "Identity": "C:\\Dev\\RiderProjects\\FinalyLayouts\\FrontDeveloper\\FrontDeveloper\\obj\\Debug\\net9.0\\compressed\\ka6z20fv6t-70p9a4t8qt.gz",
       "SourceId": "FrontDeveloper",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Dev\\RiderProjects\\FinalyLayouts\\FrontDeveloper\\FrontDeveloper\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "/",
-      "RelativePath": "_framework/FrontDeveloper#[.{fingerprint=7fa3uw1v6j}]!.pdb.gz",
+      "RelativePath": "_framework/FrontDeveloper#[.{fingerprint=70p9a4t8qt}]!.pdb.gz",
       "AssetKind": "Build",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -6856,8 +6856,8 @@
       "RelatedAsset": "C:\\Dev\\RiderProjects\\FinalyLayouts\\FrontDeveloper\\FrontDeveloper\\bin\\Debug\\net9.0\\wwwroot\\_framework\\FrontDeveloper.pdb",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "ns0qo66bjf",
-      "Integrity": "eWlw8KbOlR2qYf5ys4ARyNiRcbluaZENVyPIH1V5bx8=",
+      "Fingerprint": "4vm5bjmrnh",
+      "Integrity": "ADrvtzSc5SMSS+ikMODojIQR82z9j+l+NX7iWD1h3R8=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Dev\\RiderProjects\\FinalyLayouts\\FrontDeveloper\\FrontDeveloper\\bin\\Debug\\net9.0\\wwwroot\\_framework\\FrontDeveloper.pdb"
@@ -6884,12 +6884,12 @@
       "OriginalItemSpec": "C:\\Dev\\RiderProjects\\FinalyLayouts\\FrontDeveloper\\FrontDeveloper\\bin\\Debug\\net9.0\\wwwroot\\_framework\\System.Data.wasm"
     },
     {
-      "Identity": "C:\\Dev\\RiderProjects\\FinalyLayouts\\FrontDeveloper\\FrontDeveloper\\obj\\Debug\\net9.0\\compressed\\l0b53qayi3-4zhm0cqdwv.gz",
+      "Identity": "C:\\Dev\\RiderProjects\\FinalyLayouts\\FrontDeveloper\\FrontDeveloper\\obj\\Debug\\net9.0\\compressed\\l0b53qayi3-nmxr6x959m.gz",
       "SourceId": "FrontDeveloper",
       "SourceType": "Computed",
       "ContentRoot": "C:\\Dev\\RiderProjects\\FinalyLayouts\\FrontDeveloper\\FrontDeveloper\\obj\\Debug\\net9.0\\compressed\\",
       "BasePath": "/",
-      "RelativePath": "_framework/FrontDeveloper#[.{fingerprint=4zhm0cqdwv}]!.wasm.gz",
+      "RelativePath": "_framework/FrontDeveloper#[.{fingerprint=nmxr6x959m}]!.wasm.gz",
       "AssetKind": "Build",
       "AssetMode": "All",
       "AssetRole": "Alternative",
@@ -6898,8 +6898,8 @@
       "RelatedAsset": "C:\\Dev\\RiderProjects\\FinalyLayouts\\FrontDeveloper\\FrontDeveloper\\bin\\Debug\\net9.0\\wwwroot\\_framework\\FrontDeveloper.wasm",
       "AssetTraitName": "Content-Encoding",
       "AssetTraitValue": "gzip",
-      "Fingerprint": "6eeaoyzwd1",
-      "Integrity": "oog/NvikYevzla6ZOTLr1DErW+d/Y0zKpJKTYTIc464=",
+      "Fingerprint": "l921py244d",
+      "Integrity": "uWKqo5RE8f9DEcIsU/7gYk+9P1rxbnQR1CcRE2fuVPQ=",
       "CopyToOutputDirectory": "PreserveNewest",
       "CopyToPublishDirectory": "Never",
       "OriginalItemSpec": "C:\\Dev\\RiderProjects\\FinalyLayouts\\FrontDeveloper\\FrontDeveloper\\bin\\Debug\\net9.0\\wwwroot\\_framework\\FrontDeveloper.wasm"
@@ -9347,11 +9347,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"NTJ2QFvTrRModo7uldjJMbnhnw7Gw/7xmzYo34Op2iM=\""
+          "Value": "\"oH7kQSF/VubMhEKqVA54l6XgaHb5lAhIA7hPtgof5ZQ=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 16 Mar 2025 21:00:19 GMT"
+          "Value": "Sun, 16 Mar 2025 22:13:13 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -9361,18 +9361,18 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-NTJ2QFvTrRModo7uldjJMbnhnw7Gw/7xmzYo34Op2iM="
+          "Value": "sha256-oH7kQSF/VubMhEKqVA54l6XgaHb5lAhIA7hPtgof5ZQ="
         }
       ]
     },
     {
       "Route": "_framework/blazor.boot.json",
-      "AssetFile": "C:\\Dev\\RiderProjects\\FinalyLayouts\\FrontDeveloper\\FrontDeveloper\\obj\\Debug\\net9.0\\compressed\\15ou07cljt-lgif31yyjf.gz",
+      "AssetFile": "C:\\Dev\\RiderProjects\\FinalyLayouts\\FrontDeveloper\\FrontDeveloper\\obj\\Debug\\net9.0\\compressed\\15ou07cljt-8yxeibcrxm.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000079980805"
+          "Quality": "0.000080044825"
         }
       ],
       "ResponseHeaders": [
@@ -9382,15 +9382,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "12502"
+          "Value": "12492"
         },
         {
           "Name": "ETag",
-          "Value": "\"1eSLLcVv3m5SlBGyW/5gIlPDH5vPIi/ZUp9xrmE5848=\""
+          "Value": "\"q5k6PpZ90myJmHFYs3Vk/K7iU1nZqsC30H+eOEF1i7I=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 16 Mar 2025 20:56:50 GMT"
+          "Value": "Sun, 16 Mar 2025 22:01:46 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -9410,19 +9410,19 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"NTJ2QFvTrRModo7uldjJMbnhnw7Gw/7xmzYo34Op2iM=\""
+          "Value": "W/\"oH7kQSF/VubMhEKqVA54l6XgaHb5lAhIA7hPtgof5ZQ=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-NTJ2QFvTrRModo7uldjJMbnhnw7Gw/7xmzYo34Op2iM="
+          "Value": "sha256-oH7kQSF/VubMhEKqVA54l6XgaHb5lAhIA7hPtgof5ZQ="
         }
       ]
     },
     {
       "Route": "_framework/blazor.boot.json.gz",
-      "AssetFile": "C:\\Dev\\RiderProjects\\FinalyLayouts\\FrontDeveloper\\FrontDeveloper\\obj\\Debug\\net9.0\\compressed\\15ou07cljt-lgif31yyjf.gz",
+      "AssetFile": "C:\\Dev\\RiderProjects\\FinalyLayouts\\FrontDeveloper\\FrontDeveloper\\obj\\Debug\\net9.0\\compressed\\15ou07cljt-8yxeibcrxm.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -9431,7 +9431,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "12502"
+          "Value": "12492"
         },
         {
           "Name": "Content-Type",
@@ -9439,11 +9439,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"1eSLLcVv3m5SlBGyW/5gIlPDH5vPIi/ZUp9xrmE5848=\""
+          "Value": "\"q5k6PpZ90myJmHFYs3Vk/K7iU1nZqsC30H+eOEF1i7I=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 16 Mar 2025 20:56:50 GMT"
+          "Value": "Sun, 16 Mar 2025 22:01:46 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -9461,7 +9461,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-1eSLLcVv3m5SlBGyW/5gIlPDH5vPIi/ZUp9xrmE5848="
+          "Value": "sha256-q5k6PpZ90myJmHFYs3Vk/K7iU1nZqsC30H+eOEF1i7I="
         }
       ]
     },
@@ -11391,168 +11391,7 @@
       ]
     },
     {
-      "Route": "_framework/FrontDeveloper.4zhm0cqdwv.wasm",
-      "AssetFile": "C:\\Dev\\RiderProjects\\FinalyLayouts\\FrontDeveloper\\FrontDeveloper\\bin\\Debug\\net9.0\\wwwroot\\_framework\\FrontDeveloper.wasm",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "510229"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "application/wasm"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"gJRMNAvBv75EUqt8Z2eqlNOxsjHAJN45ovqEgRGWR0M=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sun, 16 Mar 2025 21:00:17 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "4zhm0cqdwv"
-        },
-        {
-          "Name": "label",
-          "Value": "_framework/FrontDeveloper.wasm"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-gJRMNAvBv75EUqt8Z2eqlNOxsjHAJN45ovqEgRGWR0M="
-        }
-      ]
-    },
-    {
-      "Route": "_framework/FrontDeveloper.4zhm0cqdwv.wasm",
-      "AssetFile": "C:\\Dev\\RiderProjects\\FinalyLayouts\\FrontDeveloper\\FrontDeveloper\\obj\\Debug\\net9.0\\compressed\\l0b53qayi3-4zhm0cqdwv.gz",
-      "Selectors": [
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip",
-          "Quality": "0.000007436658"
-        }
-      ],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "134468"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"oog/NvikYevzla6ZOTLr1DErW+d/Y0zKpJKTYTIc464=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sun, 16 Mar 2025 21:00:20 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "application/wasm"
-        },
-        {
-          "Name": "ETag",
-          "Value": "W/\"gJRMNAvBv75EUqt8Z2eqlNOxsjHAJN45ovqEgRGWR0M=\""
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "4zhm0cqdwv"
-        },
-        {
-          "Name": "label",
-          "Value": "_framework/FrontDeveloper.wasm"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-gJRMNAvBv75EUqt8Z2eqlNOxsjHAJN45ovqEgRGWR0M="
-        }
-      ]
-    },
-    {
-      "Route": "_framework/FrontDeveloper.4zhm0cqdwv.wasm.gz",
-      "AssetFile": "C:\\Dev\\RiderProjects\\FinalyLayouts\\FrontDeveloper\\FrontDeveloper\\obj\\Debug\\net9.0\\compressed\\l0b53qayi3-4zhm0cqdwv.gz",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "134468"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "application/wasm"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"oog/NvikYevzla6ZOTLr1DErW+d/Y0zKpJKTYTIc464=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sun, 16 Mar 2025 21:00:20 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        },
-        {
-          "Name": "Content-Encoding",
-          "Value": "gzip"
-        },
-        {
-          "Name": "Vary",
-          "Value": "Content-Encoding"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "4zhm0cqdwv"
-        },
-        {
-          "Name": "label",
-          "Value": "_framework/FrontDeveloper.wasm.gz"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-oog/NvikYevzla6ZOTLr1DErW+d/Y0zKpJKTYTIc464="
-        }
-      ]
-    },
-    {
-      "Route": "_framework/FrontDeveloper.7fa3uw1v6j.pdb",
+      "Route": "_framework/FrontDeveloper.70p9a4t8qt.pdb",
       "AssetFile": "C:\\Dev\\RiderProjects\\FinalyLayouts\\FrontDeveloper\\FrontDeveloper\\bin\\Debug\\net9.0\\wwwroot\\_framework\\FrontDeveloper.pdb",
       "Selectors": [],
       "ResponseHeaders": [
@@ -11562,7 +11401,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "314784"
+          "Value": "315292"
         },
         {
           "Name": "Content-Type",
@@ -11570,11 +11409,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"g4VyVWHVLOIFxK1KmZk5KKkUbIKHE0CPGuRZ0iyv8Lk=\""
+          "Value": "\"15A2K6lPxzxkGMcELdKdOeHBmpIWYs4urVV539Z8U9U=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 16 Mar 2025 21:00:17 GMT"
+          "Value": "Sun, 16 Mar 2025 22:13:10 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -11584,7 +11423,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "7fa3uw1v6j"
+          "Value": "70p9a4t8qt"
         },
         {
           "Name": "label",
@@ -11592,18 +11431,18 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-g4VyVWHVLOIFxK1KmZk5KKkUbIKHE0CPGuRZ0iyv8Lk="
+          "Value": "sha256-15A2K6lPxzxkGMcELdKdOeHBmpIWYs4urVV539Z8U9U="
         }
       ]
     },
     {
-      "Route": "_framework/FrontDeveloper.7fa3uw1v6j.pdb",
-      "AssetFile": "C:\\Dev\\RiderProjects\\FinalyLayouts\\FrontDeveloper\\FrontDeveloper\\obj\\Debug\\net9.0\\compressed\\ka6z20fv6t-7fa3uw1v6j.gz",
+      "Route": "_framework/FrontDeveloper.70p9a4t8qt.pdb",
+      "AssetFile": "C:\\Dev\\RiderProjects\\FinalyLayouts\\FrontDeveloper\\FrontDeveloper\\obj\\Debug\\net9.0\\compressed\\ka6z20fv6t-70p9a4t8qt.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000003681939"
+          "Quality": "0.000003673864"
         }
       ],
       "ResponseHeaders": [
@@ -11613,15 +11452,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "271595"
+          "Value": "272192"
         },
         {
           "Name": "ETag",
-          "Value": "\"eWlw8KbOlR2qYf5ys4ARyNiRcbluaZENVyPIH1V5bx8=\""
+          "Value": "\"ADrvtzSc5SMSS+ikMODojIQR82z9j+l+NX7iWD1h3R8=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 16 Mar 2025 21:00:20 GMT"
+          "Value": "Sun, 16 Mar 2025 22:13:14 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -11641,13 +11480,13 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"g4VyVWHVLOIFxK1KmZk5KKkUbIKHE0CPGuRZ0iyv8Lk=\""
+          "Value": "W/\"15A2K6lPxzxkGMcELdKdOeHBmpIWYs4urVV539Z8U9U=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "7fa3uw1v6j"
+          "Value": "70p9a4t8qt"
         },
         {
           "Name": "label",
@@ -11655,13 +11494,13 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-g4VyVWHVLOIFxK1KmZk5KKkUbIKHE0CPGuRZ0iyv8Lk="
+          "Value": "sha256-15A2K6lPxzxkGMcELdKdOeHBmpIWYs4urVV539Z8U9U="
         }
       ]
     },
     {
-      "Route": "_framework/FrontDeveloper.7fa3uw1v6j.pdb.gz",
-      "AssetFile": "C:\\Dev\\RiderProjects\\FinalyLayouts\\FrontDeveloper\\FrontDeveloper\\obj\\Debug\\net9.0\\compressed\\ka6z20fv6t-7fa3uw1v6j.gz",
+      "Route": "_framework/FrontDeveloper.70p9a4t8qt.pdb.gz",
+      "AssetFile": "C:\\Dev\\RiderProjects\\FinalyLayouts\\FrontDeveloper\\FrontDeveloper\\obj\\Debug\\net9.0\\compressed\\ka6z20fv6t-70p9a4t8qt.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -11670,7 +11509,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "271595"
+          "Value": "272192"
         },
         {
           "Name": "Content-Type",
@@ -11678,11 +11517,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"eWlw8KbOlR2qYf5ys4ARyNiRcbluaZENVyPIH1V5bx8=\""
+          "Value": "\"ADrvtzSc5SMSS+ikMODojIQR82z9j+l+NX7iWD1h3R8=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 16 Mar 2025 21:00:20 GMT"
+          "Value": "Sun, 16 Mar 2025 22:13:14 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -11700,7 +11539,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "7fa3uw1v6j"
+          "Value": "70p9a4t8qt"
         },
         {
           "Name": "label",
@@ -11708,7 +11547,168 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-eWlw8KbOlR2qYf5ys4ARyNiRcbluaZENVyPIH1V5bx8="
+          "Value": "sha256-ADrvtzSc5SMSS+ikMODojIQR82z9j+l+NX7iWD1h3R8="
+        }
+      ]
+    },
+    {
+      "Route": "_framework/FrontDeveloper.nmxr6x959m.wasm",
+      "AssetFile": "C:\\Dev\\RiderProjects\\FinalyLayouts\\FrontDeveloper\\FrontDeveloper\\bin\\Debug\\net9.0\\wwwroot\\_framework\\FrontDeveloper.wasm",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "511253"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/wasm"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"AWMDeM8HznKRg4cJgTzNysm6Cnlw5ThMb1UnSDLyWeQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 16 Mar 2025 22:13:11 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "nmxr6x959m"
+        },
+        {
+          "Name": "label",
+          "Value": "_framework/FrontDeveloper.wasm"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-AWMDeM8HznKRg4cJgTzNysm6Cnlw5ThMb1UnSDLyWeQ="
+        }
+      ]
+    },
+    {
+      "Route": "_framework/FrontDeveloper.nmxr6x959m.wasm",
+      "AssetFile": "C:\\Dev\\RiderProjects\\FinalyLayouts\\FrontDeveloper\\FrontDeveloper\\obj\\Debug\\net9.0\\compressed\\l0b53qayi3-nmxr6x959m.gz",
+      "Selectors": [
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip",
+          "Quality": "0.000007413888"
+        }
+      ],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "134881"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"uWKqo5RE8f9DEcIsU/7gYk+9P1rxbnQR1CcRE2fuVPQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 16 Mar 2025 22:13:14 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/wasm"
+        },
+        {
+          "Name": "ETag",
+          "Value": "W/\"AWMDeM8HznKRg4cJgTzNysm6Cnlw5ThMb1UnSDLyWeQ=\""
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "nmxr6x959m"
+        },
+        {
+          "Name": "label",
+          "Value": "_framework/FrontDeveloper.wasm"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-AWMDeM8HznKRg4cJgTzNysm6Cnlw5ThMb1UnSDLyWeQ="
+        }
+      ]
+    },
+    {
+      "Route": "_framework/FrontDeveloper.nmxr6x959m.wasm.gz",
+      "AssetFile": "C:\\Dev\\RiderProjects\\FinalyLayouts\\FrontDeveloper\\FrontDeveloper\\obj\\Debug\\net9.0\\compressed\\l0b53qayi3-nmxr6x959m.gz",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "134881"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "application/wasm"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"uWKqo5RE8f9DEcIsU/7gYk+9P1rxbnQR1CcRE2fuVPQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 16 Mar 2025 22:13:14 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        },
+        {
+          "Name": "Content-Encoding",
+          "Value": "gzip"
+        },
+        {
+          "Name": "Vary",
+          "Value": "Content-Encoding"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "nmxr6x959m"
+        },
+        {
+          "Name": "label",
+          "Value": "_framework/FrontDeveloper.wasm.gz"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-uWKqo5RE8f9DEcIsU/7gYk+9P1rxbnQR1CcRE2fuVPQ="
         }
       ]
     },
@@ -11723,7 +11723,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "314784"
+          "Value": "315292"
         },
         {
           "Name": "Content-Type",
@@ -11731,11 +11731,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"g4VyVWHVLOIFxK1KmZk5KKkUbIKHE0CPGuRZ0iyv8Lk=\""
+          "Value": "\"15A2K6lPxzxkGMcELdKdOeHBmpIWYs4urVV539Z8U9U=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 16 Mar 2025 21:00:17 GMT"
+          "Value": "Sun, 16 Mar 2025 22:13:10 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -11745,18 +11745,18 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-g4VyVWHVLOIFxK1KmZk5KKkUbIKHE0CPGuRZ0iyv8Lk="
+          "Value": "sha256-15A2K6lPxzxkGMcELdKdOeHBmpIWYs4urVV539Z8U9U="
         }
       ]
     },
     {
       "Route": "_framework/FrontDeveloper.pdb",
-      "AssetFile": "C:\\Dev\\RiderProjects\\FinalyLayouts\\FrontDeveloper\\FrontDeveloper\\obj\\Debug\\net9.0\\compressed\\ka6z20fv6t-7fa3uw1v6j.gz",
+      "AssetFile": "C:\\Dev\\RiderProjects\\FinalyLayouts\\FrontDeveloper\\FrontDeveloper\\obj\\Debug\\net9.0\\compressed\\ka6z20fv6t-70p9a4t8qt.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000003681939"
+          "Quality": "0.000003673864"
         }
       ],
       "ResponseHeaders": [
@@ -11766,15 +11766,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "271595"
+          "Value": "272192"
         },
         {
           "Name": "ETag",
-          "Value": "\"eWlw8KbOlR2qYf5ys4ARyNiRcbluaZENVyPIH1V5bx8=\""
+          "Value": "\"ADrvtzSc5SMSS+ikMODojIQR82z9j+l+NX7iWD1h3R8=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 16 Mar 2025 21:00:20 GMT"
+          "Value": "Sun, 16 Mar 2025 22:13:14 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -11794,19 +11794,19 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"g4VyVWHVLOIFxK1KmZk5KKkUbIKHE0CPGuRZ0iyv8Lk=\""
+          "Value": "W/\"15A2K6lPxzxkGMcELdKdOeHBmpIWYs4urVV539Z8U9U=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-g4VyVWHVLOIFxK1KmZk5KKkUbIKHE0CPGuRZ0iyv8Lk="
+          "Value": "sha256-15A2K6lPxzxkGMcELdKdOeHBmpIWYs4urVV539Z8U9U="
         }
       ]
     },
     {
       "Route": "_framework/FrontDeveloper.pdb.gz",
-      "AssetFile": "C:\\Dev\\RiderProjects\\FinalyLayouts\\FrontDeveloper\\FrontDeveloper\\obj\\Debug\\net9.0\\compressed\\ka6z20fv6t-7fa3uw1v6j.gz",
+      "AssetFile": "C:\\Dev\\RiderProjects\\FinalyLayouts\\FrontDeveloper\\FrontDeveloper\\obj\\Debug\\net9.0\\compressed\\ka6z20fv6t-70p9a4t8qt.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -11815,7 +11815,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "271595"
+          "Value": "272192"
         },
         {
           "Name": "Content-Type",
@@ -11823,11 +11823,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"eWlw8KbOlR2qYf5ys4ARyNiRcbluaZENVyPIH1V5bx8=\""
+          "Value": "\"ADrvtzSc5SMSS+ikMODojIQR82z9j+l+NX7iWD1h3R8=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 16 Mar 2025 21:00:20 GMT"
+          "Value": "Sun, 16 Mar 2025 22:13:14 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -11845,7 +11845,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-eWlw8KbOlR2qYf5ys4ARyNiRcbluaZENVyPIH1V5bx8="
+          "Value": "sha256-ADrvtzSc5SMSS+ikMODojIQR82z9j+l+NX7iWD1h3R8="
         }
       ]
     },
@@ -11860,7 +11860,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "510229"
+          "Value": "511253"
         },
         {
           "Name": "Content-Type",
@@ -11868,11 +11868,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"gJRMNAvBv75EUqt8Z2eqlNOxsjHAJN45ovqEgRGWR0M=\""
+          "Value": "\"AWMDeM8HznKRg4cJgTzNysm6Cnlw5ThMb1UnSDLyWeQ=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 16 Mar 2025 21:00:17 GMT"
+          "Value": "Sun, 16 Mar 2025 22:13:11 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -11882,18 +11882,18 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-gJRMNAvBv75EUqt8Z2eqlNOxsjHAJN45ovqEgRGWR0M="
+          "Value": "sha256-AWMDeM8HznKRg4cJgTzNysm6Cnlw5ThMb1UnSDLyWeQ="
         }
       ]
     },
     {
       "Route": "_framework/FrontDeveloper.wasm",
-      "AssetFile": "C:\\Dev\\RiderProjects\\FinalyLayouts\\FrontDeveloper\\FrontDeveloper\\obj\\Debug\\net9.0\\compressed\\l0b53qayi3-4zhm0cqdwv.gz",
+      "AssetFile": "C:\\Dev\\RiderProjects\\FinalyLayouts\\FrontDeveloper\\FrontDeveloper\\obj\\Debug\\net9.0\\compressed\\l0b53qayi3-nmxr6x959m.gz",
       "Selectors": [
         {
           "Name": "Content-Encoding",
           "Value": "gzip",
-          "Quality": "0.000007436658"
+          "Quality": "0.000007413888"
         }
       ],
       "ResponseHeaders": [
@@ -11903,15 +11903,15 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "134468"
+          "Value": "134881"
         },
         {
           "Name": "ETag",
-          "Value": "\"oog/NvikYevzla6ZOTLr1DErW+d/Y0zKpJKTYTIc464=\""
+          "Value": "\"uWKqo5RE8f9DEcIsU/7gYk+9P1rxbnQR1CcRE2fuVPQ=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 16 Mar 2025 21:00:20 GMT"
+          "Value": "Sun, 16 Mar 2025 22:13:14 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -11931,19 +11931,19 @@
         },
         {
           "Name": "ETag",
-          "Value": "W/\"gJRMNAvBv75EUqt8Z2eqlNOxsjHAJN45ovqEgRGWR0M=\""
+          "Value": "W/\"AWMDeM8HznKRg4cJgTzNysm6Cnlw5ThMb1UnSDLyWeQ=\""
         }
       ],
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-gJRMNAvBv75EUqt8Z2eqlNOxsjHAJN45ovqEgRGWR0M="
+          "Value": "sha256-AWMDeM8HznKRg4cJgTzNysm6Cnlw5ThMb1UnSDLyWeQ="
         }
       ]
     },
     {
       "Route": "_framework/FrontDeveloper.wasm.gz",
-      "AssetFile": "C:\\Dev\\RiderProjects\\FinalyLayouts\\FrontDeveloper\\FrontDeveloper\\obj\\Debug\\net9.0\\compressed\\l0b53qayi3-4zhm0cqdwv.gz",
+      "AssetFile": "C:\\Dev\\RiderProjects\\FinalyLayouts\\FrontDeveloper\\FrontDeveloper\\obj\\Debug\\net9.0\\compressed\\l0b53qayi3-nmxr6x959m.gz",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -11952,7 +11952,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "134468"
+          "Value": "134881"
         },
         {
           "Name": "Content-Type",
@@ -11960,11 +11960,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"oog/NvikYevzla6ZOTLr1DErW+d/Y0zKpJKTYTIc464=\""
+          "Value": "\"uWKqo5RE8f9DEcIsU/7gYk+9P1rxbnQR1CcRE2fuVPQ=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 16 Mar 2025 21:00:20 GMT"
+          "Value": "Sun, 16 Mar 2025 22:13:14 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -11982,7 +11982,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-oog/NvikYevzla6ZOTLr1DErW+d/Y0zKpJKTYTIc464="
+          "Value": "sha256-uWKqo5RE8f9DEcIsU/7gYk+9P1rxbnQR1CcRE2fuVPQ="
         }
       ]
     },

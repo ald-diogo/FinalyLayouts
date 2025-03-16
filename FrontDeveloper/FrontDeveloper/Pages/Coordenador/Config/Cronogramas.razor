@@ -3,21 +3,66 @@
 @using MudBlazor
 @using System.Collections.Generic
 
+@layout MainLayout
+@using MudBlazor
+
+@inject ISnackbar Snackbar
+
 @inject NavigationManager Navigation
 
-<MudLayout>
+<MainLayout HideAppBar="true">
     <MudAppBar Elevation="1" Color="Color.Primary">
-        <MudText Typo="Typo.h6" Color="Color.Inherit">Gestão de Cronogramas Acadêmicos</MudText>
-    </MudAppBar>
 
+    </MudAppBar>
+</MainLayout>
+
+<MainLayout HideDrawer="true">
     <MudDrawer Open="true" Width="260px" Elevation="1" Color="Color.Primary">
-        <MudNavMenu>
-            <MudNavLink Icon="@Icons.Material.Filled.Home" Href="/Coor/Index">Home</MudNavLink>
-            <MudNavLink Icon="@Icons.Material.Filled.CalendarToday" Href="/gestao-cronogramas">Cronogramas de Provas</MudNavLink>
-            <MudNavLink Icon="@Icons.Material.Filled.EventNote" Href="/calendario-atividades">Calendário de Atividades</MudNavLink>
-            <MudNavLink Icon="@Icons.Material.Filled.Notifications" Href="/notificacoes">Notificações</MudNavLink>
-        </MudNavMenu>
+
     </MudDrawer>
+</MainLayout>
+
+<MudLayout>
+    
+    <MudText Align="Align.Center" Typo="Typo.h6" Color="Color.Inherit">Gestão de Cronogramas Acadêmicos</MudText>
+
+    <MudNavMenu Open="@true" Width="100%" Elevation="1" Color="Color.Primary">
+        <MudPaper Class="d-flex flex-row align-items-center gap-2 px-2">
+            <MudNavLink
+                Icon="@Icons.Material.Filled.Home"
+                Href="/Coor/Index"
+                IconColor="Color.Success"
+                Color="@Color.Success">
+                Início
+            </MudNavLink>
+            
+            <MudNavLink
+                Icon="@Icons.Material.Filled.CalendarToday"
+                Href="/gestao-cronogramas"
+                IconColor="Color.Info"
+                Color="@Color.Info">
+                Cronogramas de Provas
+            </MudNavLink>
+            
+            <MudNavLink
+                Icon="@Icons.Material.Filled.EventNote"
+                Href="/calendario-atividades"
+                IconColor="Color.Warning"
+                Color="@Color.Warning">
+                Calendário de Atividades
+            </MudNavLink>
+            
+            <MudNavLink
+                Icon="@Icons.Material.Filled.Notifications"
+                IconColor="Color.Error"
+                Href="/notificacoes"
+                Color="@Color.Error">
+                Notificações
+            </MudNavLink>
+        </MudPaper>
+    </MudNavMenu>
+
+
 
     <MudMainContent>
         <MudContainer MaxWidth="MaxWidth.Large">
@@ -29,7 +74,11 @@
                         <MudCard>
                             <MudCardContent>
                                 <MudCalendar />
-                                <MudText Typo="Typo.body1" Align="Align.Center">Visualize o cronograma de provas e eventos.</MudText>
+                                <MudText
+                                    Typo="Typo.body1"
+                                    Align="Align.Center">
+                                    Visualize o cronograma de provas e eventos.
+                                </MudText>
                             </MudCardContent>
                         </MudCard>
                     </MudItem>

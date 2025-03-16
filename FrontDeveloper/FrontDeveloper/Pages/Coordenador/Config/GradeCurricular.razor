@@ -1,143 +1,125 @@
 ﻿@page "/Coor/GradeCurricular"
 
-@using MudBlazor
-
-@using FrontDeveloper
-@using FrontDeveloper.Layout
-
-@layout MainLayout
-@using MudBlazor
-
+@using FrontDeveloper.Pages.Models
+@using FrontDeveloper.Pages.Services
+@inject DisciplinaService DisciplinaService
+@inject NavigationManager NavigationManager
+@inject IJSRuntime JSRuntime
+@inject IDialogService DialogService
 @inject ISnackbar Snackbar
-@inject NavigationManager Navigation
 
-<MainLayout HideAppBar="true">
-    <MudAppBar Color="Color.Primary" Elevation="4">
+<!-- Título da página -->
+<MudText Typo="Typo.h6" Color="Color.Primary" Class="ml-2">Gerenciamento de Grade Curricular</MudText>
 
-    </MudAppBar>
-</MainLayout>
+<!-- Botão para adicionar uma nova disciplina -->
+<MudGrid>
+    <MudItem xs="2">
+        <MudButton
+            Href="/cadastro-disciplina"
+            Class="mt-4"
+            Variant="Variant.Filled"
+            Color="Color.Success">
+            <MudIcon Icon="@Icons.Material.Filled.LibraryBooks" Class="mr-1" />
+            <MudIcon Icon="@Icons.Material.Filled.Add" Class="mr-2" />
+            Adicionar Disciplina
+        </MudButton>
+    </MudItem>
+    
+    <MudItem xs="9">
+        <MudTextField
+            Variant="Variant.Outlined"
+            Label="Pesquisar"
+            @bind-Value="termoPesquisa"
+            Adornment="Adornment.End"
+            AdornmentIcon="@Icons.Material.Filled.Search"
+            OnKeyUp="Pesquisar"
+            Class="mt-4" />
+    </MudItem>
+</MudGrid>
 
-<MudLayout>
-    <MudText Typo="Typo.h6" Color="Color.Primary" Class="ml-2">Gerenciamento de Grade Curricular</MudText>
-
-    <MudMainContent>
-        <MudContainer MaxWidth="MaxWidth.Large" Class="mt-5">
-
-            <!-- Seção de visualização da grade atual -->
-            <MudPaper Elevation="4" Class="p-4 mb-4">
-                <MudText Typo="Typo.h6">Visualizar Grade Atual</MudText>
-                <MudTable Items="@disciplinas" Hover="true" Class="mt-3">
-                    <HeaderContent>
-                        <MudTh>Disciplina</MudTh>
-                        <MudTh>Carga Horária</MudTh>
-                        <MudTh>Semestre</MudTh>
-                        <MudTh>Pré-Requisitos</MudTh>
-                        <MudTh> Ações </MudTh>
-                    </HeaderContent>
-                    <RowTemplate>
-                        <MudTd>@context.Nome</MudTd>
-                        <MudTd>@context.CargaHoraria</MudTd>
-                        <MudTd>@context.Semestre</MudTd>
-                        <MudTd>@context.PreRequisitos</MudTd>
-                        <MudTd>
-                            <MudIconButton Icon="@Icons.Material.Filled.Edit" Color="Color.Primary" OnClick="@(() => EditarDisciplina(context))" />
-                            <MudIconButton Icon="@Icons.Material.Filled.Delete" Color="Color.Error" OnClick="@(() => RemoverDisciplina(context))" />
-                        </MudTd>
-                    </RowTemplate>
-                </MudTable>
-            </MudPaper>
-
-            <!-- Botão de adicionar disciplina -->
-            <MudButton 
-                Href="/cadastro-disciplina"
-                Variant="Variant.Filled" 
-                Color="Color.Success" 
-                StartIcon="@Icons.Material.Filled.AddCircle" 
-                OnClick="AdicionarDisciplina">
-                Adicionar Disciplina
-            </MudButton>
-
-            <!-- Seção de edição de grade -->
-            <MudDialogProvider />
-            <MudDialog @bind-IsOpen="isDialogOpen">
-                <DialogContent>
-                    <MudTextField Label="Nome da Disciplina" @bind-Value="disciplina.Nome" />
-                    <MudTextField Label="Carga Horária" @bind-Value="disciplina.CargaHoraria" />
-                    <MudTextField Label="Semestre" @bind-Value="disciplina.Semestre" />
-                    <MudTextField Label="Pré-Requisitos" @bind-Value="disciplina.PreRequisitos" />
-                </DialogContent>
-                <DialogActions>
-                    <MudButton
-                        Color="Color.Primary"
-                        @onclick="@(() => { SalvarAlteracoes(); Snackbar.Add("Alterações salvas com sucesso!", Severity.Success); })">
-                        Salvar
-                    </MudButton>
-
-
-                    <MudButton
-                        Color="Color.Secondary"
-                        @onclick="@(() => { CancelarAlteracoes(); Snackbar.Add("Alterações canceladas!", Severity.Warning); })">
-                        Cancelar
-                    </MudButton>
-                </DialogActions>
-            </MudDialog>
-
-        </MudContainer>
-    </MudMainContent>
-</MudLayout>
+<!-- Tabela para exibição da lista de disciplinas -->
+<MudTable Items="disciplinas" Hover="true" Class="mb-5">
+    <!-- Cabeçalho da tabela -->
+    <HeaderContent>
+        <MudTh>Nome</MudTh>
+        <MudTh>Carga Horária</MudTh>
+        <MudTh>Semestre</MudTh>
+        <MudTh>Descrição</MudTh>
+        <MudTh>Ações</MudTh>
+    </HeaderContent>
+    
+    <!-- Preenchimento das linhas da tabela com os dados das disciplinas -->
+    <RowTemplate Context="disciplina">
+        <MudTd>@disciplina.Nome</MudTd>
+        <MudTd>@disciplina.CargaHoraria horas</MudTd>
+        <MudTd>@disciplina.Semestre</MudTd>
+        <MudTd>@(string.IsNullOrEmpty(disciplina.Descricao) ? "Sem descrição" : disciplina.Descricao)</MudTd>
+        <MudTd>
+            <!-- Botão para editar disciplina -->
+            <MudFab Color="Color.Primary" StartIcon="@Icons.Material.Filled.Edit" @onclick="() => EditarDisciplina(disciplina)" />
+            
+            <!-- Botão para excluir disciplina -->
+            <MudFab Color="Color.Error" StartIcon="@Icons.Material.Filled.Delete" @onclick="() => ConfirmarRemocao(disciplina.DisciplinaId)" />
+        </MudTd>
+    </RowTemplate>
+</MudTable>
 
 @code {
-    private bool isDialogOpen = false;
-    private Disciplina disciplina = new Disciplina();
-    private List<Disciplina> disciplinas = new List<Disciplina>
-    {
-        new Disciplina { Nome = "Matemática", CargaHoraria = "60", Semestre = "1º Semestre", PreRequisitos = "Nenhum" },
-        new Disciplina { Nome = "Física", CargaHoraria = "60", Semestre = "2º Semestre", PreRequisitos = "Matemática" },
-    };
+    private string termoPesquisa = "";
+    
+    private List<Disciplina> disciplinas = new(); // Lista que armazena as disciplinas
 
-    private void AdicionarDisciplina()
+    // Método chamado ao inicializar o componente para carregar as disciplinas
+    protected override void OnInitialized()
     {
-        disciplina = new Disciplina();
-        isDialogOpen = true;
+        disciplinas = DisciplinaService.GetDisciplinas();
     }
 
-    private void EditarDisciplina(Disciplina d)
+    // Método para editar uma disciplina
+    private async Task EditarDisciplina(Disciplina disciplina)
     {
-        disciplina = d;
-        isDialogOpen = true;
+        // Armazena os dados da disciplina na localStorage para edição
+        await JSRuntime.InvokeVoidAsync("localStorage.setItem", "disciplinaEdicao", System.Text.Json.JsonSerializer.Serialize(disciplina));
+        // Redireciona para a página de cadastro da disciplina
+        NavigationManager.NavigateTo("/cadastro-disciplina");
     }
 
-    private void SalvarAlteracoes()
+    // Método para confirmar a remoção de uma disciplina
+    private async Task ConfirmarRemocao(int disciplinaId)
     {
-        if (disciplinas.Contains(disciplina))
+        // Exibe uma caixa de diálogo para confirmação
+        bool? resultado = await DialogService.ShowMessageBox(
+            "Aviso!",
+            "Tem certeza que deseja excluir esta disciplina?",
+            yesText: "Sim", cancelText: "Não");
+
+        // Se o usuário confirmar, remove a disciplina
+        if (resultado == true)
         {
-            // Atualizar disciplina existente
-            var index = disciplinas.IndexOf(disciplina);
-            disciplinas[index] = disciplina;
+            RemoverDisciplina(disciplinaId);
+            Snackbar.Add("Disciplina removida com sucesso!", Severity.Success);
+        }
+    }
+
+    // Método para remover uma disciplina
+    private void RemoverDisciplina(int id)
+    {
+        DisciplinaService.RemoverDisciplina(id); // Chama o serviço para remover
+        disciplinas = DisciplinaService.GetDisciplinas(); // Atualiza a lista de disciplinas
+        StateHasChanged(); // Atualiza a interface
+    }
+    
+    // Método de pesquisa (a ser implementado)
+    private void Pesquisar()
+    {
+        if (string.IsNullOrWhiteSpace(termoPesquisa))
+        {
+            disciplinas = DisciplinaService.GetDisciplinas();
         }
         else
         {
-            // Adicionar nova disciplina
-            disciplinas.Add(disciplina);
+            disciplinas = DisciplinaService.BuscarDisciplinaPorNome(termoPesquisa);
         }
-        isDialogOpen = false;
-    }
-
-    private void CancelarAlteracoes()
-    {
-        isDialogOpen = false;
-    }
-
-    private void RemoverDisciplina(Disciplina d)
-    {
-        disciplinas.Remove(d);
-    }
-
-    public class Disciplina
-    {
-        public string Nome { get; set; }
-        public string CargaHoraria { get; set; }
-        public string Semestre { get; set; }
-        public string PreRequisitos { get; set; }
     }
 }
+
