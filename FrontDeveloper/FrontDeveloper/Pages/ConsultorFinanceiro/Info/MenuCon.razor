@@ -1,0 +1,85 @@
+﻿@page "/Con/Menu"
+
+<MudNavLink Href="/Con/Index" Match="NavLinkMatch.All">
+    <MudIcon Icon="@Icons.Material.Filled.Home" IconColor="Color.Warning" />
+    Início
+</MudNavLink>
+
+<MudNavGroup
+    Icon="@Icons.Material.Filled.Dashboard"
+    IconColor="Color.Error"
+    Title="Painel"
+    Expanded="true">
+    <MudNavLink
+        Href=""
+        Match="NavLinkMatch.Prefix"
+        Icon="@Icons.Material.Filled.AccountBalance"
+        IconColor="Color.Warning">
+        Gestão Financeira Acadêmica
+    </MudNavLink>
+
+    <MudNavLink
+        Href=""
+        Match="NavLinkMatch.Prefix"
+        Icon="@Icons.Material.Filled.PieChart"
+        IconColor="Color.Secondary">
+        Controle Orçamentário
+    </MudNavLink>
+
+    <MudNavLink
+        Href=""
+        Match="NavLinkMatch.Prefix"
+        Icon="@Icons.Material.Filled.BarChart"
+        IconColor="Color.Success">
+        Relatórios Financeiros e Auditoria
+    </MudNavLink>
+
+    <MudNavLink
+        Href=""
+        Match="NavLinkMatch.Prefix"
+        Icon="@Icons.Material.Filled.School"
+        IconColor="Color.Primary">
+        Gestão de Bolsas e Descontos
+    </MudNavLink>
+
+    <MudNavLink
+        Href=""
+        Match="NavLinkMatch.Prefix"
+        Icon="@Icons.Material.Filled.Handshake"
+        IconColor="Color.Info">
+        Parcerias e Captação de Recursos
+    </MudNavLink>
+
+    <MudNavLink
+        T="bool"
+        Href=""
+        Match="NavLinkMatch.Prefix"
+        Icon="@Icons.Material.Filled.SupportAgent"
+        IconColor="Color.Primary">
+        Atendimento e Suporte Financeiro
+    </MudNavLink>
+</MudNavGroup>
+
+<MudNavLink
+    T="bool"
+    Href="/Con/Seguranca"
+    Match="NavLinkMatch.Prefix"
+    Icon="@Icons.Material.Filled.Lock"
+    IconColor = "Color.Default">Segurança
+</MudNavLink>
+
+<MudNavLink
+    Href="/Con/Suporte"
+    Match="NavLinkMatch.Prefix"
+    Icon="@Icons.Material.Filled.Help"
+    IconColor="Color.Surface">
+    Suporte
+</MudNavLink>
+
+<MudNavLink
+    Href="/Con/Sobre"
+    Match="NavLinkMatch.Prefix"
+    Icon="@Icons.Material.Filled.Info"
+    IconColor="Color.Info">
+    Sobre
+</MudNavLink>

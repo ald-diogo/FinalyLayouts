@@ -147,6 +147,38 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FkYXN0cm9TZWNyZXRhcmlvLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/ConsultorFinanceiro/Info/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29uc3VsdG9yRmluYW5jZWlyb1xJbmZvXEluZGV4LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/ConsultorFinanceiro/Info/Login.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29uc3VsdG9yRmluYW5jZWlyb1xJbmZvXExvZ2luLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/ConsultorFinanceiro/Info/MenuCon.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29uc3VsdG9yRmluYW5jZWlyb1xJbmZvXE1lbnVDb24ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/ConsultorFinanceiro/Info/Politica.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29uc3VsdG9yRmluYW5jZWlyb1xJbmZvXFBvbGl0aWNhLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/ConsultorFinanceiro/Info/RecuperarSenha.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29uc3VsdG9yRmluYW5jZWlyb1xJbmZvXFJlY3VwZXJhclNlbmhhLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/ConsultorFinanceiro/Info/Seguranca.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29uc3VsdG9yRmluYW5jZWlyb1xJbmZvXFNlZ3VyYW5jYS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/ConsultorFinanceiro/Info/Sobre.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29uc3VsdG9yRmluYW5jZWlyb1xJbmZvXFNvYnJlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/ConsultorFinanceiro/Info/TermoUso.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29uc3VsdG9yRmluYW5jZWlyb1xJbmZvXFRlcm1vVXNvLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/Coordenador/Config/Administracao.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29vcmRlbmFkb3JcQ29uZmlnXEFkbWluaXN0cmFjYW8ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
