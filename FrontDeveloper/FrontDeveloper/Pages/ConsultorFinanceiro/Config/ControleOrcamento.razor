@@ -1,0 +1,121 @@
+﻿@page "/Con/controle-orcamentario"
+
+<MudText Typo="Typo.h4" Color="Color.Primary" Align="Align.Center" GutterBottom="true" Class="security-title">
+    Controle Orçamentário
+</MudText>
+
+<MudContainer MaxWidth="MaxWidth.False" Class="mud-container">
+    <MudPaper Class="mud-paper p-4">
+        <MudTypography Variant="H4" Class="mb-3">📊 Controle Orçamentário</MudTypography>
+
+        <!-- Botões de Ação -->
+        <MudGrid Spacing="3">
+            <MudItem>
+                <MudButton
+                    Variant="Variant.Filled"
+                    Color="Color.Primary"
+                    StartIcon="@Icons.Material.Filled.Assessment">
+                    Gerar Relatório
+                </MudButton>
+            </MudItem>
+            <MudItem>
+                
+                <MudButton
+                    Variant="Variant.Filled"
+                    Color="Color.Success"
+                    StartIcon="@Icons.Material.Filled.Add">
+                    Adicionar Orçamento
+                </MudButton>
+            </MudItem>
+            <MudItem>
+                <MudButton
+                    Variant="Variant.Filled"
+                    Color="Color.Secondary"
+                    StartIcon="@Icons.Material.Filled.Refresh">
+                    Atualizar Dados
+                </MudButton>
+            </MudItem>
+        </MudGrid>
+
+        <!-- Filtros e Pesquisa -->
+        <MudGrid Class="mt-4" Spacing="3">
+            <MudItem>
+                <MudTextField
+                    T="string"
+                    Label="Pesquisar por Nome/ID" 
+                    Variant="Variant.Outlined" 
+                    AdornmentIcon="@Icons.Material.Filled.Search"/>
+            </MudItem>
+            <MudItem>
+                <MudTextField
+                    T="string"
+                    Label="Categoria"
+                    Variant="Variant.Outlined"
+                    AdornmentIcon="@Icons.Material.Filled.Category"/>
+            </MudItem>
+            <MudItem>
+                <MudTextField 
+                    T="DateTime?" 
+                    Format="yyyy-MM-dd"
+                    Label="Data Inicial"  
+                    InputType="InputType.Date"
+                    Variant="Variant.Outlined"/>
+            </MudItem>
+            <MudItem>
+                <MudTextField
+                    T="DateTime?"
+                    Format="yyyy-MM-dd"
+                    Label="Data Final"
+                    InputType="InputType.Date"
+                    Variant="Variant.Outlined"/>
+            </MudItem>
+        </MudGrid>
+
+        <!-- Tabela Dinâmica -->
+        <MudTable Items="@orcamentos" Hover="true" Class="mt-4">
+            <MudTableColumns>
+                <MudTableColumn Field="Codigo" Title="Código" />
+                <MudTableColumn Field="Descricao" Title="Descrição" />
+                <MudTableColumn Field="Categoria" Title="Categoria" />
+                <MudTableColumn Field="Valor" Title="Valor (KZ)" />
+                <MudTableColumn Field="Data" Title="Data" />
+                <MudTableColumn Field="Status" Title="Status" />
+                <MudTableColumn Title="Ações">
+                    <Template Context="orc">
+                        <MudIconButton Icon="@Icons.Material.Filled.Edit" Color="Color.Primary" />
+                        <MudIconButton Icon="@Icons.Material.Filled.Delete" Color="Color.Error" />
+                    </Template>
+                </MudTableColumn>
+            </MudTableColumns>
+        </MudTable>
+
+        <!-- Gráficos Dinâmicos -->
+        <MudPaper Class="mt-5 p-3">
+            <MudTypography Variant="H5">📈 Análise Financeira</MudTypography>
+            <MudChart ChartType="ChartType.Pie" Labels="new string[]{'Operacional', 'Acadêmico', 'Outros'}" Data="new double[]{45, 35, 20}"/>
+        </MudPaper>
+
+        <!-- Sugestões e Otimização -->
+        <MudAlert Severity="Severity.Warning" Class="mt-3">
+            ⚠️ Gastos excessivos detectados! Considere reduzir despesas operacionais.
+        </MudAlert>
+    </MudPaper>
+</MudContainer>
+
+@code {
+    private List<Orcamento> orcamentos = new()
+    {
+        new Orcamento { Codigo = "001", Descricao = "Material Didático", Categoria = "Investimento Acadêmico", Valor = "500.000 KZ", Data = "05/03/2025", Status = "Aprovado" },
+        new Orcamento { Codigo = "002", Descricao = "Energia Elétrica", Categoria = "Despesas Operacionais", Valor = "250.000 KZ", Data = "10/03/2025", Status = "Pendente" }
+    };
+
+    private class Orcamento
+    {
+        public string Codigo { get; set; }
+        public string Descricao { get; set; }
+        public string Categoria { get; set; }
+        public string Valor { get; set; }
+        public string Data { get; set; }
+        public string Status { get; set; }
+    }
+}

@@ -1,0 +1,78 @@
+﻿@page "/Con/relatorios-financeiros"
+@using MudBlazor
+
+<MudText 
+    Typo="Typo.h4"
+    Color="Color.Primary" 
+    Align="Align.Center"
+    GutterBottom="true" 
+    Class="security-title">
+    Relatórios Financeiros e Auditoria
+</MudText>
+
+<MudContainer>
+    <MudCard>
+        <MudCardHeader>
+            <MudText
+                Typo="Typo.h4">
+                <MudIcon 
+                    Icon="Icons.Material.FinanceBarChart"/>
+                Relatórios Financeiros e Auditoria
+            </MudText>
+        </MudCardHeader>
+        
+        <MudCardContent>
+            <MudGrid>
+                <MudItem xs="12" md="4">
+                    <MudTextField
+                        T="string"
+                        Label="Período"
+                        Variant="Variant.Outlined"
+                        @bind-Value="PeriodoSelecionado"
+                        AdornmentIcon="@Icons.Material.Filled.History"/>
+                </MudItem>
+                
+                <MudItem xs="12" md="4">
+                    <MudTextField
+                        T="string"
+                        Label="Categoria"
+                        @bind-Value="CategoriaSelecionada"
+                        Variant="Variant.Outlined"
+                        AdornmentIcon="@Icons.Material.Filled.Category"/>
+                </MudItem>
+                
+                <MudItem xs="12" md="4">
+                    <MudButton 
+                        Variant="Variant.Filled" 
+                        Color="Color.Primary" 
+                        OnClick="GerarRelatorio">
+                        <MudIcon Icon="Icons.Material.FileDownload" /> Gerar Relatório
+                    </MudButton>
+                </MudItem>
+            </MudGrid>
+            
+            <MudTable Items="@Relatorios" Hover="true" Striped="true">
+                <HeaderContent>
+                    <MudTh>Data</MudTh>
+                    <MudTh>Categoria</MudTh>
+                    <MudTh>Valor</MudTh>
+                </HeaderContent>
+            </MudTable>
+        </MudCardContent>
+    </MudCard>
+    
+    <MudSnackbar />
+</MudContainer>
+
+@code {
+    private string PeriodoSelecionado;
+    private string CategoriaSelecionada;
+    private List<RelatorioFinanceiro> Relatorios = new();
+    
+    private void GerarRelatorio()
+    {
+       
+    }
+    
+    
+}

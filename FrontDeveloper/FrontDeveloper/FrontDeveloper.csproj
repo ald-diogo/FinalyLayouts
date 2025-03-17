@@ -13,7 +13,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Pages\ConsultorFinanceiro\Config\" />
       <Folder Include="wwwroot\lib\" />
     </ItemGroup>
 

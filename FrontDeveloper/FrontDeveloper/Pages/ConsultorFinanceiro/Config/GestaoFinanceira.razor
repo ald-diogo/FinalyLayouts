@@ -1,0 +1,109 @@
+﻿@page "/Con/gestao-financeira"
+
+<MudText Typo="Typo.h4" Color="Color.Primary" Align="Align.Center" GutterBottom="true" Class="security-title">
+    Gestão Financeira
+</MudText>
+
+<MudContainer>
+    <MudGrid>
+        <!-- Cards Financeiros -->
+        <MudItem xs="12" md="4">
+            <MudCard Class="mud-shadow-lg animate__animated animate__fadeInLeft">
+                <MudCardContent>
+                    <MudIcon 
+                        Icon="@Icons.Material.Filled.AttachMoney"
+                        Size="Size.Large"
+                        Color="Color.Primary" />
+                    <MudText Typo="Typo.h6">Mensalidades Pagas</MudText>
+                    <MudText Typo="Typo.h5" Color="Color.Success">AKZ 2.500.000</MudText>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+        <MudItem xs="12" md="4">
+            <MudCard Class="mud-shadow-lg animate__animated animate__fadeInUp">
+                <MudCardContent>
+                    <MudIcon 
+                        Icon="@Icons.Material.Filled.Receipt" 
+                        Size="Size.Large" 
+                        Color="Color.Info" />
+                    <MudText Typo="Typo.h6">Boletos Emitidos</MudText>
+                    <MudText Typo="Typo.h5" Color="Color.Info">150</MudText>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+        <MudItem xs="12" md="4">
+            <MudCard Class="mud-shadow-lg animate__animated animate__fadeInRight">
+                <MudCardContent>
+                    <MudIcon 
+                        Icon="@Icons.Material.Filled.Warning" 
+                        Size="Size.Large" 
+                        Color="Color.Error" />
+                    <MudText Typo="Typo.h6">Inadimplência</MudText>
+                    <MudText Typo="Typo.h5" Color="Color.Error">AKZ 500.000</MudText>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+    </MudGrid>
+
+    <!-- Tabela de Pagamentos -->
+    <MudTable Items="@pagamentos" Hover="true" Striped="true">
+        <MudTHead>
+            <MudTr>
+                <MudTh>Estudante</MudTh>
+                <MudTh>Valor</MudTh>
+                <MudTh>Status</MudTh>
+                <MudTh>Ações</MudTh>
+            </MudTr>
+        </MudTHead>
+        <MudTBody>
+            @foreach (var pagamento in pagamentos)
+            {
+                <MudTr>
+                    <MudTd>@pagamento.Nome</MudTd>
+                    <MudTd>@pagamento.Valor AKZ</MudTd>
+                    <MudTd>
+                        <MudChip T="string" Color="@(pagamento.Pago ? Color.Success : Color.Error)">
+                            @(pagamento.Pago ? "Pago" : "Pendente")
+                        </MudChip>
+                    </MudTd>
+                    <MudTd>
+                        <MudIconButton
+                            Icon="@Icons.Material.Filled.Email" 
+                            OnClick="() => EnviarNotificacao(pagamento.Nome)" />
+                        <MudIconButton
+                            Icon="@Icons.Material.Filled.Receipt" 
+                            OnClick="() => GerarBoleto(pagamento.Nome)" />
+                    </MudTd>
+                </MudTr>
+            }
+        </MudTBody>
+    </MudTable>
+</MudContainer>
+
+@code {
+    private List<Pagamento> pagamentos = new()
+    {
+        new Pagamento { Nome = "João Pedro", Valor = 50000, Pago = true },
+        new Pagamento { Nome = "Maria Clara", Valor = 70000, Pago = false },
+        new Pagamento { Nome = "Carlos Lima", Valor = 60000, Pago = true },
+    };
+
+    private void EnviarNotificacao(string nome)
+    {
+        // Lógica para notificar estudante
+    }
+
+    private void GerarBoleto(string nome)
+    {
+        // Lógica para gerar boleto
+    }
+
+    private class Pagamento
+    {
+        public string Nome { get; set; } = string.Empty;
+        public decimal Valor { get; set; }
+        public bool Pago { get; set; }
+    }
+}
+
+
