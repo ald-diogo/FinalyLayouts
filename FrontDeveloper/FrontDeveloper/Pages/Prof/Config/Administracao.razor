@@ -1,6 +1,80 @@
 ﻿@page "/Prof/Administracao"
-<h3>Administracao</h3>
+@using MudBlazor
+@inject DialogService DialogService
+
+<MudContainer>
+    <!-- Cabeçalho -->
+    <MudPaper Elevation="4" Class="pa-4 mb-4 animate__animated animate__fadeInDown">
+        <MudTypography Variant="H4">
+            <MudIcon 
+                Icon="@Icons.Material.Filled.Assessment" 
+                Color="Color.Primary" /> 
+            Administração e Relatórios
+        </MudTypography>
+    </MudPaper>
+
+    <!-- Seção de Filtros -->
+    <MudGrid Class="animate__animated animate__fadeIn">
+        <MudItem xs="12" md="4">
+            <MudTextField T="string" Label="Selecionar Turma" Variant="Variant.Outlined"/>
+        </MudItem>
+        
+        <MudItem xs="12" md="4">
+            <MudTextField T="string" Label="Selecionar Disciplina" Variant="Variant.Outlined" />
+        </MudItem>
+        
+        <MudItem xs="12" md="4">
+            <MudTextField T="string" Label="Nome do Estudante" Variant="Variant.Outlined" />
+        </MudItem>
+    </MudGrid>
+
+    <!-- Tabela de Relatórios -->
+    <MudTable T="string">
+        <MudTableHead>
+            <MudTableRow>
+                <MudTableCell>Estudante</MudTableCell>
+                <MudTableCell>Disciplina</MudTableCell>
+                <MudTableCell>Nota Final</MudTableCell>
+                <MudTableCell>Ações</MudTableCell>
+            </MudTableRow>
+        </MudTableHead>
+        <MudTableBody>
+            <MudTableRow>
+                <MudTableCell>João Silva</MudTableCell>
+                <MudTableCell>Matemática</MudTableCell>
+                <MudTableCell>85</MudTableCell>
+                <MudTableCell>
+                    <MudButton 
+                        Color="Color.Primary" 
+                        StartIcon="@Icons.Material.Filled.PictureAsPdf" 
+                        OnClick="() => EmitirBoletim()">
+                        Emitir Boletim
+                    </MudButton>
+                </MudTableCell>
+            </MudTableRow>
+        </MudTableBody>
+    </MudTable>
+
+    <!-- Sugestões Curriculares -->
+    <MudCard Class="mt-4 hover-effect">
+        <MudCardContent>
+            <MudTextField T="string" Label="Sugestão de Ajuste Curricular" Variant="Variant.Outlined" />
+            <MudButton 
+                Color="Color.Success"
+                StartIcon="@Icons.Material.Filled.Send" 
+                OnClick="() => EnviarSugestao()">
+                Enviar Sugestão
+            </MudButton>
+        </MudCardContent>
+    </MudCard>
+</MudContainer>
 
 @code {
-    
+    private void EmitirBoletim() {
+        DialogService.ShowMessageBox("Boletim", "Boletim gerado com sucesso!", "Ok");
+    }
+
+    private void EnviarSugestao() {
+        DialogService.ShowMessageBox("Sugestão", "Ajuste curricular enviado!", "Ok");
+    }
 }

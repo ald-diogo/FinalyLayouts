@@ -1,6 +1,93 @@
 ﻿@page "/Prof/Avaliacao"
-<h3>Avaliacao</h3>
+@using MudBlazor
+@inject DialogService DialogService
+
+<MudContainer>
+    <!-- Cabeçalho Animado -->
+    <MudPaper Elevation="4" Class="pa-4 mb-4 animate__animated animate__fadeInDown">
+        <MudTypography Variant="H4">
+            <MudIcon Icon="@Icons.Material.Filled.Grade" Color="Color.Primary" /> Gestão de Avaliações
+        </MudTypography>
+    </MudPaper>
+
+    <!-- Abas Interativas -->
+    <MudTabs Class="animate__animated animate__fadeIn">
+        <MudTabPanel Text="Criar Avaliação" Icon="@Icons.Material.Filled.Add" >
+            <MudCard Class="hover-effect">
+                <MudCardContent>
+                    <MudTextField T="string" Label="Nome da Avaliação" Variant="Variant.Outlined" />
+                    <MudTextField T="string" Label="Tipo de Avaliaçãoo" Variant="Variant.Outlined" />
+                    <MudButton 
+                        Color="Color.Success" 
+                        StartIcon="@Icons.Material.Filled.Save" 
+                        OnClick="() => ShowSuccessMessage()">
+                        Criar Avaliação
+                    </MudButton>
+                </MudCardContent>
+            </MudCard>
+        </MudTabPanel>
+
+        <MudTabPanel Text="Configurar Critérios" Icon="@Icons.Material.Filled.Tune">
+            <MudCard Class="hover-effect">
+                <MudCardContent>
+                    <MudTextField
+                        T="string"
+                        Label="Peso da Avaliação (%)" 
+                        Variant="Variant.Outlined" 
+                        Type="number" />
+                    
+                    <MudTextField
+                        T="string"
+                        Label="Critério de Aprovação" 
+                        Variant="Variant.Outlined" />
+                    <MudButton 
+                        Color="Color.Primary" 
+                        StartIcon="@Icons.Material.Filled.Settings" 
+                        OnClick="() => ShowConfigMessage()">
+                        Salvar Configuração
+                    </MudButton>
+                </MudCardContent>
+            </MudCard>
+        </MudTabPanel>
+
+        <MudTabPanel Text="Correção e Feedback" Icon="@Icons.Material.Filled.Feedback">
+            <MudTable T="string">
+                <MudTableHead>
+                    <MudTableRow>
+                        <MudTableCell>Aluno</MudTableCell>
+                        <MudTableCell>Nota</MudTableCell>
+                        <MudTableCell>Feedback</MudTableCell>
+                        <MudTableCell>Ações</MudTableCell>
+                    </MudTableRow>
+                </MudTableHead>
+                <MudTableBody>
+                    <MudTableRow>
+                        <MudTableCell>João Silva</MudTableCell>
+                        <MudTableCell><MudTextField T="string" Type="number" /></MudTableCell>
+                        <MudTableCell><MudTextField T="string" /></MudTableCell>
+                        <MudTableCell>
+                            <MudButton 
+                                Color="Color.Success" 
+                                Icon="@Icons.Material.Filled.Check" 
+                                OnClick="() => ShowFeedbackMessage()" />
+                        </MudTableCell>
+                    </MudTableRow>
+                </MudTableBody>
+            </MudTable>
+        </MudTabPanel>
+    </MudTabs>
+</MudContainer>
 
 @code {
-    
+    private void ShowSuccessMessage() {
+        DialogService.ShowMessageBox("Sucesso", "Avaliação criada com sucesso!", "Ok");
+    }
+
+    private void ShowConfigMessage() {
+        DialogService.ShowMessageBox("Configuração", "Critérios de avaliação salvos!", "Ok");
+    }
+
+    private void ShowFeedbackMessage() {
+        DialogService.ShowMessageBox("Feedback", "Nota e feedback enviados!", "Ok");
+    }
 }
