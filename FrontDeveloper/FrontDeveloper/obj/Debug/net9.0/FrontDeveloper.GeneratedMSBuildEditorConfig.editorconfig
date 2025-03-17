@@ -235,6 +235,62 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTGlzdGFTZWNyZXRhcmlvcy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/Prof/Config/Administracao.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZlxDb25maWdcQWRtaW5pc3RyYWNhby5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/Prof/Config/Avaliacao.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZlxDb25maWdcQXZhbGlhY2FvLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/Prof/Config/Feedback.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZlxDb25maWdcRmVlZGJhY2sucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/Prof/Config/LancarNotas.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZlxDb25maWdcTGFuY2FyTm90YXMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/Prof/Config/Suporte.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZlxDb25maWdcU3Vwb3J0ZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/Prof/Config/VerTurmas.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZlxDb25maWdcVmVyVHVybWFzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/Prof/Info/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZlxJbmZvXEluZGV4LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/Prof/Info/Login.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZlxJbmZvXExvZ2luLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/Prof/Info/MenuProf.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZlxJbmZvXE1lbnVQcm9mLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/Prof/Info/Politica.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZlxJbmZvXFBvbGl0aWNhLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/Prof/Info/RecuperarSenha.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZlxJbmZvXFJlY3VwZXJhclNlbmhhLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/Prof/Info/Seguranca.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZlxJbmZvXFNlZ3VyYW5jYS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/Prof/Info/Sobre.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZlxJbmZvXFNvYnJlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/Prof/Info/TermoUso.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZlxJbmZvXFRlcm1vVXNvLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/Weather.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcV2VhdGhlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 

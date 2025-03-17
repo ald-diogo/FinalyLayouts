@@ -1,0 +1,130 @@
+﻿@page "/Prof/VerTurmas"
+
+@using MudBlazor
+
+<MudContainer Class="animated-container">
+    <MudCard Class="fade-in">
+        <MudCardContent>
+            <MudTabs>
+                <!-- Aba 1: Gerenciar Turmas -->
+                <MudTabPanel Text="📚 Minhas Turmas">
+                    <MudTable Items="turmas" Hover="true" Class="slide-in">
+                        <MudTHead>
+                            <MudTr>
+                                <MudTh>Nome</MudTh>
+                                <MudTh>Disciplina</MudTh>
+                                <MudTh>Acções</MudTh>
+                            </MudTr>
+                        </MudTHead>
+                        <MudTBody>
+                            @foreach (var context in turmas)
+                            {
+                                <MudTr>
+                                    <MudTd>@context.Nome</MudTd>
+                                    <MudTd>@context.Disciplina</MudTd>
+                                    <MudTd>
+                                        <MudIconButton 
+                                            Icon="Icons.Material.Filled.Edit" 
+                                            Color="Color.Primary" 
+                                            OnClick="() => EditarTurma(context)" 
+                                            Class="icon-hover" />
+                                        <MudIconButton 
+                                            Icon="Icons.Material.Filled.Delete" 
+                                            Color="Color.Error" 
+                                            OnClick="() => RemoverTurma(context)" 
+                                            Class="icon-hover" />
+                                    </MudTd>
+                                </MudTr>
+                            }
+                        </MudTBody>
+                    </MudTable>
+                </MudTabPanel>
+
+                <!-- Aba 2: Horários -->
+                <MudTabPanel Text="🕒 Horários de Aula">
+                    <MudTable Items="horarios" Class="zoom-in">
+                        <MudTHead>
+                            <MudTr>
+                                <MudTh>Dia</MudTh>
+                                <MudTh>Horário</MudTh>
+                                <MudTh>Turma</MudTh>
+                            </MudTr>
+                        </MudTHead>
+                        <MudTBody>
+                            @foreach (var context in horarios)
+                            {
+                                <MudTr>
+                                    <MudTd>@context.Dia</MudTd>
+                                    <MudTd>@context.Hora</MudTd>
+                                    <MudTd>@context.Turma</MudTd>
+                                </MudTr>
+                            }
+                        </MudTBody>
+                    </MudTable>
+                </MudTabPanel>
+
+                <!-- Aba 3: Publicar Conteúdo -->
+                <MudTabPanel Text="📂 Publicar Conteúdo">
+                    <MudTextField Label="Título do Conteúdo" @bind-Value="titulo" Class="input-focus" />
+                    <MudTextField Label="Descrição" @bind-Value="descricao" Class="input-focus" />
+                    <MudFileUpload T="string" OnChange="UploadArquivo" Class="file-upload" />
+                    <MudButton Color="Color.Primary" OnClick="PublicarConteudo" Class="glow-button">Publicar</MudButton>
+
+                    <MudList T="string">
+                        <MudListSubheader>Conteúdos Publicados</MudListSubheader>
+                        @foreach (var conteudo in conteudos)
+                        {
+                            <MudListItem T="string" Class="list-item-hover">
+                                <MudText>@conteudo.Titulo</MudText>
+                                <MudIconButton 
+                                    Icon="Icons.Material.Filled.Delete"
+                                    Color="Color.Error"
+                                    OnClick="() => RemoverConteudo(conteudo)" />
+                            </MudListItem>
+                        }
+                    </MudList>
+                </MudTabPanel>
+            </MudTabs>
+        </MudCardContent>
+    </MudCard>
+</MudContainer>
+
+<style>
+    .animated-container { animation: fadeIn 1.2s ease-in-out; }
+    .fade-in { animation: fadeInUp 0.8s ease-in-out; }
+    .slide-in { animation: slideInLeft 0.8s ease-in-out; }
+    .zoom-in { animation: zoomIn 0.8s ease-in-out; }
+    .icon-hover:hover { transform: scale(1.2); transition: 0.2s; }
+    .glow-button:hover { box-shadow: 0px 0px 10px #00d4ff; }
+    .input-focus:focus { border-color: #6200ea; box-shadow: 0px 0px 8px #6200ea; }
+    .list-item-hover:hover { background-color: #f5f5f5; transition: 0.3s; }
+</style>
+
+@code {
+    private List<Turma> turmas = new()
+    {
+        new() { Nome = "3º Ano A", Disciplina = "Matemática" },
+        new() { Nome = "2º Ano B", Disciplina = "Física" }
+    };
+
+    private List<Horario> horarios = new()
+    {
+        new() { Dia = "Segunda-feira", Hora = "08:00 - 09:30", Turma = "3º Ano A" },
+        new() { Dia = "Terça-feira", Hora = "10:00 - 11:30", Turma = "2º Ano B" }
+    };
+
+    private List<Conteudo> conteudos = new();
+    private string titulo;
+    private string descricao;
+
+    private void PublicarConteudo() { /* Implementar lógica */ }
+    private void UploadArquivo() { /* Implementar lógica */ }
+    private void EditarTurma(Turma turma) { /* Implementar lógica */ }
+    private void RemoverTurma(Turma turma) { /* Implementar lógica */ }
+    private void RemoverConteudo(Conteudo conteudo) { /* Implementar lógica */ }
+
+    private class Turma { public string Nome { get; set; } public string Disciplina { get; set; } }
+    private class Horario { public string Dia { get; set; } public string Hora { get; set; } public string Turma { get; set; } }
+    private class Conteudo { public string Titulo { get; set; } }
+}
+

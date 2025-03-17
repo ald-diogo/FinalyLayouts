@@ -1,0 +1,108 @@
+﻿@page "/Prof/LancarNotas"
+
+@inject ISnackbar Snackbar
+
+<MudContainer Class="mud-container">
+    <MudTabs Rounded="true" Centered="true">
+
+        <!-- Aba 1: Lançamento de Notas -->
+        <MudTabPanel Text="Lançamento de Notas" Icon="@Icons.Material.Filled.Grade">
+            <MudPaper Elevation="4" Class="p-4">
+                <MudGrid>
+                    <MudItem xs="12" md="6">
+                        <MudSelect T="string" Label="Turma" Dense="true" />
+                    </MudItem>
+                    <MudItem xs="12" md="6">
+                        <MudSelect T="string" Label="Disciplina" Dense="true" />
+                    </MudItem>
+                </MudGrid>
+
+                <MudTable T="string" Hover="true" Striped="true">
+                    <MudTh>Nome do Aluno</MudTh>
+                    <MudTh>Nota</MudTh>
+                    <MudTr>
+                        <MudTd>João Silva</MudTd>
+                        <MudTd><MudNumericField Min="0" Max="20" /></MudTd>
+                    </MudTr>
+                </MudTable>
+
+                <MudButton
+                    Color="Color.Success"
+                    StartIcon="@Icons.Material.Filled.Save"
+                    @onclick="SalvarNotas">
+                    Salvar Notas
+                </MudButton>
+
+                @code {
+                    private void SalvarNotas()
+                    {
+                        // Lógica para salvar notas
+                        Snackbar.Add("Notas salvas com sucesso!", Severity.Success);
+                    }
+                }
+
+            </MudPaper>
+        </MudTabPanel>
+
+        <!-- Aba 2: Registro de Faltas -->
+        <MudTabPanel Text="Registro de Faltas" Icon="@Icons.Material.Filled.EventBusy">
+            <MudPaper Elevation="4" Class="p-4">
+                <MudGrid>
+                    <MudItem xs="12" md="6">
+                        <MudSelect T="string" Label="Turma" Dense="true" />
+                    </MudItem>
+                    
+                    <MudItem xs="12" md="6">
+                        <MudTextField T="DateTime?" Format="yyyy-MM-dd" Label="Data"  InputType="InputType.Date"/>
+                    </MudItem>
+                </MudGrid>
+
+                <MudTable T="string" Hover="true" Striped="true">
+                    <MudTh>Nome do Aluno</MudTh>
+                    <MudTh>Presente</MudTh>
+                    <MudTr>
+                        <MudTd>Maria Souza</MudTd>
+                        <MudTd><MudSwitch T="string" /></MudTd>
+                    </MudTr>
+                </MudTable>
+
+                <MudButton
+                    Color="Color.Warning"
+                    StartIcon="@Icons.Material.Filled.Done"
+                    @onclick="RegistrarFaltas">
+                    Registrar Faltas
+                </MudButton>
+
+                @code {
+                    private void RegistrarFaltas()
+                    {
+                        // Lógica para registrar faltas
+                        Snackbar.Add("Faltas registradas com sucesso!", Severity.Error);
+                    }
+                }
+            </MudPaper>
+        </MudTabPanel>
+
+        <!-- Aba 3: Relatórios -->
+        <MudTabPanel Text="Relatórios" Icon="@Icons.Material.Filled.Assessment">
+            <MudPaper Elevation="4" Class="p-4">
+                <MudChart ChartType="ChartType.Bar" />
+                <MudButton
+                    Color="Color.Info"
+                    StartIcon="@Icons.Material.Filled.Print"
+                    @onclick="GerarRelatorio">
+                    Gerar Relatório
+                </MudButton>
+
+                @code {
+                    private void GerarRelatorio()
+                    {
+                        // Lógica para gerar o relatório
+                        Snackbar.Add("Relatório gerado com sucesso!", Severity.Info);
+                    }
+                }
+
+            </MudPaper>
+        </MudTabPanel>
+    </MudTabs>
+</MudContainer>

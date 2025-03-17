@@ -1,0 +1,137 @@
+﻿@page "/Prof/Feedback"
+
+@using MudBlazor
+@inject ISnackbar Snackbar
+
+<MudContainer>
+    <MudPaper Elevation="10" Class="pa-4">
+        <MudCard Class="animated-card">
+            <MudCardHeader>
+                <MudText Typo="Typo.h4" Class="text-center">
+                    📢 Comunicação com Estudantes e Responsáveis
+                </MudText>
+            </MudCardHeader>
+
+            <MudCardContent>
+                <MudTabs Rounded="true" Centered="true">
+                    <!-- Aba de Mensagens e Notificações -->
+                    <MudTabPanel Text="📨 Mensagens e Notificações">
+                        <MudGrid>
+                            <MudItem xs="12" md="4">
+                                <MudTextField 
+                                    @bind-Value="destinatario" 
+                                    Label="Destinatário" 
+                                    ReadOnly="true"
+                                    Variant="Variant.Outlined" />
+                            </MudItem>
+
+                            <MudItem xs="12" md="4">
+                                <MudTextField 
+                                    Label="Assunto" 
+                                    @bind-Value="assunto" 
+                                    Adornment="Adornment.Start">
+                                    <MudIconButton
+                                        Icon="fas fa-edit" 
+                                        Edge="Edge.End" />
+                                </MudTextField>
+                            </MudItem>
+
+                            <MudItem xs="12" md="4">
+                                <MudTextField 
+                                    T="DateTime?" 
+                                    Variant="Variant.Outlined"
+                                    Format="s" 
+                                    Label="Data e Hora"
+                                    @bind-Value="dataHora"
+                                    InputType="InputType.DateTimeLocal"/>
+                            </MudItem>
+
+                            <MudItem xs="12">
+                                <MudTextField 
+                                    Label="Mensagem" 
+                                    @bind-Value="mensagem" 
+                                    Lines="4" 
+                                    Adornment="Adornment.Start">
+                                    <MudIconButton 
+                                        Icon="fas fa-envelope" 
+                                        Edge="Edge.End" />
+                                </MudTextField>
+                            </MudItem>
+
+                            <MudItem xs="12" Class="text-center">
+                                <MudButton 
+                                    Variant="Variant.Filled" 
+                                    Color="Color.Primary" 
+                                    OnClick="EnviarMensagem" 
+                                    StartIcon="fas fa-paper-plane">
+                                    Enviar Mensagem
+                                </MudButton>
+                            </MudItem>
+                        </MudGrid>
+                    </MudTabPanel>
+
+                    <!-- Aba de Criação de Anúncios -->
+                    <MudTabPanel Text="📌 Criar Anúncio">
+                        <MudGrid>
+                            <MudItem xs="12">
+                                <MudTextField 
+                                    Label="Título do Anúncio" 
+                                    @bind-Value="tituloAnuncio" 
+                                    Adornment="Adornment.Start"
+                                    Variant="Variant.Outlined">
+                                    <MudIconButton 
+                                        Icon="fas fa-bullhorn" 
+                                        Edge="Edge.End" />
+                                </MudTextField>
+                            </MudItem>
+
+                            <MudItem xs="12">
+                                <MudTextField 
+                                    Label="Descrição" 
+                                    @bind-Value="descricaoAnuncio" 
+                                    Lines="4"
+                                    Adornment="Adornment.Start"
+                                    Variant="Variant.Outlined">
+                                    <MudIconButton Icon="fas fa-comment-dots" Edge="Edge.End" />
+                                </MudTextField>
+                            </MudItem>
+
+                            <MudItem xs="12" Class="text-center">
+                                <MudButton 
+                                    Variant="Variant.Filled" 
+                                    Color="Color.Success" 
+                                    OnClick="CriarAnuncio" 
+                                    StartIcon="fas fa-check-circle">
+                                    Criar Anúncio
+                                </MudButton>
+                            </MudItem>
+                        </MudGrid>
+                    </MudTabPanel>
+                </MudTabs>
+            </MudCardContent>
+        </MudCard>
+    </MudPaper>
+
+    <!-- Snackbar para Feedback -->
+    <MudSnackbarProvider />
+
+</MudContainer>
+
+@code {
+    private string destinatario;
+    private string assunto;
+    private string mensagem;
+    private string tituloAnuncio;
+    private string descricaoAnuncio;
+    private DateTime? dataHora ;
+
+    private void EnviarMensagem()
+    {
+        Snackbar.Add("📨 Mensagem enviada com sucesso!", Severity.Success);
+    }
+
+    private void CriarAnuncio()
+    {
+        Snackbar.Add("📢 Anúncio criado com sucesso!", Severity.Info);
+    }
+}
