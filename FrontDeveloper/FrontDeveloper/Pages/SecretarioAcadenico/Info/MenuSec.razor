@@ -1,0 +1,92 @@
+﻿@page "/Sec/Menu"
+
+<MudNavLink Href="/Sec/Index" Match="NavLinkMatch.All">
+    <MudIcon Icon="@Icons.Material.Filled.Home" IconColor="Color.Warning" />
+    Início
+</MudNavLink>
+
+<MudNavGroup
+    Icon="@Icons.Material.Filled.Dashboard"
+    IconColor="Color.Error"
+    Title="Painel"
+    Expanded="true">
+    <MudNavLink
+        Href=""
+        Match="NavLinkMatch.Prefix"
+        Icon="@Icons.Material.Filled.AccountBalance"
+        IconColor="Color.Warning">
+        Gestão de Documentação Acadêmica
+    </MudNavLink>
+
+    <MudNavLink
+        Href=""
+        Match="NavLinkMatch.Prefix"
+        Icon="@Icons.Material.Filled.HowToReg"
+        IconColor="Color.Secondary">
+        Matrículas e Rematrículas
+    </MudNavLink>
+
+    <MudNavLink
+        Href=""
+        Match="NavLinkMatch.Prefix"
+        Icon="@Icons.Material.Filled.TrendingUp"
+        IconColor="Color.Success">
+        Relatórios Financeiros e Auditoria
+    </MudNavLink>
+
+    <MudNavLink
+        Href=""
+        Match="NavLinkMatch.Prefix"
+        Icon="@Icons.Material.Filled.School"
+        IconColor="Color.Primary">
+        Registro e Acompanhamento Acadêmico
+    </MudNavLink>
+
+    <MudNavLink
+        Href=""
+        Match="NavLinkMatch.Prefix"
+        Icon="@Icons.Material.Filled.Group"
+        IconColor="Color.Info">
+        Apoio à Coordenação e Professores
+    </MudNavLink>
+
+    <MudNavLink
+        Href=""
+        Match="NavLinkMatch.Prefix"
+        Icon="@Icons.Material.Filled.MarkChatUnread"
+        IconColor="Color.Primary">
+        Atendimento e Comunicação
+    </MudNavLink>
+
+    <MudNavLink
+        Href=""
+        Match="NavLinkMatch.Prefix"
+        Icon="@Icons.Material.Filled.AdminPanelSettings"
+        IconColor="Color.Error">
+        Controle de Acesso e Segurança
+    </MudNavLink>
+</MudNavGroup>
+
+<MudNavLink
+    T="bool"
+    Href="/Sec/Seguranca"
+    Match="NavLinkMatch.Prefix"
+    Icon="@Icons.Material.Filled.Lock"
+    IconColor = "Color.Default">Segurança
+</MudNavLink>
+
+<MudNavLink
+    Href="/Sec/Suporte"
+    Match="NavLinkMatch.Prefix"
+    Icon="@Icons.Material.Filled.Help"
+    IconColor="Color.Surface">
+    Suporte
+</MudNavLink>
+
+<MudNavLink
+    Href="/Con/Sobre"
+    Match="NavLinkMatch.Prefix"
+    Icon="@Icons.Material.Filled.Info"
+    IconColor="Color.Info">
+    Sobre
+</MudNavLink>

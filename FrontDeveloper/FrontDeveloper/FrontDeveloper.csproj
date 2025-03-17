@@ -13,7 +13,19 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Folder Include="Pages\SecretarioAcadenico\Config\" />
       <Folder Include="wwwroot\lib\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <AdditionalFiles Include="Pages\SecretarioAcadenico\Info\Index.razor" />
+      <AdditionalFiles Include="Pages\SecretarioAcadenico\Info\Login.razor" />
+      <AdditionalFiles Include="Pages\SecretarioAcadenico\Info\MenuCon.razor" />
+      <AdditionalFiles Include="Pages\SecretarioAcadenico\Info\Politica.razor" />
+      <AdditionalFiles Include="Pages\SecretarioAcadenico\Info\RecuperarSenha.razor" />
+      <AdditionalFiles Include="Pages\SecretarioAcadenico\Info\Seguranca.razor" />
+      <AdditionalFiles Include="Pages\SecretarioAcadenico\Info\Sobre.razor" />
+      <AdditionalFiles Include="Pages\SecretarioAcadenico\Info\TermoUso.razor" />
     </ItemGroup>
 
 </Project>
