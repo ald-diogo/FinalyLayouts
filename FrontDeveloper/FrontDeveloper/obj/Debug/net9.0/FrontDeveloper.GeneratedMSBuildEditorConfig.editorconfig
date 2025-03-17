@@ -147,8 +147,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2FkYXN0cm9TZWNyZXRhcmlvLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/ConsultorFinanceiro/Config/Atendimento.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29uc3VsdG9yRmluYW5jZWlyb1xDb25maWdcQXRlbmRpbWVudG8ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/ConsultorFinanceiro/Config/Beneficios.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29uc3VsdG9yRmluYW5jZWlyb1xDb25maWdcQmVuZWZpY2lvcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/ConsultorFinanceiro/Config/ControleOrcamento.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29uc3VsdG9yRmluYW5jZWlyb1xDb25maWdcQ29udHJvbGVPcmNhbWVudG8ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/ConsultorFinanceiro/Config/Estrategia.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29uc3VsdG9yRmluYW5jZWlyb1xDb25maWdcRXN0cmF0ZWdpYS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/ConsultorFinanceiro/Config/GestaoBolsas.razor]
@@ -157,6 +169,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/ConsultorFinanceiro/Config/GestaoFinanceira.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29uc3VsdG9yRmluYW5jZWlyb1xDb25maWdcR2VzdGFvRmluYW5jZWlyYS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/ConsultorFinanceiro/Config/Parcerias.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29uc3VsdG9yRmluYW5jZWlyb1xDb25maWdcUGFyY2VyaWFzLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/ConsultorFinanceiro/Config/RelatorioFinanceiro.razor]

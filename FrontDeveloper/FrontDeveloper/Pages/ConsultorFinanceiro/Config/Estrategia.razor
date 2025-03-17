@@ -1,0 +1,164 @@
+﻿@page "/estrategia-novos-alunos"
+
+<MudContainer>
+    <MudPaper Class="pa-5" Elevation="4">
+        <MudTypography Variant="H4" Class="mb-4">📢 Estratégia para Novos Alunos</MudTypography>
+        <MudFade In="true" Timing="0.8s">
+            <MudGrid>
+                
+                <!-- Marketing e Divulgação -->
+                <MudItem xs="12" md="3">
+                    <MudCard Class="hover:shadow-lg transition-transform transform hover:scale-105">
+                        <MudCardHeader 
+                            Title="Marketing e Divulgação" 
+                            Icon="@Icons.Material.Outlined.Campaign" />
+                        <MudCardContent>
+                            <MudTypography>
+                                Redes sociais, campanhas, eventos e publicidade.
+                            </MudTypography>
+                        </MudCardContent>
+                        
+                        <MudCardActions>
+                            <MudButton
+                                Color="Color.Primary"
+                                Variant="Variant.Filled"
+                                @onclick="HandleButtonClick">
+                                Ver Estratégias
+                            </MudButton>
+
+                            @code {
+                                [Inject] private ISnackbar Snackbar { get; set; } = default!;
+
+                                private void HandleButtonClick()
+                                {
+                                    OpenDialog(1);
+                                    Snackbar.Add("Exibindo estratégias disponíveis", Severity.Info);
+                                }
+                            }
+                        </MudCardActions>
+                    </MudCard>
+                </MudItem>
+                
+                <!-- Parcerias Acadêmicas -->
+                <MudItem xs="12" md="3">
+                    <MudCard Class="hover:shadow-lg transition-transform transform hover:scale-105">
+                        <MudCardHeader 
+                            Title="Parcerias Acadêmicas" 
+                            Icon="@Icons.Material.Outlined.Handshake" />
+                        <MudCardContent>
+                            <MudTypography>
+                                Convênios com escolas e cursos preparatórios.
+                            </MudTypography>
+                        </MudCardContent>
+                        
+                        <MudCardActions>
+                            <MudButton
+                                Color="Color.Secondary"
+                                Variant="Variant.Filled"
+                                OnClick="() => OpenDialog(2)">
+                                Criar Parceria
+                            </MudButton>
+                        </MudCardActions>
+                    </MudCard>
+                </MudItem>
+                
+                <!-- Benefícios e Diferenciais -->
+                <MudItem xs="12" md="3">
+                    <MudCard Class="hover:shadow-lg transition-transform transform hover:scale-105">
+                        <MudCardHeader 
+                            Title="Benefícios e Diferenciais"
+                            Icon="@Icons.Material.Outlined.Star" />
+                        <MudCardContent>
+                            <MudTypography>
+                                Bolsas, qualidade de ensino e infraestrutura.
+                            </MudTypography>
+                        </MudCardContent>
+                        
+                        <MudCardActions>
+                            <MudButton
+                                Href="/beneficios"
+                                Color="Color.Success"
+                                Variant="Variant.Filled"
+                                OnClick="() => OpenDialog(3)">
+                                Explorar Benefícios
+                            </MudButton>
+                        </MudCardActions>
+                    </MudCard>
+                </MudItem>
+                
+                <!-- Métricas e Análises -->
+                <MudItem xs="12" md="3">
+                    <MudCard Class="hover:shadow-lg transition-transform transform hover:scale-105">
+                        <MudCardHeader 
+                            Title="Métricas e Análises" 
+                            Icon="@Icons.Material.Outlined.BarChart" />
+                        <MudCardContent>
+                            <MudTypography>
+                                Indicadores de impacto e evolução das estratégias.
+                            </MudTypography>
+                        </MudCardContent>
+                        <MudCardActions>
+                            <MudButton
+                                Color="Color.Info"
+                                Variant="Variant.Filled"
+                                OnClick="() => OpenDialog(4)">
+                                Ver Análises
+                            </MudButton>
+                        </MudCardActions>
+                    </MudCard>
+                </MudItem>
+            </MudGrid>
+        </MudFade>
+    </MudPaper>
+</MudContainer>
+
+<!-- Diálogos Interativos -->
+<MudDialog @bind-IsOpen="dialogOpen" MaxWidth="@MaxWidth.Medium">
+    <MudDialogTitle>@dialogTitle</MudDialogTitle>
+    <MudDialogContent>
+        <MudTypography>@dialogContent</MudTypography>
+    </MudDialogContent>
+    <MudDialogActions>
+        <MudButton
+            Href="/Con/parcerias-captacao"
+            Color="Color.Primary"
+            OnClick="CloseDialog">
+            Fechar
+        </MudButton>
+    </MudDialogActions>
+</MudDialog>
+
+@code {
+    private bool dialogOpen = false;
+    private string dialogTitle = "";
+    private string dialogContent = "";
+    
+    private void OpenDialog(int option)
+    {
+        dialogOpen = true;
+        switch (option)
+        {
+            case 1:
+                dialogTitle = "Marketing e Divulgação";
+                dialogContent = "Planeje campanhas de redes sociais, eventos e publicidade para atrair alunos.";
+                break;
+            case 2:
+                dialogTitle = "Parcerias Acadêmicas";
+                dialogContent = "Estabeleça convênios com escolas e cursos preparatórios para captar alunos.";
+                break;
+            case 3:
+                dialogTitle = "Benefícios e Diferenciais";
+                dialogContent = "Apresente bolsas de estudo, qualidade de ensino e infraestrutura diferenciada.";
+                break;
+            case 4:
+                dialogTitle = "Métricas e Análises";
+                dialogContent = "Acompanhe indicadores de crescimento e evolução das estratégias adotadas.";
+                break;
+        }
+    }
+    
+    private void CloseDialog()
+    {
+        dialogOpen = false;
+    }
+}

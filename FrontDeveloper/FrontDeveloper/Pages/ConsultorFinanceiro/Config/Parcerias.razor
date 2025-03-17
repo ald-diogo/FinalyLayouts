@@ -1,0 +1,136 @@
+﻿@page "/Con/parcerias-captacao"
+
+<MudText Align="Align.Center" Color="Color.Primary" Typo="Typo.h5" Class="ml-2">Parcerias e Captação de Recursos</MudText>
+
+
+<MudContainer>
+    <MudPaper Class="pa-5" Elevation="4">
+        <MudTypography Variant="H4" Class="mb-4">📌 Parcerias e Captação de Recursos</MudTypography>
+        <MudFade In="true" Timing="0.8s">
+            <MudGrid>
+                
+                <!-- Negociar Parcerias -->
+                <MudItem xs="12" md="4">
+                    <MudCard Class="hover:shadow-lg transition-transform transform hover:scale-105">
+                        <MudCardHeader 
+                            Title="Negociar Parcerias" 
+                            Icon="@Icons.Material.Outlined.AccountBalance"
+                            Variant="@Variant.Outlined"/>
+                        <MudCardContent>
+                            <MudTypography>
+                                Negociação com bancos e instituições de crédito para obter apoio financeiro.
+                            </MudTypography>
+                        </MudCardContent>
+                        
+                        <MudCardActions>
+                            <MudButton
+                                Color="Color.Primary"
+                                Variant="Variant.Filled"
+                                @onclick="HandleButtonClick">
+                                Negociar
+                            </MudButton>
+
+                            @code {
+                                [Inject] private ISnackbar Snackbar { get; set; } = default!;
+
+                                private void HandleButtonClick()
+                                {
+                                    OpenDialog(1);
+                                    Snackbar.Add("Iniciando negociação", Severity.Info);
+                                }
+                            }
+                        </MudCardActions>
+                    </MudCard>
+                </MudItem>
+                
+                <!-- Captação de Estudantes -->
+                <MudItem xs="12" md="4">
+                    <MudCard Class="hover:shadow-lg transition-transform transform hover:scale-105">
+                        <MudCardHeader Title="Captação de Estudantes" Icon="@Icons.Material.Outlined.School" />
+                        <MudCardContent>
+                            <MudTypography>Desenvolvimento de estratégias para atrair novos alunos pagantes.</MudTypography>
+                        </MudCardContent>
+                        <MudCardActions>
+                            <MudButton
+                                Href="/estrategia-novos-alunos"
+                                Color="Color.Secondary"
+                                Variant="Variant.Filled"
+                                OnClick="() => OpenDialog(2)">
+                                Criar Estratégia
+                            </MudButton>
+                        </MudCardActions>
+                    </MudCard>
+                </MudItem>
+                
+                <!-- Buscar Financiamento -->
+                <MudItem xs="12" md="4">
+                    <MudCard Class="hover:shadow-lg transition-transform transform hover:scale-105">
+                        <MudCardHeader Title="Buscar Financiamento" Icon="@Icons.Material.Outlined.Money" />
+                        <MudCardContent>
+                            <MudTypography>
+                                Captação de recursos para melhorias estruturais e tecnológicas.
+                            </MudTypography>
+                        </MudCardContent>
+                        <MudCardActions>
+                            <MudButton
+                                Href="/Con/relatorios-financeiros"
+                                Color="Color.Success"
+                                Variant="Variant.Filled"
+                                OnClick="() => OpenDialog(3)">
+                                Buscar Financiamento
+                            </MudButton>
+                        </MudCardActions>
+                    </MudCard>
+                </MudItem>
+            </MudGrid>
+        </MudFade>
+    </MudPaper>
+</MudContainer>
+
+<!-- Diálogos interativos -->
+<MudDialog @bind-IsOpen="dialogOpen" MaxWidth="@MaxWidth.Medium">
+    <MudDialogTitle>@dialogTitle</MudDialogTitle>
+    <MudDialogContent>
+        <MudTypography>@dialogContent</MudTypography>
+    </MudDialogContent>
+    
+    <MudDialogActions>
+        <MudButton
+            Href="/Con/gestao-bolsas"
+            Color="Color.Primary"
+            OnClick="CloseDialog">
+            Fechar
+        </MudButton>
+    </MudDialogActions>
+</MudDialog>
+
+@code {
+    private bool dialogOpen = false;
+    private string dialogTitle = "";
+    private string dialogContent = "";
+    
+    private void OpenDialog(int option)
+    {
+        dialogOpen = true;
+        switch (option)
+        {
+            case 1:
+                dialogTitle = "Negociar Parcerias";
+                dialogContent = "Aqui você pode iniciar negociações com bancos e instituições financeiras.";
+                break;
+            case 2:
+                dialogTitle = "Captação de Estudantes";
+                dialogContent = "Planeje estratégias para atrair novos estudantes pagantes.";
+                break;
+            case 3:
+                dialogTitle = "Buscar Financiamento";
+                dialogContent = "Encontre opções de financiamento para melhorias estruturais e tecnológicas.";
+                break;
+        }
+    }
+    
+    private void CloseDialog()
+    {
+        dialogOpen = false;
+    }
+}

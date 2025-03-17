@@ -1,0 +1,89 @@
+﻿@page "/Con/suporte-financeiro"
+@inject ISnackbar Snackbar
+
+<MudContainer MaxWidth="MaxWidth.Medium" Class="mud-container">
+    <MudPaper Elevation="5" Class="mud-paper">
+        <MudTypography Variant="H4" Class="mud-title">
+            <MudIcon Icon="@Icons.Material.Filled.SupportAgent" Class="mud-icon" />
+            Atendimento e Suporte Financeiro
+        </MudTypography>
+        
+        <MudExpansionPanels>
+            <MudExpansionPanel Text="Dúvidas Financeiras" Icon="@Icons.Material.Filled.AttachMoney">
+                <MudTypography>Esclareça suas dúvidas sobre taxas, prazos e métodos de pagamento.</MudTypography>
+                <MudList T="string">
+                    <MudListItem T="string">
+                        <MudIcon Icon="@Icons.Material.Filled.Info"/> Como funcionam os pagamentos?
+                    </MudListItem>
+                    
+                    <MudListItem T="string">
+                        <MudIcon Icon="@Icons.Material.Filled.Schedule"/> Prazos para quitação?
+                    </MudListItem>
+                    
+                    <MudListItem T="string">
+                        <MudIcon Icon="@Icons.Material.Filled.CreditCard"/> Métodos de pagamento aceitos?
+                    </MudListItem>
+                </MudList>
+            </MudExpansionPanel>
+            
+            <MudExpansionPanel 
+                Text="Planos de Pagamento Personalizados" 
+                Icon="@Icons.Material.Filled.Payments">
+                <MudTypography>
+                    Oferecemos opções de parcelamento para estudantes inadimplentes.
+                </MudTypography>
+                <MudButton 
+                    Color="Color.Info"
+                    Variant="Variant.Filled"
+                    StartIcon="@Icons.Material.Filled.Calculate"
+                    @onclick="@(() => Snackbar.Add("Simulacao em Curso!", Severity.Info))">
+                    Simular Plano
+                </MudButton>
+            </MudExpansionPanel>
+            
+            <MudExpansionPanel Text="Canais de Atendimento" Icon="@Icons.Material.Filled.HeadsetMic">
+                <MudTypography>Entre em contato conosco pelos seguintes meios:</MudTypography>
+                <MudList T="string">
+                    <MudListItem T="string">
+                        <MudIcon Icon="@Icons.Material.Filled.Chat"/> Chat Online
+                    </MudListItem>
+                    <MudListItem T="string">
+                        <MudIcon Icon="@Icons.Material.Filled.Email"/> suporte@financeiro.com
+                    </MudListItem>
+                    <MudListItem T="string">
+                        <MudIcon Icon="@Icons.Material.Filled.Phone"/> (+244) 999 999 999
+                    </MudListItem>
+                </MudList>
+                
+                <MudButton
+                    Color="Color.Success"
+                    StartIcon="@Icons.Material.Filled.Message"
+                    @onclick="@(() => Snackbar.Add("Chat inicializado com Sucesso!", Severity.Success))">
+                    Iniciar Chat
+                </MudButton>
+            </MudExpansionPanel>
+        </MudExpansionPanels>
+    </MudPaper>
+</MudContainer>
+
+<style>
+    .mud-container {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+    }
+    .mud-paper {
+        padding: 20px;
+        background: linear-gradient(135deg, #2C2F4A, #6A1B9A);
+        color: white;
+        border-radius: 10px;
+    }
+    .mud-title {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .mud-icon {
+        font-size: 2rem;
+    }
+</style>

@@ -1,0 +1,138 @@
+﻿@page "/beneficios"
+@inject ISnackbar Snackbar
+
+<MudContainer>
+    <MudPaper Class="pa-5" Elevation="4">
+        <MudTypography Variant="H4" Class="mb-4">🎁 Benefícios e Oportunidades</MudTypography>
+        <MudSlide In="true" Direction="Left" Timing="0.8s">
+            <MudGrid>
+                
+                <!-- Bolsas de Estudo -->
+                <MudItem xs="12" md="4">
+                    <MudCard Class="hover:shadow-lg transition-transform transform hover:scale-105">
+                        <MudCardHeader 
+                            Title="Bolsas de Estudo"
+                            Icon="@Icons.Material.Outlined.School" />
+                        <MudCardContent>
+                            <MudTypography>
+                                Oferecemos diversas bolsas para facilitar seu acesso à educação de qualidade.
+                            </MudTypography>
+                        </MudCardContent>
+                        <MudCardActions>
+                            <MudButton
+                                Href="/Con/Sobre"
+                                Color="Color.Success"
+                                Variant="Variant.Filled"
+                                OnClick="() => OpenDialog(1)">
+                                Saiba Mais
+                            </MudButton>
+                        </MudCardActions>
+                    </MudCard>
+                </MudItem>
+                
+                <!-- Infraestrutura Moderna -->
+                <MudItem xs="12" md="4">
+                    <MudCard Class="hover:shadow-lg transition-transform transform hover:scale-105">
+                        <MudCardHeader Title="Infraestrutura Moderna" Icon="@Icons.Material.Outlined.Apartment" />
+                        <MudCardContent>
+                            <MudTypography>
+                                Salas equipadas, bibliotecas e laboratórios tecnológicos.
+                            </MudTypography>
+                        </MudCardContent>
+                        <MudCardActions>
+                            <MudButton
+                                Color="Color.Warning"
+                                Variant="Variant.Filled"
+                                StartIcon="@Icons.Material.Outlined.Apartment"
+                                @onclick="HandleButtonClick">
+                                Ver Estrutura
+                            </MudButton>
+
+                            @code {
+                                private void HandleButtonClick()
+                                {
+                                    OpenDialog(2);
+                                    Snackbar.Add("Pedido a ser processado", Severity.Warning);
+                                }
+                            }
+                        </MudCardActions>
+                    </MudCard>
+                </MudItem>
+                
+                <!-- Programas de Empregabilidade -->
+                <MudItem xs="12" md="4">
+                    <MudCard Class="hover:shadow-lg transition-transform transform hover:scale-105">
+                        <MudCardHeader 
+                            Title="Empregabilidade" 
+                            Icon="@Icons.Material.Outlined.Work" />
+                        <MudCardContent>
+                            <MudTypography>
+                                Parcerias com empresas para estágio e oportunidades de emprego.
+                            </MudTypography>
+                        </MudCardContent>
+                        <MudCardActions>
+                            <MudButton
+                                Href="/estrategia-novos-alunos"
+                                Color="Color.Warning"
+                                Variant="Variant.Filled"
+                                OnClick="() => OpenDialog(3)"
+                                StartIcon="@Icons.Material.Outlined.Info">
+                                Conheça Mais
+                            </MudButton>
+                        </MudCardActions>
+                    </MudCard>
+                </MudItem>
+            </MudGrid>
+        </MudSlide>
+    </MudPaper>
+</MudContainer>
+
+<!-- Diálogos Interativos -->
+<MudDialog @bind-IsOpen="dialogOpen" MaxWidth="@MaxWidth.Medium">
+    <MudDialogTitle>@dialogTitle</MudDialogTitle>
+    
+    <MudDialogContent>
+        <MudTypography>@dialogContent</MudTypography>
+    </MudDialogContent>
+    
+    <MudDialogActions>
+        <MudButton
+            Href="/estrategia-novos-alunos"
+            Color="Color.Secondary"
+            OnClick="CloseDialog"
+            StartIcon="@Icons.Material.Outlined.ExitToApp">
+            Fechar
+        </MudButton>
+    </MudDialogActions>
+</MudDialog>
+
+@code {
+    private bool dialogOpen = false;
+    private string dialogTitle = "";
+    private string dialogContent = "";
+    
+    private void OpenDialog(int option)
+    {
+        dialogOpen = true;
+        switch (option)
+        {
+            case 1:
+                dialogTitle = "Bolsas de Estudo";
+                dialogContent = "Disponibilizamos diversas opções de bolsas para alunos com bom desempenho e necessidade financeira.";
+                break;
+            case 2:
+                dialogTitle = "Infraestrutura Moderna";
+                dialogContent = "Nossa instituição conta com laboratórios de última geração, bibliotecas atualizadas e ambientes confortáveis.";
+                break;
+            case 3:
+                dialogTitle = "Programas de Empregabilidade";
+                dialogContent = "Firmamos parcerias com empresas para oferecer estágios e oportunidades de emprego aos alunos.";
+                break;
+        }
+    }
+    
+    private void CloseDialog()
+    {
+        dialogOpen = false;
+    }
+}

@@ -1,10 +1,12 @@
 ﻿@page "/Con/gestao-bolsas"
 
+<MudText Align="Align.Center" Color="Color.Primary" Typo="Typo.h5" Class="ml-2">Gestão de Bolsas e Descontos</MudText>
+
 <MudContainer>
     <!-- Cabeçalho -->
     <MudToolbar Class="mud-theme-primary">
         <MudIcon Icon="@Icons.Material.Outlined.School" Size="Size.Large" />
-        <MudText Typo="Typo.h5" Class="ml-2">Gestão de Bolsas e Descontos</MudText>
+        
         
         <MudSpacer />
         
@@ -57,8 +59,10 @@
             <MudTd>@bolsa.Tipo</MudTd>
             <MudTd>@bolsa.Percentual%</MudTd>
             <MudTd>
-                <MudChip Color="@(bolsa.Status == "Aprovado" ? Color.Success : Color.Warning)" 
-                         Icon="@(bolsa.Status == "Aprovado" ? Icons.Material.Outlined.CheckCircle : Icons.Material.Outlined.HourglassEmpty)">
+                <MudChip 
+                    T="string" 
+                    Color="@(bolsa.Status == "Aprovado" ? Color.Success : Color.Warning)" 
+                    Icon="@(bolsa.Status == "Aprovado" ? Icons.Material.Outlined.CheckCircle : Icons.Material.Outlined.HourglassEmpty)">
                     @bolsa.Status
                 </MudChip>
             </MudTd>
@@ -91,7 +95,7 @@
                 T="string"
                 Variant="Variant.Outlined"
                 Adornment="Adornment.End"
-                AdornmentIcon="@Icons.Material.Outlined.Person" />
+                AdornmentIcon="@Icons.Material.Outlined.School" />
             
             <MudTextField
                 T="string"
@@ -99,7 +103,7 @@
                 Type="number"
                 Variant="Variant.Outlined"
                 Adornment="Adornment.End"
-                AdornmentIcon="@Icons.Material.Outlined.Person"/>
+                AdornmentIcon="@Icons.Material.Outlined.Percent"/>
             <MudButton Color="Color.Primary">Conceder</MudButton>
         </MudCardContent>
     </MudCard>
