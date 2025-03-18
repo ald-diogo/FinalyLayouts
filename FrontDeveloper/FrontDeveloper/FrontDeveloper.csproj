@@ -19,7 +19,6 @@
     <ItemGroup>
       <AdditionalFiles Include="Pages\FuncionarioAcademico\Info\Index.razor" />
       <AdditionalFiles Include="Pages\FuncionarioAcademico\Info\Login.razor" />
-      <AdditionalFiles Include="Pages\FuncionarioAcademico\Info\MenuProf.razor" />
       <AdditionalFiles Include="Pages\FuncionarioAcademico\Info\Politica.razor" />
       <AdditionalFiles Include="Pages\FuncionarioAcademico\Info\RecuperarSenha.razor" />
       <AdditionalFiles Include="Pages\FuncionarioAcademico\Info\Seguranca.razor" />

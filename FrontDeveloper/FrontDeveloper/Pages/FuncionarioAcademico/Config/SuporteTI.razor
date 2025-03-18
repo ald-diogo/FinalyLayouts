@@ -1,6 +1,148 @@
-﻿@page "/SuporteTI"
-<h3>SuporteTI</h3>
+﻿@page "/Fun/suporte-tecnico"
+
+<MudContainer>
+    <MudPaper Elevation="3" Class="pa-4">
+        <MudGrid>
+            <MudItem xs="12" sm="6">
+                <MudTypography Variant="h4">
+                    <MudIcon Icon="@Icons.Material.Filled.Computer" /> Suporte Técnico e TI
+                </MudTypography>
+            </MudItem>
+            <MudItem xs="12" sm="6" Class="text-right">
+                <MudSwitch T="string" Label="Modo Escuro" @bind-Checked="isDarkMode" />
+            </MudItem>
+        </MudGrid>
+
+        <MudGrid>
+            <MudItem xs="12" sm="4">
+                <MudCard>
+                    <MudCardHeader>
+                        <MudIcon Icon="@Icons.Material.Filled.Assessment" /> Status do Sistema
+                    </MudCardHeader>
+                    
+                    <MudCardContent>
+                        <MudChip T="string" Color="Color.Success">Online</MudChip>
+                    </MudCardContent>
+                </MudCard>
+            </MudItem>
+            <MudItem xs="12" sm="4">
+                <MudCard>
+                    <MudCardHeader>
+                        <MudIcon Icon="@Icons.Material.Filled.Warning" /> Alertas de Erros
+                    </MudCardHeader>
+                    
+                    <MudCardContent>
+                        <MudList T="string">
+                            <MudListItem T="string">Erro na autenticação - Usuário X</MudListItem>
+                            <MudListItem T="string">Falha no envio de e-mails</MudListItem>
+                        </MudList>
+                    </MudCardContent>
+                </MudCard>
+            </MudItem>
+            <MudItem xs="12" sm="4">
+                <MudCard>
+                    <MudCardHeader>
+                        <MudIcon Icon="@Icons.Material.Filled.History" /> Registro de Atividades
+                    </MudCardHeader>
+                    
+                    <MudCardContent>
+                        <MudList T="string">
+                            <MudListItem T="string">Admin alterou permissões</MudListItem>
+                            <MudListItem T="string">Usuário Y redefiniu senha</MudListItem>
+                        </MudList>
+                    </MudCardContent>
+                </MudCard>
+            </MudItem>
+        </MudGrid>
+
+        <MudGrid Class="mt-4">
+            <MudItem xs="12">
+                <MudTable Items="@usuarios" Dense>
+                    <MudTableHeader>
+                        <MudTableRow>
+                            <MudTableCell>Nome</MudTableCell>
+                            <MudTableCell>Permissão</MudTableCell>
+                            <MudTableCell>Ações</MudTableCell>
+                        </MudTableRow>
+                    </MudTableHeader>
+                    <MudTableBody>
+                        @foreach (var usuario in usuarios)
+                        {
+                            <MudTableRow>
+                                <MudTableCell>@usuario.Nome</MudTableCell>
+                                <MudTableCell>@usuario.Permissao</MudTableCell>
+                                <MudTableCell>
+                                    <MudButton Color="Color.Primary" Icon="@Icons.Material.Filled.Edit" />
+                                    <MudButton Color="Color.Error" Icon="@Icons.Material.Filled.Delete" />
+                                </MudTableCell>
+                            </MudTableRow>
+                        }
+                    </MudTableBody>
+                </MudTable>
+            </MudItem>
+        </MudGrid>
+
+        <MudGrid Class="mt-4">
+            <MudItem xs="12">
+                <MudTypography Variant="h5">Tickets de Suporte</MudTypography>
+                <MudTable Items="@tickets" Dense>
+                    <MudTableHeader>
+                        <MudTableRow>
+                            <MudTableCell>Usuário</MudTableCell>
+                            <MudTableCell>Problema</MudTableCell>
+                            <MudTableCell>Status</MudTableCell>
+                            <MudTableCell>Ações</MudTableCell>
+                        </MudTableRow>
+                    </MudTableHeader>
+                    <MudTableBody>
+                        @foreach (var ticket in tickets)
+                        {
+                            <MudTableRow>
+                                <MudTableCell>@ticket.Usuario</MudTableCell>
+                                <MudTableCell>@ticket.Problema</MudTableCell>
+                                <MudTableCell>
+                                    <MudChip T="string" Color="@(ticket.Resolvido ? Color.Success : Color.Warning)">
+                                        @(ticket.Resolvido ? "Resolvido" : "Pendente")
+                                    </MudChip>
+                                </MudTableCell>
+                                <MudTableCell>
+                                    <MudButton Color="Color.Success" Icon="@Icons.Material.Filled.Check" />
+                                </MudTableCell>
+                            </MudTableRow>
+                        }
+                    </MudTableBody>
+                </MudTable>
+            </MudItem>
+        </MudGrid>
+    </MudPaper>
+</MudContainer>
 
 @code {
+    private bool isDarkMode;
     
+    private List<Usuario> usuarios = new()
+    {
+        new Usuario { Nome = "Admin", Permissao = "Administrador" },
+        new Usuario { Nome = "Professor A", Permissao = "Docente" }
+    };
+
+    private List<TicketSuporte> tickets = new()
+    {
+        new TicketSuporte { Usuario = "Aluno B", Problema = "Erro no login", Resolvido = false },
+        new TicketSuporte { Usuario = "Professor C", Problema = "Problema no acesso ao sistema", Resolvido = true }
+    };
+
+    private class Usuario
+    {
+        public string Nome { get; set; }
+        public string Permissao { get; set; }
+    }
+
+    private class TicketSuporte
+    {
+        public string Usuario { get; set; }
+        public string Problema { get; set; }
+        public bool Resolvido { get; set; }
+    }
 }
+

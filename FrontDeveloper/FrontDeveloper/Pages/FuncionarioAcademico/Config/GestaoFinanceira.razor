@@ -1,6 +1,111 @@
-﻿@page "/GestaoFinanceira"
-<h3>GestaoFinanceira</h3>
+﻿@page "/Fun/gestao-financeira"
+
+<MudContainer>
+    <MudGrid>
+        <MudItem xs="12">
+            <MudTypography Variant="H4">Gestão Financeira</MudTypography>
+            <MudDivider />
+        </MudItem>
+        
+        <MudItem xs="12" md="4">
+            <MudCard>
+                <MudCardContent>
+                    <MudIcon 
+                        Icon="@Icons.Material.Filled.AttachMoney" 
+                        Color="Color.Primary" 
+                        Size="Size.Large" />
+                    <MudTypography Variant="H6">Total Recebido</MudTypography>
+                    <MudTypography Variant="H5">AOA 1,500,000</MudTypography>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+        
+        <MudItem xs="12" md="4">
+            <MudCard>
+                <MudCardContent>
+                    <MudIcon 
+                        Icon="@Icons.Material.Filled.Warning" 
+                        Color="Color.Warning" 
+                        Size="Size.Large" />
+                    <MudTypography Variant="H6">Pendências</MudTypography>
+                    <MudTypography Variant="H5">AOA 300,000</MudTypography>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+        
+        <MudItem xs="12" md="4">
+            <MudCard>
+                <MudCardContent>
+                    <MudIcon 
+                        Icon="@Icons.Material.Filled.School" 
+                        Color="Color.Success"
+                        Size="Size.Large" />
+                    <MudTypography Variant="H6">Bolsas Concedidas</MudTypography>
+                    <MudTypography Variant="H5">120</MudTypography>
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+        
+        <MudItem xs="12">
+            <MudTable Items="@pagamentos">
+                <MudTableHead>
+                    <MudTableRow>
+                        <MudTableCell>Estudante</MudTableCell>
+                        <MudTableCell>Valor</MudTableCell>
+                        <MudTableCell>Status</MudTableCell>
+                        <MudTableCell>Ações</MudTableCell>
+                    </MudTableRow>
+                </MudTableHead>
+                <MudTableBody>
+                    @foreach (var pagamento in pagamentos)
+                    {
+                        <MudTableRow>
+                            <MudTableCell>@pagamento.Estudante</MudTableCell>
+                            <MudTableCell>@pagamento.Valor</MudTableCell>
+                            <MudTableCell>
+                                <MudChip T="string" Color="@(pagamento.Pago ? Color.Success : Color.Error)">@(pagamento.Pago ? "Pago" : "Pendente")</MudChip>
+                            </MudTableCell>
+                            <MudTableCell>
+                                <MudIconButton 
+                                    Icon="@Icons.Material.Filled.Receipt" 
+                                    Color="Color.Primary" 
+                                    OnClick="() => EmitirRecibo(pagamento)" />
+                                
+                                <MudIconButton 
+                                    Icon="@Icons.Material.Filled.Delete" 
+                                    Color="Color.Error" 
+                                    OnClick="() => RemoverPagamento(pagamento)" />
+                            </MudTableCell>
+                        </MudTableRow>
+                    }
+                </MudTableBody>
+            </MudTable>
+        </MudItem>
+    </MudGrid>
+</MudContainer>
 
 @code {
-    
+    private List<Pagamento> pagamentos = new()
+    {
+        new Pagamento { Estudante = "Carlos Silva", Valor = "AOA 50,000", Pago = true },
+        new Pagamento { Estudante = "Ana Fernandes", Valor = "AOA 45,000", Pago = false },
+        new Pagamento { Estudante = "Pedro Oliveira", Valor = "AOA 60,000", Pago = true },
+    };
+
+    private void EmitirRecibo(Pagamento pagamento)
+    {
+        // Código para gerar recibo
+    }
+
+    private void RemoverPagamento(Pagamento pagamento)
+    {
+        pagamentos.Remove(pagamento);
+    }
+
+    public class Pagamento
+    {
+        public string Estudante { get; set; }
+        public string Valor { get; set; }
+        public bool Pago { get; set; }
+    }
 }
