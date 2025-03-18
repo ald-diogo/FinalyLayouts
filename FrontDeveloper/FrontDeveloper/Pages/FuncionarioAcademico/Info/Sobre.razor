@@ -4,117 +4,107 @@
 
 <MudContainer MaxWidth="MaxWidth.Large" Class="text-center">
     <MudText Typo="Typo.h3" Align="Align.Center" Class="my-4">
-        Bem-vindo ao Manual de Usuário
+        Bem-vindo ao Manual de Usuário - Setor Funcional
     </MudText>
 
     <MudText Typo="Typo.body1" Align="Align.Center" Class="my-2">
-        Neste guia, você encontrará informações detalhadas sobre os principais recursos e funcionalidades da nossa plataforma.
+        Esta página fornece informações essenciais sobre os serviços de suporte técnico, financeiro, acadêmico e comunicação.
     </MudText>
-    
+
     <MudAlert Severity="Severity.Info" Class="mt-5">
-        Fique à vontade para entrar em contato com nossa equipe de suporte para qualquer dúvida ou assistência.
+        Para dúvidas ou suporte, entre em contato com a equipe técnica ou a secretaria acadêmica.
     </MudAlert>
 
     <MudGrid Class="mt-4">
         <MudItem xs="12" sm="6" md="3">
             <MudPaper Elevation="3" Class="p-4">
-                <MudIconButton Icon="@Icons.Material.Filled.Group" Color="Color.Primary" Size="Size.Large" />
+                <MudIconButton Icon="@Icons.Material.Filled.SupportAgent" Color="Color.Warning" Size="Size.Large" />
                 <MudText Align="Align.Center" Class="mt-2">
-                    Funções Administrativas
+                    Suporte Técnico e TI
                 </MudText>
                 <MudText Align="Align.Center">
-                    Gerencie toda a parte administrativa da plataforma de maneira eficiente e intuitiva.
+                    Atendimento para questões de TI e manutenção de sistemas.
                 </MudText>
             </MudPaper>
         </MudItem>
 
         <MudItem xs="12" sm="6" md="3">
             <MudPaper Elevation="3" Class="p-4">
-                <MudIconButton Icon="@Icons.Material.Filled.CalendarToday" Color="Color.Info" Size="Size.Large" />
+                <MudIconButton Icon="@Icons.Material.Filled.RequestQuote" Color="Color.Success" Size="Size.Large" />
                 <MudText Align="Align.Center" Class="mt-2">
-                    Gestão de Cronogramas
+                    Gestão Financeira
                 </MudText>
                 <MudText Align="Align.Center">
-                    Organize e controle os cronogramas de aulas, eventos e atividades educacionais.
+                    Administração financeira e controle de despesas acadêmicas.
                 </MudText>
             </MudPaper>
         </MudItem>
 
         <MudItem xs="12" sm="6" md="3">
             <MudPaper Elevation="3" Class="p-4">
-                <MudIconButton Icon="@Icons.Material.Filled.PersonAddAlt" Color="Color.Success" Size="Size.Large" />
+                <MudIconButton Icon="@Icons.Material.Filled.School" Color="Color.Primary" Size="Size.Large" />
                 <MudText Align="Align.Center" Class="mt-2">
-                    Atribuição de Professores
+                    Coordenação e Professores
                 </MudText>
                 <MudText Align="Align.Center">
-                    Atribua facilmente professores às disciplinas, facilitando a alocação de recursos humanos.
+                    Apoio na gestão de professores e atribuição de aulas.
                 </MudText>
             </MudPaper>
         </MudItem>
 
         <MudItem xs="12" sm="6" md="3">
             <MudPaper Elevation="3" Class="p-4">
-                <MudIconButton Icon="@Icons.Material.Filled.BarChart" Color="Color.Warning" Size="Size.Large" />
+                <MudIconButton Icon="@Icons.Material.Filled.Chat" Color="Color.Info" Size="Size.Large" />
                 <MudText Align="Align.Center" Class="mt-2">
-                    Monitoramento Acadêmico
+                    Atendimento e Comunicação
                 </MudText>
                 <MudText Align="Align.Center">
-                    Acompanhe o desempenho acadêmico de seus alunos e tome decisões informadas.
+                    Central de atendimento para alunos e responsáveis.
                 </MudText>
             </MudPaper>
         </MudItem>
     </MudGrid>
 
-    <MudButton Color="Color.Primary" Variant="Variant.Filled" href="/Prof/Index" Class="mt-4">
+    <MudButton Color="Color.Primary" Variant="Variant.Filled" href="/Fun/Index" Class="mt-4">
         Voltar ao Início
     </MudButton>
 
     <MudPaper Elevation="4" Class="mt-5">
         <MudCarousel TData="string" Class="my-4">
             <MudCarouselItem>
-                <MudIconButton Icon="@Icons.Material.Filled.Schedule" Color="Color.Error" Size="Size.Large" />
+                <MudIconButton Icon="@Icons.Material.Filled.MenuBook" Color="Color.Secondary" Size="Size.Large" />
                 <MudText Typo="Typo.h6" Align="Align.Center" Class="mt-2">
-                    Gerenciamento de Grade Curricular
+                    Secretaria Acadêmica
                 </MudText>
                 <MudText Align="Align.Center">
-                    Organize e administre a grade curricular de forma fácil e eficiente.
+                    Gestão documental e acadêmica dos alunos e professores.
                 </MudText>
             </MudCarouselItem>
 
             <MudCarouselItem>
-                <MudIconButton Icon="@Icons.Material.Filled.Timeline" Color="Color.Dark" Size="Size.Large" />
+                <MudIconButton Icon="@Icons.Material.Filled.SupportAgent" Color="Color.Warning" Size="Size.Large" />
                 <MudText Typo="Typo.h6" Align="Align.Center" Class="mt-2">
-                    Monitoramento do Desempenho Acadêmico
+                    Suporte Técnico
                 </MudText>
                 <MudText Align="Align.Center">
-                    Avalie o desempenho de alunos e acompanhe sua evolução ao longo do curso.
+                    Resolução de problemas técnicos e operacionais.
                 </MudText>
             </MudCarouselItem>
 
             <MudCarouselItem>
-                <MudIconButton Icon="@Icons.Material.Filled.Person" Color="Color.Primary" Size="Size.Large" />
+                <MudIconButton Icon="@Icons.Material.Filled.Lock" Color="Color.Default" Size="Size.Large" />
                 <MudText Typo="Typo.h6" Align="Align.Center" Class="mt-2">
-                    Atribuição de Professores às Disciplinas
+                    Segurança
                 </MudText>
                 <MudText Align="Align.Center">
-                    Facilite a alocação de professores nas disciplinas, garantindo uma gestão eficiente.
-                </MudText>
-            </MudCarouselItem>
-
-            <MudCarouselItem>
-                <MudIconButton Icon="@Icons.Material.Filled.CalendarViewDay" Color="Color.Info" Size="Size.Large" />
-                <MudText Typo="Typo.h6" Align="Align.Center" Class="mt-2">
-                    Gestão de Cronogramas
-                </MudText>
-                <MudText Align="Align.Center">
-                    Organize e administre todos os cronogramas de atividades, aulas e eventos da sua instituição.
+                    Proteção de dados e segurança das operações do sistema.
                 </MudText>
             </MudCarouselItem>
         </MudCarousel>
     </MudPaper>
 
     <MudText Typo="Typo.body1" Align="Align.Center" Class="my-4">
-        Ao usar nossos serviços, você concorda com nossos
+        Ao utilizar a plataforma, você concorda com nossos
         <MudLink Href="/Fun/TermoUso" Target="_blank" Color="Color.Primary">
             Termos de Uso
         </MudLink>

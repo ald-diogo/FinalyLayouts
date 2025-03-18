@@ -1,226 +1,130 @@
 ﻿@page "/Admin/Sobre"
 
 @using MudBlazor
-@inject NavigationManager NavigationManager
 
-<MudContainer Class="d-flex justify-center align-center fade-in" Style="min-height: 100vh;">
-    <MudPaper Class="p-5 shadow-lg rounded-xl bg-light" Style="width: 90%; max-width: 1200px;">
-        <!-- Introdução (Bem-vindo) -->
-        <MudGrid Justify="Justify.Center" AlignItems="Align.Center" Class="mt-4">
-            <MudItem T="string" xs="12" sm="6" Class="d-flex justify-center">
-                <MudText
-                    Typo="Typo.h4"
-                    Align="Align.Center"
-                    Color="Color.Primary"
-                    Class="font-weight-bold text-center text-primary animate__animated animate__fadeIn animate__delay-1s">
-                    Bem-vindo(a) à área de Administração
+<MudContainer MaxWidth="MaxWidth.Large" Class="text-center">
+    <MudText Typo="Typo.h3" Align="Align.Center" Class="my-4">
+        Bem-vindo ao Painel Administrativo
+    </MudText>
+
+    <MudText Typo="Typo.body1" Align="Align.Center" Class="my-2">
+        Esta seção fornece um guia sobre a gestão de usuários, configurações do sistema, segurança e suporte.
+    </MudText>
+
+    <MudAlert Severity="Severity.Info" Class="mt-5">
+        Para dúvidas ou suporte técnico, entre em contato com a equipe de administração.
+    </MudAlert>
+
+    <MudGrid Class="mt-4">
+        <MudItem xs="12" sm="6" md="3">
+            <MudPaper Elevation="3" Class="p-4">
+                <MudIconButton Icon="@Icons.Material.Filled.People" Color="Color.Success" Size="Size.Large" />
+                <MudText Align="Align.Center" Class="mt-2">
+                    Gestão de Usuários
                 </MudText>
-            </MudItem>
-
-            <MudText
-                Typo="Typo.body1"
-                Align="Align.Center"
-                Color="Color.Dark"
-                Class="font-weight-bold text-success">
-                A plataforma administrativa oferece total controle sobre todas as funcionalidades do sistema, possibilitando uma gestão mais eficiente e integrada.
-                Navegue pelas opções abaixo e explore todos os recursos.
-            </MudText>
-        </MudGrid>
-
-        <MudDivider />
-
-        <MudGrid Justify="Justify.Center" Class="mt-4">
-            <!-- Primeira Linha de Cards -->
-            <MudItem xs="12" sm="4" md="4">
-                <MudCard Class="card-hover" Style="transition: transform 0.3s ease-in-out; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); height: 100%; max-width: 100%; display: flex; flex-direction: column;">
-                    <MudCardMedia>
-                        <MudIconButton Class="mt-3 animate__animated animate__fadeIn animate__delay-9s transform hover:scale-110 transition-all duration-300" Icon="@Icons.Material.Filled.Settings" Color="Color.Primary" Size="Size.Large" OnClick="NavigateToConfiguracoes"/>
-                    </MudCardMedia>
-                    <MudCardContent Style="flex-grow: 1;">
-                        <MudText Typo="Typo.h6" Class="font-weight-bold text-success">Configurações do Sistema</MudText>
-                        <MudText Typo="Typo.body2" Color="Color.Dark" Class="animate__animated animate__fadeIn animate__delay-4s" Style="line-height: 1.6; font-size: 1rem; margin-bottom: 1rem;">
-                            <ul>
-                                <li>Configurações Data e Hora</li>
-                                <li>Gestão de Senhas</li>
-                                <li>Ver Notificações</li>
-                                <li>Períodos Acadêmicos</li>
-                                <li>Cursos</li>
-                            </ul>
-                        </MudText>
-                        <MudText Typo="Typo.body2" Color="Color.Dark" Class="animate__animated animate__fadeIn animate__delay-4s" Style="line-height: 1.6; font-size: 1rem; margin-bottom: 1rem;">
-                            Aproveite ao máximo as configurações do sistema para otimizar sua operação.
-                        </MudText>
-                    </MudCardContent>
-                </MudCard>
-            </MudItem>
-
-            <MudItem xs="12" sm="4" md="4">
-                <MudCard Class="card-hover" Style="transition: transform 0.3s ease-in-out; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); height: 100%; max-width: 100%; display: flex; flex-direction: column;">
-                    <MudCardMedia>
-                        <MudIconButton Class="mt-3 animate__animated animate__fadeIn animate__delay-9s transform hover:scale-110 transition-all duration-300" Icon="@Icons.Material.Filled.Dashboard" Color="Color.Primary" Size="Size.Large"/>
-                    </MudCardMedia>
-                    <MudCardContent Style="flex-grow: 1;">
-                        <MudText Typo="Typo.h6" Class="font-weight-bold text-primary animate__animated animate__fadeIn animate__delay-3s">Painel</MudText>
-                        <MudText Typo="Typo.body2" Color="Color.Dark" Class="animate__animated animate__fadeIn animate__delay-4s" Style="line-height: 1.6; font-size: 1rem; margin-bottom: 1rem;">
-                            Gerencie usuários e visualiza o progresso do sistema.
-                        </MudText>
-                        <MudText Typo="Typo.body2" Color="Color.Dark" Class="animate__animated animate__fadeIn animate__delay-4s" Style="line-height: 1.6; font-size: 1rem; margin-bottom: 1rem;">
-                            O painel é o centro de controle, onde você pode visualizar estatísticas em tempo real e tomar decisões rápidas.
-                        </MudText>
-                    </MudCardContent>
-                </MudCard>
-            </MudItem>
-
-            <MudItem xs="12" sm="4" md="4">
-                <MudCard Class="card-hover" Style="transition: transform 0.3s ease-in-out; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); height: 100%; max-width: 100%; display: flex; flex-direction: column;">
-                    <MudCardMedia>
-                        <MudIconButton Class="mt-3 animate__animated animate__fadeIn animate__delay-9s transform hover:scale-110 transition-all duration-300" Icon="@Icons.Material.Filled.Assessment" Color="Color.Primary" Size="Size.Large"/>
-                    </MudCardMedia>
-                    <MudCardContent Style="flex-grow: 1;">
-                        <MudText Typo="Typo.h6" Class="font-weight-bold text-primary animate__animated animate__fadeIn animate__delay-3s">Relatórios</MudText>
-                        <MudText Typo="Typo.body2" Color="Color.Dark" Class="animate__animated animate__fadeIn animate__delay-4s" Style="line-height: 1.6; font-size: 1rem; margin-bottom: 1rem;">
-                            Acesse relatórios detalhados sobre o sistema e seus dados.
-                        </MudText>
-                        <MudText Typo="Typo.body2" Color="Color.Dark" Class="animate__animated animate__fadeIn animate__delay-4s" Style="line-height: 1.6; font-size: 1rem; margin-bottom: 1rem;">
-                            Mantenha-se informado com relatórios completos que oferecem dados detalhados sobre o uso e desempenho do sistema.
-                        </MudText>
-                    </MudCardContent>
-                </MudCard>
-            </MudItem>
-
-            <!-- Segunda Linha de Cards -->
-            <MudItem xs="12" sm="4" md="4">
-                <MudCard Class="card-hover" Style="transition: transform 0.3s ease-in-out; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); height: 100%; max-width: 100%; display: flex; flex-direction: column;">
-                    <MudCardMedia>
-                        <MudIconButton Class="mt-3 animate__animated animate__fadeIn animate__delay-9s transform hover:scale-110 transition-all duration-300" Icon="@Icons.Material.Filled.Lock" Color="Color.Primary" Size="Size.Large"/>
-                    </MudCardMedia>
-                    <MudCardContent Style="flex-grow: 1;">
-                        <MudText Typo="Typo.h6" Class="font-weight-bold text-primary animate__animated animate__fadeIn animate__delay-3s">Segurança</MudText>
-                        <MudText Typo="Typo.body2" Color="Color.Dark" Class="animate__animated animate__fadeIn animate__delay-4s" Style="line-height: 1.6; font-size: 1rem; margin-bottom: 1rem;">
-                            Configurações e protocolos de segurança do sistema.
-                        </MudText>
-                        <MudText Typo="Typo.body2" Color="Color.Dark" Class="animate__animated animate__fadeIn animate__delay-4s" Style="line-height: 1.6; font-size: 1rem; margin-bottom: 1rem;">
-                            A segurança é nossa prioridade. Proteja dados sensíveis com configurações avançadas e protocolos robustos.
-                        </MudText>
-                    </MudCardContent>
-                </MudCard>
-            </MudItem>
-
-            <MudItem xs="12" sm="4" md="4">
-                <MudCard Class="card-hover" Style="transition: transform 0.3s ease-in-out; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); height: 100%; max-width: 100%; display: flex; flex-direction: column;">
-                    <MudCardMedia>
-                        <MudIconButton Class="mt-3 animate__animated animate__fadeIn animate__delay-9s transform hover:scale-110 transition-all duration-300" Icon="@Icons.Material.Filled.Build" Color="Color.Primary" Size="Size.Large"/>
-                    </MudCardMedia>
-                    <MudCardContent Style="flex-grow: 1;">
-                        <MudText Typo="Typo.h6" Class="font-weight-bold text-primary animate__animated animate__fadeIn animate__delay-3s">Manutenção</MudText>
-                        <MudText Typo="Typo.body2" Color="Color.Dark" Class="animate__animated animate__fadeIn animate__delay-4s" Style="line-height: 1.6; font-size: 1rem; margin-bottom: 1rem;">
-                            Informações sobre a manutenção do sistema e atualizações.
-                        </MudText>
-                        <MudText Typo="Typo.body2" Color="Color.Dark" Class="animate__animated animate__fadeIn animate__delay-4s" Style="line-height: 1.6; font-size: 1rem; margin-bottom: 1rem;">
-                            Mantenha seu sistema sempre atualizado com as últimas melhorias e correções de segurança.
-                        </MudText>
-                    </MudCardContent>
-                </MudCard>
-            </MudItem>
-
-            <MudItem xs="12" sm="4" md="4">
-                <MudCard Class="card-hover" Style="transition: transform 0.3s ease-in-out; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); height: 100%; max-width: 100%; display: flex; flex-direction: column;">
-                    <MudCardMedia>
-                        <MudIconButton Class="mt-3 animate__animated animate__fadeIn animate__delay-9s transform hover:scale-110 transition-all duration-300" Icon="@Icons.Material.Filled.Help" Color="Color.Primary" Size="Size.Large"/>
-                    </MudCardMedia>
-                    <MudCardContent Style="flex-grow: 1;">
-                        <MudText Typo="Typo.h6" Class="font-weight-bold text-primary animate__animated animate__fadeIn animate__delay-5s" Style="font-size: 1.5rem; letter-spacing: 0.5px;">Suporte Técnico</MudText>
-                        <MudSpacer />
-                        <MudText Typo="Typo.body2" Color="Color.Dark" Class="animate__animated animate__fadeIn animate__delay-4s" Style="line-height: 1.6; font-size: 1rem; margin-bottom: 1rem;">
-                            Entre em contato com nossa equipe de suporte para assistência.
-                        </MudText>
-                        <MudText Typo="Typo.body2" Color="Color.Dark" Class="animate__animated animate__fadeIn animate__delay-4s" Style="line-height: 1.6; font-size: 1rem; margin-bottom: 1rem;">
-                            Não importa o problema, nossa equipe está sempre pronta para ajudar. Oferecemos suporte técnico especializado.
-                        </MudText>
-                    </MudCardContent>
-                </MudCard>
-            </MudItem>
-        </MudGrid>
-
-
-        <MudDivider />
-        <!-- Links de Termos de Uso e Política de Privacidade (Posicionados na parte inferior) -->
-        <MudGrid Justify="Justify.Center" AlignItems="Align.Center" Class="mt-4">
-            <MudItem T="string" xs="12" sm="6" Class="mt-3">
-                <MudText Typo="Typo.body2" Align="Align.Start" Style="font-size: 16px; line-height: 1.5; color: #333; text-align: justify;">
-                    Para garantir a sua segurança e a transparência nas nossas práticas, convidamos você a conhecer nossos
-                    <MudLink
-                        Href="/Admin/TermoUso"
-                        Target="_blank"
-                        Color="Color.Info"
-                        Style="font-size: 16px; text-decoration: underline;">
-                        Termos de Uso
-                    </MudLink>
-                    , onde detalhamos as condições de acesso e uso dos nossos serviços. Além disso, recomendamos que leia também a nossa
-                    <MudLink
-                        Href="/Admin/Politica"
-                        Target="_blank"
-                        Color="Color.Info"
-                        Style="font-size: 16px; text-decoration: underline;">
-                        Política de Privacidade
-                    </MudLink>
-                    para entender como protegemos os seus dados pessoais e garantimos a sua privacidade.
+                <MudText Align="Align.Center">
+                    Administração e controle de usuários do sistema.
                 </MudText>
-            </MudItem>
-        </MudGrid>
+            </MudPaper>
+        </MudItem>
+
+        <MudItem xs="12" sm="6" md="3">
+            <MudPaper Elevation="3" Class="p-4">
+                <MudIconButton Icon="@Icons.Material.Filled.Settings" Color="Color.Primary" Size="Size.Large" />
+                <MudText Align="Align.Center" Class="mt-2">
+                    Configurações do Sistema
+                </MudText>
+                <MudText Align="Align.Center">
+                    Ajuste de parâmetros, backup e monitoramento do sistema.
+                </MudText>
+            </MudPaper>
+        </MudItem>
+
+        <MudItem xs="12" sm="6" md="3">
+            <MudPaper Elevation="3" Class="p-4">
+                <MudIconButton Icon="@Icons.Material.Filled.Lock" Color="Color.Error" Size="Size.Large" />
+                <MudText Align="Align.Center" Class="mt-2">
+                    Segurança
+                </MudText>
+                <MudText Align="Align.Center">
+                    Controle de acessos, gestão de senhas e proteção de dados.
+                </MudText>
+            </MudPaper>
+        </MudItem>
+
+        <MudItem xs="12" sm="6" md="3">
+            <MudPaper Elevation="3" Class="p-4">
+                <MudIconButton Icon="@Icons.Material.Filled.Build" Color="Color.Error" Size="Size.Large" />
+                <MudText Align="Align.Center" Class="mt-2">
+                    Manutenção
+                </MudText>
+                <MudText Align="Align.Center">
+                    Gerenciamento de atualizações e suporte técnico.
+                </MudText>
+            </MudPaper>
+        </MudItem>
+    </MudGrid>
+
+    <MudButton Color="Color.Primary" Variant="Variant.Filled" href="/Admin/Index" Class="mt-4">
+        Voltar ao Início
+    </MudButton>
+
+    <MudPaper Elevation="4" Class="mt-5">
+        <MudCarousel TData="string" Class="my-4">
+            <MudCarouselItem>
+                <MudIconButton Icon="@Icons.Material.Filled.Assessment" Color="Color.Success" Size="Size.Large" />
+                <MudText Typo="Typo.h6" Align="Align.Center" Class="mt-2">
+                    Relatórios
+                </MudText>
+                <MudText Align="Align.Center">
+                    Geração de estatísticas e relatórios administrativos.
+                </MudText>
+            </MudCarouselItem>
+
+            <MudCarouselItem>
+                <MudIconButton Icon="@Icons.Material.Filled.NotificationImportant" Color="Color.Warning" Size="Size.Large" />
+                <MudText Typo="Typo.h6" Align="Align.Center" Class="mt-2">
+                    Monitoramento do Sistema
+                </MudText>
+                <MudText Align="Align.Center">
+                    Visualização de eventos críticos e alertas administrativos.
+                </MudText>
+            </MudCarouselItem>
+
+            <MudCarouselItem>
+                <MudIconButton Icon="@Icons.Material.Filled.Backup" Color="Color.Default" Size="Size.Large" />
+                <MudText Typo="Typo.h6" Align="Align.Center" Class="mt-2">
+                    Backups
+                </MudText>
+                <MudText Align="Align.Center">
+                    Procedimentos para armazenamento e recuperação de dados.
+                </MudText>
+            </MudCarouselItem>
+
+            <MudCarouselItem>
+                <MudIconButton Icon="@Icons.Material.Filled.Help" Color="Color.Info" Size="Size.Large" />
+                <MudText Typo="Typo.h6" Align="Align.Center" Class="mt-2">
+                    Suporte
+                </MudText>
+                <MudText Align="Align.Center">
+                    Contato para suporte técnico e dúvidas administrativas.
+                </MudText>
+            </MudCarouselItem>
+        </MudCarousel>
     </MudPaper>
+
+    <MudText Typo="Typo.body1" Align="Align.Center" Class="my-4">
+        Ao utilizar a plataforma, você concorda com nossos
+        <MudLink Href="/Admin/TermoUso" Target="_blank" Color="Color.Primary">
+            Termos de Uso
+        </MudLink>
+        e nossa
+        <MudLink Href="/Admin/Politica" Target="_blank" Color="Color.Primary">
+            Política de Privacidade
+        </MudLink>.
+    </MudText>
 </MudContainer>
 
-
-
-<!-- Botão para retornar à página de início -->
-<MudGrid Justify="Justify.Center" AlignItems="Align.Center" Class="mt-4">
-    <MudItem T="string" xs="12" sm="6" Class="mt-3">
-        <MudButton
-            Href="/Admin/Index"
-            Class="mt-3 animate__animated animate__fadeIn animate__delay-9s transform hover:scale-110 transition-all duration-300"
-            Variant="Variant.Filled"
-            Color="Color.Primary"
-            OnClick="NavigateToHome">
-            
-            <MudIcon
-                Icon="@Icons.Material.Filled.Home"/>
-            Voltar para Início
-        </MudButton>
-    </MudItem>
-</MudGrid>
-
-<!-- MudCarousel (Carrossel de Imagens ou Mensagens Inspiradoras) ao fim da página -->
-<MudCarousel TData="string" Class="mt-4">
-    <MudCarouselItem>
-        <MudText Typo="Typo.h6" Align="Align.Center" Color="Color.Secondary">
-            “Transforme o futuro com cada decisão que você toma.”
-        </MudText>
-    </MudCarouselItem>
-    <MudCarouselItem>
-        <MudText Typo="Typo.h6" Align="Align.Center" Color="Color.Secondary">
-            “Cada inovação começa com uma ideia corajosa.”
-        </MudText>
-    </MudCarouselItem>
-</MudCarousel>
-
-@code {
-    private void NavigateToHome()
-    {
-        NavigationManager.NavigateTo("/Admin/Index");
-    }
-
-    private void NavigateTo(string url)
-    {
-        NavigationManager.NavigateTo(url);
-    }
-
-    // Método para navegar para a página Configurações
-    private void NavigateToConfiguracoes()
-    {
-        NavigationManager.NavigateTo("/Configuracoes");
-    }
-}
 
 
 
