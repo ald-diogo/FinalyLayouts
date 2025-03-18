@@ -1,0 +1,85 @@
+﻿@page "/Est/Menu"
+
+<MudNavLink Href="/Est/Index" Match="NavLinkMatch.All">
+    <MudIcon Icon="@Icons.Material.Filled.Home" IconColor="Color.Warning" />
+    Início
+</MudNavLink>
+
+<MudNavGroup
+    Icon="@Icons.Material.Filled.DashboardCustomize"
+    IconColor="Color.Primary"
+    Title="Painel"
+    Expanded="true">
+
+    <MudNavLink
+        Href="/"
+        Match="NavLinkMatch.Prefix"
+        Icon="@Icons.Material.Filled.Info"
+        IconColor="Color.Warning">
+        Informações
+    </MudNavLink>
+
+    <MudNavLink
+        Href="/"
+        Match="NavLinkMatch.Prefix"
+        Icon="@Icons.Material.Filled.School"
+        IconColor="Color.Primary">
+        Matrícula e Disciplinas
+    </MudNavLink>
+
+    <MudNavLink
+        Href="/"
+        Match="NavLinkMatch.Prefix"
+        Icon="@Icons.Material.Filled.BarChart"
+        IconColor="Color.Warning">
+        Notas e Frequência
+    </MudNavLink>
+
+    <MudNavLink
+        Href="/"
+        Match="NavLinkMatch.Prefix"
+        Icon="@Icons.Material.Filled.Chat"
+        IconColor="Color.Info">
+        Comunicação e Atendimento
+    </MudNavLink>
+
+    <MudNavLink
+        Href="/"
+        Match="NavLinkMatch.Prefix"
+        Icon="@Icons.Material.Filled.LibraryBooks"
+        IconColor="Color.Primary">
+        Atividades e Material Didático
+    </MudNavLink>
+
+    <MudNavLink
+        Href="/"
+        Match="NavLinkMatch.Prefix"
+        Icon="@Icons.Material.Filled.AttachMoney"
+        IconColor="Color.Secondary">
+        Pagamentos e Documentação
+    </MudNavLink>
+
+    <MudNavLink
+        Href="/"
+        Match="NavLinkMatch.Prefix"
+        Icon="@Icons.Material.Filled.MenuBook"
+        IconColor="Color.Secondary">
+        Biblioteca e Recursos Extras
+    </MudNavLink>
+</MudNavGroup>
+
+<MudNavLink
+    Href="/Est/Seguranca"
+    Match="NavLinkMatch.Prefix"
+    Icon="@Icons.Material.Filled.Security"
+    IconColor="Color.Default">
+    Segurança
+</MudNavLink>
+
+<MudNavLink
+    Href="/Est/Sobre"
+    Match="NavLinkMatch.Prefix"
+    Icon="@Icons.Material.Filled.Info"
+    IconColor="Color.Info">
+    Sobre
+</MudNavLink>

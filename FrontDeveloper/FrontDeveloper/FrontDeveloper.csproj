@@ -13,10 +13,19 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Folder Include="Pages\Est\Config\" />
       <Folder Include="wwwroot\lib\" />
     </ItemGroup>
 
     <ItemGroup>
+      <AdditionalFiles Include="Pages\Est\Info\Index.razor" />
+      <AdditionalFiles Include="Pages\Est\Info\Login.razor" />
+      <AdditionalFiles Include="Pages\Est\Info\MenuProf.razor" />
+      <AdditionalFiles Include="Pages\Est\Info\Politica.razor" />
+      <AdditionalFiles Include="Pages\Est\Info\RecuperarSenha.razor" />
+      <AdditionalFiles Include="Pages\Est\Info\Seguranca.razor" />
+      <AdditionalFiles Include="Pages\Est\Info\Sobre.razor" />
+      <AdditionalFiles Include="Pages\Est\Info\TermoUso.razor" />
       <AdditionalFiles Include="Pages\FuncionarioAcademico\Info\Index.razor" />
       <AdditionalFiles Include="Pages\FuncionarioAcademico\Info\Login.razor" />
       <AdditionalFiles Include="Pages\FuncionarioAcademico\Info\Politica.razor" />
@@ -26,7 +35,6 @@
       <AdditionalFiles Include="Pages\FuncionarioAcademico\Info\TermoUso.razor" />
       <AdditionalFiles Include="Pages\SecretarioAcadenico\Info\Index.razor" />
       <AdditionalFiles Include="Pages\SecretarioAcadenico\Info\Login.razor" />
-      <AdditionalFiles Include="Pages\SecretarioAcadenico\Info\MenuCon.razor" />
       <AdditionalFiles Include="Pages\SecretarioAcadenico\Info\Politica.razor" />
       <AdditionalFiles Include="Pages\SecretarioAcadenico\Info\RecuperarSenha.razor" />
       <AdditionalFiles Include="Pages\SecretarioAcadenico\Info\Seguranca.razor" />

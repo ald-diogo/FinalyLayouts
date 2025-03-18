@@ -1,0 +1,116 @@
+﻿@page "/Est/Sobre"
+
+@using MudBlazor
+
+<MudContainer MaxWidth="MaxWidth.Large" Class="text-center">
+    <MudText Typo="Typo.h3" Align="Align.Center" Class="my-4">
+        Bem-vindo ao Manual de Usuário
+    </MudText>
+
+    <MudText Typo="Typo.body1" Align="Align.Center" Class="my-2">
+        Neste guia, você encontrará informações detalhadas sobre os principais recursos e funcionalidades da nossa plataforma.
+    </MudText>
+    
+    <MudAlert Severity="Severity.Info" Class="mt-5">
+        Fique à vontade para entrar em contato com nossa equipe de suporte para qualquer dúvida ou assistência.
+    </MudAlert>
+
+    <MudGrid Class="mt-4">
+        <MudItem xs="12" sm="6" md="3">
+            <MudPaper Elevation="3" Class="p-4">
+                <MudIconButton Icon="@Icons.Material.Filled.DashboardCustomize" Color="Color.Primary" Size="Size.Large" />
+                <MudText Align="Align.Center" Class="mt-2">
+                    Painel de Controle
+                </MudText>
+                <MudText Align="Align.Center">
+                    Acesse todas as informações importantes e gerencie seu ambiente acadêmico.
+                </MudText>
+            </MudPaper>
+        </MudItem>
+
+        <MudItem xs="12" sm="6" md="3">
+            <MudPaper Elevation="3" Class="p-4">
+                <MudIconButton Icon="@Icons.Material.Filled.School" Color="Color.Primary" Size="Size.Large" />
+                <MudText Align="Align.Center" Class="mt-2">
+                    Matrícula e Disciplinas
+                </MudText>
+                <MudText Align="Align.Center">
+                    Gerencie suas matrículas e disciplinas de forma eficiente.
+                </MudText>
+            </MudPaper>
+        </MudItem>
+
+        <MudItem xs="12" sm="6" md="3">
+            <MudPaper Elevation="3" Class="p-4">
+                <MudIconButton Icon="@Icons.Material.Filled.BarChart" Color="Color.Warning" Size="Size.Large" />
+                <MudText Align="Align.Center" Class="mt-2">
+                    Notas e Frequência
+                </MudText>
+                <MudText Align="Align.Center">
+                    Acompanhe seu desempenho acadêmico e presença nas aulas.
+                </MudText>
+            </MudPaper>
+        </MudItem>
+
+        <MudItem xs="12" sm="6" md="3">
+            <MudPaper Elevation="3" Class="p-4">
+                <MudIconButton Icon="@Icons.Material.Filled.Chat" Color="Color.Info" Size="Size.Large" />
+                <MudText Align="Align.Center" Class="mt-2">
+                    Comunicação e Atendimento
+                </MudText>
+                <MudText Align="Align.Center">
+                    Tire dúvidas e receba suporte diretamente na plataforma.
+                </MudText>
+            </MudPaper>
+        </MudItem>
+    </MudGrid>
+
+    <MudButton Color="Color.Primary" Variant="Variant.Filled" Href="/Est/Index" Class="mt-4">
+        <MudIcon Icon="@Icons.Material.Filled.Home" Class="mr-2" /> Voltar ao Início
+    </MudButton>
+
+    <MudPaper Elevation="4" Class="mt-5">
+        <MudCarousel TData="string" Class="my-4">
+            <MudCarouselItem>
+                <MudIconButton Icon="@Icons.Material.Filled.LibraryBooks" Color="Color.Primary" Size="Size.Large" />
+                <MudText Typo="Typo.h6" Align="Align.Center" Class="mt-2">
+                    Atividades e Material Didático
+                </MudText>
+                <MudText Align="Align.Center">
+                    Acesse materiais de estudo e atividades complementares.
+                </MudText>
+            </MudCarouselItem>
+
+            <MudCarouselItem>
+                <MudIconButton Icon="@Icons.Material.Filled.AttachMoney" Color="Color.Secondary" Size="Size.Large" />
+                <MudText Typo="Typo.h6" Align="Align.Center" Class="mt-2">
+                    Pagamentos e Documentação
+                </MudText>
+                <MudText Align="Align.Center">
+                    Consulte suas mensalidades e acesse documentos acadêmicos.
+                </MudText>
+            </MudCarouselItem>
+
+            <MudCarouselItem>
+                <MudIconButton Icon="@Icons.Material.Filled.MenuBook" Color="Color.Secondary" Size="Size.Large" />
+                <MudText Typo="Typo.h6" Align="Align.Center" Class="mt-2">
+                    Biblioteca e Recursos Extras
+                </MudText>
+                <MudText Align="Align.Center">
+                    Explore livros, artigos e outros materiais para aprofundar seus estudos.
+                </MudText>
+            </MudCarouselItem>
+        </MudCarousel>
+    </MudPaper>
+
+    <MudText Typo="Typo.body1" Align="Align.Center" Class="my-4">
+        Ao usar nossos serviços, você concorda com nossos
+        <MudLink Href="/Est/TermoUso" Target="_blank" Color="Color.Primary">
+            Termos de Uso
+        </MudLink>
+        e nossa
+        <MudLink Href="/Est/Politica" Target="_blank" Color="Color.Primary">
+            Política de Privacidade
+        </MudLink>.
+    </MudText>
+</MudContainer>
