@@ -401,6 +401,30 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZlxJbmZvXFRlcm1vVXNvLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/SecretarioAcadenico/Config/Apoio.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2VjcmV0YXJpb0FjYWRlbmljb1xDb25maWdcQXBvaW8ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/SecretarioAcadenico/Config/Atendimento.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2VjcmV0YXJpb0FjYWRlbmljb1xDb25maWdcQXRlbmRpbWVudG8ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/SecretarioAcadenico/Config/Controle.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2VjcmV0YXJpb0FjYWRlbmljb1xDb25maWdcQ29udHJvbGUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/SecretarioAcadenico/Config/Documentacao.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2VjcmV0YXJpb0FjYWRlbmljb1xDb25maWdcRG9jdW1lbnRhY2FvLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/SecretarioAcadenico/Config/Matriculas.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2VjcmV0YXJpb0FjYWRlbmljb1xDb25maWdcTWF0cmljdWxhcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/SecretarioAcadenico/Config/Registro.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2VjcmV0YXJpb0FjYWRlbmljb1xDb25maWdcUmVnaXN0cm8ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/SecretarioAcadenico/Info/MenuSec.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2VjcmV0YXJpb0FjYWRlbmljb1xJbmZvXE1lbnVTZWMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 

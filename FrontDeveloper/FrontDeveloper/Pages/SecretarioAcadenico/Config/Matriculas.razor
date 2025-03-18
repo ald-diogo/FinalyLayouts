@@ -1,0 +1,161 @@
+﻿@page "/Sec/matriculas"
+
+<MudContainer>
+    <MudPaper Elevation="4" Class="p-4">
+        <MudTypography Variant="h4" GutterBottom>
+            <MudIcon
+                Icon="@Icons.Material.Filled.School"
+                Color="Color.Primary" />
+            Matrículas e Rematrículas
+        </MudTypography>
+
+        <!-- Filtros de Pesquisa -->
+        <MudGrid Spacing="3">
+            <MudItem xs="12" md="4">
+                <MudSelect
+                    Label="Ano Lectivo"
+                    @bind-Value="anoSelecionado"
+                    Variant="Variant.Outlined">
+                    <MudSelectItem Value="2024">2024</MudSelectItem>
+                    <MudSelectItem Value="2025">2025</MudSelectItem>
+                </MudSelect>
+            </MudItem>
+            <MudItem xs="12" md="4">
+                <MudTextField
+                    T="string"
+                    Label="Curso"
+                    @bind-Value="cursoSelecionado"
+                    Variant="Variant.Outlined"
+                    AdornmentIcon="@Icons.Material.Filled.School" />
+            </MudItem>
+            <MudItem xs="12" md="4">
+                <MudTextField
+                    T="string"
+                    Label="Buscar aluno..."
+                    Variant="Variant.Outlined"
+                    @bind-Value="filtroNome"
+                    AdornmentIcon="@Icons.Material.Filled.Search" />
+            </MudItem>
+        </MudGrid>
+
+        <!-- Tabela de Matrículas -->
+        <MudTable Items="@alunos" Hover="true" Striped="true" Dense="true">
+            <HeaderContent>
+                <MudTh>Nome</MudTh>
+                <MudTh>Curso</MudTh>
+                <MudTh>Turma</MudTh>
+                <MudTh>Status</MudTh>
+                <MudTh>Ações</MudTh>
+            </HeaderContent>
+            <RowTemplate Context="aluno">
+                <MudTd>@aluno.Nome</MudTd>
+                <MudTd>@aluno.Curso</MudTd>
+                <MudTd>@aluno.Turma</MudTd>
+                <MudTd>
+                    <MudChip T="string"
+                             Color="@(aluno.Status == "Matriculado" ? Color.Success : Color.Warning)" />
+                </MudTd>
+                <MudTd>
+                    <MudIconButton
+                        Icon="@Icons.Material.Filled.Edit"
+                        Color="Color.Primary"
+                        OnClick="() => EditarAluno(aluno)" />
+                    <MudIconButton
+                        Icon="@Icons.Material.Filled.Delete"
+                        Color="Color.Error"
+                        OnClick="() => ConfirmarExclusao(aluno)" />
+                </MudTd>
+            </RowTemplate>
+        </MudTable>
+
+        <!-- Formulário de Matrícula -->
+        <MudDialog
+            Open="@exibirFormulario"
+            MaxWidth="@MaxWidth.Large"
+            OnClose="() => exibirFormulario = false">
+            <DialogContent>
+                <MudForm>
+                    <MudTextField
+                        T="string"
+                        Label="Nome do Aluno"
+                        @bind-Value="alunoSelecionado.Nome"
+                        Variant="Variant.Outlined"
+                        Required="true" />
+
+                    <MudTextField
+                        T="string"
+                        Label="Curso"
+                        @bind-Value="alunoSelecionado.Curso"
+                        Variant="Variant.Outlined"
+                        AdornmentIcon="@Icons.Material.Filled.School"
+                        Required="true"/>
+
+                    <MudTextField
+                        Label="Turma"
+                        @bind-Value="alunoSelecionado.Turma"
+                        Required="true"
+                        Variant="Variant.Outlined"
+                        AdornmentIcon="@Icons.Material.Filled.Class"/>
+
+                    <MudTextField
+                        T="string"
+                        Label="Status"
+                        @bind-Value="alunoSelecionado.Status"
+                        Required="true"
+                        Variant="Variant.Outlined"
+                        AdornmentIcon="@Icons.Material.Filled.Star"/>
+
+                    <MudButton
+                        Color="Color.Success"
+                        Variant="Variant.Filled"
+                        OnClick="SalvarAluno">
+                        Salvar
+                    </MudButton>
+                </MudForm>
+            </DialogContent>
+        </MudDialog>
+
+        <!-- Snackbar de Feedback -->
+        <MudSnackbarProvider />
+    </MudPaper>
+</MudContainer>
+
+@code {
+private string anoSelecionado = "2024";
+private string cursoSelecionado;
+private string filtroNome;
+private bool exibirFormulario;
+private Aluno alunoSelecionado = new Aluno();
+private List<Aluno> alunos = new()
+{
+new Aluno { Nome = "Carlos Silva", Curso = "Informática", Turma = "A1"  },
+new Aluno { Nome = "Ana Souza", Curso = "Gestão", Turma = "B2" }
+};
+
+private void EditarAluno(Aluno aluno)
+{
+alunoSelecionado = aluno;
+exibirFormulario = true;
+}
+
+private void ConfirmarExclusao(Aluno aluno)
+{
+alunos.Remove(aluno);
+}
+
+private void SalvarAluno()
+{
+if (!alunos.Contains(alunoSelecionado))
+alunos.Add(alunoSelecionado);
+exibirFormulario = false;
+}
+
+class Aluno
+{
+public string Nome { get; set; }
+public string Curso { get; set; }
+public string Turma { get; set; }
+public string Status { get; set; }
+}
+}
+

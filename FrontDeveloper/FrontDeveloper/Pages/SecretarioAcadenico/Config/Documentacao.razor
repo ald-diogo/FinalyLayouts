@@ -1,0 +1,55 @@
+﻿@page "/Sec/gestao-documentacao"
+
+<MudContainer>
+    <MudGrid>
+        <MudPaper Elevation="4" Class="pa-4">
+            <MudTypography Variant="h4">Gestão de Documentação Acadêmica</MudTypography>
+        </MudPaper>
+    </MudGrid>
+    
+    <MudTabs>
+        <MudTabPanel Text="Alunos & Professores">
+            <MudExpansionPanels>
+                <MudExpansionPanel Text="Gerenciar Alunos">
+                    <MudForm>
+                        <MudTextField T="string" Label="Nome" Icon="@Icons.Material.Filled.Person" />
+                        <MudTextField T="string" Label="Matrícula" Icon="@Icons.Material.Filled.Badge" />
+                        <MudButton Color="Color.Primary">Cadastrar</MudButton>
+                    </MudForm>
+                </MudExpansionPanel>
+                <MudExpansionPanel Text="Gerenciar Professores">
+                    <MudForm>
+                        <MudTextField T="string" Label="Nome" Icon="@Icons.Material.Filled.School" />
+                        <MudTextField T="string" Label="ID" Icon="@Icons.Material.Filled.Work" />
+                        <MudButton Color="Color.Primary">Cadastrar</MudButton>
+                    </MudForm>
+                </MudExpansionPanel>
+            </MudExpansionPanels>
+        </MudTabPanel>
+
+        <MudTabPanel Text="Documentos">
+            <MudExpansionPanels>
+                <MudExpansionPanel Text="Emitir Declarações">
+                    <MudTextField
+                        T="string"
+                        Label="Tipo de Declaração"
+                        Required="true"
+                        Variant="Variant.Outlined"
+                        AdornmentIcon="@Icons.Material.Filled.PictureAsPdf"/>
+                    <MudButton Color="Color.Success">Gerar Documento</MudButton>
+                </MudExpansionPanel>
+            </MudExpansionPanels>
+        </MudTabPanel>
+        
+        <MudTabPanel Text="Currículo Acadêmico">
+            <MudExpansionPanels>
+                <MudExpansionPanel Text="Matriz Curricular">
+                    <MudFileUpload T="string" Label="Upload Matriz" />
+                </MudExpansionPanel>
+                <MudExpansionPanel Text="Planos de Ensino">
+                    <MudFileUpload T="string" Label="Upload Plano de Ensino" />
+                </MudExpansionPanel>
+            </MudExpansionPanels>
+        </MudTabPanel>
+    </MudTabs>
+</MudContainer>

@@ -1,0 +1,101 @@
+﻿@page "/Sec/registro-academico"
+@using MudBlazor
+
+<MudContainer>
+    <MudCard Elevation="10" Class="pa-4">
+        <MudCardHeader>
+            <MudText Typo="Typo.h5">📚 Registro e Acompanhamento Acadêmico</MudText>
+            <MudSpacer />
+            <MudIconButton Icon="@Icons.Material.Filled.Help" Color="Color.Primary" OnClick="ShowHelp" />
+        </MudCardHeader>
+        
+        <MudTabs>
+            <!-- Aba de Notas e Faltas -->
+            <MudTabPanel Text="Notas & Faltas">
+                <MudTable Items="@students" Hover="true">
+                    <MudTableColumns>
+                        <MudTh>Aluno</MudTh>
+                        <MudTh>Disciplina</MudTh>
+                        <MudTh>Nota</MudTh>
+                        <MudTh>Faltas</MudTh>
+                        <MudTh>Ações</MudTh>
+                    </MudTableColumns>
+                    <MudTableBody>
+                        @foreach (var student in students)
+                        {
+                            <MudTr>
+                                <MudTd>@student.Name</MudTd>
+                                <MudTd>@student.Subject</MudTd>
+                                <MudTd>
+                                    <MudNumericField T="int" Value="@student.Grade" />
+                                </MudTd>
+                                <MudTd>
+                                    <MudNumericField T="int" Value="@student.Absences" />
+                                </MudTd>
+                                <MudTd>
+                                    <MudIconButton Icon="@Icons.Material.Filled.Save" Color="Color.Success" OnClick="() => SaveStudent(student)" />
+                                </MudTd>
+                            </MudTr>
+                        }
+                    </MudTableBody>
+                </MudTable>
+            </MudTabPanel>
+
+            <!-- Aba de Gestão de Matrícula -->
+            <MudTabPanel Text="Gestão de Matrícula">
+                <MudExpansionPanel Text="Gerenciar Matrícula">
+                    <MudTextField
+                        T="string"
+                        Label="Ação"
+                        Required="true"
+                        Variant="Variant.Outlined"
+                        AdornmentIcon="@Icons.Material.Filled.PlayArrow"/>
+                    <MudButton Color="Color.Primary">Confirmar</MudButton>
+                </MudExpansionPanel>
+            </MudTabPanel>
+
+            <!-- Aba de Relatórios -->
+            <MudTabPanel Text="Relatórios Acadêmicos">
+                <MudExpansionPanel Text="Gerar Relatórios">
+                    <MudButton 
+                        StartIcon="@Icons.Material.Filled.PictureAsPdf"
+                        Color="Color.Error">
+                        Exportar PDF
+                    </MudButton>
+                    
+                    <MudButton
+                        StartIcon="@Icons.Material.Filled.CloudDownload"
+                        Color="Color.Primary">
+                        Baixar Excel
+                    </MudButton>
+                </MudExpansionPanel>
+            </MudTabPanel>
+        </MudTabs>
+    </MudCard>
+</MudContainer>
+
+@code {
+    List<Student> students = new()
+    {
+        new Student { Name = "Ana", Subject = "Matemática", Grade = 85, Absences = 2 },
+        new Student { Name = "Carlos", Subject = "História", Grade = 90, Absences = 1 }
+    };
+
+    void SaveStudent(Student student)
+    {
+        Console.WriteLine($"Salvando {student.Name}");
+    }
+
+    void ShowHelp()
+    {
+        Console.WriteLine("Exibir ajuda sobre o sistema.");
+    }
+
+    class Student
+    {
+        public string Name { get; set; }
+        public string Subject { get; set; }
+        public int Grade { get; set; }
+        public int Absences { get; set; }
+    }
+}
