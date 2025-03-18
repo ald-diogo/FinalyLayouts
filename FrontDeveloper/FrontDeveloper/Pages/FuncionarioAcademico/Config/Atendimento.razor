@@ -1,5 +1,104 @@
-﻿@page "/Atendimento"
-<h3>Atendimento</h3>
+﻿@page "/Func/atendimento-comunicacao"
+
+<MudContainer>
+    <MudCard Class="pa-4">
+        <MudCardHeader>
+            <MudIcon Icon="@Icons.Material.Filled.SupportAgent" Size="Size.Large" />
+            <MudText Typo="Typo.h5">Atendimento e Comunicação</MudText>
+        </MudCardHeader>
+        
+        <MudCardContent>
+            <!-- Seção de Dúvidas e Respostas -->
+            <MudExpansionPanels>
+                <MudExpansionPanel Text="Dúvidas Frequentes">
+                    <MudTextField 
+                        T="string" 
+                        Label="Pesquisar dúvida..." 
+                        Adornment="Adornment.End" 
+                        AdornmentIcon="@Icons.Material.Filled.Search" />
+                    <MudList T="string" >
+                        <MudListItem T="string" >Como acessar meu histórico escolar?</MudListItem>
+                        <MudListItem T="string" >Onde encontro os prazos acadêmicos?</MudListItem>
+                        <MudListItem T="string" >Como recuperar minha senha?</MudListItem>
+                    </MudList>
+                </MudExpansionPanel>
+            </MudExpansionPanels>
+            
+            <!-- Seção de Comunicados -->
+            <MudExpansionPanel Text="Comunicados Recentes">
+                <MudList T="string" >
+                    <MudListItem
+                        T="string"
+                        Icon="@Icons.Material.Filled.Announcement">
+                        Novo prazo para matrículas: 15/04
+                    </MudListItem>
+                    
+                    <MudListItem
+                        T="string"
+                        Icon="@Icons.Material.Filled.Event">
+                        Semana Acadêmica: 20 a 24 de maio
+                    </MudListItem>
+                </MudList>
+                <MudButton
+                    Color="Color.Primary"
+                    EndIcon="@Icons.Material.Filled.Add">
+                    Novo Comunicado
+                </MudButton>
+            </MudExpansionPanel>
+            
+            <!-- Seção de Suporte ao Sistema Acadêmico -->
+            <MudExpansionPanel Text="Suporte ao Sistema Acadêmico">
+                <MudList T="string" >
+                    <MudListItem
+                        T="string"
+                        Icon="@Icons.Material.Filled.Help">
+                        Manual do Usuário
+                    </MudListItem>
+                    
+                    <MudListItem
+                        T="string"
+                        Icon="@Icons.Material.Filled.LiveHelp">
+                        Solicitar Suporte
+                    </MudListItem>
+                </MudList>
+            </MudExpansionPanel>
+            
+            <!-- Seção de Canais de Atendimento -->
+            <MudExpansionPanel Text="Canais de Atendimento">
+                <MudGrid Container Spacing="2">
+                    <MudGridItem Sm="4">
+                        <MudButton
+                            Variant="Variant.Outlined"
+                            Color="Color.Info"
+                            EndIcon="@Icons.Material.Filled.Email">
+                            E-mail
+                        </MudButton>
+                    </MudGridItem>
+                    
+                    <MudGridItem Sm="4">
+                        <MudButton
+                            Href=""
+                            Variant="Variant.Outlined"
+                            Color="Color.Success"
+                            EndIcon="@Icons.Material.Filled.Chat">
+                            ChatBot
+                        </MudButton>
+                    </MudGridItem>
+                    
+                    <MudGridItem Sm="4">
+                        <MudButton
+                            Href=""
+                            Variant="Variant.Outlined"
+                            Color="Color.Primary"
+                            EndIcon="@Icons.Material.Filled.SocialDistance">
+                            Redes Sociais
+                        </MudButton>
+                    </MudGridItem>
+                </MudGrid>
+            </MudExpansionPanel>
+        </MudCardContent>
+    </MudCard>
+</MudContainer>
 
 @code {
     
