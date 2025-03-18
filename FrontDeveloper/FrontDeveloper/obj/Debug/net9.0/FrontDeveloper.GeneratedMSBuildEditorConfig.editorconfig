@@ -27,6 +27,52 @@ build_property._RazorSourceGeneratorDebug =
 build_property.EffectiveAnalysisLevelStyle = 9.0
 build_property.EnableCodeStyleSeverity = 
 
+[C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/FuncionarioAcademico/Info/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRnVuY2lvbmFyaW9BY2FkZW1pY29cSW5mb1xJbmRleC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/FuncionarioAcademico/Info/Login.razor]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRnVuY2lvbmFyaW9BY2FkZW1pY29cSW5mb1xMb2dpbi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/FuncionarioAcademico/Info/MenuProf.razor]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/FuncionarioAcademico/Info/Politica.razor]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRnVuY2lvbmFyaW9BY2FkZW1pY29cSW5mb1xQb2xpdGljYS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/FuncionarioAcademico/Info/RecuperarSenha.razor]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRnVuY2lvbmFyaW9BY2FkZW1pY29cSW5mb1xSZWN1cGVyYXJTZW5oYS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/FuncionarioAcademico/Info/Seguranca.razor]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRnVuY2lvbmFyaW9BY2FkZW1pY29cSW5mb1xTZWd1cmFuY2EucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/FuncionarioAcademico/Info/Sobre.razor]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRnVuY2lvbmFyaW9BY2FkZW1pY29cSW5mb1xTb2JyZS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/FuncionarioAcademico/Info/TermoUso.razor]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRnVuY2lvbmFyaW9BY2FkZW1pY29cSW5mb1xUZXJtb1Vzby5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/SecretarioAcadenico/Info/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = 
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2VjcmV0YXJpb0FjYWRlbmljb1xJbmZvXEluZGV4LnJhem9y
@@ -315,6 +361,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/Counter.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/FuncionarioAcademico/Info/MenuFun.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRnVuY2lvbmFyaW9BY2FkZW1pY29cSW5mb1xNZW51RnVuLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/Home.razor]

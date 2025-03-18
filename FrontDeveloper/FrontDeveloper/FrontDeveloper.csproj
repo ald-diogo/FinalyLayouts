@@ -13,10 +13,19 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Folder Include="Pages\FuncionarioAcademico\Config\" />
       <Folder Include="wwwroot\lib\" />
     </ItemGroup>
 
     <ItemGroup>
+      <AdditionalFiles Include="Pages\FuncionarioAcademico\Info\Index.razor" />
+      <AdditionalFiles Include="Pages\FuncionarioAcademico\Info\Login.razor" />
+      <AdditionalFiles Include="Pages\FuncionarioAcademico\Info\MenuProf.razor" />
+      <AdditionalFiles Include="Pages\FuncionarioAcademico\Info\Politica.razor" />
+      <AdditionalFiles Include="Pages\FuncionarioAcademico\Info\RecuperarSenha.razor" />
+      <AdditionalFiles Include="Pages\FuncionarioAcademico\Info\Seguranca.razor" />
+      <AdditionalFiles Include="Pages\FuncionarioAcademico\Info\Sobre.razor" />
+      <AdditionalFiles Include="Pages\FuncionarioAcademico\Info\TermoUso.razor" />
       <AdditionalFiles Include="Pages\SecretarioAcadenico\Info\Index.razor" />
       <AdditionalFiles Include="Pages\SecretarioAcadenico\Info\Login.razor" />
       <AdditionalFiles Include="Pages\SecretarioAcadenico\Info\MenuCon.razor" />

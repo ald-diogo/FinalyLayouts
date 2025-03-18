@@ -1044,10 +1044,10 @@ C:\Dev\RiderProjects\FinalyLayouts\FrontDeveloper\FrontDeveloper\obj\Debug\net9.
 C:\Dev\RiderProjects\FinalyLayouts\FrontDeveloper\FrontDeveloper\obj\Debug\net9.0\FrontDeveloper.sourcelink.json
 C:\Dev\RiderProjects\FinalyLayouts\FrontDeveloper\FrontDeveloper\obj\Debug\net9.0\compressed\mr461r6zf8-mll1clltel.gz
 C:\Dev\RiderProjects\FinalyLayouts\FrontDeveloper\FrontDeveloper\bin\Debug\net9.0\appsettings.json
-C:\Dev\RiderProjects\FinalyLayouts\FrontDeveloper\FrontDeveloper\bin\Debug\net9.0\wwwroot\_framework\FrontDeveloper.265wjjqnsu.pdb
-C:\Dev\RiderProjects\FinalyLayouts\FrontDeveloper\FrontDeveloper\bin\Debug\net9.0\wwwroot\_framework\FrontDeveloper.klxkkjj6ee.wasm
-C:\Dev\RiderProjects\FinalyLayouts\FrontDeveloper\FrontDeveloper\bin\Debug\net9.0\wwwroot\_framework\FrontDeveloper.265wjjqnsu.pdb.gz
-C:\Dev\RiderProjects\FinalyLayouts\FrontDeveloper\FrontDeveloper\bin\Debug\net9.0\wwwroot\_framework\FrontDeveloper.klxkkjj6ee.wasm.gz
-C:\Dev\RiderProjects\FinalyLayouts\FrontDeveloper\FrontDeveloper\obj\Debug\net9.0\compressed\l0b53qayi3-klxkkjj6ee.gz
-C:\Dev\RiderProjects\FinalyLayouts\FrontDeveloper\FrontDeveloper\obj\Debug\net9.0\compressed\ka6z20fv6t-265wjjqnsu.gz
-C:\Dev\RiderProjects\FinalyLayouts\FrontDeveloper\FrontDeveloper\obj\Debug\net9.0\compressed\15ou07cljt-gt3je6cucl.gz
+C:\Dev\RiderProjects\FinalyLayouts\FrontDeveloper\FrontDeveloper\bin\Debug\net9.0\wwwroot\_framework\FrontDeveloper.duvvqxchr1.pdb
+C:\Dev\RiderProjects\FinalyLayouts\FrontDeveloper\FrontDeveloper\bin\Debug\net9.0\wwwroot\_framework\FrontDeveloper.2hm6saitqs.wasm
+C:\Dev\RiderProjects\FinalyLayouts\FrontDeveloper\FrontDeveloper\bin\Debug\net9.0\wwwroot\_framework\FrontDeveloper.duvvqxchr1.pdb.gz
+C:\Dev\RiderProjects\FinalyLayouts\FrontDeveloper\FrontDeveloper\bin\Debug\net9.0\wwwroot\_framework\FrontDeveloper.2hm6saitqs.wasm.gz
+C:\Dev\RiderProjects\FinalyLayouts\FrontDeveloper\FrontDeveloper\obj\Debug\net9.0\compressed\l0b53qayi3-2hm6saitqs.gz
+C:\Dev\RiderProjects\FinalyLayouts\FrontDeveloper\FrontDeveloper\obj\Debug\net9.0\compressed\ka6z20fv6t-duvvqxchr1.gz
+C:\Dev\RiderProjects\FinalyLayouts\FrontDeveloper\FrontDeveloper\obj\Debug\net9.0\compressed\15ou07cljt-4j9h1jpxj7.gz

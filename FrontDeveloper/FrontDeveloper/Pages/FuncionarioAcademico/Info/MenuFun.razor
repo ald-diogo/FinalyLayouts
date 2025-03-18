@@ -1,0 +1,68 @@
+﻿@page "/Fun/Menu"
+
+<MudNavLink Href="/Fun/Index" Match="NavLinkMatch.All">
+    <MudIcon Icon="@Icons.Material.Filled.Home" IconColor="@Color.Warning" />
+    Início
+</MudNavLink>
+
+<MudNavGroup
+    Icon="@Icons.Material.Filled.Dashboard"
+    IconColor="Color.Error"
+    Title="Painel"
+    Expanded="true">
+    <MudNavLink
+        Href=""
+        Match="NavLinkMatch.Prefix"
+        Icon="@Icons.Material.Filled.SupportAgent"
+        IconColor="Color.Warning">
+        Suporte Técnico e TI
+    </MudNavLink>
+
+    <MudNavLink
+        Href=""
+        Match="NavLinkMatch.Prefix"
+        Icon="@Icons.Material.Filled.RequestQuote"
+        IconColor="Color.Success">
+        Gestão Financeira
+    </MudNavLink>
+
+    <MudNavLink
+        Href="/Prof/LancarNotas"
+        Match="NavLinkMatch.Prefix"
+        Icon="@Icons.Material.Filled.School"
+        IconColor="Color.Primary">
+        Coordenação e Professores
+    </MudNavLink>
+
+    <MudNavLink
+        Href=""
+        Match="NavLinkMatch.Prefix"
+        Icon="@Icons.Material.Filled.Chat"
+        IconColor="Color.Info">
+        Atendimento e Comunicação
+    </MudNavLink>
+
+    <MudNavLink
+        Href=""
+        Match="NavLinkMatch.Prefix"
+        Icon="@Icons.Material.Filled.MenuBook"
+        IconColor="Color.Secondary">
+        Secretaria Acadêmica
+    </MudNavLink>
+</MudNavGroup>
+
+<MudNavLink
+    T="bool"
+    Href="/Fun/Seguranca"
+    Match="NavLinkMatch.Prefix"
+    Icon="@Icons.Material.Filled.Lock"
+    IconColor = "Color.Default">Segurança
+</MudNavLink>
+
+<MudNavLink
+    Href="/Fun/Sobre"
+    Match="NavLinkMatch.Prefix"
+    Icon="@Icons.Material.Filled.Info"
+    IconColor="Color.Info">
+    Sobre
+</MudNavLink>
