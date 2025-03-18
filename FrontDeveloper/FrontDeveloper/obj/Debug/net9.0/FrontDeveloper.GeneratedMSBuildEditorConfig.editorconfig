@@ -363,6 +363,34 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/FuncionarioAcademico/Config/Atendimento.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRnVuY2lvbmFyaW9BY2FkZW1pY29cQ29uZmlnXEF0ZW5kaW1lbnRvLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/FuncionarioAcademico/Config/Coordenacao.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRnVuY2lvbmFyaW9BY2FkZW1pY29cQ29uZmlnXENvb3JkZW5hY2FvLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/FuncionarioAcademico/Config/GestaoFinanceira.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRnVuY2lvbmFyaW9BY2FkZW1pY29cQ29uZmlnXEdlc3Rhb0ZpbmFuY2VpcmEucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/FuncionarioAcademico/Config/Matrizes.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRnVuY2lvbmFyaW9BY2FkZW1pY29cQ29uZmlnXE1hdHJpemVzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/FuncionarioAcademico/Config/SecretariaAcademica.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRnVuY2lvbmFyaW9BY2FkZW1pY29cQ29uZmlnXFNlY3JldGFyaWFBY2FkZW1pY2EucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/FuncionarioAcademico/Config/SuporteTI.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRnVuY2lvbmFyaW9BY2FkZW1pY29cQ29uZmlnXFN1cG9ydGVUSS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/FuncionarioAcademico/Config/Transferencias.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRnVuY2lvbmFyaW9BY2FkZW1pY29cQ29uZmlnXFRyYW5zZmVyZW5jaWFzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/FuncionarioAcademico/Info/MenuFun.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRnVuY2lvbmFyaW9BY2FkZW1pY29cSW5mb1xNZW51RnVuLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 

@@ -1,0 +1,71 @@
+﻿@page "/matrizes"
+@using Microsoft.AspNetCore.Components
+
+<MudDropContainer T="DisciplinaItem" Items="_disciplinas" ItemsSelector="@((item,dropzone) => item.Identifier == dropzone)" ItemDropped="ItemAtualizado">
+    <ChildContent>
+        <MudPaper MinHeight="500px" Class="d-flex flex-1">
+            <MudList T="string" Dense="true" @bind-SelectedValue="_selectedCategoria">
+                <MudListSubheader>Matrizes Curriculares</MudListSubheader>
+                <MudDropZone T="DisciplinaItem" Identifier="Obrigatorias" OnlyZone="true">
+                    <MudListItem 
+                        Text="Obrigatórias" 
+                        Value="@("Obrigatorias")" Icon="@Icons.Material.Filled.School"/>
+                </MudDropZone>
+                <MudDropZone T="DisciplinaItem" Identifier="Optativas" OnlyZone="true">
+                    <MudListItem 
+                        Text="Optativas"
+                        Value="@("Optativas")" 
+                        Icon="@Icons.Material.Filled.CheckCircle"/>
+                </MudDropZone>
+                <MudDropZone T="DisciplinaItem" Identifier="Eletivas" OnlyZone="true">
+                    <MudListItem 
+                        Text="Eletivas" 
+                        Value="@("Eletivas")" 
+                        Icon="@Icons.Material.Filled.Star"/>
+                </MudDropZone>
+            </MudList>
+            <MudDivider Vertical="true" FlexItem="true" />
+            <MudList T="string" Dense="true" Class="d-flex flex-column flex-grow-1 py-0">
+                <MudToolBar Gutters="false" Dense="true">
+                    <MudIconButton Icon="@Icons.Material.Filled.Refresh"/>
+                    <MudIconButton Icon="@Icons.Material.Filled.MoreVert"/>
+                    <MudSpacer/>
+                    <MudIconButton Icon="@Icons.Material.Filled.ChevronLeft"/>
+                    <MudIconButton Icon="@Icons.Material.Filled.ChevronRight"/>
+                </MudToolBar>
+                <MudDivider/>
+                <MudDropZone 
+                    T="DisciplinaItem" 
+                    Identifier="@_selectedCategoria.ToString()" 
+                    Class="flex-grow-1"/>
+            </MudList>
+        </MudPaper>
+    </ChildContent>
+    <ItemRenderer>
+        <MudListItem T="string" Text="@context.Nome" />
+        <MudDivider/>
+    </ItemRenderer>
+</MudDropContainer>
+
+@code {
+string _selectedCategoria = "Obrigatorias";
+
+private void ItemAtualizado(MudItemDropInfo<DisciplinaItem> dropItem)
+{
+    dropItem.Item.Identifier = dropItem.DropzoneIdentifier;
+}
+
+private List<DisciplinaItem> _disciplinas = new()
+{
+    new DisciplinaItem(){ Nome = "Matemática", Identifier = "Obrigatorias" },
+    new DisciplinaItem(){ Nome = "Física", Identifier = "Obrigatorias" },
+    new DisciplinaItem(){ Nome = "Introdução à Filosofia", Identifier = "Optativas" },
+    new DisciplinaItem(){ Nome = "Arte e Cultura", Identifier = "Eletivas" },
+};
+
+public class DisciplinaItem
+{
+    public string Nome { get; init; }
+    public string Identifier { get; set; }
+}
+}
