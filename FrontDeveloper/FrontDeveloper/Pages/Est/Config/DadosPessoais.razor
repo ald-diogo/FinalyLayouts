@@ -1,0 +1,158 @@
+﻿@page "/Est/Informacoes"
+
+@using MudBlazor
+@using System.Globalization
+
+<MudContainer MaxWidth="MaxWidth.Large" Class="mt-4">
+    <MudText Typo="Typo.h4" Align="Align.Center" Class="mb-4">
+        <MudIcon
+            Icon="@Icons.Material.Filled.Person"
+            Class="mr-2" /> Acesso às Informações Pessoais e Acadêmicas
+    </MudText>
+
+    <!-- Seção 1: Dados Pessoais -->
+    <MudExpansionPanels>
+        <MudExpansionPanel>
+            <TitleContent>
+                <MudIcon
+                    Icon="@Icons.Material.Filled.AccountCircle"
+                    Color="Color.Primary"
+                    Class="mr-2" />
+                <MudText Typo="Typo.h6">Dados Pessoais</MudText>
+            </TitleContent>
+
+            <ChildContent>
+                <MudCard Class="p-4">
+                    <MudGrid>
+                        <MudItem xs="12" sm="6">
+                            <MudText>
+                                <MudIcon
+                                    Icon="@Icons.Material.Filled.Person"
+                                    Class="mr-1"/> Nome: João Silva
+                            </MudText>
+                            <MudText>
+                                <MudIcon
+                                    Icon="@Icons.Material.Filled.Phone"
+                                    Class="mr-1"/> Telefone: (99) 99999-9999
+                            </MudText>
+                        </MudItem>
+                        <MudItem xs="12" sm="6">
+                            <MudText>
+                                <MudIcon
+                                    Icon="@Icons.Material.Filled.Email"
+                                    Class="mr-1"/> E-mail: joao@email.com
+                            </MudText>
+
+                            <MudText>
+                                <MudIcon
+                                    Icon="@Icons.Material.Filled.Home"
+                                    Class="mr-1"/>
+                                Endereço: Rua ABC, 123
+                            </MudText>
+                        </MudItem>
+                    </MudGrid>
+                    <MudButton
+                        Color="Color.Primary"
+                        Variant="Variant.Filled"
+                        StartIcon="@Icons.Material.Filled.Edit"
+                        Class="mt-3">
+                        Editar Informações
+                    </MudButton>
+                </MudCard>
+            </ChildContent>
+        </MudExpansionPanel>
+
+        <!-- Seção 2: Histórico Escolar -->
+        <MudExpansionPanel>
+            <TitleContent>
+                <MudIcon Icon="@Icons.Material.Filled.BarChart" Color="Color.Warning" Class="mr-2" />
+                <MudText Typo="Typo.h6">Histórico Escolar</MudText>
+            </TitleContent>
+
+            <ChildContent>
+                <MudTable Items="_notas" Hover="true">
+                    <HeaderContent>
+                        <MudTh>Disciplina</MudTh>
+                        <MudTh>Nota</MudTh>
+                        <MudTh>Frequência</MudTh>
+                        <MudTh>Desempenho</MudTh>
+                    </HeaderContent>
+                    <RowTemplate Context="nota">
+                        <MudTd>@nota.Disciplina</MudTd>
+                        <MudTd>@($"{nota.Frequencia}%")</MudTd>
+                        <MudTd></MudTd>
+                    </RowTemplate>
+                </MudTable>
+            </ChildContent>
+        </MudExpansionPanel>
+
+        <!-- Seção 3: Documentos Acadêmicos -->
+        <MudExpansionPanel>
+            <TitleContent>
+                <MudIcon
+                    Icon="@Icons.Material.Filled.LibraryBooks"
+                    Color="Color.Primary"
+                    Class="mr-2" />
+                <MudText Typo="Typo.h6">Boletins e Certificados</MudText>
+            </TitleContent>
+
+            <ChildContent>
+                <MudCard Class="p-4">
+                    <MudList T="string">
+                        <MudListItem T="string">
+                            <MudIcon
+                                Icon="@Icons.Material.Filled.Description"
+                                Color="Color.Secondary"
+                                Class="mr-2" />
+                            <MudText>Boletim 2024</MudText>
+
+                            <MudSpacer />
+
+                            <MudButton
+                                Variant="Variant.Outlined"
+                                Color="Color.Secondary"
+                                StartIcon="@Icons.Material.Filled.Download">
+                                Baixar
+                            </MudButton>
+                        </MudListItem>
+                        <MudDivider />
+                        <MudListItem>
+                            <MudIcon
+                                Icon="@Icons.Material.Filled.School"
+                                Color="Color.Secondary"
+                                Class="mr-2" />
+                            <MudText>Certificado de Conclusão</MudText>
+
+                            <MudSpacer />
+
+                            <MudButton
+                                Variant="Variant.Outlined"
+                                Color="Color.Secondary"
+                                StartIcon="@Icons.Material.Filled.Download">
+                                Baixar
+                            </MudButton>
+                        </MudListItem>
+                    </MudList>
+                </MudCard>
+            </ChildContent>
+        </MudExpansionPanel>
+    </MudExpansionPanels>
+</MudContainer>
+
+@code {
+    private List<Nota> _notas { get; set; } = new()
+    {
+        new Nota { Disciplina = "Matemática",  Frequencia = 90 },
+        new Nota { Disciplina = "História",  Frequencia = 80 },
+        new Nota { Disciplina = "Ciências",  Frequencia = 85 }
+    };
+
+    private class Nota
+    {
+        public string Disciplina { get; set; } = string.Empty;
+        public int Frequencia { get; set; } = 0;
+    }
+}
+
+
+

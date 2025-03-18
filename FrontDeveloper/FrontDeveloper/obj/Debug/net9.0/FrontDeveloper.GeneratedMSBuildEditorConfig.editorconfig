@@ -401,6 +401,34 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/Est/Config/Actividades.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXN0XENvbmZpZ1xBY3RpdmlkYWRlcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/Est/Config/Atendimento.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXN0XENvbmZpZ1xBdGVuZGltZW50by5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/Est/Config/Biblioteca.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXN0XENvbmZpZ1xCaWJsaW90ZWNhLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/Est/Config/DadosPessoais.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXN0XENvbmZpZ1xEYWRvc1Blc3NvYWlzLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/Est/Config/Matricula.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXN0XENvbmZpZ1xNYXRyaWN1bGEucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/Est/Config/Notas.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXN0XENvbmZpZ1xOb3Rhcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/Est/Config/Pagamentos.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXN0XENvbmZpZ1xQYWdhbWVudG9zLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/Est/Info/MenuEst.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXN0XEluZm9cTWVudUVzdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
