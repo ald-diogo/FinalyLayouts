@@ -1,6 +1,58 @@
-﻿@page "/Coordenacao"
-<h3>Coordenacao</h3>
+﻿@page "/Fun/coordenacao-professores"
 
-@code {
+<MudLayout>
+        <MudText Color="Color.Primary" Typo="Typo.h5">Coordenação e Professores</MudText>
+        <MudSpacer />
+        <MudIconButton Icon="@Icons.Material.Filled.Notifications" />
+        <MudIconButton Icon="@Icons.Material.Filled.AccountCircle" />
+        
+        <MudNavLink Href="" Icon="@Icons.Material.Filled.Schedule">Horários e Escalas</MudNavLink>
+        <MudNavLink Href="" Icon="@Icons.Material.Filled.List">Listas de Estudantes</MudNavLink>
+        <MudNavLink Href="" Icon="@Icons.Material.Filled.Build">Ajustes Curriculares</MudNavLink>
+        <MudNavLink Href="" Icon="@Icons.Material.Filled.BarChart">Desempenho e Frequência</MudNavLink>
+        <MudNavLink Href="" Icon="@Icons.Material.Filled.ExitToApp">Sair</MudNavLink>
+   
     
-}
+    <MudMainContent>
+        <MudTabs>
+            <MudTabPanel Text="Horários e Escalas" Icon="@Icons.Material.Filled.Schedule">
+                <MudTable T="string">
+                    <MudTh>Professor</MudTh>
+                    <MudTh>Turma</MudTh>
+                    <MudTh>Horário</MudTh>
+                </MudTable>
+                <MudButton Color="Color.Primary">Adicionar</MudButton>
+            </MudTabPanel>
+
+            <MudTabPanel Text="Listas de Estudantes" Icon="@Icons.Material.Filled.List">
+                <MudTextField 
+                    T="string"
+                    Variant="Variant.Outlined" 
+                    Label="Turma" />
+                
+                <MudTable T="string">
+                    <MudTh>Nome</MudTh>
+                    <MudTh>Disciplina</MudTh>
+                </MudTable>
+            </MudTabPanel>
+
+            <MudTabPanel Text="Ajustes Curriculares" Icon="@Icons.Material.Filled.Build">
+                <MudTextField 
+                    T="string"
+                    Variant="Variant.Outlined" 
+                    Label="Nome do Estudante" />
+                
+                <MudTextField
+                    T="string"
+                    Variant="Variant.Outlined" 
+                    Label="Disciplina" />
+                <MudButton Color="Color.Success">Solicitar Ajuste</MudButton>
+            </MudTabPanel>
+
+            <MudTabPanel Text="Desempenho e Frequência" Icon="@Icons.Material.Filled.BarChart">
+                <MudChart Type="ChartType.Bar" />
+                <MudButton Color="Color.Secondary">Filtrar</MudButton>
+            </MudTabPanel>
+        </MudTabs>
+    </MudMainContent>
+</MudLayout>

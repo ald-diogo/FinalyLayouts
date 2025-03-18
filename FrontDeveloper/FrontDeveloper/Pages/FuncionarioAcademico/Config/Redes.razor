@@ -1,0 +1,79 @@
+﻿@page "/redes-sociais"
+
+<MudContainer MaxWidth="MaxWidth.Medium" Class="mt-5">
+    <MudCard>
+        <MudCardHeader>
+            <MudText Typo="Typo.h4" Class="text-center">Siga-nos nas Redes Sociais</MudText>
+        </MudCardHeader>
+        <MudCardContent>
+            <MudGrid Spacing="3">
+                <!-- Facebook -->
+                <MudItem xs="12" sm="4">
+                    <MudPaper Class="pa-4 text-center" Elevation="3">
+                        <MudIcon 
+                            Icon="Icons.Custom.FontAwesome.Brands.Facebook" 
+                            Size="Size.Large"
+                            Color="Color.Primary" />
+
+                        <MudText Class="mt-2">Acompanhe novidades e comunicados acadêmicos no Facebook.</MudText>
+                        <MudButton Variant="Variant.Outlined" Color="Color.Primary" Href="https://facebook.com/seuacademico" Target="_blank">
+                            Seguir no Facebook
+                        </MudButton>
+                    </MudPaper>
+                </MudItem>
+                
+                <!-- Telegram -->
+                <MudItem xs="12" sm="4">
+                    <MudPaper Class="pa-4 text-center" Elevation="3">
+                        <MudIcon Icon="@Icons.Material.Filled.Send" Size="Size.Large" Color="Color.Info" />
+                        <MudText Class="mt-2">Receba notificações acadêmicas instantaneamente no Telegram.</MudText>
+                        <MudButton Variant="Variant.Outlined" Color="Color.Info" Href="https://t.me/seuacademico" Target="_blank">
+                            Entrar no Telegram
+                        </MudButton>
+                    </MudPaper>
+                </MudItem>
+                
+                <!-- WhatsApp -->
+                <MudItem xs="12" sm="4">
+                    <MudPaper Class="pa-4 text-center" Elevation="3">
+                        <MudIcon
+                            Icon="Icons.Custom.FontAwesome.Brands.WhatsApp"
+                            Size="Size.Large"
+                            Color="Color.Success" />
+
+                        <MudText Class="mt-2">Entre em contato diretamente via WhatsApp para suporte acadêmico.</MudText>
+                        <MudButton Variant="Variant.Outlined" Color="Color.Success" Href="https://wa.me/seunumerodewhatsapp" Target="_blank">
+                            Falar no WhatsApp
+                        </MudButton>
+                    </MudPaper>
+                </MudItem>
+            </MudGrid>
+        </MudCardContent>
+    </MudCard>
+    
+    <!-- Contatos -->
+    <MudCard Class="mt-4">
+        <MudCardHeader>
+            <MudText Typo="Typo.h5" Class="text-center">Entre em Contato</MudText>
+        </MudCardHeader>
+        <MudCardContent>
+            <MudGrid Spacing="3">
+                <MudItem xs="12" sm="6">
+                    <MudPaper Class="pa-4 text-center" Elevation="3">
+                        <MudIcon 
+                            Icon="@Icons.Material.Filled.Phone" 
+                            Size="Size.Large" 
+                            Color="Color.Primary" />
+                        <MudText Class="mt-2">Telefone: (+244) ___ ___ ___</MudText>
+                    </MudPaper>
+                </MudItem>
+                <MudItem xs="12" sm="6">
+                    <MudPaper Class="pa-4 text-center" Elevation="3">
+                        <MudIcon Icon="@Icons.Material.Filled.Email" Size="Size.Large" Color="Color.Info" />
+                        <MudText Class="mt-2">Email: ajmds@seuacademico.com</MudText>
+                    </MudPaper>
+                </MudItem>
+            </MudGrid>
+        </MudCardContent>
+    </MudCard>
+</MudContainer>
