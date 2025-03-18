@@ -391,6 +391,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRnVuY2lvbmFyaW9BY2FkZW1pY29cQ29uZmlnXFRyYW5zZmVyZW5jaWFzLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/FuncionarioAcademico/Info/Manual.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRnVuY2lvbmFyaW9BY2FkZW1pY29cSW5mb1xNYW51YWwucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Dev/RiderProjects/FinalyLayouts/FrontDeveloper/FrontDeveloper/Pages/FuncionarioAcademico/Info/MenuFun.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRnVuY2lvbmFyaW9BY2FkZW1pY29cSW5mb1xNZW51RnVuLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 

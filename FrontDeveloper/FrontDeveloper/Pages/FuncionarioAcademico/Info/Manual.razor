@@ -1,0 +1,84 @@
+﻿@page "/manual-interativo"
+@using MudBlazor
+
+<MudContainer MaxWidth="MaxWidth.Large">
+    <MudPaper Elevation="4" Class="pa-4">
+        <MudTypography Variant="h4" GutterBottom>
+            📘 Manual do Utilizador - Sistema de Gestão Acadêmica
+        </MudTypography>
+
+        <MudExpansionPanels>
+            <MudExpansionPanel Text="🔑 Acesso ao Sistema">
+                <MudList T="string">
+                    <MudListItem T="string">
+                        <MudIcon Icon="mdi-login" Color="Color.Primary" />
+                        <MudTooltip Text="Entre com seu e-mail e senha">
+                            <MudTypography>Login</MudTypography>
+                        </MudTooltip>
+                    </MudListItem>
+                    
+                    <MudListItem T="string">
+                        <MudIcon Icon="mdi-key" Color="Color.Secondary" />
+                        <MudTooltip Text="Recupere sua senha">
+                            <MudTypography>Esqueci-me da Senha</MudTypography>
+                        </MudTooltip>
+                    </MudListItem>
+                </MudList>
+            </MudExpansionPanel>
+
+            <MudExpansionPanel Text="📂 Gestão de Documentação Acadêmica">
+                <MudList T="string">
+                    <MudListItem T="string">
+                        <MudIcon Icon="mdi-account-plus" Color="Color.Success" />
+                        <MudTooltip Text="Cadastre alunos e professores">
+                            <MudTypography>Cadastrar Usuários</MudTypography>
+                        </MudTooltip>
+                    </MudListItem>
+                    
+                    <MudListItem T="string">
+                        <MudIcon Icon="mdi-printer" Color="Color.Primary" />
+                        <MudTooltip Text="Emitir declarações e certificados">
+                            <MudTypography>Emitir Documentos</MudTypography>
+                        </MudTooltip>
+                    </MudListItem>
+                </MudList>
+            </MudExpansionPanel>
+
+            <MudExpansionPanel Text="💬 Atendimento e Comunicação">
+                <MudList T="string">
+                    <MudListItem T="string">
+                        <MudIcon Icon="mdi-megaphone" Color="Color.Warning" />
+                        <MudTooltip Text="Enviar comunicados importantes">
+                            <MudTypography>Enviar Comunicados</MudTypography>
+                        </MudTooltip>
+                    </MudListItem>
+                    
+                    <MudListItem T="string">
+                        <MudIcon Icon="mdi-chat" Color="Color.Info" />
+                        <MudTooltip Text="Responder dúvidas acadêmicas">
+                            <MudTypography>Suporte Acadêmico</MudTypography>
+                        </MudTooltip>
+                    </MudListItem>
+                </MudList>
+            </MudExpansionPanel>
+
+            <MudExpansionPanel Text="📅 Apoio à Coordenação e Professores">
+                <MudList T="string">
+                    <MudListItem T="string">
+                        <MudIcon Icon="mdi-calendar" Color="Color.Primary" />
+                        <MudTooltip Text="Criar horários de aulas">
+                            <MudTypography>Gerenciar Horários</MudTypography>
+                        </MudTooltip>
+                    </MudListItem>
+                    
+                    <MudListItem T="string">
+                        <MudIcon Icon="mdi-file-document" Color="Color.Secondary" />
+                        <MudTooltip Text="Gerenciar listas de alunos">
+                            <MudTypography>Listas de Turma</MudTypography>
+                        </MudTooltip>
+                    </MudListItem>
+                </MudList>
+            </MudExpansionPanel>
+        </MudExpansionPanels>
+    </MudPaper>
+</MudContainer>
