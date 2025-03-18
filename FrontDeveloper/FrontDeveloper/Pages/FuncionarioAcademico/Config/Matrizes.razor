@@ -1,7 +1,11 @@
 ﻿@page "/matrizes"
 @using Microsoft.AspNetCore.Components
 
-<MudDropContainer T="DisciplinaItem" Items="_disciplinas" ItemsSelector="@((item,dropzone) => item.Identifier == dropzone)" ItemDropped="ItemAtualizado">
+<MudDropContainer 
+    T="DisciplinaItem" 
+    Items="_disciplinas" 
+    ItemsSelector="@((item,dropzone) => item.Identifier == dropzone)" 
+    ItemDropped="ItemAtualizado">
     <ChildContent>
         <MudPaper MinHeight="500px" Class="d-flex flex-1">
             <MudList T="string" Dense="true" @bind-SelectedValue="_selectedCategoria">
@@ -9,19 +13,23 @@
                 <MudDropZone T="DisciplinaItem" Identifier="Obrigatorias" OnlyZone="true">
                     <MudListItem 
                         Text="Obrigatórias" 
-                        Value="@("Obrigatorias")" Icon="@Icons.Material.Filled.School"/>
+                        Value="@("Obrigatorias")" 
+                        Icon="@Icons.Material.Filled.School"
+                        IconColor="@Color.Primary"/>
                 </MudDropZone>
                 <MudDropZone T="DisciplinaItem" Identifier="Optativas" OnlyZone="true">
                     <MudListItem 
                         Text="Optativas"
                         Value="@("Optativas")" 
-                        Icon="@Icons.Material.Filled.CheckCircle"/>
+                        Icon="@Icons.Material.Filled.CheckCircle"
+                        IconColor="@Color.Success"/>
                 </MudDropZone>
                 <MudDropZone T="DisciplinaItem" Identifier="Eletivas" OnlyZone="true">
                     <MudListItem 
                         Text="Eletivas" 
                         Value="@("Eletivas")" 
-                        Icon="@Icons.Material.Filled.Star"/>
+                        Icon="@Icons.Material.Filled.Star"
+                        IconColor="@Color.Warning"/>
                 </MudDropZone>
             </MudList>
             <MudDivider Vertical="true" FlexItem="true" />

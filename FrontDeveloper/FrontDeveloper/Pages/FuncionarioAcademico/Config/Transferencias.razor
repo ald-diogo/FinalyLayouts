@@ -1,6 +1,64 @@
-﻿@page "/transferencias"
-<h3>Transferencias</h3>
+﻿@page "/transferencias-academicas"
+
+<MudContainer>
+        <MudText Color="Color.Primary" Typo="Typo.h5">Transferências Acadêmicas</MudText>
+        <MudSpacer />
+    <MudPaper Class="d-flex flex-row flex-nowrap p-2" Style="overflow-x: auto; width: 100%;">
+        <MudNavLink 
+            Href="/solicitar-transferencia" 
+            Icon="@Icons.Material.Filled.SyncAlt"
+            IconColor="@Color.Error"
+            Text="Solicitar Transferência" />
+            
+        <MudNavLink 
+            Href="/status-transferencia" 
+            Icon="@Icons.Material.Filled.HourglassEmpty"
+            IconColor="@Color.Warning"
+            Text="Status da Transferência" />
+            
+        <MudNavLink 
+            Href="/historico-transferencias" 
+            Icon="@Icons.Material.Filled.History"
+            IconColor="@Color.Success"
+            Text="Histórico de Transferências" />
+    </MudPaper>
+
+    <MudGrid Container>
+        <MudItem xs="12" md="6">
+            <MudPaper Elevation="4" Class="p-4">
+                <MudText Typo="Typo.h6">Solicitação de Transferência</MudText>
+                <MudButton
+                    Variant="Variant.Outlined"
+                    Color="Color.Primary"
+                    EndIcon="@Icons.Material.Filled.SyncAlt">
+                    Nova Solicitação
+                </MudButton>
+                
+                <MudButton
+                    Variant="Variant.Outlined"
+                    Color="Color.Secondary"
+                    EndIcon="@Icons.Material.Filled.HourglassEmpty">
+                    Ver Status
+                </MudButton>
+            </MudPaper>
+        </MudItem>
+        <MudItem xs="12" md="6">
+            <MudPaper Elevation="4" Class="p-4">
+                <MudText Typo="Typo.h6">Histórico de Transferências</MudText>
+                <MudButton
+                    Variant="Variant.Filled"
+                    Color="Color.Success"
+                    EndIcon="@Icons.Material.Filled.History">
+                    Consultar Histórico
+                </MudButton>
+            </MudPaper>
+        </MudItem>
+    </MudGrid>
+</MudContainer>
 
 @code {
-    
+    private void ToggleTheme()
+    {
+        // Código para alternar entre temas claro e escuro
+    }
 }
