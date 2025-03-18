@@ -1,6 +1,78 @@
-﻿@page "/Apoio"
-<h3>Apoio</h3>
+﻿@page "/Sec/apoio-coordenacao"
+
+<MudContainer>
+    <MudCard Elevation="4" Class="pa-4">
+        <MudCardHeader>
+            <MudText Typo="Typo.h5">📅 Gestão de Horários e Escalas</MudText>
+        </MudCardHeader>
+        <MudCardContent>
+            
+            <MudButton
+                EndIcon="@Icons.Material.Filled.Add"
+                Color="Color.Primary"
+                OnClick="OpenHorarioDialog">
+                Criar Horário
+            </MudButton>
+            <MudTable T="string">
+                <MudTh>Professor</MudTh>
+                <MudTh>Disciplina</MudTh>
+                <MudTh>Horário</MudTh>
+            </MudTable>
+        </MudCardContent>
+    </MudCard>
+
+    <MudCard Elevation="4" Class="pa-4 mt-4">
+        <MudCardHeader>
+            <MudText Typo="Typo.h5">📋 Listas de Alunos</MudText>
+        </MudCardHeader>
+        
+        <MudCardContent>
+            <MudTextField 
+                T="string"
+                Label="Pesquisar Aluno" 
+                Variant="Variant.Outlined"
+                Adornment="Adornment.Start" 
+                AdornmentIcon="@Icons.Material.Filled.Search" />
+            <MudTable T="string">
+                <MudTh>Nome</MudTh>
+                <MudTh>Turma</MudTh>
+                <MudTh>Disciplina</MudTh>
+                <MudTh>Ações</MudTh>
+            </MudTable>
+        </MudCardContent>
+    </MudCard>
+
+    <MudCard Elevation="4" Class="pa-4 mt-4">
+        <MudCardHeader>
+            <MudText Typo="Typo.h5">📑 Ajustes Curriculares</MudText>
+        </MudCardHeader>
+        <MudCardContent>
+            <MudButton
+                StartIcon="@Icons.Material.Filled.Assignment"
+                Color="Color.Secondary"
+                OnClick="OpenAjusteDialog">
+                Nova Solicitação
+            </MudButton>
+            <MudTable T="string">
+                <MudTh>Aluno</MudTh>
+                <MudTh>Curso</MudTh>
+                <MudTh>Solicitação</MudTh>
+                <MudTh>Status</MudTh>
+            </MudTable>
+        </MudCardContent>
+    </MudCard>
+</MudContainer>
 
 @code {
-    
+
+    private void OpenAjusteDialog(MouseEventArgs obj)
+    {
+        throw new NotImplementedException();
+    }
+
+    private void OpenHorarioDialog(MouseEventArgs obj)
+    {
+        throw new NotImplementedException();
+    }
+
 }

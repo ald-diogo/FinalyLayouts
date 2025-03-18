@@ -1,6 +1,80 @@
-﻿@page "/Atendimento"
-<h3>Atendimento</h3>
+﻿@page "/Sec/atendimento-comunicacao"
 
-@code {
+<MudContainer>
+    <MudGrid>
+        <MudPaper Elevation="4" Class="pa-4">
+            <MudTypography Variant="h4">Atendimento e Comunicação</MudTypography>
+        </MudPaper>
+    </MudGrid>
     
-}
+    <MudTabs>
+        <MudTabPanel Text="Dúvidas e Suporte">
+            <MudExpansionPanels>
+                <MudExpansionPanel Text="Perguntas Frequentes">
+                    <MudList T="string">
+                        <MudListItem T="string">
+                            <MudListItemText Primary="Como acessar meu boletim?" />
+                        </MudListItem>
+                        
+                        <MudListItem T="string">
+                            <MudListItemText Primary="Como recuperar minha senha?" />
+                        </MudListItem>
+                    </MudList>
+                </MudExpansionPanel>
+                <MudExpansionPanel Text="Suporte ao Sistema">
+                    <MudTextField
+                        T="string"
+                        Label="Descreva seu problema"
+                        Multiline="true"
+                        Rows="3"
+                        Required="true"
+                        Variant="Variant.Outlined"
+                        AdornmentIcon="@Icons.Material.Filled.Description"/>
+
+                    <MudButton Color="Color.Primary" EndIcon="@Icons.Material.Filled.Support">
+                        Enviar Suporte
+                    </MudButton>
+                </MudExpansionPanel>
+            </MudExpansionPanels>
+        </MudTabPanel>
+        
+        <MudTabPanel Text="Comunicados">
+            <MudExpansionPanels>
+                <MudExpansionPanel Text="Enviar Comunicado">
+                    <MudTextField 
+                        T="string" 
+                        Label="Título"
+                        Required="true"
+                        Variant="Variant.Outlined"
+                        AdornmentIcon="@Icons.Material.Filled.Title"/>
+                    
+                    <MudTextField 
+                        T="string" 
+                        Label="Mensagem" 
+                        Multiline="true"
+                        Rows="4"
+                        Required="true"
+                        Variant="Variant.Outlined"
+                        AdornmentIcon="@Icons.Material.Filled.Message"/>
+
+                    <MudButton 
+                        Color="Color.Success" 
+                        EndIcon="@Icons.Material.Filled.Send">
+                        Enviar
+                    </MudButton>
+                </MudExpansionPanel>
+                <MudExpansionPanel Text="Eventos e Prazos">
+                    <MudList T="string">
+                        <MudListItem T="string">
+                            <MudListItemText Primary="Prova final - 20 de Março" />
+                        </MudListItem>
+                        
+                        <MudListItem T="string">
+                            <MudListItemText Primary="Entrega de trabalhos - 25 de Março" />
+                        </MudListItem>
+                    </MudList>
+                </MudExpansionPanel>
+            </MudExpansionPanels>
+        </MudTabPanel>
+    </MudTabs>
+</MudContainer>

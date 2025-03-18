@@ -1,6 +1,105 @@
-﻿@page "/Controle"
-<h3>Controle</h3>
+﻿@page "/Sec/controle-acesso"
+
+<MudContainer>
+    <MudCard Class="mud-elevation-6 p-4">
+        <MudCardHeader>
+            <MudText Typo="Typo.h5">
+                <MudIcon Icon="@Icons.Material.Filled.Security" /> Controle de Acesso e Segurança
+            </MudText>
+            <MudSwitch T="string" Checked="_darkMode" Label="Tema Escuro" @onchange="ToggleTheme" />
+        </MudCardHeader>
+        
+        <!-- Gerenciamento de Permissões -->
+        <MudCardContent>
+            <MudText Typo="Typo.h6">Gerenciar Permissões</MudText>
+            <MudTable Items="@usuarios" Hover="true" Striped="true">
+                <MudTableHeader>
+                    <MudTh>Usuário</MudTh>
+                    <MudTh>Permissão</MudTh>
+                    <MudTh>Ações</MudTh>
+                </MudTableHeader>
+                <MudTableBody>
+                    @foreach (var user in usuarios)
+                    {
+                        <MudTr>
+                            <MudTd>@user.Nome</MudTd>
+                            <MudTd>@user.Permissao</MudTd>
+                            <MudTd>
+                                <MudIconButton 
+                                    Icon="@Icons.Material.Filled.Edit" 
+                                    OnClick="@( () => EditarPermissao(user) )" />
+                                <MudIconButton 
+                                    Icon="@Icons.Material.Filled.Delete" 
+                                    Color="Color.Error" 
+                                    OnClick="@( () => RemoverPermissao(user) )" />
+                            </MudTd>
+                        </MudTr>
+                    }
+                </MudTableBody>
+            </MudTable>
+        </MudCardContent>
+
+        <!-- Monitoramento de Logs -->
+        <MudCardContent>
+            <MudText Typo="Typo.h6">Monitoramento de Acessos</MudText>
+            <MudTable Items="@logs" Hover="true">
+                <MudTableHeader>
+                    <MudTh>Usuário</MudTh>
+                    <MudTh>Ação</MudTh>
+                    <MudTh>Data</MudTh>
+                </MudTableHeader>
+                <MudTableBody>
+                    @foreach (var log in logs)
+                    {
+                        <MudTr>
+                            <MudTd>@log.Usuario</MudTd>
+                            <MudTd>@log.Acao</MudTd>
+                            <MudTd>@log.Data?.ToString("dd/MM/yyyy HH:mm")</MudTd>
+                        </MudTr>
+                    }
+                </MudTableBody>
+            </MudTable>
+        </MudCardContent>
+    </MudCard>
+</MudContainer>
 
 @code {
-    
+    private bool _darkMode = false;
+    private List<Usuario> usuarios = new() 
+    { 
+        new Usuario { Nome = "João", Permissao = "Admin" }, 
+        new Usuario { Nome = "Maria", Permissao = "Editor" } 
+    };
+
+    private List<Log> logs = new() 
+    { 
+        new Log { Usuario = "João", Acao = "Alterou Permissão", Data = DateTime.Now } 
+    };
+
+    private void ToggleTheme() => _darkMode = !_darkMode;
+
+    private void EditarPermissao(Usuario user) 
+    {
+        Console.WriteLine($"Editando permissão para {user.Nome}");
+    }
+
+    private void RemoverPermissao(Usuario user) 
+    {
+        Console.WriteLine($"Removendo permissão para {user.Nome}");
+    }
+
+    class Usuario 
+    { 
+        public string Nome { get; set; } 
+        public string Permissao { get; set; } 
+    }
+
+    class Log 
+    { 
+        public string Usuario { get; set; } 
+        public string Acao { get; set; } 
+        public DateTime? Data { get; set; } 
+    }
 }
+
+
