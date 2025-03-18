@@ -1,0 +1,92 @@
+﻿@page "/Chat"
+@using MudBlazor
+
+<MudPaper Class="chat-container p-4" Elevation="4">
+    <MudText Typo="Typo.h5">🤖 A.J.M.D.S-Bot</MudText>
+
+    <MudList T="string" Class="chat-messages">
+        @foreach (var message in Messages)
+        {
+            <MudListItem T="string" Class="mb-2">
+                <MudText 
+                    Color="@(message.IsUser ? Color.Primary : Color.Secondary)">
+                    <strong>@message.User:</strong> @message.Text
+                </MudText>
+            </MudListItem>
+        }
+    </MudList>
+
+    <MudGrid Class="mt-2">
+        <MudItem xs="10">
+            <MudTextField
+                T="string"
+                Variant="Variant.Outlined"
+                @bind-Value="UserMessage"
+                Placeholder="✍️ Digite sua pergunta..." 
+                AdornmentIcon="@Icons.Material.Filled.Send"
+                OnAdornmentClick="@(() => SendMessage())"
+                Class="w-100" />
+        </MudItem>
+        <MudItem xs="2">
+            <MudButton
+                Variant="Variant.Outlined"
+                OnClick="SendMessage"
+                Color="Color.Primary"
+                Class="w-100">
+                Enviar
+            </MudButton>
+        </MudItem>
+    </MudGrid>
+</MudPaper>
+
+<MudFooter Elevation="4" Class="pa-4">
+    <MudText Typo="Typo.body2" Align="Align.Center">© 2025 Sistema de Gestão Acadêmica. Todos os direitos reservados.</MudText>
+</MudFooter>
+
+@code {
+    private string UserMessage = "";
+    private List<ChatMessage> Messages = new();
+
+    private void SendMessage()
+    {
+        if (!string.IsNullOrWhiteSpace(UserMessage))
+        {
+            string userInput = UserMessage.Trim(); // Remove espaços antes e depois
+            Messages.Add(new ChatMessage { User = "👤 Você", Text = userInput, IsUser = true });
+
+            string botResponse = GetBotResponse(userInput);
+            Messages.Add(new ChatMessage { User = "🤖 A.J.M.D.S-Bot", Text = botResponse, IsUser = false });
+
+            UserMessage = "";
+        }
+    }
+
+    private string GetBotResponse(string question)
+    {
+        question = question.ToLower().Trim(); // Converte para minúsculas e remove espaços extras
+
+        if (question.Contains("olá")) return "📌 Olá! Em que posso ser útil hoje 🤔?";
+        if (question.Contains("criador")) return "📌 Um aspirante a desenvolvedor amante de tecnológia em prol de um bem maior. 🤔";
+        if (question.Contains("ajmds")) return "📌 É uma empresa de Soluções Tecnológicas, provedora de Internet e serviços.";
+        if (question.Contains("matrícula")) return "📌 Para realizar a matrícula, acesse a aba 'Matrículas' no sistema e siga as instruções. 🏫";
+        if (question.Contains("notas")) return "📊 Você pode visualizar suas notas no painel do aluno na seção 'Boletim'.";
+        if (question.Contains("horários")) return "📅 Os horários das aulas estão disponíveis na aba 'Horários'.";
+        if (question.Contains("certificado")) return "📜 Para solicitar um certificado, vá até 'Documentos' e faça sua solicitação.";
+        if (question.Contains("pagamento")) return "💰 As informações sobre pagamentos e mensalidades estão disponíveis na aba 'Financeiro'.";
+        if (question.Contains("professor")) return "👨‍🏫 Para falar com um professor, utilize a opção 'Contato' na plataforma.";
+        if (question.Contains("eventos")) return "🎉 Confira os próximos eventos acadêmicos na seção 'Eventos'.";
+        if (question.Contains("ajuda")) return "🆘 Se precisar de mais assistência, entre em contato com o suporte técnico.";
+        if (question.Contains("biblioteca")) return "📚 A biblioteca digital pode ser acessada na aba 'Recursos Acadêmicos'.";
+
+        return "❓ Desculpe, não entendi. Tente reformular a pergunta ou acesse a seção de ajuda. 🤔";
+    }
+
+    public class ChatMessage
+    {
+        public string User { get; set; } = string.Empty;
+        public string Text { get; set; } = string.Empty;
+        public bool IsUser { get; set; }
+    }
+}
+
+
