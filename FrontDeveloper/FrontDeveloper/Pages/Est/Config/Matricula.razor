@@ -1,6 +1,167 @@
-﻿@page "/Matricula"
-<h3>Matricula</h3>
+﻿@page "/Est/Matricula"
+
+@using MudBlazor
+@inject ISnackbar Snackbar
+
+<MudContainer MaxWidth="MaxWidth.Large" Class="mt-4">
+
+    <MudText Typo="Typo.h4" Align="Align.Center" Class="mb-4">
+        <MudIcon Icon="@Icons.Material.Filled.School" Class="mr-2" /> Matrícula e Disciplinas
+    </MudText>
+
+    <MudExpansionPanels>
+
+        <!-- Seção 1: Realizar Matrícula -->
+        <MudExpansionPanel>
+            <TitleContent>
+                <MudIcon Icon="@Icons.Material.Filled.Edit" Color="Color.Primary" Class="mr-2" />
+                <MudText Typo="Typo.h6">Realizar Matrícula</MudText>
+            </TitleContent>
+            <ChildContent>
+                <MudTable Items="_disciplinas" Hover="true">
+                    <HeaderContent>
+                        <MudTh>Selecionar</MudTh>
+                        <MudTh>Disciplina</MudTh>
+                        <MudTh>Professor</MudTh>
+                        <MudTh>Créditos</MudTh>
+                    </HeaderContent>
+                    <RowTemplate Context="disciplina">
+                        <MudTd>
+                            <MudCheckBox T="bool" @bind-Checked="disciplina.Selecionado" />
+                        </MudTd>
+                        <MudTd>@disciplina.Nome</MudTd>
+                        <MudTd>@disciplina.Professor</MudTd>
+                        <MudTd>@disciplina.Creditos</MudTd>
+                    </RowTemplate>
+                </MudTable>
+                <MudButton Color="Color.Primary" Variant="Variant.Filled" StartIcon="@Icons.Material.Filled.Check" Class="mt-3" OnClick="ConfirmarMatricula">
+                    Confirmar Matrícula
+                </MudButton>
+            </ChildContent>
+        </MudExpansionPanel>
+
+        <!-- Seção 2: Solicitar Ajustes -->
+        <MudExpansionPanel>
+            <TitleContent>
+                <MudIcon Icon="@Icons.Material.Filled.SwapHoriz" Color="Color.Warning" Class="mr-2" />
+                <MudText Typo="Typo.h6">Ajustes na Matrícula</MudText>
+            </TitleContent>
+            <ChildContent>
+                <MudSelect Label="Selecione a Disciplina" @bind-Value="_disciplinaSelecionada">
+                    @foreach (var disciplina in _disciplinas)
+                    {
+                        <MudSelectItem Value="@disciplina.Nome">@disciplina.Nome</MudSelectItem>
+                    }
+                </MudSelect>
+                
+                <MudTextField 
+                    T="string" 
+                    Variant="Variant.Outlined" 
+                    Label="Tipo de Ajuste" 
+                    @bind-Value="_tipoAjuste"
+                    Class="mt-3" />
+
+                <MudButton 
+                    Color="Color.Warning" 
+                    Variant="Variant.Filled" 
+                    StartIcon="@Icons.Material.Filled.Send" 
+                    Class="mt-3" 
+                    OnClick="SolicitarAjuste">
+                    Enviar Solicitação
+                </MudButton>
+            </ChildContent>
+        </MudExpansionPanel>
+
+        <!-- Seção 3: Verificar Horários -->
+        <MudExpansionPanel>
+            <TitleContent>
+                <MudIcon 
+                    Icon="@Icons.Material.Filled.Schedule"
+                    Color="Color.Secondary" 
+                    Class="mr-2" />
+                <MudText Typo="Typo.h6">Horários e Salas</MudText>
+            </TitleContent>
+            <ChildContent>
+                <MudTable Items="_horarios" Hover="true">
+                    <HeaderContent>
+                        <MudTh>Disciplina</MudTh>
+                        <MudTh>Dia</MudTh>
+                        <MudTh>Hora</MudTh>
+                        <MudTh>Sala</MudTh>
+                    </HeaderContent>
+                    <RowTemplate Context="horario">
+                        <MudTd>@horario.Disciplina</MudTd>
+                        <MudTd>@horario.Dia</MudTd>
+                        <MudTd>@horario.HoraInicioFim</MudTd>
+                        <MudTd>@horario.Sala</MudTd>
+                    </RowTemplate>
+                </MudTable>
+            </ChildContent>
+        </MudExpansionPanel>
+
+    </MudExpansionPanels>
+
+    <MudSnackbarProvider />
+</MudContainer>
 
 @code {
-    
+    private List<Disciplina> _disciplinas = new()
+    {
+        new Disciplina { Nome = "Matemática", Professor = "Prof. Carlos", Creditos = 4, Selecionado = false },
+        new Disciplina { Nome = "Física", Professor = "Prof. Ana", Creditos = 3, Selecionado = false },
+        new Disciplina { Nome = "História", Professor = "Prof. Marcos", Creditos = 2, Selecionado = false }
+    };
+
+    private List<Horario> _horarios = new()
+    {
+        new Horario { Disciplina = "Matemática", Dia = "Segunda", HoraInicioFim = "08:00 - 10:00", Sala = "101A" },
+        new Horario { Disciplina = "Física", Dia = "Quarta", HoraInicioFim = "10:00 - 12:00", Sala = "202B" },
+        new Horario { Disciplina = "História", Dia = "Sexta", HoraInicioFim = "14:00 - 16:00", Sala = "303C" }
+    };
+
+    private string _disciplinaSelecionada;
+    private string _tipoAjuste;
+
+    private void ConfirmarMatricula()
+    {
+        var disciplinasSelecionadas = _disciplinas.Where(d => d.Selecionado).Select(d => d.Nome).ToList();
+        if (disciplinasSelecionadas.Count == 0)
+        {
+            Snackbar.Add("Nenhuma disciplina selecionada!", Severity.Error);
+        }
+        else
+        {
+            Snackbar.Add($"Matrícula confirmada nas disciplinas: {string.Join(", ", disciplinasSelecionadas)}", Severity.Success);
+        }
+    }
+
+    private void SolicitarAjuste()
+    {
+        if (string.IsNullOrEmpty(_disciplinaSelecionada) || string.IsNullOrEmpty(_tipoAjuste))
+        {
+            Snackbar.Add("Por favor, selecione uma disciplina e o tipo de ajuste!", Severity.Warning);
+        }
+        else
+        {
+            Snackbar.Add($"Solicitação de {_tipoAjuste} enviada para {_disciplinaSelecionada}.", Severity.Success);
+        }
+    }
+
+    private class Disciplina
+    {
+        public string Nome { get; set; }
+        public string Professor { get; set; }
+        public int Creditos { get; set; }
+        public bool Selecionado { get; set; }
+    }
+
+    private class Horario
+    {
+        public string Disciplina { get; set; }
+        public string Dia { get; set; }
+        public string HoraInicioFim { get; set; }
+        public string Sala { get; set; }
+    }
 }
+
+
