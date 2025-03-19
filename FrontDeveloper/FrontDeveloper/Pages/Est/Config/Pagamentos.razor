@@ -1,6 +1,153 @@
-﻿@page "/Pagamentos"
-<h3>Pagamentos</h3>
+﻿@page "/Est/Pagamentos"
+
+@using MudBlazor
+@inject ISnackbar Snackbar
+
+<MudContainer MaxWidth="MaxWidth.Large" Class="mt-4">
+
+    <MudText Typo="Typo.h4" Align="Align.Center" Class="mb-4">
+        <MudIcon Icon="@Icons.Material.Filled.AttachMoney" Class="mr-2" /> Pagamentos e Documentação
+    </MudText>
+
+    <MudExpansionPanels>
+
+        <!-- Seção 1: Mensalidades e Boletos -->
+        <MudExpansionPanel>
+            <TitleContent>
+                <MudIcon Icon="@Icons.Material.Filled.Receipt" Color="Color.Primary" Class="mr-2" />
+                <MudText Typo="Typo.h6">Mensalidades e Boletos</MudText>
+            </TitleContent>
+            <ChildContent>
+                <MudTable Items="_mensalidades" Hover="true">
+                    <HeaderContent>
+                        <MudTh>Mês</MudTh>
+                        <MudTh>Valor</MudTh>
+                        <MudTh>Vencimento</MudTh>
+                        <MudTh>Status</MudTh>
+                        <MudTh>Ação</MudTh>
+                    </HeaderContent>
+                    <RowTemplate Context="mensalidade">
+                        <MudTd>@mensalidade.Mes</MudTd>
+                        <MudTd>R$ @mensalidade.Valor</MudTd>
+                        <MudTd>@mensalidade.Vencimento</MudTd>
+                        <MudTd>
+                            <MudChip T="string" Color="@mensalidade.CorStatus">@mensalidade.Status</MudChip>
+                        </MudTd>
+                        <MudTd>
+                            <MudButton 
+                                Color="Color.Success"
+                                Variant="Variant.Text" 
+                                StartIcon="@Icons.Material.Filled.PictureAsPdf"
+                                OnClick="() => GerarBoleto(mensalidade.Mes)">
+                                Gerar Boleto
+                            </MudButton>
+                        </MudTd>
+                    </RowTemplate>
+                </MudTable>
+            </ChildContent>
+        </MudExpansionPanel>
+
+        <!-- Seção 2: Solicitação de Documentos -->
+        <MudExpansionPanel>
+            <TitleContent>
+                <MudIcon Icon="@Icons.Material.Filled.LibraryBooks" Color="Color.Warning" Class="mr-2" />
+                <MudText Typo="Typo.h6">Solicitação de Documentos Acadêmicos</MudText>
+            </TitleContent>
+            <ChildContent>
+                <MudTextField 
+                    T="string"
+                    @bind-Value="_documentoSelecionado" 
+                    Label="Selecione o documento" 
+                    Variant="Variant.Outlined"/>
+                
+                <MudButton 
+                    Color="Color.Primary" 
+                    Variant="Variant.Filled" 
+                    StartIcon="@Icons.Material.Filled.Send"
+                    OnClick="SolicitarDocumento" Class="mt-2">
+                    Solicitar Documento
+                </MudButton>
+            </ChildContent>
+        </MudExpansionPanel>
+
+        <!-- Seção 3: Acompanhamento de Solicitações -->
+        <MudExpansionPanel>
+            <TitleContent>
+                <MudIcon Icon="@Icons.Material.Filled.TrackChanges" Color="Color.Info" Class="mr-2" />
+                <MudText Typo="Typo.h6">Acompanhamento de Solicitações</MudText>
+            </TitleContent>
+            <ChildContent>
+                <MudTable Items="_solicitacoes" Hover="true">
+                    <HeaderContent>
+                        <MudTh>Documento</MudTh>
+                        <MudTh>Data do Pedido</MudTh>
+                        <MudTh>Status</MudTh>
+                    </HeaderContent>
+                    <RowTemplate Context="solicitacao">
+                        <MudTd>@solicitacao.Documento</MudTd>
+                        <MudTd>@solicitacao.DataPedido</MudTd>
+                        <MudTd>
+                            <MudChip T="string" Color="@solicitacao.CorStatus">@solicitacao.Status</MudChip>
+                        </MudTd>
+                    </RowTemplate>
+                </MudTable>
+            </ChildContent>
+        </MudExpansionPanel>
+
+    </MudExpansionPanels>
+
+    <MudSnackbarProvider />
+</MudContainer>
 
 @code {
-    
+    private List<Mensalidade> _mensalidades = new()
+    {
+        new Mensalidade { Mes = "Janeiro", Valor = "500,00", Vencimento = "10/01/2025", Status = "Pago", CorStatus = Color.Success },
+        new Mensalidade { Mes = "Fevereiro", Valor = "500,00", Vencimento = "10/02/2025", Status = "Atrasado", CorStatus = Color.Error },
+        new Mensalidade { Mes = "Março", Valor = "500,00", Vencimento = "10/03/2025", Status = "Pendente", CorStatus = Color.Warning }
+    };
+
+    private List<Solicitacao> _solicitacoes = new()
+    {
+        new Solicitacao { Documento = "Histórico Escolar", DataPedido = "15/03/2025", Status = "Em Análise", CorStatus = Color.Warning },
+        new Solicitacao { Documento = "Declaração de Matrícula", DataPedido = "10/03/2025", Status = "Aprovado", CorStatus = Color.Success },
+        new Solicitacao { Documento = "Atestado de Frequência", DataPedido = "05/03/2025", Status = "Recusado", CorStatus = Color.Error }
+    };
+
+    private string _documentoSelecionado;
+
+    private void GerarBoleto(string mes)
+    {
+        Snackbar.Add($"Gerando boleto de {mes}...", Severity.Info);
+    }
+
+    private void SolicitarDocumento()
+    {
+        if (!string.IsNullOrEmpty(_documentoSelecionado))
+        {
+            Snackbar.Add($"Solicitação enviada: {_documentoSelecionado}", Severity.Success);
+        }
+        else
+        {
+            Snackbar.Add("Selecione um documento antes de solicitar.", Severity.Warning);
+        }
+    }
+
+    private class Mensalidade
+    {
+        public string Mes { get; set; }
+        public string Valor { get; set; }
+        public string Vencimento { get; set; }
+        public string Status { get; set; }
+        public Color CorStatus { get; set; }
+    }
+
+    private class Solicitacao
+    {
+        public string Documento { get; set; }
+        public string DataPedido { get; set; }
+        public string Status { get; set; }
+        public Color CorStatus { get; set; }
+    }
 }
+
