@@ -1,6 +1,176 @@
-﻿@page "/Atendimento"
-<h3>Atendimento</h3>
+﻿@page "/Est/Comunicacao"
+
+@using MudBlazor
+@inject ISnackbar Snackbar
+
+<MudContainer MaxWidth="MaxWidth.Large" Class="mt-4">
+
+    <MudText Typo="Typo.h4" Align="Align.Center" Class="mb-4">
+        <MudIcon Icon="@Icons.Material.Filled.Chat" Class="mr-2" /> Comunicação e Atendimento
+    </MudText>
+
+    <MudExpansionPanels>
+
+        <!-- Seção 1: Enviar Mensagens -->
+        <MudExpansionPanel>
+            <TitleContent>
+                <MudIcon Icon="@Icons.Material.Filled.Email" Color="Color.Primary" Class="mr-2" />
+                <MudText Typo="Typo.h6">Enviar Mensagem</MudText>
+            </TitleContent>
+            <ChildContent>
+                <MudForm>
+                    <MudGrid>
+                        <MudItem xs="12" sm="6">
+                            <MudTextField 
+                                T="string" 
+                                Label="Destinatário" 
+                                Placeholder="Professor ou Coordenador" 
+                                Adornment="Adornment.Start"
+                                AdornmentIcon="@Icons.Material.Filled.Person" 
+                                Variant="Variant.Outlined" />
+                        </MudItem>
+                        <MudItem xs="12">
+                            <MudTextField
+                                T="string"  
+                                Label="Mensagem" 
+                                Placeholder="Digite sua mensagem aqui..." 
+                                Adornment="Adornment.Start"
+                                AdornmentIcon="@Icons.Material.Filled.Message" 
+                                Variant="Variant.Outlined"
+                                Lines="4" />
+                        </MudItem>
+                        <MudItem xs="12" Class="mt-2">
+                            <MudButton 
+                                Color="Color.Primary" 
+                                Variant="Variant.Filled" 
+                                StartIcon="@Icons.Material.Filled.Send"
+                                OnClick="EnviarMensagem">
+                                Enviar
+                            </MudButton>
+                        </MudItem>
+                    </MudGrid>
+                </MudForm>
+            </ChildContent>
+        </MudExpansionPanel>
+
+        <!-- Seção 2: Comunicados Institucionais -->
+        <MudExpansionPanel>
+            <TitleContent>
+                <MudIcon 
+                    Icon="@Icons.Material.Filled.Notifications" 
+                    Color="Color.Warning" 
+                    Class="mr-2" />
+                <MudText Typo="Typo.h6">Comunicados Institucionais</MudText>
+            </TitleContent>
+            <ChildContent>
+                <MudTimeline>
+                    @foreach (var comunicado in _comunicados)
+                    {
+                        <MudTimelineItem Icon="@comunicado.Icone" Color="@comunicado.Cor">
+                            <MudText Typo="Typo.body1">@comunicado.Mensagem</MudText>
+                            <MudText
+                                Typo="Typo.caption"
+                                Color="Color.Secondary">
+                                @comunicado.Data
+                            </MudText>
+                        </MudTimelineItem>
+                    }
+                </MudTimeline>
+            </ChildContent>
+        </MudExpansionPanel>
+
+        <!-- Seção 3: Tickets de Suporte -->
+        <MudExpansionPanel>
+            <TitleContent>
+                <MudIcon 
+                    Icon="@Icons.Material.Filled.SupportAgent" 
+                    Color="Color.Secondary" 
+                    Class="mr-2" />
+                <MudText Typo="Typo.h6">Suporte Técnico</MudText>
+            </TitleContent>
+            <ChildContent>
+                <MudTable Items="_tickets" Hover="true">
+                    <HeaderContent>
+                        <MudTh>ID</MudTh>
+                        <MudTh>Assunto</MudTh>
+                        <MudTh>Status</MudTh>
+                        <MudTh>Ação</MudTh>
+                    </HeaderContent>
+                    <RowTemplate Context="ticket">
+                        <MudTd>@ticket.Id</MudTd>
+                        <MudTd>@ticket.Assunto</MudTd>
+                        <MudTd>
+                            <MudChip T="string"  Color="@ticket.StatusCor">@ticket.Status</MudChip>
+                        </MudTd>
+                        <MudTd>
+                            <MudButton 
+                                Color="Color.Info" 
+                                Variant="Variant.Text" 
+                                StartIcon="@Icons.Material.Filled.Visibility"
+                                OnClick="() => VisualizarTicket(ticket.Id)">
+                                Ver
+                            </MudButton>
+                        </MudTd>
+                    </RowTemplate>
+                </MudTable>
+                <MudButton 
+                    Color="Color.Success"
+                    Variant="Variant.Filled" 
+                    StartIcon="@Icons.Material.Filled.Add"
+                    OnClick="AbrirNovoTicket" Class="mt-3">
+                    Abrir Novo Ticket
+                </MudButton>
+            </ChildContent>
+        </MudExpansionPanel>
+
+    </MudExpansionPanels>
+
+    <MudSnackbarProvider />
+</MudContainer>
 
 @code {
-    
+    private List<Comunicado> _comunicados = new()
+    {
+        new Comunicado { Mensagem = "Reunião com coordenadores no dia 20/03", Data = "15/03", Icone = Icons.Material.Filled.Event, Cor = Color.Primary },
+        new Comunicado { Mensagem = "Período de rematrícula termina em 30/03", Data = "18/03", Icone = Icons.Material.Filled.Schedule, Cor = Color.Warning },
+        new Comunicado { Mensagem = "Feriado acadêmico em 25/03", Data = "19/03", Icone = Icons.Material.Filled.Celebration, Cor = Color.Secondary }
+    };
+
+    private List<Ticket> _tickets = new()
+    {
+        new Ticket { Id = 101, Assunto = "Erro no sistema de notas", Status = "Aberto", StatusCor = Color.Error },
+        new Ticket { Id = 102, Assunto = "Dúvida sobre matrícula", Status = "Em andamento", StatusCor = Color.Warning },
+        new Ticket { Id = 103, Assunto = "Alteração de e-mail", Status = "Resolvido", StatusCor = Color.Success }
+    };
+
+    private void EnviarMensagem()
+    {
+       Snackbar.Add("Mensagem enviada com sucesso!", Severity.Success);
+    }
+
+    private void AbrirNovoTicket()
+    {
+        Snackbar.Add("Novo ticket aberto. Aguarde atendimento.", Severity.Info);
+    }
+
+    private void VisualizarTicket(int id)
+    {
+        Snackbar.Add($"Visualizando ticket #{id}", Severity.Normal);
+    }
+
+    private class Comunicado
+    {
+        public string Mensagem { get; set; }
+        public string Data { get; set; }
+        public string Icone { get; set; }
+        public Color Cor { get; set; }
+    }
+
+    private class Ticket
+    {
+        public int Id { get; set; }
+        public string Assunto { get; set; }
+        public string Status { get; set; }
+        public Color StatusCor { get; set; }
+    }
 }
