@@ -1,6 +1,118 @@
-﻿@page "/Biblioteca"
-<h3>Biblioteca</h3>
+﻿@page "/Est/Biblioteca"
+
+@using MudBlazor
+@inject ISnackbar Snackbar
+
+<MudContainer MaxWidth="MaxWidth.Large" Class="mt-4">
+
+    <MudText Typo="Typo.h4" Align="Align.Center" Class="mb-4">
+        <MudIcon Icon="@Icons.Material.Filled.MenuBook" Class="mr-2" /> Biblioteca e Recursos Extras
+    </MudText>
+
+    <MudTabs>
+        <!-- Aba 1: Reservar e Renovar Livros -->
+        <MudTabPanel Text="📚 Reservar e Renovar Livros">
+            <MudTable Items="_livros" Hover="true">
+                <HeaderContent>
+                    <MudTh>Título</MudTh>
+                    <MudTh>Autor</MudTh>
+                    <MudTh>Disponibilidade</MudTh>
+                    <MudTh>Ação</MudTh>
+                </HeaderContent>
+                <RowTemplate Context="livro">
+                    <MudTd>@livro.Titulo</MudTd>
+                    <MudTd>@livro.Autor</MudTd>
+                    <MudTd>
+                        <MudChip T="string" Color="@livro.CorStatus">@livro.Status</MudChip>
+                    </MudTd>
+                    <MudTd>
+                        <MudButton 
+                            Color="Color.Primary"
+                            Variant="Variant.Text" 
+                            StartIcon="@Icons.Material.Filled.BookmarkAdd"
+                            OnClick="() => ReservarLivro(livro.Titulo)">
+                            Reservar
+                        </MudButton>
+                        
+                        <MudButton 
+                            Color="Color.Secondary" 
+                            Variant="Variant.Text"
+                            StartIcon="@Icons.Material.Filled.Update"
+                            OnClick="() => RenovarLivro(livro.Titulo)">
+                            Renovar
+                        </MudButton>
+                    </MudTd>
+                </RowTemplate>
+            </MudTable>
+        </MudTabPanel>
+
+        <!-- Aba 2: Biblioteca Digital -->
+        <MudTabPanel Text="📖 Biblioteca Digital">
+            <MudList T="string">
+                <MudListItem T="string">
+                    <MudIcon Icon="@Icons.Material.Filled.PictureAsPdf" Class="mr-2" />
+                    <MudLink Href="#" Target="_blank">E-Book: Introdução à Programação</MudLink>
+                </MudListItem>
+                
+                <MudListItem T="string">
+                    <MudIcon Icon="@Icons.Material.Filled.Article" Class="mr-2" />
+                    <MudLink Href="#" Target="_blank">Artigo: Inovações na Educação Digital</MudLink>
+                </MudListItem>
+                
+                <MudListItem T="string">
+                    <MudIcon Icon="@Icons.Material.Filled.CloudDownload" Class="mr-2" />
+                    <MudLink Href="#" Target="_blank">Material de Apoio: Matemática Avançada</MudLink>
+                </MudListItem>
+            </MudList>
+        </MudTabPanel>
+
+        <!-- Aba 3: Fóruns e Grupos de Estudo -->
+        <MudTabPanel Text="💬 Fóruns e Grupos de Estudo">
+            <MudList T="string">
+                <MudListItem T="string">
+                    <MudIcon Icon="@Icons.Material.Filled.Chat" Class="mr-2" />
+                    <MudLink Href="#" Target="_blank">Fórum de Discussão: Inteligência Artificial</MudLink>
+                </MudListItem>
+                
+                <MudListItem T="string">
+                    <MudIcon Icon="@Icons.Material.Filled.Groups" Class="mr-2" />
+                    <MudLink Href="#" Target="_blank">Grupo de Estudo: Cálculo Diferencial</MudLink>
+                </MudListItem>
+                
+                <MudListItem T="string">
+                    <MudIcon Icon="@Icons.Material.Filled.QuestionAnswer" Class="mr-2" />
+                    <MudLink Href="#" Target="_blank">Discussões Gerais sobre Educação</MudLink>
+                </MudListItem>
+            </MudList>
+        </MudTabPanel>
+    </MudTabs>
+
+    <MudSnackbarProvider />
+</MudContainer>
 
 @code {
-    
+    private List<Livro> _livros = new()
+    {
+        new Livro { Titulo = "O Senhor dos Anéis", Autor = "J.R.R. Tolkien", Status = "Disponível", CorStatus = Color.Success },
+        new Livro { Titulo = "Clean Code", Autor = "Robert C. Martin", Status = "Emprestado", CorStatus = Color.Error },
+        new Livro { Titulo = "Design Patterns", Autor = "Erich Gamma et al.", Status = "Disponível", CorStatus = Color.Success }
+    };
+
+    private void ReservarLivro(string titulo)
+    {
+        Snackbar.Add($"Livro '{titulo}' reservado com sucesso!", Severity.Success);
+    }
+
+    private void RenovarLivro(string titulo)
+    {
+        Snackbar.Add($"Renovação do livro '{titulo}' concluída!", Severity.Info);
+    }
+
+    private class Livro
+    {
+        public string Titulo { get; set; }
+        public string Autor { get; set; }
+        public string Status { get; set; }
+        public Color CorStatus { get; set; }
+    }
 }
