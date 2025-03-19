@@ -1,6 +1,158 @@
-﻿@page "/Notas"
-<h3>Notas</h3>
+﻿@page "/Est/Notas"
+
+@using MudBlazor
+@inject ISnackbar Snackbar
+
+<MudContainer MaxWidth="MaxWidth.Large" Class="mt-4">
+
+    <MudText Typo="Typo.h4" Align="Align.Center" Class="mb-4">
+        <MudIcon Icon="@Icons.Material.Filled.BarChart" Class="mr-2" /> Acompanhamento de Notas e Frequência
+    </MudText>
+
+    <MudExpansionPanels>
+
+        <!-- Seção 1: Consultar Notas e Avaliações -->
+        <MudExpansionPanel>
+            <TitleContent>
+                <MudIcon Icon="@Icons.Material.Filled.Assessment" Color="Color.Primary" Class="mr-2" />
+                <MudText Typo="Typo.h6">Notas e Avaliações</MudText>
+            </TitleContent>
+            <ChildContent>
+                <MudTable Items="_notas" Hover="true">
+                    <HeaderContent>
+                        <MudTh>Disciplina</MudTh>
+                        <MudTh>Avaliação</MudTh>
+                        <MudTh>Nota</MudTh>
+                        <MudTh>Progresso</MudTh>
+                    </HeaderContent>
+                    <RowTemplate Context="nota">
+                        <MudTd>@nota.Disciplina</MudTd>
+                        <MudTd>@nota.Tipo</MudTd>
+                        <MudTd>@nota.Valor</MudTd>
+                        <MudTd>
+                            <MudProgressCircular
+                                Value="@nota.Valor"
+                                Max="100" 
+                                Color="Color.Primary" 
+                                Size="Size.Medium" />
+                        </MudTd>
+                    </RowTemplate>
+                </MudTable>
+            </ChildContent>
+        </MudExpansionPanel>
+
+        <!-- Seção 2: Frequência Escolar e Justificativa -->
+        <MudExpansionPanel>
+            <TitleContent>
+                <MudIcon Icon="@Icons.Material.Filled.HowToReg" Color="Color.Warning" Class="mr-2" />
+                <MudText Typo="Typo.h6">Frequência Escolar</MudText>
+            </TitleContent>
+            <ChildContent>
+                <MudTable Items="_frequencias" Hover="true">
+                    <HeaderContent>
+                        <MudTh>Disciplina</MudTh>
+                        <MudTh>Presenças (%)</MudTh>
+                        <MudTh>Faltas</MudTh>
+                        <MudTh>Ação</MudTh>
+                    </HeaderContent>
+                    <RowTemplate Context="freq">
+                        <MudTd>@freq.Disciplina</MudTd>
+                        <MudTd>
+                            <MudProgressCircular 
+                                Value="@freq.Presenca" 
+                                Max="100" Color="Color.Success" 
+                                Size="Size.Medium" />
+                        </MudTd>
+                        <MudTd>@freq.Faltas</MudTd>
+                        <MudTd>
+                            @if (freq.Faltas > 0)
+                            {
+                                <MudButton Color="Color.Error" Variant="Variant.Filled" StartIcon="@Icons.Material.Filled.Report"
+                                           OnClick="() => JustificarFalta(freq.Disciplina)">
+                                    Justificar Faltas
+                                </MudButton>
+                            }
+                            else
+                            {
+                                <MudText Color="Color.Success">Sem Faltas</MudText>
+                            }
+                        </MudTd>
+                    </RowTemplate>
+                </MudTable>
+            </ChildContent>
+        </MudExpansionPanel>
+
+        <!-- Seção 3: Notificações Acadêmicas -->
+        <MudExpansionPanel>
+            <TitleContent>
+                <MudIcon Icon="@Icons.Material.Filled.Notifications" Color="Color.Secondary" Class="mr-2" />
+                <MudText Typo="Typo.h6">Notificações de Provas e Trabalhos</MudText>
+            </TitleContent>
+            <ChildContent>
+                <MudTimeline>
+                    @foreach (var notificacao in _notificacoes)
+                    {
+                        <MudTimelineItem Icon="@notificacao.Icone" Color="@notificacao.Cor">
+                            <MudText Typo="Typo.body1">@notificacao.Mensagem</MudText>
+                            <MudText Typo="Typo.caption" Color="Color.Secondary">@notificacao.Data</MudText>
+                        </MudTimelineItem>
+                    }
+                </MudTimeline>
+            </ChildContent>
+        </MudExpansionPanel>
+
+    </MudExpansionPanels>
+
+    <MudSnackbarProvider />
+</MudContainer>
 
 @code {
-    
+    private List<Nota> _notas = new()
+    {
+        new Nota { Disciplina = "Matemática", Tipo = "Prova 1", Valor = 85 },
+        new Nota { Disciplina = "Física", Tipo = "Trabalho", Valor = 90 },
+        new Nota { Disciplina = "História", Tipo = "Prova Final", Valor = 75 }
+    };
+
+    private List<Frequencia> _frequencias = new()
+    {
+        new Frequencia { Disciplina = "Matemática", Presenca = 95, Faltas = 1 },
+        new Frequencia { Disciplina = "Física", Presenca = 85, Faltas = 3 },
+        new Frequencia { Disciplina = "História", Presenca = 70, Faltas = 5 }
+    };
+
+    private List<Notificacao> _notificacoes = new()
+    {
+        new Notificacao { Mensagem = "Prova de Matemática marcada para 20/03", Data = "15/03", Icone = Icons.Material.Filled.School, Cor = Color.Primary },
+        new Notificacao { Mensagem = "Trabalho de História deve ser entregue até 25/03", Data = "17/03", Icone = Icons.Material.Filled.Assignment, Cor = Color.Warning },
+        new Notificacao { Mensagem = "Simulado de Física no dia 22/03", Data = "18/03", Icone = Icons.Material.Filled.Science, Cor = Color.Secondary }
+    };
+
+    private void JustificarFalta(string disciplina)
+    {
+        Snackbar.Add($"Solicitação de justificativa de falta enviada para {disciplina}.", Severity.Success);
+    }
+
+    private class Nota
+    {
+        public string Disciplina { get; set; }
+        public string Tipo { get; set; }
+        public int Valor { get; set; }
+    }
+
+    private class Frequencia
+    {
+        public string Disciplina { get; set; }
+        public int Presenca { get; set; }
+        public int Faltas { get; set; }
+    }
+
+    private class Notificacao
+    {
+        public string Mensagem { get; set; }
+        public string Data { get; set; }
+        public string Icone { get; set; }
+        public Color Cor { get; set; }
+    }
 }
+
