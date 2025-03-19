@@ -1,6 +1,137 @@
-﻿@page "/Actividades"
-<h3>Actividades</h3>
+﻿@page "/Est/Atividades"
+
+@using MudBlazor
+@inject ISnackbar Snackbar
+
+<MudContainer MaxWidth="MaxWidth.Large" Class="mt-4">
+
+    <MudText Typo="Typo.h4" Align="Align.Center" Class="mb-4">
+        <MudIcon Icon="@Icons.Material.Filled.LibraryBooks" Class="mr-2" />
+        Atividades e Material Didático
+    </MudText>
+
+    <MudExpansionPanels>
+
+        <!-- Seção 1: Materiais de Estudo -->
+        <MudExpansionPanel>
+            <TitleContent>
+                <MudIcon Icon="@Icons.Material.Filled.MenuBook" Color="Color.Primary" Class="mr-2" />
+                <MudText Typo="Typo.h6">Materiais de Estudo</MudText>
+            </TitleContent>
+            <ChildContent>
+                <MudTable Items="_materiais" Hover="true">
+                    <HeaderContent>
+                        <MudTh>Disciplina</MudTh>
+                        <MudTh>Título</MudTh>
+                        <MudTh>Data</MudTh>
+                        <MudTh>Ação</MudTh>
+                    </HeaderContent>
+                    <RowTemplate Context="material">
+                        <MudTd>@material.Disciplina</MudTd>
+                        <MudTd>@material.Titulo</MudTd>
+                        <MudTd>@material.Data</MudTd>
+                        <MudTd>
+                            <MudButton 
+                                Color="Color.Primary" 
+                                Variant="Variant.Text" 
+                                StartIcon="@Icons.Material.Filled.Download"
+                                OnClick="() => BaixarMaterial(material.Titulo)">
+                                Baixar
+                            </MudButton>
+                        </MudTd>
+                    </RowTemplate>
+                </MudTable>
+            </ChildContent>
+        </MudExpansionPanel>
+
+        <!-- Seção 2: Envio de Trabalhos -->
+        <MudExpansionPanel>
+            <TitleContent>
+                <MudIcon Icon="@Icons.Material.Filled.UploadFile" Color="Color.Warning" Class="mr-2" />
+                <MudText Typo="Typo.h6">Envio de Trabalhos e Atividades</MudText>
+            </TitleContent>
+            <ChildContent>
+                <MudFileUpload T="string" Label="Selecione um arquivo" Accept=".pdf,.docx,.pptx,.zip" />
+                <MudButton 
+                    Color="Color.Success" 
+                    Variant="Variant.Filled"
+                    StartIcon="@Icons.Material.Filled.CloudUpload"
+                    OnClick="EnviarTrabalho" Class="mt-2">
+                    Enviar
+                </MudButton>
+            </ChildContent>
+        </MudExpansionPanel>
+
+        <!-- Seção 3: Feedbacks e Correções -->
+        <MudExpansionPanel>
+            <TitleContent>
+                <MudIcon Icon="@Icons.Material.Filled.Feedback" Color="Color.Info" Class="mr-2" />
+                <MudText Typo="Typo.h6">Feedbacks e Correções</MudText>
+            </TitleContent>
+            <ChildContent>
+                <MudTable Items="_feedbacks" Hover="true">
+                    <HeaderContent>
+                        <MudTh>Trabalho</MudTh>
+                        <MudTh>Professor</MudTh>
+                        <MudTh>Nota</MudTh>
+                        <MudTh>Comentário</MudTh>
+                    </HeaderContent>
+                    <RowTemplate Context="feedback">
+                        <MudTd>@feedback.Trabalho</MudTd>
+                        <MudTd>@feedback.Professor</MudTd>
+                        <MudTd>
+                            <MudChip T="string" Color="@feedback.CorNota">@feedback.Nota</MudChip>
+                        </MudTd>
+                        <MudTd>@feedback.Comentario</MudTd>
+                    </RowTemplate>
+                </MudTable>
+            </ChildContent>
+        </MudExpansionPanel>
+
+    </MudExpansionPanels>
+
+    <MudSnackbarProvider />
+</MudContainer>
 
 @code {
-    
+    private List<Material> _materiais = new()
+    {
+        new Material { Disciplina = "Matemática", Titulo = "Apostila de Funções", Data = "15/03" },
+        new Material { Disciplina = "História", Titulo = "Revolução Industrial", Data = "18/03" },
+        new Material { Disciplina = "Física", Titulo = "Mecânica Clássica", Data = "20/03" }
+    };
+
+    private List<Feedback> _feedbacks = new()
+    {
+        new Feedback { Trabalho = "Redação - Meio Ambiente", Professor = "Prof. Carlos", Nota = "9.5", CorNota = Color.Success, Comentario = "Ótimo desenvolvimento!" },
+        new Feedback { Trabalho = "Projeto de Física", Professor = "Prof. Ana", Nota = "7.0", CorNota = Color.Warning, Comentario = "Precisa melhorar os cálculos." },
+        new Feedback { Trabalho = "Análise Literária", Professor = "Prof. Roberto", Nota = "5.0", CorNota = Color.Error, Comentario = "Faltaram referências." }
+    };
+
+    private void BaixarMaterial(string titulo)
+    {
+        Snackbar.Add($"Baixando {titulo}...", Severity.Info);
+    }
+
+    private void EnviarTrabalho()
+    {
+        Snackbar.Add("Trabalho enviado com sucesso!", Severity.Success);
+    }
+
+    private class Material
+    {
+        public string Disciplina { get; set; }
+        public string Titulo { get; set; }
+        public string Data { get; set; }
+    }
+
+    private class Feedback
+    {
+        public string Trabalho { get; set; }
+        public string Professor { get; set; }
+        public string Nota { get; set; }
+        public Color CorNota { get; set; }
+        public string Comentario { get; set; }
+    }
 }
+
