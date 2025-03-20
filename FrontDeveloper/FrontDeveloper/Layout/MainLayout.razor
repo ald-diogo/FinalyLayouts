@@ -1,70 +1,107 @@
 ﻿@using MudBlazor.Utilities
 @inherits LayoutComponentBase
 
+<!-- Injeção do serviço JavaScript para comunicação com o navegador -->
+@inject IJSRuntime JS 
+ 
+
 <MudLayout>
     @if (!HideAppBar)
     {
         <MudAppBar Elevation="1" Color="Color.Inherit">
+            <!-- Botão do menu lateral -->
             <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Warning"
                            Edge="Edge.Start" OnClick="@((e) => DrawerToggle())"/>
             <MudSpacer/>
-            <MudThemeProvider @bind-IsDarkMode="@_isDarkMode" Theme="_theme"/>
+
+            <!-- Provedor de Tema que alterna entre claro e escuro -->
+            <MudThemeProvider @bind-IsDarkMode="@_isDarkMode" Theme="_currentTheme"/>
+            
+            <!-- Switch para alternar manualmente entre os temas -->
             <MudSwitch ThumbIcon="" @bind-Value="_isDarkMode" Color="Color.Primary" Class="ma-4" T="bool"/>
         </MudAppBar> 
     }
     
+    <!-- Menu lateral (Drawer) -->
     <MudDrawer @bind-Open="_drawerOpen" Elevation="2" Color="Color.Inherit" Breakpoint="Breakpoint.Md">
         <MudDrawerHeader>
             <MudText Typo="Typo.h5" Class="mt-1" Color="Color.Primary">Menu</MudText>
         </MudDrawerHeader>
-        <NavMenu/>
+        <NavMenu/>  <!-- Componente de navegação -->
     </MudDrawer>
 
+    <!-- Área principal do conteúdo -->
     <MudMainContent>
         @Body
     </MudMainContent>
 </MudLayout>
 
+<!-- Provedores do MudBlazor para diálogos e notificações -->
 <MudDialogProvider />
 <MudSnackbarProvider />
 
 @code {
+    // Parâmetro para ocultar a AppBar, caso necessário
     [Parameter] public bool HideAppBar { get; set; } = false;
-    bool _drawerOpen = true;
 
+    // Controle do estado do menu lateral
+    private bool _drawerOpen = true;
+
+    // Indica se o tema atual é o modo escuro ou não
+    private bool _isDarkMode;
+
+    // Alterna a visibilidade do menu lateral
     void DrawerToggle()
     {
         _drawerOpen = !_drawerOpen;
     }
-    
-    private MudTheme _theme = new();
-    private bool _isDarkMode;
-    
+
+    // Definição do Tema Claro
     private MudTheme _lightTheme = new MudTheme()
     {
         PaletteLight = new PaletteLight()
         {
-            Primary = "#1EFA2D",
-            Background = Colors.Blue.Lighten4,
-            Secondary = Colors.LightBlue.Darken3,
-            TextPrimary = Colors.Shades.Black,
-            AppbarText = Colors.Shades.Black,
-            AppbarBackground = new MudColor("#1EFA2D"),
-            DrawerText = Colors.Shades.Black,
-            DrawerBackground = Colors.LightBlue.Lighten4
+            Primary = "#1EFA2D",                 // Cor principal (verde)
+            Background = Colors.Blue.Lighten4,    // Fundo claro azulado
+            Secondary = Colors.LightBlue.Darken3, // Cor secundária
+            TextPrimary = Colors.Shades.Black,   // Cor do texto principal
+            AppbarText = Colors.Shades.Black,    // Cor do texto na AppBar
+            AppbarBackground = new MudColor("#1EFA2D"), // Fundo da AppBar (verde)
+            DrawerText = Colors.Shades.Black,    // Cor do texto no Drawer
+            DrawerBackground = Colors.LightBlue.Lighten4 // Fundo do Drawer
         }
     };
 
+    // Definição do Tema Escuro
     private MudTheme _darkTheme = new MudTheme()
     {
         PaletteDark = new PaletteDark()
         {
-            Primary = Colors.LightBlue.Accent3,
-            Secondary = Colors.LightBlue.Darken3,
-            AppbarBackground = Colors.LightBlue.Accent3,
-            AppbarText = Colors.Shades.Black
+            Primary = Colors.LightBlue.Accent3,  // Cor principal
+            Secondary = Colors.LightBlue.Darken3,// Cor secundária
+            AppbarBackground = Colors.LightBlue.Accent3, // Fundo da AppBar
+            AppbarText = Colors.Shades.Black    // Cor do texto na AppBar
         }
     };
 
+    // Retorna o tema atual com base no modo escuro ou claro
     private MudTheme _currentTheme => _isDarkMode ? _darkTheme : _lightTheme;
+
+    // Método chamado ao iniciar a aplicação
+    protected override async Task OnInitializedAsync()
+    {
+        // Obtém o tema do sistema operacional (Windows)
+        _isDarkMode = await JS.InvokeAsync<bool>("getSystemTheme");
+
+        // Ativa um observador para detectar mudanças no tema do sistema
+        await JS.InvokeVoidAsync("watchSystemTheme", DotNetObjectReference.Create(this));
+    }
+
+    // Método chamado pelo JavaScript quando o tema do sistema mudar
+    [JSInvokable]
+    public void SetDarkMode(bool isDark)
+    {
+        _isDarkMode = isDark;  // Atualiza o tema
+        StateHasChanged();      // Atualiza a UI do Blazor
+    }
 }
