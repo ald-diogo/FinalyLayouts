@@ -19,7 +19,6 @@
     <ItemGroup>
       <AdditionalFiles Include="Pages\Est\Info\Index.razor" />
       <AdditionalFiles Include="Pages\Est\Info\Login.razor" />
-      <AdditionalFiles Include="Pages\Est\Info\MenuProf.razor" />
       <AdditionalFiles Include="Pages\Est\Info\Politica.razor" />
       <AdditionalFiles Include="Pages\Est\Info\RecuperarSenha.razor" />
       <AdditionalFiles Include="Pages\Est\Info\Seguranca.razor" />

@@ -1,0 +1,149 @@
+﻿@page "/forum"
+
+<MudContainer>
+    <!-- Título do Fórum -->
+    <MudTypography Variant="H4" Class="mb-4">📚 Fórum de Discussão sobre Livros</MudTypography>
+
+    <!-- Botão para Criar Novo Tópico -->
+    <MudButton 
+        Variant="Variant.Filled" 
+        Color="Color.Primary" 
+        OnClick="()=> NovoTopicoDialog = true">
+        <MudIcon Icon="@Icons.Material.Filled.Add" /> Criar Novo Tópico
+    </MudButton>
+
+    <!-- Diálogo para Criar Novo Tópico -->
+    <MudDialog @bind-IsOpen="NovoTopicoDialog">
+        <MudDialogTitle>Criar Novo Tópico</MudDialogTitle>
+        <MudDialogContent>
+            <MudTextField 
+                Label="Título" 
+                @bind-Value="NovoTopicoTitulo"
+                Variant="Variant.Outlined" 
+                FullWidth />
+            
+            <MudTextField 
+                Label="Categoria" 
+                @bind-Value="NovaCategoria" 
+                Variant="Variant.Outlined" 
+                FullWidth />
+            
+            <MudTextField 
+                Label="Descrição" 
+                @bind-Value="NovoTopicoDescricao" 
+                Variant="Variant.Outlined" 
+                FullWidth MultiLine Rows="4" />
+        </MudDialogContent>
+        <MudDialogActions>
+            <MudButton Color="Color.Primary" OnClick="CriarTopico">Criar</MudButton>
+            <MudButton
+                Color="Color.Secondary"
+                OnClick="() => NovoTopicoDialog = false">
+                Cancelar
+            </MudButton>
+        </MudDialogActions>
+    </MudDialog>
+
+    <!-- Lista de Tópicos -->
+    <MudTable Items="Topicos" Hover="true">
+        <MudTableColumns>
+            <MudTableColumn Field="@nameof(Topico.Titulo)" Title="Título" />
+            <MudTableColumn Field="@nameof(Topico.Categoria)" Title="Categoria" />
+            <MudTableColumn Field="@nameof(Topico.Autor)" Title="Autor" />
+            <MudTableColumn Field="@nameof(Topico.Data)" Title="Data" />
+            <MudTableColumn Title="Ações">
+            </MudTableColumn>
+        </MudTableColumns>
+    </MudTable>
+
+    <!-- Diálogo de Discussão -->
+    <MudDialog @bind-IsOpen="TopicoAberto">
+        <MudDialogTitle>@TopicoSelecionado?.Titulo</MudDialogTitle>
+        <MudDialogContent>
+            <MudTypography>@TopicoSelecionado?.Descricao</MudTypography>
+            <MudDivider Class="my-3" />
+            <MudList T="string">
+                @foreach (var comentario in TopicoSelecionado?.Comentarios ?? new List<string>())
+                {
+                    <MudListItem T="string">@comentario</MudListItem>
+                }
+            </MudList>
+            <MudTextField 
+                Label="Adicionar Comentário"
+                Variant="Variant.Outlined"
+                @bind-Value="NovoComentario" 
+                FullWidth MultiLine Rows="2" />
+        </MudDialogContent>
+        <MudDialogActions>
+            <MudButton Color="Color.Primary" OnClick="AdicionarComentario">Comentar</MudButton>
+            <MudButton Color="Color.Secondary" OnClick="()=> TopicoAberto = false">Fechar</MudButton>
+        </MudDialogActions>
+    </MudDialog>
+</MudContainer>
+
+@code {
+    private bool NovoTopicoDialog;
+    private string NovoTopicoTitulo;
+    private string NovoTopicoDescricao;
+    private string NovaCategoria;
+    private bool TopicoAberto;
+    private string NovoComentario;
+    private Topico TopicoSelecionado;
+    private List<Topico> Topicos;
+
+    protected override void OnInitialized()
+    {
+        // Inicializa a lista de tópicos vazia para evitar erros
+        Topicos = new List<Topico>();
+    }
+
+    private void CriarTopico()
+    {
+        if (string.IsNullOrWhiteSpace(NovoTopicoTitulo) || string.IsNullOrWhiteSpace(NovoTopicoDescricao))
+            return;
+
+        Topicos.Add(new Topico
+        {
+            Titulo = NovoTopicoTitulo,
+            Descricao = NovoTopicoDescricao,
+            Categoria = NovaCategoria,
+            Autor = "Usuário",
+            Data = DateTime.Now.ToString("dd/MM/yyyy"),
+            Comentarios = new List<string>()
+        });
+
+        // Fecha o diálogo e limpa os campos
+        NovoTopicoDialog = false;
+        NovoTopicoTitulo = "";
+        NovoTopicoDescricao = "";
+        NovaCategoria = "";
+    }
+
+    private void AbrirTopico(Topico topico)
+    {
+        if (topico == null) return;
+
+        TopicoSelecionado = topico;
+        TopicoAberto = true;
+    }
+
+    private void AdicionarComentario()
+    {
+        if (TopicoSelecionado != null && !string.IsNullOrWhiteSpace(NovoComentario))
+        {
+            TopicoSelecionado.Comentarios.Add(NovoComentario);
+            NovoComentario = "";
+        }
+    }
+
+    public class Topico
+    {
+        public string Titulo { get; set; }
+        public string Descricao { get; set; }
+        public string Categoria { get; set; }
+        public string Autor { get; set; }
+        public string Data { get; set; }
+        public List<string> Comentarios { get; set; } = new();
+    }
+}
+
