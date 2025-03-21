@@ -1,0 +1,138 @@
+﻿@using MudBlazor.Utilities
+@inherits LayoutComponentBase
+@inject IJSRuntime JS
+
+<!-- Provedores de serviços do MudBlazor -->
+<MudThemeProvider Theme="(_isDarkMode ? _darkTheme : _lightTheme)" />
+<MudDialogProvider />
+<MudSnackbarProvider />
+<MudPopoverProvider />
+
+<!-- Layout principal -->
+<MudLayout>
+    <!-- Barra de navegação superior -->
+    <MudAppBar Elevation="1">
+        <!-- Ícone do Visual Studio em telas maiores -->
+        <MudHidden Breakpoint="Breakpoint.SmAndDown">
+            <MudIcon Icon="@Icons.Custom.Brands.MicrosoftVisualStudio" Size="Size.Large" />
+        </MudHidden>
+
+        <!-- Botão de menu em telas menores -->
+        <MudHidden Breakpoint="Breakpoint.MdAndUp">
+            <MudIconButton Icon="@Icons.Material.Outlined.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@DrawerToggle" />
+        </MudHidden>
+
+        <!-- Nome da aplicação -->
+        <MudHidden Breakpoint="Breakpoint.Xs">
+            <a href="/">
+                <MudText Typo="Typo.h6" Class="ml-4" Color="Color.Info">ALAYSChoolGest</MudText>
+            </a>
+        </MudHidden>
+        <MudHidden Breakpoint="Breakpoint.Xs" Invert="true">
+            <MudText Typo="Typo.subtitle2">ALAYSChoolGest</MudText>
+        </MudHidden>
+
+        <MudSpacer />
+
+        <!-- Menu de seleção de idioma -->
+        <MudMenu Icon="@Icons.Material.Outlined.Translate" Color="Color.Inherit" AnchorOrigin="Origin.TopCenter" TransformOrigin="Origin.TopCenter" Dense="true">
+            <MudMenuItem>Português</MudMenuItem>
+            <MudMenuItem>Inglês</MudMenuItem>
+        </MudMenu>
+
+        <!-- Menu do usuário -->
+        <MudMenu AnchorOrigin="Origin.BottomLeft" TransformOrigin="Origin.TopRight" Dense="true">
+            <MudMenuActivator>
+                <div style="display: flex; align-items: center; cursor: pointer;">
+                    <MudAvatar Style="margin-right: 8px;">
+                        <MudImage Src="/images/logoblue.png" Alt="User" />
+                    </MudAvatar>
+                </div>
+            </MudMenuActivator>
+            <MudMenuItems>
+                <MudDivider />
+                <MudNavMenu Dense Color="Color.Success" Bordered="true">
+                    <MudNavLink Href="#" Icon="@Icons.Material.Filled.Password" IconColor="Color.Warning">Alterar Senha</MudNavLink>
+                    <MudNavLink Href="#" Icon="@Icons.Material.Filled.ManageAccounts" IconColor="Color.Success">Minha Conta</MudNavLink>
+                    <MudDivider />
+                    <MudNavLink Href="/logout" Icon="@Icons.Material.Filled.Logout" IconColor="Color.Error">Terminar Sessão</MudNavLink>
+                </MudNavMenu>
+            </MudMenuItems>
+        </MudMenu>
+
+        <!-- Switch para alternar temas -->
+        <MudIconButton OnClick="@ToggleTheme"
+                       Icon="@(_isDarkMode ? Icons.Material.Filled.DarkMode : Icons.Material.Filled.LightMode)"
+                       Color="@(_isDarkMode ? Color.Primary : Color.Secondary)"
+                       Class="ma-4"
+                       title="@(_isDarkMode ? "Modo Escuro" : "Modo Claro")" />
+    </MudAppBar>
+
+    <!-- Menu lateral -->
+    <MudDrawer @bind-Open="_drawerOpen" Breakpoint="Breakpoint.Md">
+        <NavMenu />
+    </MudDrawer>
+
+    <!-- Conteúdo principal -->
+    <MudMainContent>
+        <MudContainer MaxWidth="MaxWidth.False" Class="mt-4">
+            @Body
+        </MudContainer>
+    </MudMainContent>
+</MudLayout>
+
+@code {
+    [Parameter] public bool HideAppBar { get; set; } = false;
+    private bool _drawerOpen = true;
+    private bool _isDarkMode = false;
+
+    void DrawerToggle() => _drawerOpen = !_drawerOpen;
+
+    private MudTheme _lightTheme = new MudTheme()
+    {
+        PaletteLight = new PaletteLight()
+        {
+            Primary = "#1EFA2D",
+            Background = Colors.Blue.Lighten4,
+            Secondary = Colors.LightBlue.Darken3,
+            TextPrimary = Colors.Shades.Black,
+            AppbarText = Colors.Shades.Black,
+            AppbarBackground = new MudColor("#1EFA2D"),
+            DrawerText = Colors.Shades.Black,
+            DrawerBackground = Colors.LightBlue.Lighten4
+        }
+    };
+
+    private MudTheme _darkTheme = new MudTheme()
+    {
+        PaletteDark = new PaletteDark()
+        {
+            Primary = Colors.LightBlue.Accent3,
+            Secondary = Colors.LightBlue.Darken3,
+            AppbarBackground = Colors.LightBlue.Accent3,
+            AppbarText = Colors.Shades.Black
+        }
+    };
+
+    protected override async Task OnInitializedAsync()
+    {
+        _isDarkMode = await JS.InvokeAsync<bool>("getSystemTheme");
+        await JS.InvokeVoidAsync("watchSystemTheme", DotNetObjectReference.Create(this));
+    }
+
+    [JSInvokable]
+    public void SetDarkMode(bool isDark)
+    {
+        _isDarkMode = isDark;
+        StateHasChanged();
+    }
+
+    private void ToggleTheme()
+    {
+        _isDarkMode = !_isDarkMode;
+        StateHasChanged();
+    }
+}
+
+
+

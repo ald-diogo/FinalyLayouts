@@ -1,0 +1,57 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Dev\\RiderProjects\\FinalyLayouts\\Solution\\Solution\\bin\\Debug\\net9.0\\wwwroot\\_framework\\blazor.webassembly.js",
+      "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js"
+    },
+    {
+      "Id": "C:\\Dev\\RiderProjects\\FinalyLayouts\\Solution\\Solution\\obj\\Debug\\net9.0\\scopedcss\\bundle\\Solution.styles.css",
+      "PackagePath": "staticwebassets\\Solution.styles.css"
+    },
+    {
+      "Id": "C:\\Dev\\RiderProjects\\FinalyLayouts\\Solution\\Solution\\wwwroot\\css\\app.css",
+      "PackagePath": "staticwebassets\\css\\app.css"
+    },
+    {
+      "Id": "C:\\Dev\\RiderProjects\\FinalyLayouts\\Solution\\Solution\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "C:\\Dev\\RiderProjects\\FinalyLayouts\\Solution\\Solution\\wwwroot\\icon-192.png",
+      "PackagePath": "staticwebassets\\icon-192.png"
+    },
+    {
+      "Id": "C:\\Dev\\RiderProjects\\FinalyLayouts\\Solution\\Solution\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "C:\\Dev\\RiderProjects\\FinalyLayouts\\Solution\\Solution\\wwwroot\\sample-data\\weather.json",
+      "PackagePath": "staticwebassets\\sample-data\\weather.json"
+    },
+    {
+      "Id": "C:\\Dev\\RiderProjects\\FinalyLayouts\\Solution\\Solution\\wwwroot\\theme.js",
+      "PackagePath": "staticwebassets\\theme.js"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.Solution.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.Solution.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.build.Solution.props",
+      "PackagePath": "build\\Solution.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.buildMultiTargeting.Solution.props",
+      "PackagePath": "buildMultiTargeting\\Solution.props"
+    },
+    {
+      "Id": "obj\\Debug\\net9.0\\staticwebassets\\msbuild.buildTransitive.Solution.props",
+      "PackagePath": "buildTransitive\\Solution.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

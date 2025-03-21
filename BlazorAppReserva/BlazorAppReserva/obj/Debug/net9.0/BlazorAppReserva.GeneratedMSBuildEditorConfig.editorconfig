@@ -199,6 +199,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvcHJpZXRhcmlvXEluZm9cU2Vydmljb3NcUG9saXRpY2EucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Dev/RiderProjects/FinalyLayouts/BlazorAppReserva/BlazorAppReserva/Pages/Proprietario/Info/Servicos/Reservas/Avaliacoes-Feedback.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvcHJpZXRhcmlvXEluZm9cU2Vydmljb3NcUmVzZXJ2YXNcQXZhbGlhY29lcy1GZWVkYmFjay5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Dev/RiderProjects/FinalyLayouts/BlazorAppReserva/BlazorAppReserva/Pages/Proprietario/Info/Servicos/Reservas/Reservas.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvcHJpZXRhcmlvXEluZm9cU2Vydmljb3NcUmVzZXJ2YXNcUmVzZXJ2YXMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
