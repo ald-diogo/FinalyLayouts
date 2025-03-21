@@ -1,0 +1,140 @@
+﻿@page "/lista-hoteis"
+@using BlazorAppReserva.Models
+@using BlazorAppReserva.Pages.Services
+@inject HotelService HotelService
+@inject NavigationManager NavigationManager
+@inject IJSRuntime JSRuntime
+@inject IDialogService DialogService
+@inject ISnackbar Snackbar
+
+<!-- Título da página -->
+<MudText Align="Align.Center" Color="Color.Primary" Typo="Typo.h5" Class="mb-4 text-center">
+    Lista de Hotéis
+</MudText>
+
+<!-- Botão para adicionar um novo hotel -->
+<MudGrid>
+    <MudItem xs="2">
+        <MudButton
+            Href="/cadastro-hotel"
+            Class="mt-4"
+            Variant="Variant.Filled"
+            Color="Color.Success">
+            <MudIcon Icon="@Icons.Material.Filled.Hotel" Class="mr-1" />
+            <MudIcon Icon="@Icons.Material.Filled.AddBusiness" Class="mr-2" />
+            Novo Hotel
+        </MudButton>
+    </MudItem>
+    
+    <MudItem xs="9">
+        <MudTextField
+            Variant="Variant.Outlined"
+            Label="Pesquisar"
+            @bind-Value="termoPesquisa"
+            Adornment="Adornment.End"
+            AdornmentIcon="@Icons.Material.Filled.Search"
+            OnKeyUp="Pesquisar"
+            Class="mt-4" />
+    </MudItem>
+</MudGrid>
+
+<!-- Tabela para exibição da lista de hotéis -->
+<MudTable Items="hoteis" Hover="true" Class="mb-5">
+    <!-- Cabeçalho da tabela -->
+    <HeaderContent>
+        <MudTh>Nome</MudTh>
+        <MudTh>Categoria</MudTh>
+        <MudTh>Endereço</MudTh>
+        <MudTh>Cidade</MudTh>
+        <MudTh>País</MudTh>
+        <MudTh>Telefone</MudTh>
+        <MudTh>E-mail</MudTh>
+        <MudTh>Preço por Noite</MudTh>
+        <MudTh>Comodidades</MudTh>
+        <MudTh>Ações</MudTh>
+    </HeaderContent>
+    
+    <!-- Preenchimento das linhas da tabela com os dados dos hotéis -->
+    <RowTemplate Context="hotel">
+        <MudTd>@hotel.Nome</MudTd>
+        <MudTd>@hotel.Categoria ★</MudTd>
+        <MudTd>@hotel.Endereco</MudTd>
+        <MudTd>@hotel.Cidade</MudTd>
+        <MudTd>@hotel.Pais</MudTd>
+        <MudTd>@hotel.Telefone</MudTd>
+        <MudTd>@hotel.Email</MudTd>
+        <MudTd>@hotel.PrecoPorNoite.ToString("C")</MudTd>
+        <MudTd>
+            @(hotel.Wifi ? "Wi-Fi ✅" : "Wi-Fi ❌")
+            @(hotel.Estacionamento ? " | Estacionamento ✅" : " | Estacionamento ❌")
+            @(hotel.Piscina ? " | Piscina ✅" : " | Piscina ❌")
+            @(hotel.Restaurante ? " | Restaurante ✅" : " | Restaurante ❌")
+        </MudTd>
+        <MudTd>
+            <!-- Botão para editar hotel -->
+            <MudFab Color="Color.Primary" StartIcon="@Icons.Material.Filled.Edit" @onclick="() => EditarHotel(hotel)" />
+            
+            <!-- Botão para excluir hotel -->
+            <MudFab Color="Color.Error" StartIcon="@Icons.Material.Filled.Delete" @onclick="() => ConfirmarRemocao(hotel.Id)" />
+        </MudTd>
+    </RowTemplate>
+</MudTable>
+
+@code {
+    private string termoPesquisa = "";
+    
+    private List<Hotel> hoteis = new(); // Lista que armazena os hotéis
+
+    // Método chamado ao inicializar o componente para carregar os hotéis
+    protected override void OnInitialized()
+    {
+        hoteis = HotelService.GetHoteis();
+    }
+
+    // Método para editar um hotel
+    private async Task EditarHotel(Hotel hotel)
+    {
+        // Armazena os dados do hotel na localStorage para edição
+        await JSRuntime.InvokeVoidAsync("localStorage.setItem", "hotelEdicao", System.Text.Json.JsonSerializer.Serialize(hotel));
+        // Redireciona para a página de cadastro do hotel
+        NavigationManager.NavigateTo("/cadastro-hotel");
+    }
+
+    // Método para confirmar a remoção de um hotel
+    private async Task ConfirmarRemocao(int hotelId)
+    {
+        // Exibe uma caixa de diálogo para confirmação
+        bool? resultado = await DialogService.ShowMessageBox(
+            "Aviso!",
+            "Tem certeza que deseja excluir este hotel?",
+            yesText: "Sim", cancelText: "Não");
+
+        // Se o usuário confirmar, remove o hotel
+        if (resultado == true)
+        {
+            RemoverHotel(hotelId);
+            Snackbar.Add("Hotel removido com sucesso!", Severity.Success);
+        }
+    }
+
+    // Método para remover um hotel
+    private void RemoverHotel(int id)
+    {
+        HotelService.RemoverHotel(id); // Chama o serviço para remover
+        hoteis = HotelService.GetHoteis(); // Atualiza a lista de hotéis
+        StateHasChanged(); // Atualiza a interface
+    }
+    
+    // Método de pesquisa
+    private void Pesquisar()
+    {
+        if (string.IsNullOrWhiteSpace(termoPesquisa))
+        {
+            hoteis = HotelService.GetHoteis();
+        }
+        else
+        {
+            hoteis = HotelService.BuscarHotelPorNome(termoPesquisa);
+        }
+    }
+}

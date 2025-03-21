@@ -1,15 +1,21 @@
 ﻿@using MudBlazor.Utilities
 @inherits LayoutComponentBase
+@inject IJSRuntime JS
 
+<MudThemeProvider Theme="(_isDarkMode ? _darkTheme : _lightTheme)" />
 <MudLayout>
+    @if (!HideAppBar)
+    {
     <MudAppBar Elevation="1" Color="Color.Dark">
-        <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Warning" 
-                       Edge="Edge.Start" OnClick="@((e) => DrawerToggle())"/>
+        <!-- Switch para alternar temas -->
+        <MudIconButton OnClick="@ToggleTheme"
+                       Icon="@(_isDarkMode ? Icons.Material.Filled.DarkMode : Icons.Material.Filled.LightMode)"
+                       Color="@(_isDarkMode ? Color.Primary : Color.Secondary)"
+                       Class="ma-4"
+                       title="@(_isDarkMode ? "Modo Escuro" : "Modo Claro")"/>
         <MudSpacer/>
-        <MudThemeProvider @bind-IsDarkMode="@_isDarkMode" Theme="_theme" />
-        <MudSwitch ThumbIcon="" @bind-Value="_isDarkMode" Color="Color.Primary" Class="ma-4" T="bool" />
     </MudAppBar>
-
+    }
     <MudDrawer @bind-Open="_drawerOpen" Elevation="2" Color="Color.Dark" Breakpoint="Breakpoint.Md">
         <MudDrawerHeader>
             <MudText Typo="Typo.h5" Class="mt-1" Color="Color.Primary">Menu</MudText>
@@ -26,16 +32,12 @@
 <MudSnackbarProvider />
 
 @code {
-    bool _drawerOpen = true;
+    [Parameter] public bool HideAppBar { get; set; } = false;
+    private bool _drawerOpen = true;
+    private bool _isDarkMode = false;
 
-    void DrawerToggle()
-    {
-        _drawerOpen = !_drawerOpen;
-    }
-    
-    private MudTheme _theme = new();
-    private bool _isDarkMode;
-    
+    void DrawerToggle() => _drawerOpen = !_drawerOpen;
+
     private MudTheme _lightTheme = new MudTheme()
     {
         PaletteLight = new PaletteLight()
@@ -62,5 +64,23 @@
         }
     };
 
-    private MudTheme _currentTheme => _isDarkMode ? _darkTheme : _lightTheme;
+    protected override async Task OnInitializedAsync()
+    {
+        _isDarkMode = await JS.InvokeAsync<bool>("getSystemTheme");
+        await JS.InvokeVoidAsync("watchSystemTheme", DotNetObjectReference.Create(this));
+    }
+
+    [JSInvokable]
+    public void SetDarkMode(bool isDark)
+    {
+        _isDarkMode = isDark;
+        StateHasChanged();
+    }
+
+    private void ToggleTheme()
+    {
+        _isDarkMode = !_isDarkMode;
+        StateHasChanged();
+    }
+
 }

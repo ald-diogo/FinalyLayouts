@@ -1,0 +1,92 @@
+﻿@page "/cadastro-hotel"
+@using BlazorAppReserva.Models
+@using BlazorAppReserva.Pages.Services
+@inject HotelService HotelService
+@inject NavigationManager Navigation
+@inject ISnackbar Snackbar
+@inject IJSRuntime JSRuntime
+
+<MudPaper Class="p-4" Elevation="4">
+    <MudForm>
+        <!-- Cabeçalho da página -->
+        <MudText Align="Align.Center" Color="Color.Primary" Typo="Typo.h5">
+            Cadastro de Hotéis
+        </MudText>
+
+        <!-- Primeira linha de campos do formulário -->
+        <MudGrid Spacing="2">
+            <MudItem xs="12" md="4" Class="mb-3">
+                <MudTextField
+                    Label="Nome do Hotel"
+                    @bind-Value="hotel.Nome"
+                    Variant="Variant.Outlined"
+                    Required
+                    Adornment="Adornment.End"
+                    AdornmentIcon="@Icons.Material.Filled.Hotel"
+                    AdornmentColor="Color.Primary" />
+            </MudItem>
+
+            <MudItem xs="12" md="6" Class="mb-3">
+                <MudTextField
+                    Label="Telefone"
+                    @bind-Value="hotel.Telefone"
+                    Type="tel"
+                    Variant="Variant.Outlined"
+                    Required
+                    Adornment="Adornment.End"
+                    AdornmentIcon="@Icons.Material.Filled.Phone"
+                    AdornmentColor="Color.Primary" />
+            </MudItem>
+
+            <MudItem xs="12" md="6" Class="mb-3">
+                <MudTextField
+                    Label="E-mail"
+                    @bind-Value="hotel.Email"
+                    Type="email"
+                    Variant="Variant.Outlined"
+                    Required
+                    Adornment="Adornment.End"
+                    AdornmentIcon="@Icons.Material.Filled.Email"
+                    AdornmentColor="Color.Primary" />
+            </MudItem>
+        </MudGrid>
+
+        <!-- Botão de cadastro -->
+        <MudGrid Justify="Justify.Center">
+            <MudItem xs="12" md="4" Class="mt-4">
+                <MudButton Color="Color.Success" Variant="Variant.Filled" Style="width: 100%; height: 100%;"
+                           @onclick="@(() => { CadastrarHotel(); Snackbar.Add("Cadastro efetuado com sucesso!", Severity.Success); })">
+                    Cadastrar
+                </MudButton>
+            </MudItem>
+        </MudGrid>
+    </MudForm>
+</MudPaper>
+
+@code {
+    // Objeto que armazena os dados do hotel
+    private Hotel hotel = new();
+
+    // Método chamado na inicialização da página
+    protected override async Task OnInitializedAsync()
+    {
+        var hotelJson = await JSRuntime.InvokeAsync<string>("localStorage.getItem", "hotelEdicao");
+
+        if (!string.IsNullOrEmpty(hotelJson))
+        {
+            hotel = System.Text.Json.JsonSerializer.Deserialize<Hotel>(hotelJson);
+        }
+    }
+
+    // Método para cadastrar ou editar um hotel
+    private async Task CadastrarHotel()
+    {
+        if (hotel.Id > 0)
+            HotelService.EditarHotel(hotel);
+        else
+            HotelService.AdicionarHotel(hotel);
+
+        await JSRuntime.InvokeVoidAsync("localStorage.removeItem", "hotelEdicao");
+        Navigation.NavigateTo("/lista-hoteis");
+    }
+}
