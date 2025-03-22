@@ -17,6 +17,10 @@
       "PackagePath": "staticwebassets\\icon-192.png"
     },
     {
+      "Id": "C:\\Dev\\RiderProjects\\FinalyLayouts\\BlazorAppReserva\\BlazorAppReserva\\wwwroot\\images\\icon-192.png",
+      "PackagePath": "staticwebassets\\images\\icon-192.png"
+    },
+    {
       "Id": "C:\\Dev\\RiderProjects\\FinalyLayouts\\BlazorAppReserva\\BlazorAppReserva\\wwwroot\\index.html",
       "PackagePath": "staticwebassets\\index.html"
     },

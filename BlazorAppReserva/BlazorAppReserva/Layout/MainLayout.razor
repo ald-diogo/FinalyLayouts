@@ -2,17 +2,14 @@
 @inherits LayoutComponentBase
 @inject IJSRuntime JS
 
-<!-- Provedores de serviços do MudBlazor -->
 <MudThemeProvider Theme="@CurrentTheme" />
 <MudDialogProvider />
 <MudSnackbarProvider />
 <MudPopoverProvider />
 
-<!-- Layout principal -->
 <MudLayout>
     @if (!HideAppBar)
     {
-        <!-- Barra de navegação superior -->
         <MudAppBar Elevation="1" Color="@(_isDarkMode ? Color.Dark : Color.Default)">
             <MudIconButton
                 Icon="@Icons.Material.Filled.Menu"
@@ -33,22 +30,55 @@
 
             <MudSpacer/>
 
-            <MudMenu
-                Icon="@Icons.Material.Outlined.Translate"
-                IconColor="@Color.Success"
-                Color="Color.Inherit"
-                AnchorOrigin="Origin.TopCenter"
-                TransformOrigin="Origin.TopCenter"
-                Dense="true">
-                <MudMenuItem>Português</MudMenuItem>
-                <MudMenuItem>Inglês</MudMenuItem>
+            <MudMenu Icon="@Icons.Material.Outlined.Translate" IconColor="@Color.Success">
+                <MudMenuActivator>
+                    <MudButton Color="Color.Inherit">Idioma</MudButton>
+                </MudMenuActivator>
+                <MudMenuItems>
+                    <MudMenuItem>Português</MudMenuItem>
+                    <MudMenuItem>Inglês</MudMenuItem>
+                </MudMenuItems>
             </MudMenu>
 
+            <MudMenu Icon="@Icons.Material.Outlined.Settings" IconColor="@Color.Success">
+                <MudMenuActivator>
+                    <MudButton Color="Color.Secondary">Abrir Menu</MudButton>
+                </MudMenuActivator>
+                <MudMenuItems>
+                    <MudMenuItem Href="/" Icon="@Icons.Material.Filled.VerifiedUser" IconColor="Color.Info">
+                        Perfil
+                    </MudMenuItem>
+                    <MudMenuItem Href="#" Icon="@Icons.Material.Filled.Password" IconColor="Color.Primary">
+                        Alterar Senha
+                    </MudMenuItem>
+                    <MudMenuItem Href="/login" Icon="@Icons.Material.Filled.Logout" IconColor="Color.Error">
+                        Terminar Sessão
+                    </MudMenuItem>
+                </MudMenuItems>
+            </MudMenu>
+
+            <MudMenu Icon="@Icons.Material.Outlined.LightMode" IconColor="@Color.Success">
+                <MudMenuActivator>
+                    <MudIconButton Icon="@(_isDarkMode ? Icons.Material.Filled.DarkMode : Icons.Material.Filled.LightMode)" />
+                </MudMenuActivator>
+                <MudMenuItems>
+                    <MudMenuItem OnClick="@(() => SetTheme(false))" Icon="Icons.Material.Filled.LightMode">
+                        Modo Claro ☀️
+                    </MudMenuItem>
+                    <MudMenuItem OnClick="@(() => SetTheme(true))" Icon="Icons.Material.Filled.DarkMode">
+                        Modo Escuro 🌙
+                    </MudMenuItem>
+                    <MudMenuItem Divider="true"/>
+                    <MudMenuItem OnClick="@ToggleTheme" Icon="Icons.Material.Filled.WbTwilight">
+                        Automático 🌗
+                    </MudMenuItem>
+                </MudMenuItems>
+            </MudMenu>
             <MudMenu AnchorOrigin="Origin.BottomLeft" TransformOrigin="Origin.TopRight" Dense="true">
                 <MudMenuActivator>
                     <div style="display: flex; align-items: center; cursor: pointer;">
                         <MudAvatar Style="margin-right: 8px;">
-                            <MudImage Src="favicon.png" Alt="User"/>
+                            <MudImage Src="/images/icon-192.png" Alt="User"/>
                         </MudAvatar>
                     </div>
                 </MudMenuActivator>
@@ -56,34 +86,21 @@
                     <MudMenuItem Href="#" Icon="@Icons.Material.Filled.Password">Alterar Senha</MudMenuItem>
                     <MudMenuItem Href="#" Icon="@Icons.Material.Filled.ManageAccounts">Conta</MudMenuItem>
                     <MudDivider/>
-                    <MudMenuItem Href="/logout" Icon="@Icons.Material.Filled.Logout" Color="Color.Error">Terminar Sessão</MudMenuItem>
+                    <MudMenuItem Href="/logout" Icon="@Icons.Material.Filled.Logout" Color="Color.Error">
+                        Terminar Sessão
+                    </MudMenuItem>
                 </MudMenuItems>
-            </MudMenu>
-
-            <MudMenu Icon="@(_isDarkMode ? Icons.Material.Filled.DarkMode : Icons.Material.Filled.LightMode)">
-                <MudMenuItem OnClick="@(() => SetTheme(false))" Icon="Icons.Material.Filled.LightMode">
-                    Modo Claro ☀️
-                </MudMenuItem>
-                <MudMenuItem OnClick="@(() => SetTheme(true))" Icon="Icons.Material.Filled.DarkMode">
-                    Modo Escuro 🌙
-                </MudMenuItem>
-                <MudMenuItem Divider="true"/>
-                <MudMenuItem OnClick="@ToggleTheme" Icon="Icons.Material.Filled.WbTwilight">
-                    Automático 🌗
-                </MudMenuItem>
             </MudMenu>
         </MudAppBar>
     }
 
-    <!-- Menu lateral -->
-    <MudDrawer 
+    <MudDrawer
         @bind-Open="_drawerOpen" 
         Breakpoint="Breakpoint.Md" 
         Color="@(_isDarkMode ? Color.Dark : Color.Default)">
         <NavMenu/>
     </MudDrawer>
 
-    <!-- Conteúdo principal -->
     <MudMainContent Class="@(_isDarkMode ? "dark-mode-background" : "")">
         <MudContainer MaxWidth="MaxWidth.False" Class="mt-4">
             @Body
@@ -117,11 +134,10 @@
         PaletteDark = new PaletteDark()
         {
             Primary = Colors.Blue.Accent3,
-            Background = "#121212", // CORREÇÃO: Fundo realmente escuro
+            Background = "#121212",
             AppbarText = "#ffffff",
-            AppbarBackground = "#333333", // Deixando um tom mais escuro
-            Surface = "#1e1e1e", // Melhorando a coerência visual
-            TextPrimary = "#ffffff"
+            AppbarBackground = Colors.Shades.Black,
+            DrawerBackground = Colors.Shades.Black
         }
     };
 
@@ -146,6 +162,7 @@
         StateHasChanged();
     }
 }
+
 
 
 

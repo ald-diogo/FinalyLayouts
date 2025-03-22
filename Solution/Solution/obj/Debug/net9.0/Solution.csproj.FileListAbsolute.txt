@@ -1049,10 +1049,10 @@ C:\Dev\RiderProjects\FinalyLayouts\Solution\Solution\obj\Debug\net9.0\Solution.d
 C:\Dev\RiderProjects\FinalyLayouts\Solution\Solution\obj\Debug\net9.0\refint\Solution.dll
 C:\Dev\RiderProjects\FinalyLayouts\Solution\Solution\obj\Debug\net9.0\Solution.pdb
 C:\Dev\RiderProjects\FinalyLayouts\Solution\Solution\obj\Debug\net9.0\ref\Solution.dll
-C:\Dev\RiderProjects\FinalyLayouts\Solution\Solution\bin\Debug\net9.0\wwwroot\_framework\Solution.x9hhqmlbci.pdb
-C:\Dev\RiderProjects\FinalyLayouts\Solution\Solution\bin\Debug\net9.0\wwwroot\_framework\Solution.d46xbyxf3h.wasm
-C:\Dev\RiderProjects\FinalyLayouts\Solution\Solution\bin\Debug\net9.0\wwwroot\_framework\Solution.x9hhqmlbci.pdb.gz
-C:\Dev\RiderProjects\FinalyLayouts\Solution\Solution\bin\Debug\net9.0\wwwroot\_framework\Solution.d46xbyxf3h.wasm.gz
-C:\Dev\RiderProjects\FinalyLayouts\Solution\Solution\obj\Debug\net9.0\compressed\zg01n2x4jh-d46xbyxf3h.gz
-C:\Dev\RiderProjects\FinalyLayouts\Solution\Solution\obj\Debug\net9.0\compressed\0z2gb7m2yp-x9hhqmlbci.gz
-C:\Dev\RiderProjects\FinalyLayouts\Solution\Solution\obj\Debug\net9.0\compressed\mntkw13lly-wur9eg8jis.gz
+C:\Dev\RiderProjects\FinalyLayouts\Solution\Solution\bin\Debug\net9.0\wwwroot\_framework\Solution.oigg5xvcyj.pdb
+C:\Dev\RiderProjects\FinalyLayouts\Solution\Solution\bin\Debug\net9.0\wwwroot\_framework\Solution.ngb2r3sqhm.wasm
+C:\Dev\RiderProjects\FinalyLayouts\Solution\Solution\bin\Debug\net9.0\wwwroot\_framework\Solution.oigg5xvcyj.pdb.gz
+C:\Dev\RiderProjects\FinalyLayouts\Solution\Solution\bin\Debug\net9.0\wwwroot\_framework\Solution.ngb2r3sqhm.wasm.gz
+C:\Dev\RiderProjects\FinalyLayouts\Solution\Solution\obj\Debug\net9.0\compressed\zg01n2x4jh-ngb2r3sqhm.gz
+C:\Dev\RiderProjects\FinalyLayouts\Solution\Solution\obj\Debug\net9.0\compressed\0z2gb7m2yp-oigg5xvcyj.gz
+C:\Dev\RiderProjects\FinalyLayouts\Solution\Solution\obj\Debug\net9.0\compressed\mntkw13lly-50imv4a3i1.gz
