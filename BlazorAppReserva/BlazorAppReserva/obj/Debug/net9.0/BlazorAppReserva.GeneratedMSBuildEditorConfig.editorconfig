@@ -159,6 +159,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGV2XFNlZ3VyYW5jYS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Dev/RiderProjects/FinalyLayouts/BlazorAppReserva/BlazorAppReserva/Pages/Dev/Servicos/AlterarSenha.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGV2XFNlcnZpY29zXEFsdGVyYXJTZW5oYS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Dev/RiderProjects/FinalyLayouts/BlazorAppReserva/BlazorAppReserva/Pages/Dev/Servicos/GestaoUsuarios.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGV2XFNlcnZpY29zXEdlc3Rhb1VzdWFyaW9zLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 

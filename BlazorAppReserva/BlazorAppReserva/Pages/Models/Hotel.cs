@@ -13,9 +13,7 @@ public class Hotel
 
     [Range(1, 5)]
     public int Categoria { get; set; } // Quantidade de estrelas (1 a 5)
-
-    [Required, StringLength(200)]
-    public string Endereco { get; set; } // Endereço completo
+    
 
     [Required, StringLength(50)]
     public string Cidade { get; set; } // Cidade onde o hotel está localizado
@@ -25,6 +23,9 @@ public class Hotel
 
     [Phone]
     public string Telefone { get; set; } // Telefone de contato
+    
+    [Required, StringLength(200)]
+    public string Endereco { get; set; } // Endereço completo
 
     [EmailAddress]
     public string Email { get; set; } // E-mail para reservas e contato

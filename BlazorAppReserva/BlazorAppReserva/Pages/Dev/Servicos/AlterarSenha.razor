@@ -1,0 +1,54 @@
+﻿@page "/alterar-senha"
+@using MudBlazor
+@inject NavigationManager Navigation
+@inject ISnackbar Snackbar
+
+<MudCard Class="mud-elevation-6 mud-width-40 mx-auto mt-6 p-4">
+    <MudCardContent>
+        <MudText Typo="Typo.h5">Alteração de Senha</MudText>
+
+        <MudForm Model="modeloSenha" IsValid="@isValid" OnValidSubmit="AlterarSenha">
+            <MudTextField Label="Senha Atual" Type="password" 
+                          Required="true" RequiredError="Informe sua senha atual"
+                          Touched="true" @bind-Value="modeloSenha.SenhaAtual" />
+
+            <MudTextField Label="Nova Senha" Type="password"
+                          Required="true" RequiredError="A nova senha é obrigatória"
+                          Pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
+                          PatternError="A senha deve ter ao menos 6 caracteres, incluindo maiúsculas, minúsculas e números."
+                          @bind-Value="modeloSenha.NovaSenha"
+                          Immediate="true" />
+
+            <MudTextField Label="Confirme a Nova Senha" Type="password"
+                          Required="true" RequiredError="Confirme a nova senha"
+                          Touched="true" @bind-Value="modeloSenha.ConfirmacaoSenha"
+                          Immediate="true"
+                          Error="@(!string.IsNullOrEmpty(modeloSenha.ConfirmacaoSenha) && modeloSenha.NovaSenha != modeloSenha.ConfirmacaoSenha)"
+                          ErrorText="As senhas não coincidem" />
+
+            <MudButton Color="Color.Primary" Variant="Variant.Filled" FullWidth="true" Disabled="!isValid"
+                       ButtonType="ButtonType.Submit">
+                Alterar Senha
+            </MudButton>
+        </MudForm>
+    </MudCardContent>
+</MudCard>
+
+@code {
+    private ModeloSenha modeloSenha = new();
+    private bool isValid = false;
+
+    
+
+    private class ModeloSenha
+    {
+        public string SenhaAtual { get; set; } = string.Empty;
+        public string NovaSenha { get; set; } = string.Empty;
+        public string ConfirmacaoSenha { get; set; } = string.Empty;
+    }
+}
+
+
+    
+
+
