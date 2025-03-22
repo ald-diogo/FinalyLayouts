@@ -2,39 +2,101 @@
 @inherits LayoutComponentBase
 @inject IJSRuntime JS
 
-<MudThemeProvider Theme="(_isDarkMode ? _darkTheme : _lightTheme)" />
+<!-- Provedores de serviços do MudBlazor -->
+<MudThemeProvider Theme="@CurrentTheme" />
+<MudDialogProvider />
+<MudSnackbarProvider />
+<MudPopoverProvider />
+
+<!-- Layout principal -->
 <MudLayout>
     @if (!HideAppBar)
     {
-    <MudAppBar Elevation="1" Color="Color.Dark">
-        <!-- Switch para alternar temas -->
-        <MudIconButton OnClick="@ToggleTheme"
-                       Icon="@(_isDarkMode ? Icons.Material.Filled.DarkMode : Icons.Material.Filled.LightMode)"
-                       Color="@(_isDarkMode ? Color.Primary : Color.Secondary)"
-                       Class="ma-4"
-                       title="@(_isDarkMode ? "Modo Escuro" : "Modo Claro")"/>
-        <MudSpacer/>
-    </MudAppBar>
+        <!-- Barra de navegação superior -->
+        <MudAppBar Elevation="1" Color="@(_isDarkMode ? Color.Dark : Color.Default)">
+            <MudIconButton
+                Icon="@Icons.Material.Filled.Menu"
+                Color="Color.Success"
+                Edge="Edge.Start"
+                OnClick="@DrawerToggle"/>
+            <MudSpacer/>
+
+            <MudHidden Breakpoint="Breakpoint.SmAndDown">
+                <MudIcon Icon="@Icons.Custom.Brands.MicrosoftVisualStudio" Size="Size.Large"/>
+            </MudHidden>
+
+            <MudHidden Breakpoint="Breakpoint.Xs">
+                <a href="/">
+                    <MudText Typo="Typo.h6" Class="ml-4" Color="Color.Success">Reserve Já!</MudText>
+                </a>
+            </MudHidden>
+
+            <MudSpacer/>
+
+            <MudMenu
+                Icon="@Icons.Material.Outlined.Translate"
+                IconColor="@Color.Success"
+                Color="Color.Inherit"
+                AnchorOrigin="Origin.TopCenter"
+                TransformOrigin="Origin.TopCenter"
+                Dense="true">
+                <MudMenuItem>Português</MudMenuItem>
+                <MudMenuItem>Inglês</MudMenuItem>
+            </MudMenu>
+
+            <MudMenu AnchorOrigin="Origin.BottomLeft" TransformOrigin="Origin.TopRight" Dense="true">
+                <MudMenuActivator>
+                    <div style="display: flex; align-items: center; cursor: pointer;">
+                        <MudAvatar Style="margin-right: 8px;">
+                            <MudImage Src="favicon.png" Alt="User"/>
+                        </MudAvatar>
+                    </div>
+                </MudMenuActivator>
+                <MudMenuItems>
+                    <MudMenuItem Href="#" Icon="@Icons.Material.Filled.Password">Alterar Senha</MudMenuItem>
+                    <MudMenuItem Href="#" Icon="@Icons.Material.Filled.ManageAccounts">Conta</MudMenuItem>
+                    <MudDivider/>
+                    <MudMenuItem Href="/logout" Icon="@Icons.Material.Filled.Logout" Color="Color.Error">Terminar Sessão</MudMenuItem>
+                </MudMenuItems>
+            </MudMenu>
+
+            <MudMenu Icon="@(_isDarkMode ? Icons.Material.Filled.DarkMode : Icons.Material.Filled.LightMode)">
+                <MudMenuItem OnClick="@(() => SetTheme(false))" Icon="Icons.Material.Filled.LightMode">
+                    Modo Claro ☀️
+                </MudMenuItem>
+                <MudMenuItem OnClick="@(() => SetTheme(true))" Icon="Icons.Material.Filled.DarkMode">
+                    Modo Escuro 🌙
+                </MudMenuItem>
+                <MudMenuItem Divider="true"/>
+                <MudMenuItem OnClick="@ToggleTheme" Icon="Icons.Material.Filled.WbTwilight">
+                    Automático 🌗
+                </MudMenuItem>
+            </MudMenu>
+        </MudAppBar>
     }
-    <MudDrawer @bind-Open="_drawerOpen" Elevation="2" Color="Color.Dark" Breakpoint="Breakpoint.Md">
-        <MudDrawerHeader>
-            <MudText Typo="Typo.h5" Class="mt-1" Color="Color.Primary">Menu</MudText>
-        </MudDrawerHeader>
+
+    <!-- Menu lateral -->
+    <MudDrawer 
+        @bind-Open="_drawerOpen" 
+        Breakpoint="Breakpoint.Md" 
+        Color="@(_isDarkMode ? Color.Dark : Color.Default)">
         <NavMenu/>
     </MudDrawer>
 
-    <MudMainContent>
-        @Body
+    <!-- Conteúdo principal -->
+    <MudMainContent Class="@(_isDarkMode ? "dark-mode-background" : "")">
+        <MudContainer MaxWidth="MaxWidth.False" Class="mt-4">
+            @Body
+        </MudContainer>
     </MudMainContent>
 </MudLayout>
-
-<MudDialogProvider />
-<MudSnackbarProvider />
 
 @code {
     [Parameter] public bool HideAppBar { get; set; } = false;
     private bool _drawerOpen = true;
     private bool _isDarkMode = false;
+
+    private MudTheme CurrentTheme => _isDarkMode ? _darkTheme : _lightTheme;
 
     void DrawerToggle() => _drawerOpen = !_drawerOpen;
 
@@ -42,14 +104,11 @@
     {
         PaletteLight = new PaletteLight()
         {
-            Primary = "#1EFA2D",
-            Background = Colors.Blue.Lighten4,
-            Secondary = Colors.LightBlue.Darken3,
-            TextPrimary = Colors.Shades.Black,
+            Primary = Colors.Blue.Accent3,
+            Background = "#ffffff",
             AppbarText = Colors.Shades.Black,
-            AppbarBackground = new MudColor("#1EFA2D"),
-            DrawerText = Colors.Shades.Black,
-            DrawerBackground = Colors.LightBlue.Lighten4
+            AppbarBackground = Colors.LightBlue.Darken4,
+            DrawerBackground = Colors.LightBlue.Darken4
         }
     };
 
@@ -57,30 +116,42 @@
     {
         PaletteDark = new PaletteDark()
         {
-            Primary = Colors.LightBlue.Accent3,
-            Secondary = Colors.LightBlue.Darken3,
-            AppbarBackground = Colors.LightBlue.Accent3,
-            AppbarText = Colors.Shades.Black
+            Primary = Colors.Blue.Accent3,
+            Background = "#121212", // CORREÇÃO: Fundo realmente escuro
+            AppbarText = "#ffffff",
+            AppbarBackground = "#333333", // Deixando um tom mais escuro
+            Surface = "#1e1e1e", // Melhorando a coerência visual
+            TextPrimary = "#ffffff"
         }
     };
 
     protected override async Task OnInitializedAsync()
     {
-        _isDarkMode = await JS.InvokeAsync<bool>("getSystemTheme");
-        await JS.InvokeVoidAsync("watchSystemTheme", DotNetObjectReference.Create(this));
+        var savedTheme = await JS.InvokeAsync<string>("localStorage.getItem", "themePreference");
+        _isDarkMode = savedTheme == "dark";
+        StateHasChanged();
     }
 
-    [JSInvokable]
-    public void SetDarkMode(bool isDark)
+    private async Task SetTheme(bool isDark)
     {
         _isDarkMode = isDark;
+        await JS.InvokeVoidAsync("localStorage.setItem", "themePreference", _isDarkMode ? "dark" : "light");
         StateHasChanged();
     }
 
-    private void ToggleTheme()
+    private async Task ToggleTheme()
     {
         _isDarkMode = !_isDarkMode;
+        await JS.InvokeVoidAsync("localStorage.setItem", "themePreference", _isDarkMode ? "dark" : "light");
         StateHasChanged();
     }
-
 }
+
+
+
+
+
+
+
+
+

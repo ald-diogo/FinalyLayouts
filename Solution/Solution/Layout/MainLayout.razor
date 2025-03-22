@@ -3,7 +3,7 @@
 @inject IJSRuntime JS
 
 <!-- Provedores de serviços do MudBlazor -->
-<MudThemeProvider Theme="(_isDarkMode ? _darkTheme : _lightTheme)" />
+<MudThemeProvider Theme="@CurrentTheme" />
 <MudDialogProvider />
 <MudSnackbarProvider />
 <MudPopoverProvider />
@@ -11,15 +11,17 @@
 <!-- Layout principal -->
 <MudLayout>
     <!-- Barra de navegação superior -->
-    <MudAppBar Elevation="1">
+    <MudAppBar Elevation="1" Color="Color.Inherit">
+        <MudIconButton 
+            Icon="@Icons.Material.Filled.Menu" 
+            Color="Color.Dark" 
+            Edge="Edge.Start" 
+            OnClick="@DrawerToggle" />
+        <MudSpacer />
+
         <!-- Ícone do Visual Studio em telas maiores -->
         <MudHidden Breakpoint="Breakpoint.SmAndDown">
             <MudIcon Icon="@Icons.Custom.Brands.MicrosoftVisualStudio" Size="Size.Large" />
-        </MudHidden>
-
-        <!-- Botão de menu em telas menores -->
-        <MudHidden Breakpoint="Breakpoint.MdAndUp">
-            <MudIconButton Icon="@Icons.Material.Outlined.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@DrawerToggle" />
         </MudHidden>
 
         <!-- Nome da aplicação -->
@@ -28,14 +30,16 @@
                 <MudText Typo="Typo.h6" Class="ml-4" Color="Color.Info">ALAYSChoolGest</MudText>
             </a>
         </MudHidden>
-        <MudHidden Breakpoint="Breakpoint.Xs" Invert="true">
-            <MudText Typo="Typo.subtitle2">ALAYSChoolGest</MudText>
-        </MudHidden>
 
         <MudSpacer />
 
         <!-- Menu de seleção de idioma -->
-        <MudMenu Icon="@Icons.Material.Outlined.Translate" Color="Color.Inherit" AnchorOrigin="Origin.TopCenter" TransformOrigin="Origin.TopCenter" Dense="true">
+        <MudMenu 
+            Icon="@Icons.Material.Outlined.Translate"
+            Color="Color.Inherit" 
+            AnchorOrigin="Origin.TopCenter" 
+            TransformOrigin="Origin.TopCenter" 
+            Dense="true">
             <MudMenuItem>Português</MudMenuItem>
             <MudMenuItem>Inglês</MudMenuItem>
         </MudMenu>
@@ -50,26 +54,37 @@
                 </div>
             </MudMenuActivator>
             <MudMenuItems>
+                <MudMenuItem Href="#" Icon="@Icons.Material.Filled.Password">Alterar Senha</MudMenuItem>
+                <MudMenuItem
+                    Href="#"
+                    Icon="@Icons.Material.Filled.ManageAccounts">
+                     Conta
+                </MudMenuItem>
                 <MudDivider />
-                <MudNavMenu Dense Color="Color.Success" Bordered="true">
-                    <MudNavLink Href="#" Icon="@Icons.Material.Filled.Password" IconColor="Color.Warning">Alterar Senha</MudNavLink>
-                    <MudNavLink Href="#" Icon="@Icons.Material.Filled.ManageAccounts" IconColor="Color.Success">Minha Conta</MudNavLink>
-                    <MudDivider />
-                    <MudNavLink Href="/logout" Icon="@Icons.Material.Filled.Logout" IconColor="Color.Error">Terminar Sessão</MudNavLink>
-                </MudNavMenu>
+                <MudMenuItem 
+                    Href="/logout" 
+                    Icon="@Icons.Material.Filled.Logout" 
+                    Color="Color.Error">Terminar Sessão</MudMenuItem>
             </MudMenuItems>
         </MudMenu>
 
-        <!-- Switch para alternar temas -->
-        <MudIconButton OnClick="@ToggleTheme"
-                       Icon="@(_isDarkMode ? Icons.Material.Filled.DarkMode : Icons.Material.Filled.LightMode)"
-                       Color="@(_isDarkMode ? Color.Primary : Color.Secondary)"
-                       Class="ma-4"
-                       title="@(_isDarkMode ? "Modo Escuro" : "Modo Claro")" />
+        <!-- Menu de alternância de tema -->
+        <MudMenu Icon="@(_isDarkMode ? Icons.Material.Filled.DarkMode : Icons.Material.Filled.LightMode)">
+            <MudMenuItem OnClick="@(()=>SetTheme(false))" Icon="Icons.Material.Filled.LightMode">
+                Modo Claro ☀️
+            </MudMenuItem>
+            <MudMenuItem OnClick="@(()=>SetTheme(true))" Icon="Icons.Material.Filled.DarkMode">
+                Modo Escuro 🌙
+            </MudMenuItem>
+            <MudMenuItem Divider="true"/>
+            <MudMenuItem OnClick="@ToggleTheme" Icon="Icons.Material.Filled.WbTwilight">
+                Automático 🌗
+            </MudMenuItem>
+        </MudMenu>
     </MudAppBar>
 
     <!-- Menu lateral -->
-    <MudDrawer @bind-Open="_drawerOpen" Breakpoint="Breakpoint.Md">
+    <MudDrawer @bind-Open="_drawerOpen" Breakpoint="Breakpoint.Md" Color="Color.Inherit">
         <NavMenu />
     </MudDrawer>
 
@@ -85,6 +100,8 @@
     [Parameter] public bool HideAppBar { get; set; } = false;
     private bool _drawerOpen = true;
     private bool _isDarkMode = false;
+
+    private MudTheme CurrentTheme => _isDarkMode ? _darkTheme : _lightTheme;
 
     void DrawerToggle() => _drawerOpen = !_drawerOpen;
 
@@ -127,12 +144,22 @@
         StateHasChanged();
     }
 
-    private void ToggleTheme()
+    private async Task SetTheme(bool isDark)
+    {
+        _isDarkMode = isDark;
+        await JS.InvokeVoidAsync("setThemePreference", _isDarkMode);
+        StateHasChanged();
+    }
+
+    private async Task ToggleTheme()
     {
         _isDarkMode = !_isDarkMode;
+        await JS.InvokeVoidAsync("setThemePreference", _isDarkMode);
         StateHasChanged();
     }
 }
+
+
 
 
 
