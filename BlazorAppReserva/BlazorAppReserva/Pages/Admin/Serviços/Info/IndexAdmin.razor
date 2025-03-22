@@ -7,28 +7,26 @@
 @inject NavigationManager Navigation
 
 <MudLayout>
-    <MudAppBar Color="Color.Primary" Elevation="4">
-        <MudText Typo="Typo.h6" Color="Color.Inherit">Reserve Já</MudText>
-        <MudSpacer />
-        <MudButton
-            Href="/Admin/Login"
-            Color="Color.Inherit"
-            Variant="Variant.Text"
-            @onclick="NavigateToLogin">
-            <MudIconButton Icon="@Icons.Material.Filled.Login" Color="Color.Success" />
-            Login
-        </MudButton>
+    <MudText Typo="Typo.h6" Color="Color.Primary" Elevation="4">Reserve Já</MudText>
+    <MudSpacer />
+    <MudButton
+        Href="/Admin/Login"
+        Color="Color.Inherit"
+        Variant="Variant.Text"
+        @onclick="NavigateToLogin">
+        <MudIconButton Icon="@Icons.Material.Filled.Login" Color="Color.Success" />
+        Login
+    </MudButton>
 
-        <MudButton
-            Href="/Admin/Registrar"
-            Color="Color.Inherit"
-            Variant="Variant.Text"
-            @onclick="NavigateToRegister"
-            EndIcon="Icons.Material.Filled.PersonAdd">
-            <MudIconButton Icon="@Icons.Material.Filled.PersonAdd" Color="Color.Success" />
-            Registrar
-        </MudButton>
-    </MudAppBar>
+    <MudButton
+        Href="/Admin/Registrar"
+        Color="Color.Inherit"
+        Variant="Variant.Text"
+        @onclick="NavigateToRegister"
+        EndIcon="Icons.Material.Filled.PersonAdd">
+        <MudIconButton Icon="@Icons.Material.Filled.PersonAdd" Color="Color.Success" />
+        Registrar
+    </MudButton>
 
     <MudMainContent>
         <MudContainer Style="@containerStyle">

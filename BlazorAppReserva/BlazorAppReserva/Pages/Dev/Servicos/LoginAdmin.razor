@@ -1,4 +1,4 @@
-﻿@page "/login"
+﻿@page "/dev/login"
 
 @using MudBlazor
 @inject ISnackbar Snackbar
@@ -10,7 +10,7 @@
             Typo="Typo.h4"
             Align="Align.Center"
             Class="mb-4">
-            Seja Bem-Vindo(a)! Caro(a) Administrador(a)
+            Seja Bem-Vindo(a)! Caro(a) Desenvolvedor(a)
         </MudText>
 
         <MudForm @ref="loginForm" Model="loginModel" OnValidSubmit="HandleLogin" >
@@ -71,7 +71,7 @@
 
             <!-- Botão Entrar com cor preta e ícone -->
             <MudButton 
-                Href="/Admin/MenuAdmin"
+                Href="/"
                 Class="mt-4"
                 FullWidth="true" 
                 Variant="Variant.Filled"
@@ -81,11 +81,10 @@
                 <MudIconButton Icon="@Icons.Material.Filled.Login" Color="Color.Inherit" />
                 Entrar
             </MudButton>
-            
 
             <!-- Botão Esqueci-me da senha com cor vermelha -->
             <MudButton 
-                Href="/Admin/RecuperarSenha"
+                Href="/dev/recuperarSenha"
                 Class="mt-4"
                 FullWidth="true" 
                 Variant="Variant.Filled"
@@ -97,7 +96,7 @@
 
             <!-- Link Criar uma conta com cor roxa -->
             <MudText Align="Align.Center">
-                <MudLink Href="/Admin/Registrar" Color="Color.Default">
+                <MudLink Href="/dev/registrar" Color="Color.Default">
                     <MudIconButton Icon="@Icons.Material.Filled.PersonAdd" Color="Color.Inherit" />
                     Criar uma conta
                 </MudLink>
@@ -119,7 +118,7 @@
         {
             loginError = false;
             // Redirecionar para a página de menu após login bem-sucedido
-            NavigationManager.NavigateTo("/Admin/MenuAdmin");
+            NavigationManager.NavigateTo("/");
         }
         else
         {

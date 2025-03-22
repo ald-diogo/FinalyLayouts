@@ -167,6 +167,22 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGV2XFNlcnZpY29zXExvZ2luQWRtaW4ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Dev/RiderProjects/FinalyLayouts/BlazorAppReserva/BlazorAppReserva/Pages/Dev/Servicos/PoliticaAdmin.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGV2XFNlcnZpY29zXFBvbGl0aWNhQWRtaW4ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Dev/RiderProjects/FinalyLayouts/BlazorAppReserva/BlazorAppReserva/Pages/Dev/Servicos/RecuperarSenhaAdmin.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGV2XFNlcnZpY29zXFJlY3VwZXJhclNlbmhhQWRtaW4ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Dev/RiderProjects/FinalyLayouts/BlazorAppReserva/BlazorAppReserva/Pages/Dev/Servicos/RegistrarAdmin.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGV2XFNlcnZpY29zXFJlZ2lzdHJhckFkbWluLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Dev/RiderProjects/FinalyLayouts/BlazorAppReserva/BlazorAppReserva/Pages/Dev/Servicos/TermoUsoAdmin.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGV2XFNlcnZpY29zXFRlcm1vVXNvQWRtaW4ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Dev/RiderProjects/FinalyLayouts/BlazorAppReserva/BlazorAppReserva/Pages/Dev/Sobre.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGV2XFNvYnJlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 

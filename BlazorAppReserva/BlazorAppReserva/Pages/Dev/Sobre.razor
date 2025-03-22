@@ -1,4 +1,4 @@
-﻿@page "/Dev/Sobre"
+﻿@page "/dev/Sobre"
 @using MudBlazor
 @inject NavigationManager Navigation
 
@@ -13,7 +13,7 @@
             
             <MudItem T="string" xs="12" sm="6" Class="d-flex align-center">
                 <MudText Typo="Typo.h3" Class="font-weight-bold text-center text-primary animate__animated animate__fadeIn animate__delay-1s">
-                    Transforme a Gestão do Seu Hotel Conosco!
+                    Transforme a Gestão do Seu Hotel Connosco!
                 </MudText>
             </MudItem>
         </MudGrid>
@@ -254,7 +254,7 @@
 
                         <!-- Botão de Ação com Navegação -->
                         <MudButton
-                            Href="/Dev/Seguranca"
+                            Href="/dev/Seguranca"
                             Variant="Variant.Filled"
                             Color="Color.Primary"
                             OnClick="NavigateHome"
@@ -366,7 +366,7 @@
         <MudGrid>
             <MudItem T="string" xs="12" Class="mt-5">
                 <MudButton 
-                    Href="/Dev/Index"
+                    Href="/dev/Index"
                     Variant="Variant.Filled" 
                     Color="Color.Primary" 
                     OnClick="NavigateHome" 
@@ -381,7 +381,7 @@
 @code {
     private void NavigateHome()
     {
-        Navigation.NavigateTo("/Dev/Index");
+        Navigation.NavigateTo("/dev/Index");
     }
 }
 
