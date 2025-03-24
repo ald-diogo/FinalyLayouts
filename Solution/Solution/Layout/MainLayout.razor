@@ -3,7 +3,7 @@
 @inject IJSRuntime JS
 
 <!-- Provedores de serviços do MudBlazor -->
-<MudThemeProvider Theme="@CurrentTheme" />
+<MudThemeProvider @bind-IsDarkMode="_isDarkMode" Theme="@CurrentTheme" />
 <MudDialogProvider />
 <MudSnackbarProvider />
 <MudPopoverProvider />
@@ -12,19 +12,17 @@
 <MudLayout>
     <!-- Barra de navegação superior -->
     <MudAppBar Elevation="1" Color="Color.Inherit">
-        <MudIconButton 
-            Icon="@Icons.Material.Filled.Menu" 
-            Color="Color.Dark" 
-            Edge="Edge.Start" 
+        <MudIconButton
+            Icon="@Icons.Material.Filled.Menu"
+            Color="Color.Dark"
+            Edge="Edge.Start"
             OnClick="@DrawerToggle" />
         <MudSpacer />
 
-        <!-- Ícone do Visual Studio em telas maiores -->
         <MudHidden Breakpoint="Breakpoint.SmAndDown">
             <MudIcon Icon="@Icons.Custom.Brands.MicrosoftVisualStudio" Size="Size.Large" />
         </MudHidden>
 
-        <!-- Nome da aplicação -->
         <MudHidden Breakpoint="Breakpoint.Xs">
             <a href="/">
                 <MudText Typo="Typo.h6" Class="ml-4" Color="Color.Info">ALAYSChoolGest</MudText>
@@ -32,41 +30,6 @@
         </MudHidden>
 
         <MudSpacer />
-
-        <!-- Menu de seleção de idioma -->
-        <MudMenu 
-            Icon="@Icons.Material.Outlined.Translate"
-            Color="Color.Inherit" 
-            AnchorOrigin="Origin.TopCenter" 
-            TransformOrigin="Origin.TopCenter" 
-            Dense="true">
-            <MudMenuItem>Português</MudMenuItem>
-            <MudMenuItem>Inglês</MudMenuItem>
-        </MudMenu>
-
-        <!-- Menu do usuário -->
-        <MudMenu AnchorOrigin="Origin.BottomLeft" TransformOrigin="Origin.TopRight" Dense="true">
-            <MudMenuActivator>
-                <div style="display: flex; align-items: center; cursor: pointer;">
-                    <MudAvatar Style="margin-right: 8px;">
-                        <MudImage Src="/images/logoblue.png" Alt="User" />
-                    </MudAvatar>
-                </div>
-            </MudMenuActivator>
-            <MudMenuItems>
-                <MudMenuItem Href="#" Icon="@Icons.Material.Filled.Password">Alterar Senha</MudMenuItem>
-                <MudMenuItem
-                    Href="#"
-                    Icon="@Icons.Material.Filled.ManageAccounts">
-                     Conta
-                </MudMenuItem>
-                <MudDivider />
-                <MudMenuItem 
-                    Href="/logout" 
-                    Icon="@Icons.Material.Filled.Logout" 
-                    Color="Color.Error">Terminar Sessão</MudMenuItem>
-            </MudMenuItems>
-        </MudMenu>
 
         <!-- Menu de alternância de tema -->
         <MudMenu Icon="@(_isDarkMode ? Icons.Material.Filled.DarkMode : Icons.Material.Filled.LightMode)">
@@ -97,67 +60,68 @@
 </MudLayout>
 
 @code {
-    [Parameter] public bool HideAppBar { get; set; } = false;
-    private bool _drawerOpen = true;
-    private bool _isDarkMode = false;
+private bool _drawerOpen = true;
+private bool _isDarkMode = false;
 
-    private MudTheme CurrentTheme => _isDarkMode ? _darkTheme : _lightTheme;
+private MudTheme CurrentTheme => _isDarkMode ? _darkTheme : _lightTheme;
 
-    void DrawerToggle() => _drawerOpen = !_drawerOpen;
+void DrawerToggle() => _drawerOpen = !_drawerOpen;
 
-    private MudTheme _lightTheme = new MudTheme()
+private MudTheme _lightTheme = new MudTheme()
+{
+    PaletteLight = new PaletteLight()
     {
-        PaletteLight = new PaletteLight()
-        {
-            Primary = "#1EFA2D",
-            Background = Colors.Blue.Lighten4,
-            Secondary = Colors.LightBlue.Darken3,
-            TextPrimary = Colors.Shades.Black,
-            AppbarText = Colors.Shades.Black,
-            AppbarBackground = new MudColor("#1EFA2D"),
-            DrawerText = Colors.Shades.Black,
-            DrawerBackground = Colors.LightBlue.Lighten4
-        }
-    };
-
-    private MudTheme _darkTheme = new MudTheme()
-    {
-        PaletteDark = new PaletteDark()
-        {
-            Primary = Colors.LightBlue.Accent3,
-            Secondary = Colors.LightBlue.Darken3,
-            AppbarBackground = Colors.LightBlue.Accent3,
-            AppbarText = Colors.Shades.Black
-        }
-    };
-
-    protected override async Task OnInitializedAsync()
-    {
-        _isDarkMode = await JS.InvokeAsync<bool>("getSystemTheme");
-        await JS.InvokeVoidAsync("watchSystemTheme", DotNetObjectReference.Create(this));
+        Primary = "#1EFA2D",
+        Background = Colors.Shades.White,
+        Secondary = Colors.LightBlue.Darken3,
+        TextPrimary = Colors.Shades.Black,
+        AppbarText = Colors.Shades.Black,
+        AppbarBackground = new MudColor("#1EFA2D"),
+        DrawerText = "#1EFA2D",
+        DrawerBackground = "#1EFA2D"
     }
+};
 
-    [JSInvokable]
-    public void SetDarkMode(bool isDark)
+private MudTheme _darkTheme = new MudTheme()
+{
+    PaletteDark = new PaletteDark()
     {
-        _isDarkMode = isDark;
-        StateHasChanged();
+        Primary = Colors.LightBlue.Accent3,
+        Background = Colors.Shades.Black,
+        Secondary = Colors.LightBlue.Darken3,
+        AppbarBackground = Colors.LightBlue.Accent3,
+        AppbarText = Colors.Shades.White
     }
+};
 
-    private async Task SetTheme(bool isDark)
-    {
-        _isDarkMode = isDark;
-        await JS.InvokeVoidAsync("setThemePreference", _isDarkMode);
-        StateHasChanged();
-    }
-
-    private async Task ToggleTheme()
-    {
-        _isDarkMode = !_isDarkMode;
-        await JS.InvokeVoidAsync("setThemePreference", _isDarkMode);
-        StateHasChanged();
-    }
+protected override async Task OnInitializedAsync()
+{
+    _isDarkMode = await JS.InvokeAsync<bool>("getSystemTheme");
+    await JS.InvokeVoidAsync("watchSystemTheme", DotNetObjectReference.Create(this));
 }
+
+[JSInvokable]
+public void SetDarkMode(bool isDark)
+{
+    _isDarkMode = isDark;
+    StateHasChanged();
+}
+
+private async Task SetTheme(bool isDark)
+{
+    _isDarkMode = isDark;
+    await JS.InvokeVoidAsync("setThemePreference", _isDarkMode);
+    StateHasChanged();
+}
+
+private async Task ToggleTheme()
+{
+    _isDarkMode = !_isDarkMode;
+    await JS.InvokeVoidAsync("setThemePreference", _isDarkMode);
+    StateHasChanged();
+}
+}
+
 
 
 
