@@ -1,0 +1,90 @@
+﻿@page "/Manual"
+
+<MudContainer MaxWidth="MaxWidth.Large" Class="pa-4">
+    <!-- 📖 Seção de Suporte -->
+    <MudPaper Elevation="4" Class="pa-4 mt-4">
+        <MudText Typo="Typo.h4" Class="mb-3">📖 Suporte e Ajuda</MudText>
+
+        <!-- 🎯 FAQ e Manual -->
+        <MudExpansionPanels>
+            <MudExpansionPanel Text="📘 Manual do Sistema" Icon="@Icons.Material.Filled.MenuBook">
+                <MudText>Encontre todas as instruções para usar o sistema corretamente.</MudText>
+                <MudButton Href="/manual" Variant="Variant.Filled" Color="Color.Primary" Class="mt-2">
+                    📖 Acessar Manual
+                </MudButton>
+            </MudExpansionPanel>
+
+            <MudExpansionPanel Text="❓ Perguntas Frequentes" Icon="@Icons.Material.Filled.QuestionAnswer">
+                <MudList T="string">
+                    <MudListItem T="string">
+                        <MudIcon Icon="@Icons.Material.Filled.LockOpen" Color="Color.Primary" />
+                        <MudText Class="ml-2"><b>Como redefinir minha senha?</b></MudText>
+                        <MudText Class="text-muted ml-4">Vá para a tela de login e clique em "Esqueci minha senha".</MudText>
+                    </MudListItem>
+                    <MudListItem T="string">
+                        <MudIcon Icon="@Icons.Material.Filled.BookOnline" Color="Color.Success" />
+                        <MudText Class="ml-2"><b>Como faço uma reserva?</b></MudText>
+                        <MudText Class="text-muted ml-4">Acesse o menu "Reservas" e selecione um quarto disponível.</MudText>
+                    </MudListItem>
+                </MudList>
+            </MudExpansionPanel>
+        </MudExpansionPanels>
+
+        <!-- 🆘 Formulário de Contato com Suporte Técnico -->
+        <MudDivider Class="my-4" />
+        <MudText Typo="Typo.h5">✉️ Entrar em Contato com o Suporte Técnico</MudText>
+        <MudText Class="text-muted mb-3">Envie sua solicitação e nossa equipe responderá o mais breve possível.</MudText>
+
+        <MudForm>
+            <MudTextField T="string" Label="Nome" Variant="Variant.Outlined" Required="true" />
+            <MudTextField T="string" Label="E-mail" Variant="Variant.Outlined" Type="email" Required="true" />
+            <MudTextField T="string" Label="Mensagem" Variant="Variant.Outlined" Multiline="true" Rows="4" Required="true" />
+
+            <MudButton Variant="Variant.Filled" Color="Color.Success" StartIcon="@Icons.Material.Filled.Send">
+                Enviar Mensagem
+            </MudButton>
+        </MudForm>
+    </MudPaper>
+</MudContainer>
+
+<!-- 🔵 Botão Flutuante de ChatBot -->
+<MudFab 
+    Href="/Admin/Chat"
+    Icon="@Icons.Material.Filled.Chat" 
+    Color="Color.Primary" 
+    Size="Size.Large"
+    Class="fixed-bottom-right mb-4 mr-4"
+    OnClick="AbrirChatBot">
+</MudFab>
+
+<!-- 🏆 Carrossel Publicitário -->
+<MudCarousel TData="string" Height="250px" AutoCycle="true" CycleInterval="5000">
+    <MudCarouselItem>
+        <MudPaper Elevation="4" Class="pa-4 text-center bg-primary text-white">
+            <MudText Typo="Typo.h5">🌟 Promoção Especial para Hóspedes!</MudText>
+            <MudText>Reserve agora e ganhe 10% de desconto em sua estadia.</MudText>
+        </MudPaper>
+    </MudCarouselItem>
+    <MudCarouselItem>
+        <MudPaper Elevation="4" Class="pa-4 text-center bg-secondary text-white">
+            <MudText Typo="Typo.h5">📢 Novo Sistema de Reservas!</MudText>
+            <MudText>Agora ficou mais fácil reservar e gerenciar suas hospedagens.</MudText>
+        </MudPaper>
+    </MudCarouselItem>
+</MudCarousel>
+
+@code {
+private void AbrirChatBot()
+{
+    // Aqui você pode abrir um modal ou redirecionar para o chatbot.
+}
+}
+
+
+
+
+
+
+
+
+

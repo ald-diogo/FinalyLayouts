@@ -13,8 +13,28 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Pages\Marketer\" />
       <Folder Include="wwwroot\lib\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <AdditionalFiles Include="Pages\Marketer\Serviços\Info\ChatAdmin.razor" />
+      <AdditionalFiles Include="Pages\Marketer\Serviços\Info\ConfiguracoesAdmin.razor" />
+      <AdditionalFiles Include="Pages\Marketer\Serviços\Info\IndexAdmin.razor" />
+      <AdditionalFiles Include="Pages\Marketer\Serviços\Info\Monitoramento.razor" />
+      <AdditionalFiles Include="Pages\Marketer\Serviços\Info\PoliticaAdmin.razor" />
+      <AdditionalFiles Include="Pages\Marketer\Serviços\Info\Pub\Actualizacao.razor" />
+      <AdditionalFiles Include="Pages\Marketer\Serviços\Info\Pub\Auditoria.razor" />
+      <AdditionalFiles Include="Pages\Marketer\Serviços\Info\Pub\Integridade.razor" />
+      <AdditionalFiles Include="Pages\Marketer\Serviços\Info\Pub\Manual.razor" />
+      <AdditionalFiles Include="Pages\Marketer\Serviços\Info\RelatorioAdmin.razor" />
+      <AdditionalFiles Include="Pages\Marketer\Serviços\Info\SegurancaAdmin.razor" />
+      <AdditionalFiles Include="Pages\Marketer\Serviços\Info\SobreAdmin.razor" />
+      <AdditionalFiles Include="Pages\Marketer\Serviços\Info\TermoUsoAdmin.razor" />
+      <AdditionalFiles Include="Pages\Marketer\Serviços\LoginAdmin.razor" />
+      <AdditionalFiles Include="Pages\Marketer\Serviços\MenuAdmin.razor" />
+      <AdditionalFiles Include="Pages\Marketer\Serviços\MenuLayoutAdmin.razor" />
+      <AdditionalFiles Include="Pages\Marketer\Serviços\RecuperarSenhaAdmin.razor" />
+      <AdditionalFiles Include="Pages\Marketer\Serviços\RegistrarAdmin.razor" />
     </ItemGroup>
 
 </Project>

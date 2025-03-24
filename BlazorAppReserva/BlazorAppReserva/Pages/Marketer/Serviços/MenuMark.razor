@@ -1,0 +1,89 @@
+﻿@page "/Mark/MenuMark"
+
+<MudMenuAdmin>
+   <MudNavLink Href="/Mark/Index" Match="NavLinkMatch.All">
+    <MudIcon Icon="@Icons.Material.Filled.Home" IconColor="Color.Warning" />
+    Início
+</MudNavLink>
+
+<MudNavGroup
+    Icon="@Icons.Material.Filled.Dashboard"
+    IconColor="Color.Error"
+    Title="Painel Administrativo"
+    Expanded="true">
+
+    <MudNavLink
+        Href="/estrategia-planejamento"
+        Match="NavLinkMatch.Prefix"
+        Icon="@Icons.Material.Filled.Psychology"
+        IconColor="Color.Primary">
+        Estratégia e Planejamento
+    </MudNavLink>
+
+    <MudNavLink
+        Href="/marketing-digital"
+        Match="NavLinkMatch.Prefix"
+        Icon="@Icons.Material.Filled.Campaign"
+        IconColor="Color.Info">
+        Marketing Digital
+    </MudNavLink>
+
+    <MudNavLink
+        Href="/parcerias-relacoes"
+        Match="NavLinkMatch.Prefix"
+        Icon="@Icons.Material.Filled.Handshake"
+        IconColor="Color.Warning">
+        Parcerias e Relações Públicas
+    </MudNavLink>
+
+    <MudNavLink
+        Href="/monitoramento-analise"
+        Match="NavLinkMatch.Prefix"
+        Icon="@Icons.Material.Filled.Insights"
+        IconColor="Color.Secondary">
+        Monitoramento e Análise de Dados
+    </MudNavLink>
+
+    <MudNavLink
+        Href="/experiencia-cliente"
+        Match="NavLinkMatch.Prefix"
+        Icon="@Icons.Material.Filled.EmojiPeople"
+        IconColor="Color.Success">
+        Experiência do Cliente e Fidelização
+    </MudNavLink>
+
+</MudNavGroup>
+   
+
+   <MudNavLink
+    T="bool"
+    Href="/Mark/Seguranca"
+    Match="NavLinkMatch.Prefix"
+    Icon="@Icons.Material.Filled.Lock"
+    IconColor = "Color.Default">Segurança
+</MudNavLink>
+
+<MudNavLink
+    Href="/Mark/Chat"
+    Match="NavLinkMatch.Prefix"
+    Icon="@Icons.Material.Filled.Chat"
+    IconColor="Color.Success" >
+    Chat
+</MudNavLink>
+
+<MudNavLink
+        Href="/Manual"
+        Match="NavLinkMatch.Prefix"
+        Icon="@Icons.Material.Filled.Help"
+        IconColor="Color.Info" >
+        Suporte
+    </MudNavLink>
+
+<MudNavLink
+    Href="/Mark/Sobre"
+    Match="NavLinkMatch.Prefix"
+    Icon="@Icons.Material.Filled.Info"
+    IconColor="Color.Info">
+    Sobre
+</MudNavLink>
+</MudMenuAdmin>

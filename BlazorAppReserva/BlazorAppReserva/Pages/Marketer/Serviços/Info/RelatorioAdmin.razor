@@ -1,0 +1,40 @@
+﻿@page "/Admin/Relatorio"
+@using MudBlazor
+
+<MudContainer>
+    <MudGrid>
+        <MudItem xs="12" md="6" class="text-center">
+            <MudChart ChartType="ChartType.Donut" Width="300px" Height="300px" InputData="@data" InputLabels="@labels">
+                <CustomGraphics>
+                    <text class="donut-inner-text" x="47%" y="35%" dominant-baseline="middle" text-anchor="middle" fill="black" font-family="Helvetica" font-size="2">Total</text>
+                    <text class="donut-inner-text" x="47%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="black" font-family="Helvetica" font-size="5">@data.Sum().ToString()</text>
+                </CustomGraphics>
+            </MudChart>
+        </MudItem>
+        <MudItem xs="12" md="6">
+            <MudPaper Class="pa-4 text-center animate__animated animate__fadeInRight">
+                <MudIcon Icon="@Icons.Material.Filled.Bolt" Size="Size.Large" Color="Color.Primary" />
+                <h3>Eficiência</h3>
+                <p>Otimização de processos para maior produtividade e desempenho.</p>
+                
+                <MudIcon Icon="@Icons.Material.Filled.AccessibilityNew" Size="Size.Large" Color="Color.Secondary" />
+                <h3>Acessibilidade</h3>
+                <p>Facilidade de uso para todos os usuários, sem barreiras.</p>
+                
+                <MudIcon Icon="@Icons.Material.Filled.EventAvailable" Size="Size.Large" Color="Color.Tertiary" />
+                <h3>Comodidade</h3>
+                <p>Experiência intuitiva que facilita a navegação e o uso.</p>
+                
+                <MudIcon Icon="@Icons.Material.Filled.Analytics" Size="Size.Large" Color="Color.Success" />
+                <h3>Análise</h3>
+                <p>Monitoramento inteligente para decisões estratégicas assertivas.</p>
+            </MudPaper>
+        </MudItem>
+    </MudGrid>
+</MudContainer>
+
+@code {
+    public double[] data = { 15, 65, 15, 5 };
+    public string[] labels = { "Eficiência", "Acessibilidade", "Comodidade", "Análise" };
+}
+
