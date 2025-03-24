@@ -41,14 +41,21 @@
         Title="Usuários"
         Expanded="true">
 
-        <MudNavLink
-            Href="/Admin/ListaUsuarios"
-            Match="NavLinkMatch.Prefix"
-            Icon="@Icons.Material.Filled.Group"
-            IconColor="Color.Info">
-            Lista de Usuários
-        </MudNavLink>
-    </MudNavGroup>
+           <MudNavGroup
+               Icon="@Icons.Material.Filled.ManageAccounts"
+               IconColor="Color.Warning"
+               Title="Gestão de Usuários"
+               Expanded="true">
+
+               <MudNavLink
+                   Href="/Admin/ListaUsuarios"
+                   Match="NavLinkMatch.Prefix"
+                   Icon="@Icons.Material.Filled.Group"
+                   IconColor="Color.Primary">
+                   Lista de Usuários
+               </MudNavLink>
+          </MudNavGroup>
+       </MudNavGroup>
 
     <MudNavLink
         T="bool"

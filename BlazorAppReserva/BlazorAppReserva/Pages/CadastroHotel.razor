@@ -26,7 +26,32 @@
                     AdornmentColor="Color.Primary" />
             </MudItem>
 
-            <MudItem xs="12" md="6" Class="mb-3">
+            <MudItem xs="12" md="4" Class="mb-3">
+                <MudTextField
+                    Label="Cidade"
+                    @bind-Value="hotel.Cidade"
+                    Variant="Variant.Outlined"
+                    Required
+                    Adornment="Adornment.End"
+                    AdornmentIcon="@Icons.Material.Filled.LocationCity"
+                    AdornmentColor="Color.Primary" />
+            </MudItem>
+
+            <MudItem xs="12" md="4" Class="mb-3">
+                <MudTextField
+                    Label="País"
+                    @bind-Value="hotel.Pais"
+                    Variant="Variant.Outlined"
+                    Required
+                    Adornment="Adornment.End"
+                    AdornmentIcon="@Icons.Material.Filled.Public"
+                    AdornmentColor="Color.Primary" />
+            </MudItem>
+        </MudGrid>
+
+        <!-- Segunda linha de campos do formulário -->
+        <MudGrid Spacing="2">
+            <MudItem xs="12" md="4" Class="mb-3">
                 <MudTextField
                     Label="Telefone"
                     @bind-Value="hotel.Telefone"
@@ -38,7 +63,7 @@
                     AdornmentColor="Color.Primary" />
             </MudItem>
 
-            <MudItem xs="12" md="6" Class="mb-3">
+            <MudItem xs="12" md="4" Class="mb-3">
                 <MudTextField
                     Label="E-mail"
                     @bind-Value="hotel.Email"
@@ -48,6 +73,60 @@
                     Adornment="Adornment.End"
                     AdornmentIcon="@Icons.Material.Filled.Email"
                     AdornmentColor="Color.Primary" />
+            </MudItem>
+
+            <MudItem xs="12" md="4" Class="mb-3">
+                <MudTextField
+                    Label="Endereço"
+                    @bind-Value="hotel.Endereco"
+                    Variant="Variant.Outlined"
+                    Required
+                    Adornment="Adornment.End"
+                    AdornmentIcon="@Icons.Material.Filled.Home"
+                    AdornmentColor="Color.Primary" />
+            </MudItem>
+        </MudGrid>
+
+        <!-- Terceira linha de campos do formulário -->
+        <MudGrid Spacing="2">
+            <MudItem xs="12" md="4" Class="mb-3">
+                <MudTextField
+                    Label="Categoria (1-5)"
+                    @bind-Value="hotel.Categoria"
+                    Variant="Variant.Outlined"
+                    Type="number"
+                    Required
+                    Adornment="Adornment.End"
+                    AdornmentIcon="@Icons.Material.Filled.Star"
+                    AdornmentColor="Color.Primary" />
+            </MudItem>
+
+            <MudItem xs="12" md="4" Class="mb-3">
+                <MudTextField
+                    Label="Preço por Noite"
+                    @bind-Value="hotel.PrecoPorNoite"
+                    Variant="Variant.Outlined"
+                    Type="number"
+                    Required
+                    Adornment="Adornment.End"
+                    AdornmentIcon="@Icons.Material.Filled.AttachMoney"
+                    AdornmentColor="Color.Primary" />
+            </MudItem>
+        </MudGrid>
+
+        <!-- Serviços oferecidos -->
+        <MudGrid Spacing="2">
+            <MudItem xs="12" md="3">
+                <MudCheckBox T="string" @bind-Checked="hotel.Wifi" Label="Wi-Fi" />
+            </MudItem>
+            <MudItem xs="12" md="3">
+                <MudCheckBox T="string" @bind-Checked="hotel.Estacionamento" Label="Estacionamento" />
+            </MudItem>
+            <MudItem xs="12" md="3">
+                <MudCheckBox T="string" @bind-Checked="hotel.Piscina" Label="Piscina" />
+            </MudItem>
+            <MudItem xs="12" md="3">
+                <MudCheckBox T="string" @bind-Checked="hotel.Restaurante" Label="Restaurante" />
             </MudItem>
         </MudGrid>
 
@@ -64,28 +143,25 @@
 </MudPaper>
 
 @code {
-    // Objeto que armazena os dados do hotel
     private Hotel hotel = new();
 
-    // Método chamado na inicialização da página
     protected override async Task OnInitializedAsync()
     {
         var hotelJson = await JSRuntime.InvokeAsync<string>("localStorage.getItem", "hotelEdicao");
-
+        
         if (!string.IsNullOrEmpty(hotelJson))
         {
             hotel = System.Text.Json.JsonSerializer.Deserialize<Hotel>(hotelJson);
         }
     }
 
-    // Método para cadastrar ou editar um hotel
     private async Task CadastrarHotel()
     {
         if (hotel.Id > 0)
             HotelService.EditarHotel(hotel);
         else
             HotelService.AdicionarHotel(hotel);
-
+        
         await JSRuntime.InvokeVoidAsync("localStorage.removeItem", "hotelEdicao");
         Navigation.NavigateTo("/lista-hoteis");
     }
